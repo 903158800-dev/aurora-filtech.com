@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include('../partials/head', { title: 'Contact Us', description: 'Get in touch with Aurora Filtech\'s professional team for quotes and support. We have offices in the UK and China.', path: '/contact.html' }) %>
+</head>
+<body>
+    <%- include('../partials/header', { path: '/contact.html' }) %>
+
+    <section class="hero" style="padding: 80px 0; text-align: center; background: linear-gradient(135deg, var(--bg-surface), var(--border-color));">
+        <div class="container">
+            <h1 style="font-size: 3rem; margin-bottom: 20px;">Contact Us</h1>
+            <p style="margin: 0 auto; max-width: 600px; color: var(--text-muted);">Get in touch with our professional team for quotes and support.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="contact-wrapper">
+                
+                <div class="contact-info">
+                    <div class="section-header" style="text-align: left; margin-bottom: 40px;">
+                        <span class="subtitle" style="color: var(--primary-color); font-weight: 600;">Get In Touch</span>
+                        <h2 style="font-size: 2rem;">Locations & Support</h2>
+                    </div>
+                    
+                    <div class="contact-card" style="background: var(--bg-surface); padding: 30px; border-radius: 12px; margin-bottom: 20px; border: 1px solid var(--border-color);">
+                        <h3 style="color: var(--text-color); margin-bottom: 10px;">United Kingdom Office</h3>
+                        <p style="color: var(--text-muted);">8 Standard Road, London, NW10 6EU, UK</p>
+                    </div>
+
+                    <div class="contact-card" style="background: var(--bg-surface); padding: 30px; border-radius: 12px; margin-bottom: 20px; border: 1px solid var(--border-color);">
+                        <h3 style="color: var(--text-color); margin-bottom: 10px;">China Office</h3>
+                        <p style="color: var(--text-muted);">Room 1103, Guanhe East Rd 38#, Tianning District, Changzhou City</p>
+                    </div>
+
+                    <div class="contact-card" style="background: var(--bg-surface); padding: 30px; border-radius: 12px; margin-bottom: 20px; border: 1px solid var(--border-color);">
+                        <h3 style="color: var(--text-color); margin-bottom: 15px;">Contact Details</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 8px;"><strong>Phone/WhatsApp:</strong> <a href="tel:+8615206119266" style="color: inherit; text-decoration: none;">+86 152 0611 9266 (Aaron)</a></p>
+                        <p style="color: var(--text-muted); margin-bottom: 8px;"><strong>Sales Email:</strong> <a href="mailto:aaron@aurora-filtech.com" style="color: inherit; text-decoration: none;">aaron@aurora-filtech.com</a></p>
+                        <p style="color: var(--text-muted);"><strong>China Contact:</strong> <a href="mailto:johnson@aurora-filtech.com" style="color: inherit; text-decoration: none;">johnson@aurora-filtech.com</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-form-box">
+                    <div class="section-header" style="text-align: left; margin-bottom: 40px;">
+                        <span class="subtitle" style="color: var(--primary-color); font-weight: 600;">Message Us</span>
+                        <h2 style="font-size: 2rem;">Start a Project</h2>
+                    </div>
+                    
+                    <form action="#" method="POST" style="background: var(--bg-surface); padding: 40px; border-radius: 16px; border: 1px solid var(--border-color);">
+                        <div class="form-group" style="margin-bottom: 20px;">
+                            <label for="name" style="display: block; margin-bottom: 8px; color: var(--text-color); font-weight: 500;">Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Enter your name" style="width: 100%; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-color); color: var(--text-color);">
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 20px;">
+                            <label for="email" style="display: block; margin-bottom: 8px; color: var(--text-color); font-weight: 500;">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="Enter your email" style="width: 100%; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-color); color: var(--text-color);">
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 20px;">
+                            <label for="subject" style="display: block; margin-bottom: 8px; color: var(--text-color); font-weight: 500;">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="What is this regarding?" style="width: 100%; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-color); color: var(--text-color);">
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 30px;">
+                            <label for="message" style="display: block; margin-bottom: 8px; color: var(--text-color); font-weight: 500;">Message</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Tell us about your requirements..." style="width: 100%; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-color); color: var(--text-color); resize: vertical;"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>

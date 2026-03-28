@@ -1,0 +1,24 @@
+<!-- Floating Glass Header -->
+<div class="header-wrapper">
+    <header class="header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                AURORA FILTECH
+            </a>
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="<%= path === '/' ? 'active' : '' %>">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li class="dropdown">
+                        <a href="index.html#products">Products</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="dryer-fabric.html">Dryer Fabric</a></li>
+                            <li><a href="vacuum-fabric.html">Vacuum Fabric</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html" class="<%= path === '/contact.html' ? 'active' : '' %>">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+</div>
