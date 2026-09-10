@@ -1,0 +1,14 @@
+# robots.txt — www.aurora-filtech.com
+User-agent: *
+Allow: /
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+Disallow: /qfy-admin/
+Disallow: /qfy-includes/
+Disallow: /qfy-content/plugins/
+Disallow: /qfy-content/cache/
+Disallow: /*?s=
+Disallow: /*?iphorm_swfupload
+
+Sitemap: https://www.aurora-filtech.com/sitemap.xml
+Sitemap: https://www.aurora-filtech.com/sitemap-image.xml
