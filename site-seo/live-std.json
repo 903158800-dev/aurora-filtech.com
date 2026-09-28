@@ -1,0 +1,353 @@
+{
+ "forming": {
+  "f": {
+   "file": "forming-f.jpg",
+   "w": 800,
+   "h": 600,
+   "alt": "Close-up of a polyester forming fabric for paper machines"
+  },
+  "g": [
+   {
+    "file": "forming-g1.jpg",
+    "w": 800,
+    "h": 600,
+    "alt": "One-layer forming fabric"
+   },
+   {
+    "file": "forming-g2.jpg",
+    "w": 800,
+    "h": 600,
+    "alt": "Two-layer forming fabric"
+   },
+   {
+    "file": "forming-g3.jpg",
+    "w": 800,
+    "h": 600,
+    "alt": "Three-layer forming fabric"
+   },
+   {
+    "file": "forming-g4.jpg",
+    "w": 800,
+    "h": 600,
+    "alt": "Nonwoven forming fabric on a non-woven forming machine"
+   }
+  ]
+ },
+ "dryer": {
+  "f": {
+   "file": "dryer-f.jpg",
+   "w": 500,
+   "h": 375,
+   "alt": "Polyester dryer fabric close-up"
+  },
+  "g": [
+   {
+    "file": "dryer-g1.jpg",
+    "w": 500,
+    "h": 375,
+    "alt": "Anti-static dryer fabric with conductive yarns"
+   },
+   {
+    "file": "dryer-g2.jpg",
+    "w": 539,
+    "h": 404,
+    "alt": "Anti-static dryer fabric for wood panel dryers"
+   },
+   {
+    "file": "dryer-g3.jpg",
+    "w": 600,
+    "h": 450,
+    "alt": "Anti-static dryer fabric with enhanced seam"
+   },
+   {
+    "file": "dryer-g4.jpg",
+    "w": 500,
+    "h": 375,
+    "alt": "Double-layer dryer fabric"
+   },
+   {
+    "file": "dryer-g5.jpg",
+    "w": 500,
+    "h": 375,
+    "alt": "Single-layer dryer fabric"
+   }
+  ]
+ },
+ "vacuum": {
+  "f": {
+   "file": "vacuum-f.jpg",
+   "w": 640,
+   "h": 480,
+   "alt": "610D vacuum filter fabric close-up"
+  },
+  "g": [
+   {
+    "file": "vacuum-g1.jpg",
+    "w": 500,
+    "h": 375,
+    "alt": "610 vacuum filter fabric"
+   },
+   {
+    "file": "vacuum-g2.jpg",
+    "w": 500,
+    "h": 375,
+    "alt": "617 vacuum filter fabric"
+   },
+   {
+    "file": "vacuum-g3.jpg",
+    "w": 500,
+    "h": 375,
+    "alt": "620 vacuum filter fabric"
+   },
+   {
+    "file": "vacuum-g4.jpg",
+    "w": 500,
+    "h": 375,
+    "alt": "623 vacuum filter fabric"
+   },
+   {
+    "file": "vacuum-g5.jpg",
+    "w": 640,
+    "h": 480,
+    "alt": "623A vacuum filter fabric"
+   },
+   {
+    "file": "vacuum-g6.jpg",
+    "w": 500,
+    "h": 375,
+    "alt": "DL120 vacuum filter fabric"
+   }
+  ]
+ },
+ "pressfabric": {
+  "f": {
+   "file": "pressfabric-f.jpg",
+   "w": 591,
+   "h": 443,
+   "alt": "Press filter cloth woven by Aurora Filtech"
+  },
+  "g": [
+   {
+    "file": "pressfabric-g1.jpg",
+    "w": 800,
+    "h": 600,
+    "alt": "Press filter cloth production"
+   },
+   {
+    "file": "pressfabric-g2.jpg",
+    "w": 500,
+    "h": 375,
+    "alt": "Filter cloth weave type 1"
+   },
+   {
+    "file": "pressfabric-g3.jpg",
+    "w": 500,
+    "h": 375,
+    "alt": "Filter cloth weave type 2"
+   },
+   {
+    "file": "pressfabric-g4.jpg",
+    "w": 500,
+    "h": 375,
+    "alt": "Filter cloth weave type 3"
+   },
+   {
+    "file": "pressfabric-g5.jpg",
+    "w": 375,
+    "h": 281,
+    "alt": "Mono-multifilament cloth 1"
+   },
+   {
+    "file": "pressfabric-g6.jpg",
+    "w": 375,
+    "h": 281,
+    "alt": "Mono-multifilament cloth 2"
+   },
+   {
+    "file": "pressfabric-g7.jpg",
+    "w": 375,
+    "h": 281,
+    "alt": "Mono-multifilament cloth 3"
+   },
+   {
+    "file": "pressfabric-g8.jpg",
+    "w": 375,
+    "h": 281,
+    "alt": "Mono-multifilament cloth 4"
+   }
+  ]
+ },
+ "pressbelt": {
+  "f": {
+   "file": "pressbelt-f.jpg",
+   "w": 500,
+   "h": 375,
+   "alt": "601 woven press belt close-up"
+  },
+  "g": [
+   {
+    "file": "pressbelt-g1.jpg",
+    "w": 500,
+    "h": 375,
+    "alt": "608 woven press belt"
+   },
+   {
+    "file": "pressbelt-g2.jpg",
+    "w": 500,
+    "h": 375,
+    "alt": "613 woven press belt"
+   },
+   {
+    "file": "pressbelt-g3.jpg",
+    "w": 500,
+    "h": 375,
+    "alt": "626 woven press belt"
+   },
+   {
+    "file": "pressbelt-g4.jpg",
+    "w": 500,
+    "h": 375,
+    "alt": "Clipper seam on a press belt"
+   },
+   {
+    "file": "pressbelt-g5.jpg",
+    "w": 500,
+    "h": 375,
+    "alt": "Clipper seam, closed"
+   },
+   {
+    "file": "pressbelt-g6.jpg",
+    "w": 500,
+    "h": 375,
+    "alt": "Endless (seamless) press belt"
+   },
+   {
+    "file": "pressbelt-g7.jpg",
+    "w": 800,
+    "h": 600,
+    "alt": "Press belt header strip from the production line"
+   }
+  ]
+ },
+ "teflon": {
+  "f": {
+   "file": "teflon-f.jpg",
+   "w": 283,
+   "h": 212,
+   "alt": "Teflon (PTFE) belt close-up"
+  },
+  "g": [
+   {
+    "file": "teflon-g1.jpg",
+    "w": 283,
+    "h": 212,
+    "alt": "Teflon mesh belt"
+   },
+   {
+    "file": "teflon-g2.jpg",
+    "w": 500,
+    "h": 375,
+    "alt": "Teflon spiral dryer fabric"
+   }
+  ]
+ },
+ "filterbag": {
+  "f": {
+   "file": "filterbag-f.jpg",
+   "w": 800,
+   "h": 600,
+   "alt": "Dust filter bags in a baghouse"
+  },
+  "g": []
+ },
+ "cartridge": {
+  "f": {
+   "file": "cartridge-f.jpg",
+   "w": 800,
+   "h": 600,
+   "alt": "Industrial filter cartridges for air, water and oil"
+  },
+  "g": [
+   {
+    "file": "cartridge-g1.jpg",
+    "w": 800,
+    "h": 600,
+    "alt": "PET filter cartridge"
+   },
+   {
+    "file": "cartridge-g2.jpg",
+    "w": 800,
+    "h": 600,
+    "alt": "Anti-static air filter cartridge"
+   },
+   {
+    "file": "cartridge-g3.jpg",
+    "w": 800,
+    "h": 600,
+    "alt": "PTFE filter cartridge"
+   },
+   {
+    "file": "cartridge-g4.jpg",
+    "w": 800,
+    "h": 600,
+    "alt": "Cellulose filter cartridge"
+   },
+   {
+    "file": "cartridge-g5.jpg",
+    "w": 800,
+    "h": 600,
+    "alt": "Nomex filter cartridge"
+   },
+   {
+    "file": "cartridge-g6.jpg",
+    "w": 500,
+    "h": 375,
+    "alt": "Oval filter cartridge"
+   }
+  ]
+ },
+ "spiral": {
+  "f": {
+   "file": "spiral-f.jpg",
+   "w": 500,
+   "h": 375,
+   "alt": "Spiral pin seam joining spiral fabric loops"
+  },
+  "g": [
+   {
+    "file": "spiral-g1.jpg",
+    "w": 500,
+    "h": 375,
+    "alt": "Single loop seam"
+   },
+   {
+    "file": "spiral-g2.jpg",
+    "w": 500,
+    "h": 375,
+    "alt": "Double loop seam"
+   },
+   {
+    "file": "spiral-g3.jpg",
+    "w": 500,
+    "h": 375,
+    "alt": "Endless (seamless) spiral belt seam"
+   }
+  ]
+ },
+ "squaremesh": {
+  "f": {
+   "file": "squaremesh-f.jpg",
+   "w": 500,
+   "h": 375,
+   "alt": "Dryer screen mesh in polyester square weave"
+  },
+  "g": [
+   {
+    "file": "squaremesh-g1.jpg",
+    "w": 500,
+    "h": 375,
+    "alt": "Polyester square mesh screen cloth"
+   }
+  ]
+ }
+}

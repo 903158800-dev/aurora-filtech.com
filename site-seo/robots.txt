@@ -1,0 +1,9 @@
+# robots.txt — www.aurora-filtech.com
+User-agent: *
+Allow: /
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+Disallow: /*?s=
+
+Sitemap: https://www.aurora-filtech.com/sitemap.xml
+Sitemap: https://www.aurora-filtech.com/sitemap-image.xml
