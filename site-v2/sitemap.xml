@@ -1,28 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.aurora-filtech.com/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.aurora-filtech.com/about/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.aurora-filtech.com/forming-fabric/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.aurora-filtech.com/dryer-fabric/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.aurora-filtech.com/vacuum-fabric/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.aurora-filtech.com/press-fabric/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.aurora-filtech.com/press-belt/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.aurora-filtech.com/products/filter-bag/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.aurora-filtech.com/products/filter-cartridge/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.aurora-filtech.com/spiral-belt/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.aurora-filtech.com/products/square-mesh/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.aurora-filtech.com/industries/wood-based-panels/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.aurora-filtech.com/industries/paper-and-pulp/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.aurora-filtech.com/industries/mining/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.aurora-filtech.com/industries/power-generation-fgd/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.aurora-filtech.com/industries/food-and-pharma/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.aurora-filtech.com/industries/nonwovens/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.aurora-filtech.com/industries/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.aurora-filtech.com/industries/wood-based-panels/mesh-belts/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.aurora-filtech.com/industries/wood-flour-sifting/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.aurora-filtech.com/blog/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.aurora-filtech.com/blog/forming-fabric-guide/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.aurora-filtech.com/blog/spiral-fabric-guide/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.aurora-filtech.com/blog/ptfe-belt-joint-types/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.aurora-filtech.com/resources/glossary/</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>
+<url><loc>https://www.aurora-filtech.com/about/</loc><lastmod>2026-09-30</lastmod></url>
+<url><loc>https://www.aurora-filtech.com/industries/</loc><lastmod>2026-09-30</lastmod></url>
+<url><loc>https://www.aurora-filtech.com/blog/</loc><lastmod>2026-09-30</lastmod></url>
+<url><loc>https://www.aurora-filtech.com/resources/glossary/</loc><lastmod>2026-09-30</lastmod></url>
+  <url><loc>https://www.aurora-filtech.com/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.aurora-filtech.com/forming-fabric/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.aurora-filtech.com/dryer-fabric/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.aurora-filtech.com/spiral-belt/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.aurora-filtech.com/vacuum-fabric/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.aurora-filtech.com/press-fabric/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.aurora-filtech.com/press-belt/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.aurora-filtech.com/products/filter-bag/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.aurora-filtech.com/products/filter-cartridge/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.aurora-filtech.com/products/square-mesh/</loc><changefreq>monthly</changefreq></url>
 </urlset>

@@ -1,4 +1,4 @@
-# Cloudflare Pages cache policy
+# Cloudflare Pages cache policy (harmless on other hosts)
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 /qfy-content/*

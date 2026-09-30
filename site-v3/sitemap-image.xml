@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  <url><loc>https://www.aurora-filtech.com/</loc>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.aurora-filtech.com/</loc>
     <image:image>
       <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2019/12/711b4e3ef611d676aa22b38c17cf53e4.jpg</image:loc>
       <image:title>Filter fabric weaving workshop</image:title>
@@ -9,7 +11,7 @@
     <image:image>
       <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2019/11/67a7f86dc4882ac91d995df779417576.jpg</image:loc>
       <image:title>Monofilament</image:title>
-      <image:caption>Proprietary monofilament production for filter fabrics and industrial belts.</image:caption>
+      <image:caption>In-house monofilament production — quality under our control, and a high degree of customization.</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2019/09/c77f027fd05a12043ba86232dbdbd87a.jpg</image:loc>
@@ -51,5 +53,73 @@
       <image:title>Filter cartridge</image:title>
       <image:caption>Filter cartridges for air filtration, water filtration and oil filtration.</image:caption>
     </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/df/sq-sem.jpg</image:loc>
+      <image:title>Square mesh</image:title>
+      <image:caption>Polyester square mesh, plain weave - 0.4–2.1 mm apertures, custom-woven belts and sieve cloth.</image:caption>
+    </image:image>
+  </url>
+  <url><loc>https://www.aurora-filtech.com/forming-fabric/</loc>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2019/09/c77f027fd05a12043ba86232dbdbd87a.jpg</image:loc>
+      <image:title>Forming fabric</image:title>
+      <image:caption>Forming fabric for paper machines and non-woven forming machines.</image:caption>
+    </image:image>
+  </url>
+  <url><loc>https://www.aurora-filtech.com/dryer-fabric/</loc>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2023/02/fe14b23c21fc9da13b521b792acf44ee.jpg</image:loc>
+      <image:title>Dryer fabric</image:title>
+      <image:caption>Dryer fabric for board, paper and food drying.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2019/09/01208d8bdb0d682815afe19b9446d8c6.jpg</image:loc>
+      <image:title>Anti-static dryer fabric</image:title>
+      <image:caption>Anti-static dryer fabric for wood panel forming.</image:caption>
+    </image:image>
+  </url>
+  <url><loc>https://www.aurora-filtech.com/vacuum-fabric/</loc>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2018/01/c758862f83257dc972f1e1934586c5f1.jpg</image:loc>
+      <image:title>Vacuum filter fabric</image:title>
+      <image:caption>Vacuum filter fabric for vacuum belt filters and vacuum disc filters.</image:caption>
+    </image:image>
+  </url>
+  <url><loc>https://www.aurora-filtech.com/press-fabric/</loc>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2019/09/d4f377239978d23c7b1098681b945ba0.jpg</image:loc>
+      <image:title>Press filter fabric</image:title>
+      <image:caption>Press filter fabric / filter cloth for frame and membrane filter presses.</image:caption>
+    </image:image>
+  </url>
+  <url><loc>https://www.aurora-filtech.com/press-belt/</loc>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2018/01/fe3317fefb27841fe260dfab9a83a362.jpg</image:loc>
+      <image:title>Press filter belt</image:title>
+      <image:caption>Press filter belt (dewatering belt) for belt press filters.</image:caption>
+    </image:image>
+  </url>
+  <url><loc>https://www.aurora-filtech.com/teflon-belt/</loc>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2019/09/0016072e9e586e75a7b3560370c90d92.jpg</image:loc>
+      <image:title>Teflon mesh belt</image:title>
+      <image:caption>Teflon mesh belt for dryers and conveyors.</image:caption>
+    </image:image>
+  </url>
+  <url><loc>https://www.aurora-filtech.com/products/filter-bag/</loc>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2023/02/filter-bag-banner.jpg</image:loc>
+      <image:title>Dust filter bags</image:title>
+      <image:caption>Dust filter bags for bag filters and dust collectors - power plant and cement plant applications.</image:caption>
+    </image:image>
+  </url>
+  <url><loc>https://www.aurora-filtech.com/products/filter-cartridge/</loc>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2023/02/3aacdceeba645c1a58a832b60137c3b7.jpg</image:loc>
+      <image:title>Filter cartridge</image:title>
+      <image:caption>Industrial filter cartridge for air, water and oil filtration.</image:caption>
+    </image:image>
+  </url>
+  <url><loc>https://www.aurora-filtech.com/spiral-belt/</loc><!-- 待补:该页图片稳定 URL(spec §9.2) -->
   </url>
 </urlset>
