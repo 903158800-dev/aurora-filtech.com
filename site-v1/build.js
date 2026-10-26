@@ -1,4 +1,4 @@
-// site-seo 主构建 —— 生成全部页面、JSON-LD、sitemap
+// site-v1 主构建 —— 生成全部页面、JSON-LD、sitemap
 // 用法: node build.js
 const fs = require("fs");
 const path = require("path");
@@ -420,7 +420,7 @@ const glossBody = `
 ${rfqSection}`;
 
 // ---------- 输出 ----------
-write("assets/style.css", `/* Aurora Filtech site-seo — scheme 1 design, research content */${CSS}`);
+write("assets/style.css", `/* Aurora Filtech site-v1 — scheme 1 design, research content */${CSS}`);
 write("index.html", layout({ url: `${BASE}/`, title: "Aurora Filtech | Industrial Filter Fabrics and Filter Belts",
   desc: "Manufacturer of forming fabrics, dryer fabrics, spiral fabrics, vacuum and press filter fabrics, filter bags and cartridges. 30+ years, 3 factories, OEM/ODM.",
   type: "website", jsonld: JSON.stringify(homeJsonld, null, 2), body: homeBody, activeNav: "home", og: IMG.h1 }), `${BASE}/`);
@@ -582,6 +582,7 @@ pages-df-vf.js
 pages-sm.js
 pages-eq.js
 live-std.json
+site-v1
 site-seo
 `);
 
@@ -638,4 +639,4 @@ Sitemap: ${BASE}/sitemap-image.xml
 
 write("favicon.svg", `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#0F6E66"/><path d="M12 44c8-2 10-24 20-24s10 22 20 24" stroke="#C4A265" stroke-width="5" fill="none" stroke-linecap="round"/></svg>`);
 
-console.log("DONE site-seo —", urls.length + "+ pages");
+console.log("DONE site-v1 —", urls.length + "+ pages");

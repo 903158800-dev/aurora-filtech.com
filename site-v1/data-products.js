@@ -1,4 +1,4 @@
-// site-seo 产品数据 —— 内容依据《SEO-调研报告.md》《SEO-词库补充.md》重写
+// site-v1 产品数据 —— 内容依据《SEO-调研报告.md》《SEO-词库补充.md》重写
 // 注意:参数表数值为行业典型值占位(标注 typical),上线前必须按实测产品资料核对
 const BASE = "https://www.aurora-filtech.com";
 const IMG = {

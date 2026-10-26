@@ -1,4 +1,8 @@
-/* Aurora Filtech site-seo — scheme 1 design, research content */
+// site-v1 设计层 —— 沿用方案一(编辑风·轻奢暖调)设计系统,按新内容架构扩展组件
+const { industries, applications, posts, glossary } = require("./data-site");
+const { products } = require("./data-products");
+
+const CSS = `
 :root{
   --bg:#FAF7F2; --bg-soft:#F2EDE4; --surface:#FFFFFF; --ink:#1C2B33; --ink-soft:#4A5B64;
   --teal:#0F6E66; --teal-deep:#0B4F4A; --gold:#C4A265; --gold-soft:#E7D9BC; --line:#E3DCCC;
@@ -400,3 +404,172 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--gold-soft);borde
   .cta-band{padding:20px 18px}
   .cta-band h2{font-size:1.25rem}
 }
+`
+
+const slugTitle = s => s.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+const P = Object.keys(products);
+const prodLink = {
+  "forming-fabric": "Forming Fabric",
+  "dryer-fabric": "Dryer Fabric",
+  "vacuum-fabric": "Vacuum Filter Fabric",
+  "press-fabric": "Press Filter Fabric",
+  "press-belt": "Press Filter Belt",
+  "products/filter-bag": "Filter Bag",
+  "products/filter-cartridge": "Filter Cartridge",
+  "spiral-belt": "Spiral Fabric",
+  "products/square-mesh": "Polyester Square Mesh",
+  "blog/forming-fabric-guide": "Guide: What Is a Forming Fabric",
+  "blog/spiral-fabric-guide": "Spiral vs Woven Fabric Guide",
+  "blog/ptfe-belt-joint-types": "PTFE Belt Joint Types Guide",
+  "industries/wood-based-panels/mesh-belts": "Wood Panel & Biomass Mesh Belts",
+  "industries/wood-flour-sifting": "Wood Flour & WPC Sifting",
+  "industries/food-and-pharma": "Food & Pharma Industry",
+};
+
+const navProducts = `<a href="/forming-fabric/">Forming Fabric</a>
+<a href="/dryer-fabric/">Dryer Fabric</a>
+<a href="/spiral-belt/">Spiral Fabric</a>
+<a href="/products/square-mesh/">Polyester Square Mesh</a>
+<a href="/vacuum-fabric/">Vacuum Filter Fabric</a>
+<a href="/press-fabric/">Press Filter Fabric</a>
+<a href="/press-belt/">Press Filter Belt</a>
+<a href="/products/filter-bag/">Filter Bag</a>
+<a href="/products/filter-cartridge/">Filter Cartridge</a>`;
+const navIndustries = Object.values(industries).map(i => `<a href="${i.url}">${i.name}</a>`).join("\n");
+
+function layout({ url, title, desc, type = "website", jsonld = "", body, activeNav = "", og = "", noindex = false }) {
+  const ogImg = og ? (og.startsWith("http") ? og : "https://www.aurora-filtech.com" + og) : "https://www.aurora-filtech.com/qfy-content/uploads/2019/12/711b4e3ef611d676aa22b38c17cf53e4.jpg";
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${title}</title>
+<meta name="description" content="${desc}">
+${noindex ? `<meta name="robots" content="noindex, follow">` : `<link rel="canonical" href="${url}">`}
+<meta property="og:site_name" content="Aurora Filtech">
+<meta property="og:type" content="${type}">
+<meta property="og:title" content="${title}">
+<meta property="og:description" content="${desc}">
+<meta property="og:url" content="${url}">
+<meta property="og:image" content="${ogImg}">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${title}">
+<meta name="twitter:description" content="${desc}">
+<meta name="twitter:image" content="${ogImg}">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/style.css">
+${jsonld ? `<script type="application/ld+json">\n${jsonld}\n</script>` : ""}
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="nav-logo" href="/"><svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#0F6E66"/><path d="M12 44c8-2 10-24 20-24s10 22 20 24" stroke="#C4A265" stroke-width="5" fill="none" stroke-linecap="round"/></svg>Aurora Filtech</a>
+    <button class="nav-burger" aria-label="Toggle menu">☰ Menu</button>
+    <nav class="nav-menu" aria-label="Main navigation">
+      <a href="/"${activeNav === "home" ? ' aria-current="page"' : ""}>HOME</a>
+      <div class="has-sub">
+        <a href="/#solutions">PRODUCTS ▾</a>
+        <div class="sub">${navProducts}</div>
+      </div>
+      <div class="has-sub">
+        <a href="/industries/"${activeNav === "industries" ? ' aria-current="page"' : ""}>INDUSTRIES ▾</a>
+        <div class="sub">${navIndustries}</div>
+      </div>
+      <div class="has-sub">
+        <a href="/resources/glossary/">RESOURCES ▾</a>
+        <div class="sub"><a href="/resources/glossary/">Filtration Glossary</a><a href="/blog/">Blog & Guides</a></div>
+      </div>
+      <a href="/about/"${activeNav === "about" ? ' aria-current="page"' : ""}>ABOUT</a>
+      <a href="/#rfq"${activeNav === "contact" ? ' aria-current="page"' : ""}>CONTACT</a>
+      <a class="nav-cta" href="/#rfq">Get a Quote</a>
+    </nav>
+  </div>
+</header>
+<main>
+${body}
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <h3>Aurora Filtech Co., Ltd</h3>
+      <p class="footer-note">Manufacturer of paper machine clothing, filter fabrics, spiral fabrics and mesh belts for paper, wood-based panel, mining, power, food and pharmaceutical industries. 30+ years of expertise, 3 factories, OEM/ODM service.</p>
+    </div>
+    <div>
+      <h3>Products</h3>
+      <a href="/forming-fabric/">Forming Fabric</a>
+      <a href="/dryer-fabric/">Dryer Fabric</a>
+      <a href="/spiral-belt/">Spiral Fabric</a>
+      <a href="/products/square-mesh/">Square Mesh</a>
+      <a href="/vacuum-fabric/">Vacuum Filter Fabric</a>
+      <a href="/press-fabric/">Press Filter Fabric</a>
+      <a href="/press-belt/">Press Filter Belt</a>
+      <a href="/products/filter-bag/">Filter Bag</a>
+      <a href="/products/filter-cartridge/">Filter Cartridge</a>
+    </div>
+    <div>
+      <h3>Industries & Resources</h3>
+      <a href="/about/">About Us & Production</a>
+      <a href="/industries/">All Industries</a>
+      <a href="/industries/wood-based-panels/">Wood-based Panels</a>
+      <a href="/industries/paper-and-pulp/">Paper & Pulp</a>
+      <a href="/industries/mining/">Mining</a>
+      <a href="/industries/power-generation-fgd/">Power & FGD</a>
+      <a href="/industries/food-and-pharma/">Food & Pharma</a>
+      <a href="/industries/nonwovens/">Nonwovens</a>
+      <a href="/resources/glossary/">Filtration Glossary</a>
+      <a href="/blog/">Blog & Guides</a>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <p class="footer-note">Email: <a href="mailto:aaron@aurora-filtech.com" style="display:inline">aaron@aurora-filtech.com</a><br>London: 8 Standard Road, NY10 6EU, UK<br>Changzhou: Room 1103, Guanhe East Rd, Tianning District, China<br>Tel: +86 152 0611 9266</p>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© ${new Date().getFullYear()} Aurora Filtech Co., Ltd. All rights reserved.</span>
+    <span>Industrial filter fabrics & filter belts manufacturer</span>
+  </div>
+</footer>
+<script>
+document.querySelector('.nav-burger').addEventListener('click',function(){document.querySelector('.nav-menu').classList.toggle('open')});
+</script>
+</body>
+</html>`;
+}
+
+// RFQ 表单(全站统一,含客户类型与选型字段 —— 调研 1.2 模块4)
+const rfqSection = `
+<section id="rfq" class="sec" style="background:var(--surface);border-top:1px solid var(--line)">
+  <div class="wrap" style="max-width:860px">
+    <div class="rfq">
+      <span class="kicker">Request for Quotation</span>
+      <h2 style="margin-top:10px">Tell us about your machine — we reply within 24 hours</h2>
+      <p class="hint">Our engineers match weave, material, seam and edge to your duty. A photo of the old belt's data tag helps.</p>
+      <form action="mailto:johnson@aurora-filtech.com" method="post" enctype="text/plain">
+        <div class="row3">
+          <div class="field"><label for="f-type">You are a *</label>
+            <select id="f-type" name="customer_type" required><option value="">Select…</option><option>End user (mill / plant)</option><option>Distributor / trader</option><option>OEM / machine builder</option><option>Other</option></select></div>
+          <div class="field"><label for="f-company">Company *</label><input id="f-company" name="company" required></div>
+          <div class="field"><label for="f-email">Email *</label><input id="f-email" name="email" type="email" required></div>
+        </div>
+        <div class="row3">
+          <div class="field"><label for="f-product">Product</label>
+            <select id="f-product" name="product">${Object.entries(prodLink).map(([s, n]) => `<option>${n}</option>`).join("")}<option>Other / not sure</option></select></div>
+          <div class="field"><label for="f-machine">Machine / filter type</label><input id="f-machine" name="machine" placeholder="e.g. horizontal belt filter, MDF dryer…"></div>
+          <div class="field"><label for="f-size">Belt / cloth size</label><input id="f-size" name="size" placeholder="Length × width / Ø"></div>
+        </div>
+        <div class="row3">
+          <div class="field"><label for="f-material">Material / slurry</label><input id="f-material" name="material" placeholder="What do you filter / dry?"></div>
+          <div class="field"><label for="f-temp">Temperature (°C)</label><input id="f-temp" name="temperature"></div>
+          <div class="field"><label for="f-ph">pH / chemistry</label><input id="f-ph" name="ph" placeholder="Acid / alkaline, Cl⁻…"></div>
+        </div>
+        <div class="field"><label for="f-name">Your Name</label><input id="f-name" name="name"></div>
+        <div class="field"><label for="f-request">Notes</label><textarea id="f-request" name="notes" rows="4" placeholder="Target air permeability, seam type, monthly quantity…"></textarea></div>
+        <button class="btn btn-primary" type="submit">Send RFQ</button>
+      </form>
+    </div>
+  </div>
+</section>`;
+
+module.exports = { CSS, layout, rfqSection, industries, applications, posts, glossary, products, prodLink, slugTitle };
