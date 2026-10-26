@@ -188,7 +188,7 @@ h2.sec-title{font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.3rem);line-he
 
 /* ===== RFQ 询价表单(新) ===== */
 .rfq{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:36px}
-.rfq h3{font-family:var(--serif);font-size:1.3rem;margin-bottom:6px}
+.rfq h2,.rfq h3{font-family:var(--serif);font-size:1.3rem;margin-bottom:6px}
 .rfq .hint{font-size:.88rem;color:var(--ink-soft);margin-bottom:22px}
 .rfq .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .rfq .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
@@ -333,7 +333,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--gold-soft);borde
 .duo-compare{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:20px 0}
 .duo{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 24px}
 .duo:last-child{border:2px solid var(--gold)}
-.duo h4{font-family:var(--serif);font-size:1.05rem;margin-bottom:10px}
+.duo h3,.duo h4{font-family:var(--serif);font-size:1.05rem;margin-bottom:10px}
 .duo ul{list-style:none}
 .duo li{font-size:.9rem;color:var(--ink-soft);padding:5px 0 5px 20px;position:relative}
 .duo li::before{content:"—";position:absolute;left:0;color:var(--gold)}
@@ -408,7 +408,23 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--gold-soft);borde
 
 const slugTitle = s => s.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
 const P = Object.keys(products);
-const prodLink = { "forming-fabric": "Forming Fabric", "dryer-fabric": "Dryer Fabric", "vacuum-fabric": "Vacuum Filter Fabric", "press-fabric": "Press Filter Fabric", "press-belt": "Press Filter Belt", "products/filter-bag": "Filter Bag", "products/filter-cartridge": "Filter Cartridge", "spiral-belt": "Spiral Fabric", "products/square-mesh": "Polyester Square Mesh" };
+const prodLink = {
+  "forming-fabric": "Forming Fabric",
+  "dryer-fabric": "Dryer Fabric",
+  "vacuum-fabric": "Vacuum Filter Fabric",
+  "press-fabric": "Press Filter Fabric",
+  "press-belt": "Press Filter Belt",
+  "products/filter-bag": "Filter Bag",
+  "products/filter-cartridge": "Filter Cartridge",
+  "spiral-belt": "Spiral Fabric",
+  "products/square-mesh": "Polyester Square Mesh",
+  "blog/forming-fabric-guide": "Guide: What Is a Forming Fabric",
+  "blog/spiral-fabric-guide": "Spiral vs Woven Fabric Guide",
+  "blog/ptfe-belt-joint-types": "PTFE Belt Joint Types Guide",
+  "industries/wood-based-panels/mesh-belts": "Wood Panel & Biomass Mesh Belts",
+  "industries/wood-flour-sifting": "Wood Flour & WPC Sifting",
+  "industries/food-and-pharma": "Food & Pharma Industry",
+};
 
 const navProducts = `<a href="/forming-fabric/">Forming Fabric</a>
 <a href="/dryer-fabric/">Dryer Fabric</a>
@@ -421,7 +437,8 @@ const navProducts = `<a href="/forming-fabric/">Forming Fabric</a>
 <a href="/products/filter-cartridge/">Filter Cartridge</a>`;
 const navIndustries = Object.values(industries).map(i => `<a href="${i.url}">${i.name}</a>`).join("\n");
 
-function layout({ url, title, desc, type = "website", jsonld = "", body, activeNav = "", og = "" }) {
+function layout({ url, title, desc, type = "website", jsonld = "", body, activeNav = "", og = "", noindex = false }) {
+  const ogImg = og ? (og.startsWith("http") ? og : "https://www.aurora-filtech.com" + og) : "https://www.aurora-filtech.com/qfy-content/uploads/2019/12/711b4e3ef611d676aa22b38c17cf53e4.jpg";
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -429,17 +446,18 @@ function layout({ url, title, desc, type = "website", jsonld = "", body, activeN
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${title}</title>
 <meta name="description" content="${desc}">
-<link rel="canonical" href="${url}">
+${noindex ? `<meta name="robots" content="noindex, follow">` : `<link rel="canonical" href="${url}">`}
 <meta property="og:site_name" content="Aurora Filtech">
 <meta property="og:type" content="${type}">
 <meta property="og:title" content="${title}">
 <meta property="og:description" content="${desc}">
 <meta property="og:url" content="${url}">
-<meta property="og:image" content="${og ? (og.startsWith("http") ? og : "https://www.aurora-filtech.com" + og) : "https://www.aurora-filtech.com/qfy-content/uploads/2019/12/711b4e3ef611d676aa22b38c17cf53e4.jpg"}">
+<meta property="og:image" content="${ogImg}">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${title}">
 <meta name="twitter:description" content="${desc}">
+<meta name="twitter:image" content="${ogImg}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/style.css">
 ${jsonld ? `<script type="application/ld+json">\n${jsonld}\n</script>` : ""}
@@ -456,7 +474,7 @@ ${jsonld ? `<script type="application/ld+json">\n${jsonld}\n</script>` : ""}
         <div class="sub">${navProducts}</div>
       </div>
       <div class="has-sub">
-        <a href="/industries/wood-based-panels/"${activeNav === "industries" ? ' aria-current="page"' : ""}>INDUSTRIES ▾</a>
+        <a href="/industries/"${activeNav === "industries" ? ' aria-current="page"' : ""}>INDUSTRIES ▾</a>
         <div class="sub">${navIndustries}</div>
       </div>
       <div class="has-sub">
@@ -486,14 +504,20 @@ ${body}
       <a href="/products/square-mesh/">Square Mesh</a>
       <a href="/vacuum-fabric/">Vacuum Filter Fabric</a>
       <a href="/press-fabric/">Press Filter Fabric</a>
+      <a href="/press-belt/">Press Filter Belt</a>
+      <a href="/products/filter-bag/">Filter Bag</a>
+      <a href="/products/filter-cartridge/">Filter Cartridge</a>
     </div>
     <div>
       <h3>Industries & Resources</h3>
       <a href="/about/">About Us & Production</a>
+      <a href="/industries/">All Industries</a>
       <a href="/industries/wood-based-panels/">Wood-based Panels</a>
       <a href="/industries/paper-and-pulp/">Paper & Pulp</a>
       <a href="/industries/mining/">Mining</a>
       <a href="/industries/power-generation-fgd/">Power & FGD</a>
+      <a href="/industries/food-and-pharma/">Food & Pharma</a>
+      <a href="/industries/nonwovens/">Nonwovens</a>
       <a href="/resources/glossary/">Filtration Glossary</a>
       <a href="/blog/">Blog & Guides</a>
     </div>
@@ -520,7 +544,7 @@ const rfqSection = `
   <div class="wrap" style="max-width:860px">
     <div class="rfq">
       <span class="kicker">Request for Quotation</span>
-      <h3 style="margin-top:10px">Tell us about your machine — we reply within 24 hours</h3>
+      <h2 style="margin-top:10px">Tell us about your machine — we reply within 24 hours</h2>
       <p class="hint">Our engineers match weave, material, seam and edge to your duty. A photo of the old belt's data tag helps.</p>
       <form action="mailto:johnson@aurora-filtech.com" method="post" enctype="text/plain">
         <div class="row3">

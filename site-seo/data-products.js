@@ -40,6 +40,12 @@ const homeCards = [
     first: "Spiral fabrics and spiral belts built from PET or PPS monofilament spirals — open high-airflow dryer belts, or dense filled belts for belt press filtration.",
     equipment: ["Belt & tunnel dryers", "Belt press filters", "Washing & conveying lines"],
     applications: ["Board & food drying", "Sludge dewatering", "High-temperature drying (PPS)"] },
+  { slug: "products/square-mesh", h2: "POLYESTER SQUARE MESH", img: "/qfy-content/uploads/df/sq-sem.jpg", w: 1400, h: 1050,
+    alt: "Electron-microscope close-up of blue polyester square mesh showing uniform square openings",
+    caption: "Polyester monofilament square mesh (plain weave) — 0.4–2.1 mm apertures, up to 1750 CFM for drying, conveying and sifting.",
+    first: "Polyester square mesh woven 1/1 into precise square openings — heat-set dryer belts and sieve cloth flat and stable to 180 °C.",
+    equipment: ["Belt & biomass dryers", "Vibrating & gyratory sifters", "Food draining conveyors"],
+    applications: ["Wood chip & biomass drying", "Food draining & drying", "Wood flour & WPC sifting"] },
   { slug: "vacuum-fabric", h2: "VACUUM FILTER FABRIC", img: IMG.c3, w: 671, h: 386,
     alt: "Vacuum belt filter with filter fabric for FGD gypsum dewatering",
     caption: "Vacuum filter fabrics for vacuum belt filters and vacuum disc filters — power plant FGD, phosphoric acid and mining filtration.",
@@ -79,7 +85,7 @@ const products = {
     series: "Aurora FF Series", seriesIntro: "paper · nonwoven · graphite forming — one weaving platform",
     title: "Forming Fabric | Paper Machine Clothing | Aurora Filtech",
     desc: "Forming fabrics for paper machines, nonwoven lines and graphite sheet forming. 1-layer to 3-layer SSB anti-hydrolysis polyester. Paper machine clothing OEM/ODM.",
-    banner: { url: "/qfy-content/uploads/live/forming-f.jpg", alt: "Close-up of a polyester forming fabric for paper machines", caption: "Close-up of a polyester forming fabric for paper machines.", w: 800, h: 252, maxW: 800 },
+    banner: { url: "/qfy-content/uploads/2019/09/c77f027fd05a12043ba86232dbdbd87a.jpg", alt: "Forming fabric running on the forming section of a paper machine", caption: "FF forming fabric running on the forming section of a paper machine.", w: 671, h: 386, maxW: 671 },
     altNames: ["Paper machine clothing", "Forming wire", "Polyester forming wire", "Forming belt", "Paper making mesh"],
     keywords: "paper machine clothing, forming fabric, forming wire, graphite sheet forming fabric, graphene film forming belt, polyester forming fabric, paper machine clothing, forming fabrics for paper machines, nonwoven forming fabric, graphite flake forming",
     pdesc: "Forming fabrics (also known as forming wire) for paper machines and nonwoven forming machines. 1-layer, 1.5-layer, 2-layer and 3-layer constructions with anti-hydrolysis monofilament.",
@@ -122,7 +128,7 @@ const products = {
     series: "Aurora DF Series", seriesIntro: "anti-static belts · spiral fabrics · square mesh · flat-yarn fabrics",
     title: "Dryer Fabric | Anti-static to Square Mesh | Aurora Filtech",
     desc: "Dryer fabrics in four families: anti-static belts for wool and panel lines, spiral and square mesh belts, flat-yarn paper and nonwoven fabrics.",
-    banner: { url: "/qfy-content/uploads/live/dryer-f.jpg", alt: "Polyester dryer fabric close-up", caption: "Polyester dryer fabric close-up.", w: 500, h: 350, maxW: 500 },
+    banner: { url: "/qfy-content/uploads/df/hero.jpg", alt: "Anti-static dryer fabric flagship close-up with conductive monofilaments", caption: "Anti-static dryer fabric — the flagship family of the Aurora DF dryer fabric range.", w: 1200, h: 525, maxW: 1200 },
     altNames: ["Dryer belt", "Anti-static dryer belt", "Dryer screen mesh", "Drying mesh", "Anti-hydrolysis dryer fabric", "Dryer fabric"],
     keywords: "dryer fabric, dryer belt, anti-static dryer fabric, dryer fabrics for paper machines, board forming dryer mesh, food drying belt, pre-press fabric",
     pdesc: "Anti-static dryer fabrics and dryer belts for board forming, paper drying and food drying machines. Anti-static, anti-hydrolysis and heat-resistant constructions with strong warp loop seams.",
@@ -167,9 +173,9 @@ const products = {
   "vacuum-fabric": {
     url: `${BASE}/vacuum-fabric/`, h1: "Vacuum Filter Fabric (Vacuum Filter Belt)",
     series: "Aurora VF Series", seriesIntro: "Seamless and seamed vacuum filter fabrics for belt, disc and drum filters.",
-    title: "Vacuum Filter Fabric | FGD and Mining Filtration | Aurora Filtech",
+    title: "Vacuum Filter Fabric | FGD & Mining Belts | Aurora Filtech",
     desc: "Vacuum filter fabrics for vacuum belt filters and vacuum disc filters. Power plant FGD, phosphoric acid and mining filtration. Custom sizes.",
-    banner: { url: "/qfy-content/uploads/live/vacuum-f.jpg", alt: "610D vacuum filter fabric close-up", caption: "610D vacuum filter fabric close-up.", w: 640, h: 480, maxW: 640 },
+    banner: { url: "/qfy-content/uploads/vf/strip.jpg", alt: "Vacuum belt filter operation schematic showing how the filter fabric runs on the machine", caption: "Operation schematic — how the fabric runs on a horizontal vacuum belt filter.", w: 960, h: 255, maxW: 960 },
     altNames: ["Vacuum filter belt", "Vacuum fabric", "FGD filter fabric", "Vacuum belt filter fabric", "Horizontal vacuum belt filter cloth"],
     keywords: "vacuum filter fabric, vacuum filter belt, horizontal vacuum belt filter cloth, vacuum disc filter bag, FGD gypsum dewatering fabric, phosphoric acid filtration, mining dewatering cloth",
     pdesc: "Vacuum filter fabrics for vacuum belt filters and vacuum disc filters in power plant FGD, phosphoric acid and mining filtration. Seamless or seamed, custom sizes.",
@@ -213,7 +219,7 @@ const products = {
   "press-fabric": {
     url: `${BASE}/press-fabric/`, h1: "Press Filter Fabric (Filter Cloth)",
     series: "Aurora PF Series", seriesIntro: "Filter cloths for frame, membrane, drum, disc and leaf filters.",
-    title: "Press Filter Fabric | Frame and Membrane Press | Aurora Filtech",
+    title: "Press Filter Fabric | Filter Press Cloth | Aurora Filtech",
     desc: "Press filter fabrics for frame press filters, membrane presses, drum, disc and leaf filters. Oil, mining, lithium phosphate and sludge dewatering.",
     banner: { url: "/qfy-content/uploads/live/pressfabric-dc4e3b5377d3d0f15ffd465b29b79700.jpg", alt: "Press filter cloth running on a frame filter press", caption: "PF cloth in service on a frame filter press.", w: 1920, h: 834, maxW: 1920 },
     gallery: [
@@ -345,9 +351,9 @@ const products = {
   "products/filter-cartridge": {
     url: `${BASE}/products/filter-cartridge/`, h1: "Filter Cartridge (Cartridge Filter)",
     series: "Aurora CT Series", seriesIntro: "Anti-static, PTFE, PPS, cellulose and Nomex cartridges.",
-    title: "Filter Cartridge | Air, Water and Oil Cartridges | Aurora Filtech",
+    title: "Filter Cartridge | Air, Water & Oil Media | Aurora Filtech",
     desc: "Industrial filter cartridges for air, water and oil filtration. Anti-static, PTFE, PPS, cellulose and Nomex series.",
-    banner: { url: "/qfy-content/uploads/live/cartridge-f.jpg", alt: "Industrial filter cartridges for air, water and oil", caption: "Industrial filter cartridges for air, water and oil.", w: 693, h: 309, maxW: 693 },
+    banner: { url: "/qfy-content/uploads/live/cartridge-ef0c498fdcbafdffb7218ce71b4da62a.jpg", alt: "Filter cartridge range lined up, from cellulose to PTFE membrane series", caption: "The Aurora cartridge range — cellulose, spun-bonded PET, PTFE-membrane and high-temperature series.", w: 1640, h: 732, maxW: 1640 },
     gallery: [
       { url: "/qfy-content/uploads/live/cartridge-g1.jpg", w: 451, h: 600, maxW: 451, alt: "PET filter cartridge", caption: "PET filter cartridge." },
       { url: "/qfy-content/uploads/live/cartridge-g2.jpg", w: 451, h: 600, maxW: 451, alt: "Anti-static air filter cartridge", caption: "Anti-static air filter cartridge." },
@@ -387,7 +393,7 @@ const products = {
   "spiral-belt": {
     url: `${BASE}/spiral-belt/`, h1: "Spiral Fabric (Spiral Belt)",
     series: "Aurora SP Series", seriesIntro: "PET / PPS spiral-link fabrics — with or without filler yarns.",
-    title: "Spiral Fabric | Spiral Dryer and Filter Belts | Aurora Filtech",
+    title: "Spiral Fabric | Dryer & Press Filter Belts | Aurora Filtech",
     desc: "Spiral fabrics in two families — open dryer belts (no filler yarns) and filled press filter belts. PET and PPS monofilament, custom widths. OEM/ODM.",
     banner: { url: "/qfy-content/uploads/sp/sp-pet.jpg", alt: "Polyester PET spiral fabric belt, monofilament spirals joined by hinge pins", caption: "PET spiral fabric — the standard construction of the Aurora SP range.", w: 1000, h: 750, maxW: 1000 },
     gallery: [
@@ -421,7 +427,7 @@ const products = {
     oem: ["Belt press filters", "Belt & tunnel dryers", "Washing, cooling & conveying lines"],
     apps: ["Belt press filters — sludge, sand, juice and palm oil (SP-P)", "Dryers — board, paper and food drying (SP-D)", "General conveyor duties — washing, cooling, transporting"],
     specs: ["Material: PET (polyester) / PPS monofilament", "Spiral loop sizes: wide range", "Filler yarns: 2–5, round (Ø0.65–0.9 mm) or flat (0.65 × 2.0 mm), to tune permeability", "Edges: sealed, welded or reinforced", "Widths: custom", "OEM/ODM: available"],
-    related: ["dryer-fabric", "spiral-belt", "blog/spiral-fabric-guide"],
+    related: ["dryer-fabric", "press-belt", "blog/spiral-fabric-guide"],
     industries: ["wood-based-panels", "paper-and-pulp", "food-and-pharma", "power-generation-fgd"],
     faqs: [
       ["What is the difference between a spiral fabric and a woven dryer fabric?", "A spiral fabric is assembled from monofilament spirals joined by hinge pins, giving an open, non-tracking structure with high drainage. A woven dryer fabric is woven from warp and weft yarns and provides a smoother surface. Spiral fabrics are easier to repair on the machine; woven fabrics usually offer higher stability at high speeds. Full comparison in our spiral fabric guide."],
@@ -439,9 +445,9 @@ const products = {
   "products/square-mesh": {
     url: `${BASE}/products/square-mesh/`, h1: "Polyester Square Mesh (Plain Weave)",
     series: "Aurora SM Series", seriesIntro: "Monofilament square-weave mesh — fine belts to coarse screening.",
-    title: "Polyester Square Mesh | Square Weave Mesh Belts | Aurora Filtech",
-    desc: "Polyester monofilament square mesh, plain weave — 0.4–2.1 mm apertures, up to 1750 CFM. Custom-woven belts and sieve cloth for food, wood panel and biomass duties.",
-    banner: { url: "/qfy-content/uploads/live/squaremesh-f.jpg", alt: "Polyester dryer screen mesh in square weave", caption: "Polyester square weave screen mesh.", w: 500, h: 350, maxW: 500 },
+    title: "Polyester Square Mesh | Plain Weave Belts | Aurora Filtech",
+    desc: "Polyester monofilament plain-weave square mesh (0.4–2.1 mm, up to 1750 CFM). Custom-woven belts and sieve cloth for food, wood panel and biomass drying.",
+    banner: { url: "/qfy-content/uploads/df/sq-sem.jpg", alt: "Electron microscope close-up of blue polyester square mesh showing uniform woven openings", caption: "Uniform square openings, clean monofilament crossings.", w: 1400, h: 1050, maxW: 1400 },
     gallery: [
       { url: "/qfy-content/uploads/live/squaremesh-g1.jpg", w: 500, h: 350, maxW: 500, alt: "Polyester square mesh screen cloth", caption: "Square mesh screen cloth." }
     ],

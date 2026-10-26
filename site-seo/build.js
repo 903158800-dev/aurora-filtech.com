@@ -12,10 +12,12 @@ const { aboutPage } = require("./pages-eq");
 const OUT = __dirname;
 const OG = `/qfy-content/uploads/2019/12/711b4e3ef611d676aa22b38c17cf53e4.jpg`;
 
-function write(rel, content) {
+const renderedPages = [];
+function write(rel, content, pageUrl = null) {
   const fp = path.join(OUT, rel);
   fs.mkdirSync(path.dirname(fp), { recursive: true });
   fs.writeFileSync(fp, content);
+  if (pageUrl) renderedPages.push({ url: pageUrl, html: content });
   console.log("wrote", rel);
 }
 
@@ -35,16 +37,18 @@ const orgNode = {
 
 function productJsonld(p, extra = {}) {
   const graph = [
+    orgNode,
     { "@type": "BreadcrumbList", itemListElement: extra.crumbs || [
       { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` },
       { "@type": "ListItem", position: 2, name: p.h1.split(" (")[0], item: p.url }] },
   ];
-  if (p.banner) graph.push({ "@type": "ImageObject", "@id": p.url + `#image`, contentUrl: BASE + p.banner.url, encodingFormat: "image/jpeg", name: p.h1.split(" (")[0], caption: p.banner.caption, inLanguage: "en" });
+  if (p.banner) graph.push({ "@type": "ImageObject", "@id": p.url + `#image`, contentUrl: BASE + p.banner.url, encodingFormat: "image/jpeg", width: String(p.banner.w), height: String(p.banner.h), name: p.h1.split(" (")[0], caption: p.banner.caption, inLanguage: "en" });
   const prod = { "@type": "Product", "@id": p.url + "#product", name: p.h1.split(" (")[0], alternateName: p.altNames, description: p.pdesc, url: p.url,
     brand: { "@id": `${BASE}/#organization` }, manufacturer: { "@id": `${BASE}/#organization` },
     category: p.category || "Industrial filter fabrics", keywords: p.keywords };
   if (p.banner) prod.image = { "@id": p.url + "#image" };
   graph.push(prod);
+  if (extra.videos && extra.videos.length) graph.push(...extra.videos);
   if (p.faqs && p.faqs.length) {
     graph.push({ "@type": "FAQPage", mainEntity: p.faqs.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) });
   }
@@ -217,7 +221,7 @@ function industryPage(key) {
   return `
 <section class="ind-hero">
   <div class="wrap">
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/#solutions">Industries</a> › <span>${ind.name}</span></nav>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/industries/">Industries</a> › <span>${ind.name}</span></nav>
     <span class="kicker">${ind.kicker}</span>
     <h1 style="margin-top:12px">${ind.name}</h1>
     <p class="lede">${ind.title.split("|")[0].trim()} — fabrics, belts and cloths matched to each stage of the process.</p>
@@ -305,7 +309,7 @@ function appPage(key) {
   return `
 <section class="ind-hero">
   <div class="wrap">
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/industries/wood-based-panels/">Industries</a>${parent ? ` › <a href="/industries/${parent}/">${industries[parent].name}</a>` : ""} › <span>${ap.name}</span></nav>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/industries/">Industries</a>${parent ? ` › <a href="/industries/${parent}/">${industries[parent].name}</a>` : ""} › <span>${ap.name}</span></nav>
     <span class="kicker">${ap.kicker}</span>
     <h1 style="margin-top:12px">${ap.name}</h1>
     <p class="lede">${ap.title.split("|")[0].trim()} — mesh and belt selections for this duty.</p>
@@ -362,12 +366,13 @@ ${rfqSection}`;
 function postPage(slug) {
   const post = posts[slug];
   const jsonld = { "@context": "https://schema.org", "@graph": [
+    orgNode,
     { "@type": "BreadcrumbList", itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` },
       { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE}/blog/` },
       { "@type": "ListItem", position: 3, name: post.title, item: `${BASE}${post.url}` }] },
     { "@type": "Article", headline: post.title, description: post.desc, datePublished: post.date, dateModified: post.date,
-      author: { "@type": "Organization", name: "Aurora Filtech" }, publisher: { "@id": `${BASE}/#organization` }, inLanguage: "en", mainEntityOfPage: `${BASE}${post.url}` },
+      author: { "@id": `${BASE}/#organization` }, publisher: { "@id": `${BASE}/#organization` }, inLanguage: "en", mainEntityOfPage: `${BASE}${post.url}` },
   ] };
   return { jsonld: JSON.stringify(jsonld, null, 2), body: `
 <section class="page-hero">
@@ -380,6 +385,12 @@ function postPage(slug) {
 <section>
   <div class="wrap article post-body">
     ${post.body.map(([t, c]) => t === "h2" ? `<h2>${c}</h2>` : t === "p" ? `<p>${c}</p>` : `<ul>${c.map(li => `<li>${li}</li>`).join("")}</ul>`).join("\n    ")}
+    ${post.related && post.related.length ? `<div class="related">
+      <h2>Related Products &amp; Guides</h2>
+      <div class="related-grid">
+        ${post.related.map(r => `<a href="/${r}/">${prodLink[r] || r} →</a>`).join("")}
+      </div>
+    </div>` : ""}
     <div class="cta-band">
       <div><h2>Need this specified for your machine?</h2><p>Our engineers match construction, CFM and seams to your duty.</p></div>
       <a class="btn" href="#rfq">Get a Quote</a>
@@ -393,13 +404,14 @@ ${rfqSection}` };
 const glossBody = `
 <section class="page-hero">
   <div class="wrap">
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <span>Resources</span> › <span>Glossary</span></nav>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/resources/glossary/">Resources</a> › <span>Glossary</span></nav>
     <h1>Filtration & Paper Machine Clothing Glossary</h1>
     <p class="lede">The vocabulary of our trade — forming fabrics, spiral belts, press cloths and dust media — in plain definitions.</p>
   </div>
 </section>
 <section>
   <div class="wrap">
+    <h2 class="sec-title" style="margin-bottom:24px;font-size:1.5rem">Key Filtration &amp; Weaving Terms (A–Z)</h2>
     <dl class="gloss">
       ${glossary.map(([t, d]) => `<div><dt>${t}</dt><dd>${d}</dd></div>`).join("\n      ")}
     </dl>
@@ -411,7 +423,7 @@ ${rfqSection}`;
 write("assets/style.css", `/* Aurora Filtech site-seo — scheme 1 design, research content */${CSS}`);
 write("index.html", layout({ url: `${BASE}/`, title: "Aurora Filtech | Industrial Filter Fabrics and Filter Belts",
   desc: "Manufacturer of forming fabrics, dryer fabrics, spiral fabrics, vacuum and press filter fabrics, filter bags and cartridges. 30+ years, 3 factories, OEM/ODM.",
-  type: "website", jsonld: JSON.stringify(homeJsonld, null, 2), body: homeBody, activeNav: "home" }));
+  type: "website", jsonld: JSON.stringify(homeJsonld, null, 2), body: homeBody, activeNav: "home", og: IMG.h1 }), `${BASE}/`);
 
 for (const [slug, p] of Object.entries(products)) {
   let body;
@@ -423,60 +435,112 @@ for (const [slug, p] of Object.entries(products)) {
   else if (slug === "press-belt") body = pressBeltPage(p) + rfqSection;
   else if (slug === "products/filter-cartridge") body = filterCartridgePage(p) + rfqSection;
   else if (slug === "vacuum-fabric") body = vacuumPage(p) + rfqSection;
-  else body = productPage(p, slug) + (slug.endsWith("square-mesh") || slug.startsWith("spiral") || true ? "" : "");
-  if (!["dryer-fabric", "vacuum-fabric", "forming-fabric", "spiral-belt", "products/square-mesh", "press-fabric", "press-belt", "products/filter-cartridge"].includes(slug)) body = productPage(p, slug);
-  write(`${slug}/index.html`, layout({ url: p.url, title: p.title, desc: p.desc, type: "product", jsonld: productJsonld(p), body, activeNav: "products" }));
+  else body = productPage(p, slug);
+  const extra = slug === "dryer-fabric" ? {
+    videos: [
+      { "@type": "VideoObject", name: "Anti-static pre-press belt running on an MDF line", description: "Aurora anti-static dryer belt working the pre-press section of an MDF plant (Dieffenbacher-type line).", thumbnailUrl: `${BASE}/qfy-content/uploads/df/hero.jpg`, contentUrl: `${BASE}/qfy-content/uploads/df/prepress.mp4`, uploadDate: "2026-09-10" },
+      { "@type": "VideoObject", name: "4106S silicone-coated dryer belt in operation", description: "Aurora 4106S silicone-coated dryer belt in live MDF board production.", thumbnailUrl: `${BASE}/qfy-content/uploads/df/silicone.jpg`, contentUrl: `${BASE}/qfy-content/uploads/df/silicon.mp4`, uploadDate: "2026-09-10" },
+    ]
+  } : {};
+  write(`${slug}/index.html`, layout({ url: p.url, title: p.title, desc: p.desc, type: "product", jsonld: productJsonld(p, extra), body, activeNav: "products", og: p.banner ? p.banner.url : "" }), p.url);
 }
 
 write("about/index.html", layout({
   url: `${BASE}/about/`,
   title: "About Us | Filter Fabric Manufacturer | Aurora Filtech",
-  desc: "Aurora Filtech: 30+ years weaving filter fabrics and paper machine clothing across 3 factories. In-house chain from yarn production to sewn cloth on German Dornier looms.",
+  desc: "Aurora Filtech: 30+ years weaving filter fabrics and paper machine clothing across 3 factories. In-house chain from yarn extrusion to German Dornier looms.",
   type: "website",
+  og: "/qfy-content/uploads/eq/eq-loom-panorama.jpg",
   jsonld: JSON.stringify({ "@context": "https://schema.org", "@graph": [
+    orgNode,
     { "@type": "BreadcrumbList", itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` },
       { "@type": "ListItem", position: 2, name: "About Us", item: `${BASE}/about/` }] },
     { "@type": "AboutPage", name: "About Aurora Filtech", url: `${BASE}/about/`, publisher: { "@id": `${BASE}/#organization` } }] }, null, 2),
-  body: aboutPage() + rfqSection, activeNav: "about" }));
+  body: aboutPage() + rfqSection, activeNav: "about" }), `${BASE}/about/`);
 
 for (const key of Object.keys(industries)) {
   const ind = industries[key];
+  const indGraph = [
+    orgNode,
+    { "@type": "BreadcrumbList", itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` },
+      { "@type": "ListItem", position: 2, name: "Industries", item: `${BASE}/industries/` },
+      { "@type": "ListItem", position: 3, name: ind.name, item: `${BASE}${ind.url}` }] },
+    { "@type": "CollectionPage", name: ind.name, description: ind.desc, url: `${BASE}${ind.url}`, publisher: { "@id": `${BASE}/#organization` } }
+  ];
+  if (key === "wood-based-panels") {
+    indGraph.push({ "@type": "VideoObject", name: "Anti-static pre-press belt filmed on an MDF line", description: "Aurora anti-static belt working the pre-press section of a Chinese MDF plant (Dieffenbacher-type line).", thumbnailUrl: `${BASE}/qfy-content/uploads/df/as-mono.jpg`, contentUrl: `${BASE}/qfy-content/uploads/df/prepress.mp4`, uploadDate: "2026-09-10" });
+  }
   write(`${ind.url}index.html`, layout({ url: `${BASE}${ind.url}`, title: ind.title, desc: ind.desc, type: "website",
-    jsonld: JSON.stringify({ "@context": "https://schema.org", "@graph": [
-      { "@type": "BreadcrumbList", itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` },
-        { "@type": "ListItem", position: 2, name: "Industries", item: `${BASE}/industries/` },
-        { "@type": "ListItem", position: 3, name: ind.name, item: `${BASE}${ind.url}` }] },
-      { "@type": "CollectionPage", name: ind.name, url: `${BASE}${ind.url}`, publisher: { "@id": `${BASE}/#organization` } }] }, null, 2),
-    body: industryPage(key), activeNav: "industries" }));
+    og: ind.banner ? ind.banner.img : "",
+    jsonld: JSON.stringify({ "@context": "https://schema.org", "@graph": indGraph }, null, 2),
+    body: industryPage(key), activeNav: "industries" }), `${BASE}${ind.url}`);
 }
-write("industries/index.html", layout({ url: `${BASE}/industries/`, title: "Industries | Aurora Filtech",
+write("industries/index.html", layout({ url: `${BASE}/industries/`, title: "Industries We Serve | Filter Fabrics | Aurora Filtech",
   desc: "Aurora Filtech fabrics by industry: wood-based panels, paper & pulp, mining, power & FGD, food & pharma, nonwovens.",
-  type: "website", body: `<section class="page-hero"><div class="wrap"><nav class="crumbs"><a href="/">Home</a> › <span>Industries</span></nav><h1>Industries We Serve</h1><p class="lede">Fabrics and belts matched to each process stage of your industry.</p></div></section>
-<section><div class="wrap"><div class="related-grid">${Object.values(industries).map(i => `<a href="${i.url}">${i.name} →</a>`).join("")}${Object.values(applications).map(a => `<a href="${a.url}">${a.name} →</a>`).join("")}</div></div></section>${rfqSection}` }));
+  type: "website",
+  activeNav: "industries",
+  jsonld: JSON.stringify({ "@context": "https://schema.org", "@graph": [
+    orgNode,
+    { "@type": "BreadcrumbList", itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` },
+      { "@type": "ListItem", position: 2, name: "Industries", item: `${BASE}/industries/` }] },
+    { "@type": "CollectionPage", name: "Industries We Serve", description: "Aurora Filtech fabrics by industry: wood-based panels, paper & pulp, mining, power & FGD, food & pharma, nonwovens.", url: `${BASE}/industries/`, publisher: { "@id": `${BASE}/#organization` } }
+  ] }, null, 2),
+  body: `<section class="page-hero"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <span>Industries</span></nav><h1>Industries We Serve</h1><p class="lede">Fabrics and belts matched to each process stage of your industry.</p></div></section>
+<section><div class="wrap"><h2 class="sec-title" style="margin-bottom:20px;font-size:1.5rem">Industries &amp; Process Applications</h2><div class="related-grid">${Object.values(industries).map(i => `<a href="${i.url}">${i.name} →</a>`).join("")}${Object.values(applications).map(a => `<a href="${a.url}">${a.name} →</a>`).join("")}</div></div></section>${rfqSection}` }), `${BASE}/industries/`);
 
 for (const key of Object.keys(applications)) {
   const ap = applications[key];
+  const parent = key === "wood-mesh-belts" ? industries["wood-based-panels"] : null;
+  const crumbs = [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` },
+    { "@type": "ListItem", position: 2, name: "Industries", item: `${BASE}/industries/` },
+  ];
+  if (parent) {
+    crumbs.push({ "@type": "ListItem", position: 3, name: parent.name, item: `${BASE}${parent.url}` });
+    crumbs.push({ "@type": "ListItem", position: 4, name: ap.name, item: `${BASE}${ap.url}` });
+  } else {
+    crumbs.push({ "@type": "ListItem", position: 3, name: ap.name, item: `${BASE}${ap.url}` });
+  }
   write(`${ap.url}index.html`, layout({ url: `${BASE}${ap.url}`, title: ap.title, desc: ap.desc, type: "website",
+    og: "/qfy-content/uploads/df/sq-sem.jpg",
     jsonld: JSON.stringify({ "@context": "https://schema.org", "@graph": [
-      { "@type": "BreadcrumbList", itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` },
-        { "@type": "ListItem", position: 2, name: "Industries", item: `${BASE}/industries/` },
-        { "@type": "ListItem", position: 3, name: ap.name, item: `${BASE}${ap.url}` }] }] }, null, 2),
-    body: appPage(key), activeNav: "industries" }));
+      orgNode,
+      { "@type": "BreadcrumbList", itemListElement: crumbs },
+      { "@type": "CollectionPage", name: ap.name, description: ap.desc, url: `${BASE}${ap.url}`, publisher: { "@id": `${BASE}/#organization` } }] }, null, 2),
+    body: appPage(key), activeNav: "industries" }), `${BASE}${ap.url}`);
 }
 
-write("blog/index.html", layout({ url: `${BASE}/blog/`, title: "Blog & Guides | Aurora Filtech", desc: "Filtration and paper machine clothing selection guides and terminology explainers from Aurora Filtech engineers.", type: "website", body: blogBody() }));
+write("blog/index.html", layout({
+  url: `${BASE}/blog/`,
+  title: "Blog & Guides | Filtration & PMC | Aurora Filtech",
+  desc: "Filtration and paper machine clothing selection guides and terminology explainers from Aurora Filtech engineers.",
+  type: "website",
+  jsonld: JSON.stringify({ "@context": "https://schema.org", "@graph": [
+    orgNode,
+    { "@type": "BreadcrumbList", itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` },
+      { "@type": "ListItem", position: 2, name: "Blog & Guides", item: `${BASE}/blog/` }] },
+    { "@type": "Blog", name: "Aurora Filtech Blog & Guides", description: "Filtration and paper machine clothing selection guides and terminology explainers from Aurora Filtech engineers.", url: `${BASE}/blog/`, publisher: { "@id": `${BASE}/#organization` } }
+  ] }, null, 2),
+  body: blogBody() }), `${BASE}/blog/`);
 for (const slug of Object.keys(posts)) {
   const { jsonld, body } = postPage(slug);
-  write(`${posts[slug].url}index.html`, layout({ url: `${BASE}${posts[slug].url}`, title: `${posts[slug].title} | Aurora Filtech`, desc: posts[slug].desc, type: "article", jsonld, body }));
+  write(`${posts[slug].url}index.html`, layout({ url: `${BASE}${posts[slug].url}`, title: posts[slug].seoTitle || `${posts[slug].title} | Aurora Filtech`, desc: posts[slug].desc, type: "article", jsonld, body }), `${BASE}${posts[slug].url}`);
 }
 
-write("resources/glossary/index.html", layout({ url: `${BASE}/resources/glossary/`, title: "Filtration Glossary | Filter Fabric & PMC Terms | Aurora Filtech",
+write("resources/glossary/index.html", layout({ url: `${BASE}/resources/glossary/`, title: "Filtration Glossary | PMC & Filter Terms | Aurora Filtech",
   desc: "Glossary of filtration and paper machine clothing terms: forming fabric, forming wire, CFM, filler yarns, spiral dryer fabric, press cloth, mesh count and more.",
-  type: "website", jsonld: JSON.stringify({ "@context": "https://schema.org", "@type": "DefinedTermSet", name: "Filtration & Paper Machine Clothing Glossary", url: `${BASE}/resources/glossary/`, publisher: { "@id": `${BASE}/#organization` } }, null, 2),
-  body: glossBody }));
+  type: "website", jsonld: JSON.stringify({ "@context": "https://schema.org", "@graph": [
+    orgNode,
+    { "@type": "BreadcrumbList", itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` },
+      { "@type": "ListItem", position: 2, name: "Filtration Glossary", item: `${BASE}/resources/glossary/` }] },
+    { "@type": "DefinedTermSet", name: "Filtration & Paper Machine Clothing Glossary", url: `${BASE}/resources/glossary/`, publisher: { "@id": `${BASE}/#organization` } }
+  ] }, null, 2),
+  body: glossBody }), `${BASE}/resources/glossary/`);
 
 // sitemap
 const urls = [`${BASE}/`, `${BASE}/about/`, ...Object.values(products).map(p => p.url),
@@ -485,19 +549,41 @@ const urls = [`${BASE}/`, `${BASE}/about/`, ...Object.values(products).map(p => 
   ...Object.values(posts).map(p => `${BASE}${p.url}`), `${BASE}/resources/glossary/`];
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(u => `  <url><loc>${u}</loc><lastmod>2026-09-18</lastmod><changefreq>monthly</changefreq></url>`).join("\n")}
+${urls.map(u => `  <url><loc>${u}</loc><lastmod>2026-10-26</lastmod></url>`).join("\n")}
 </urlset>`);
 
-const esc = s => s.replace(/&/g, "&amp;");
-function imgEntry(loc, title, caption) { loc = loc.startsWith("/") ? BASE + loc : loc; return `    <image:image>\n      <image:loc>${loc}</image:loc>\n      <image:title>${esc(title)}</image:title>\n      <image:caption>${esc(caption)}</image:caption>\n    </image:image>`; }
+const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const imgUrlEntries = renderedPages.map(({ url, html }) => {
+  const seen = new Set();
+  const imgs = [];
+  const re = /<img\b[^>]*?\bsrc="([^"]+)"[^>]*>/gi;
+  let m;
+  while ((m = re.exec(html)) !== null) {
+    const src = m[1];
+    if (!src || src.startsWith("data:") || src.endsWith(".svg")) continue;
+    const loc = src.startsWith("http") ? src : BASE + src;
+    if (seen.has(loc)) continue;
+    seen.add(loc);
+    imgs.push(`    <image:image>\n      <image:loc>${esc(loc)}</image:loc>\n    </image:image>`);
+  }
+  return imgs.length ? `  <url>\n    <loc>${url}</loc>\n${imgs.join("\n")}\n  </url>` : "";
+}).filter(Boolean);
+
 write("sitemap-image.xml", `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  <url><loc>${BASE}/</loc>
-${[[IMG.h1, "Filter fabric weaving workshop", "Aurora Filtech filter fabric weaving workshop."],
-   [IMG.h2, "Monofilament", "Proprietary monofilament production for filter fabrics and industrial belts."],
-   ...homeCards.map(c => [c.img, c.h2.charAt(0) + c.h2.slice(1).toLowerCase(), c.caption.replace(/—/g, "-")])].map(([l, t, c]) => imgEntry(l, t, c)).join("\n")}
-  </url>
+${imgUrlEntries.join("\n")}
 </urlset>`);
+
+write(".assetsignore", `build.js
+data-products.js
+data-site.js
+design.js
+pages-df-vf.js
+pages-sm.js
+pages-eq.js
+live-std.json
+site-seo
+`);
 
 write("_headers", `# Cloudflare Pages cache policy
 /assets/*
@@ -519,13 +605,14 @@ write("_redirects", `/spiral-dryer-fabric/ /spiral-belt/ 301
 write("404.html", layout({
   url: `${BASE}/404.html`, title: "Page Not Found | Aurora Filtech",
   desc: "The page you requested does not exist. Browse Aurora filter fabrics, dryer fabrics and mesh belts, or ask for a quote.",
-  type: "website", jsonld: "", body: `
+  type: "website", jsonld: "", noindex: true, body: `
 <section class="page-hero"><div class="wrap">
     <span class="kicker">404</span>
     <h1 style="margin-top:12px">Page not found</h1>
     <p class="lede">That URL does not exist — it may have moved when we merged product families. Try one of these instead:</p>
   </div></section>
 <section><div class="wrap article">
+    <h2 class="sec-title" style="margin-bottom:18px;font-size:1.4rem">Popular Product &amp; Industry Pages</h2>
     <div class="related-grid">
       <a href="/">Home</a>
       <a href="/dryer-fabric/">Dryer Fabric</a>

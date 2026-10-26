@@ -29,7 +29,7 @@ function squareMeshPage(p) {
     <p>Every opening is formed by the weave itself — warp over weft, one crossing at a time — then heat-set so the aperture stays square at working temperature. Under the electron microscope the discipline shows: uniform openings, clean yarn crossings, no filler, no coating.</p>
     <div class="as-grid">
       <figure class="as-card">
-        <img src="/qfy-content/uploads/df/sq-sem.jpg" alt="Electron microscope close-up of blue polyester square mesh showing uniform woven openings" width="1400" height="1050" loading="lazy" decoding="async">
+        <img src="/qfy-content/uploads/df/sq-sem.jpg" alt="Electron microscope close-up of blue polyester square mesh showing uniform woven openings" width="1400" height="1050" loading="eager" decoding="async">
         <figcaption><b>Blue square mesh, SEM view</b><span>Uniform square openings, clean monofilament crossings.</span></figcaption>
       </figure>
       <figure class="as-card">
@@ -46,11 +46,11 @@ function squareMeshPage(p) {
     <p>Nine standard apertures from 400 × 400 µm to 2100 × 2100 µm in white or blue, supplied seamless in widths to 6 m — as endless belts, seamed belts, or panels cut to your frame. And when a standard model does not fit, we weave to yours:</p>
     <div class="duo-compare">
       <div class="duo">
-        <h4>Custom-woven to your spec</h4>
+        <h3>Custom-woven to your spec</h3>
         <ul><li><b>Aperture</b> — any square opening, from fine support meshes to coarse 2 mm+ belts</li><li><b>Yarn diameter</b> — thicker yarns for wear life, finer for open area</li><li><b>Material</b> — PET standard; PPS, PTFE-added and other monofilaments on request</li></ul>
       </div>
       <div class="duo">
-        <h4>Flat &amp; stable by construction</h4>
+        <h3>Flat &amp; stable by construction</h3>
         <ul><li><b>High flatness</b> — heat-set finishing, no waviness across the belt width</li><li><b>Structurally stable</b> — the 1/1 weave locks every yarn; the mesh does not loosen or shift in service</li><li><b>Stable apertures</b> — openings stay square at working temperature to 180 °C</li></ul>
       </div>
     </div>

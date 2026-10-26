@@ -402,7 +402,7 @@ function spiralPage(p) {
     <p>Without filler yarns the spiral structure stays fully open — our 6890 and 9010 weaves measure <b>875–1016 CFM</b>, so drying air passes through belt and product instead of fighting the belt. That is exactly what multi-layer board dryers, paper and food belt dryers and washing/cooling conveyors want, and the open structure resists blinding and cleans easily. Anti-static monofilament versions serve static-prone board forming dryers; <b>PPS</b> versions run around 240&nbsp;°C long-term.</p>
     <div class="app-row app-major">
       <figure class="app-img">
-        <img src="/qfy-content/uploads/sp/sp-pet.jpg" alt="Standard PET spiral dryer fabric, monofilament spirals joined by hinge pins" width="1000" height="750" loading="lazy" decoding="async">
+        <img src="/qfy-content/uploads/sp/sp-pet.jpg" alt="Standard PET spiral dryer fabric, monofilament spirals joined by hinge pins" width="1000" height="750" loading="eager" decoding="async">
         <figcaption>Standard PET — the SP-D workhorse construction.</figcaption>
       </figure>
       <div class="app-txt">
@@ -474,6 +474,7 @@ function spiralPage(p) {
         <a href="/dryer-fabric/">Dryer Fabric →</a>
         <a href="/press-belt/">Press Filter Belt →</a>
         <a href="/blog/spiral-fabric-guide/">Spiral vs woven fabric guide →</a>
+        <a href="/blog/ptfe-belt-joint-types/">PTFE belt joint types guide →</a>
         <a href="/industries/mining/">Mining &amp; Minerals →</a>
       </div>
     </div>
@@ -492,7 +493,7 @@ function vacuumPage(p) {
   return `
 <section class="page-hero">
   <div class="wrap">
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <span>Products</span> › <span>Vacuum Filter Fabric</span></nav>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/#solutions">Products</a> › <span>Vacuum Filter Fabric</span></nav>
     <span class="series-chip">${p.series} — ${p.seriesIntro}</span>
     <h1>${p.h1}</h1>
     <p class="lede">Horizontal vacuum belt filter fabrics engineered model by model — from FGD gypsum dewatering to phosphoric acid and mining concentrates, each weave tuned for permeability, release and scraper life.</p>
@@ -564,11 +565,11 @@ function vacuumPage(p) {
     <h2>FGD gypsum: 617 or 623?</h2>
     <div class="duo-compare">
       <div class="duo">
-        <h4>Start with 617 when…</h4>
+        <h3>Start with 617 when…</h3>
         <ul><li>Budget leads, or the filter has tight clearances (617 is thinner)</li><li>Standard gypsum dewatering with moderate scraper contact</li><li>Also suits fly-ash slurries at low permeability</li></ul>
       </div>
       <div class="duo">
-        <h4>Upgrade to 623 when…</h4>
+        <h3>Upgrade to 623 when…</h3>
         <ul><li>Cake release and scraper wear drive your cloth costs</li><li>You want longer campaigns between changes (623 outlasts 617)</li><li>Filtrate clarity must hold at higher loads</li></ul>
       </div>
     </div>
