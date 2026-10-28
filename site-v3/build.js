@@ -3,9 +3,23 @@
 // Source of truth: aurora-site-spec.md (v1.0, 2026-09-01)
 const fs = require("fs");
 const path = require("path");
+const { posts, glossary } = require("./data-site.js");
 
 const BASE = "https://www.aurora-filtech.com";
 const OUT = __dirname;
+const orgNode = {
+  "@type": "Organization", "@id": `${BASE}/#organization`,
+  name: "Aurora Filtech Co., Ltd", alternateName: "Aurora Filtech", url: `${BASE}/`,
+  logo: { "@type": "ImageObject", url: `${BASE}/favicon.svg` },
+  description: "Manufacturer of paper machine clothing, filter fabrics, spiral fabrics and mesh belts for paper, wood-based panel, mining, power, food and pharmaceutical industries.",
+  email: "aaron@aurora-filtech.com", telephone: "+8615206119266",
+  address: [
+    { "@type": "PostalAddress", streetAddress: "8 Standard Road", addressLocality: "London", postalCode: "NY10 6EU", addressCountry: "GB" },
+    { "@type": "PostalAddress", streetAddress: "Room 1103, Guanhe East Rd, Tianning District", addressLocality: "Changzhou", addressCountry: "CN" }
+  ],
+  contactPoint: [{ "@type": "ContactPoint", contactType: "sales", email: "johnson@aurora-filtech.com", telephone: "+8615206119266" }]
+};
+
 
 // Images use root-relative stable /qfy-content/uploads/... paths (spec §0.3, §5, §7).
 // Local copies live in site/qfy-content/uploads/ (mirrors production layout 1:1).
@@ -231,6 +245,23 @@ const urlOf = s => `${BASE}/${s.replace(/^\/?/, "")}/`;
 // (mixed wide/narrow cards), pill spec chips, gradient-hairline cards.
 
 const CSS = `
+/* Blog article and glossary styles */
+.article3 h2{font-size:1.5rem;font-weight:800;letter-spacing:-.015em;margin:44px 0 16px;display:flex;align-items:center;gap:14px}
+.article3 h2::after{content:"";height:3px;flex:1;border-radius:3px;background:var(--grad-soft)}
+.article3 p{color:var(--mute);margin-bottom:18px;line-height:1.75}
+.article3 ul{margin:0 0 24px 20px;line-height:1.7;color:var(--mute)}
+.article3 li{margin-bottom:8px}
+.post-related{margin-top:48px;padding-top:28px;border-top:1px solid var(--line)}
+.post-related h3{font-size:1.15rem;font-weight:700;color:var(--ink);margin-bottom:16px}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.related-grid a{display:block;padding:16px 20px;border:1px solid var(--line);border-radius:16px;background:var(--panel);color:var(--ink);font-weight:600;font-size:.92rem;text-decoration:none;box-shadow:0 4px 14px rgba(35,42,64,.04)}
+.related-grid a:hover{border-color:#4F7CF7;transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,124,247,.12);color:#4F7CF7}
+.gloss{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;margin:28px 0 50px}
+.gloss>div{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:20px 22px;box-shadow:0 4px 14px rgba(35,42,64,.04)}
+.gloss dt{font-size:1.05rem;font-weight:700;color:var(--ink);margin-bottom:6px}
+.gloss dd{font-size:.92rem;color:var(--mute);line-height:1.55;margin:0}
+.gloss dd a{color:var(--teal);text-decoration:underline}
+
 :root{
   --bg:#FBFBFD; --surface:#FFFFFF; --ink:#232A40; --mute:#5D6480;
   --line:#E7E8F0;
@@ -434,12 +465,13 @@ input:focus,textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 
 
 const navLinks3 = products.map(p => `<a href="/${p.slug}/">${p.name}</a>`).join("");
 
-function layout({ url, title, desc, type = "website", jsonld = "", body, activeNav = "" }) {
+function layout({ url, title, desc, type = "website", jsonld = "", noindex = false, body, activeNav = "" }) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+${noindex ? '<meta name="robots" content="noindex, follow">\n' : ""}
 <title>${title}</title>
 <meta name="description" content="${desc}">
 <link rel="canonical" href="${url}">
@@ -663,19 +695,26 @@ ${contactSection}`;
 // ---------- product pages (V3: centered column + pill chips) ----------
 function productJsonld(p, faqs) {
   const graph = [
+    orgNode,
     { "@type": "BreadcrumbList", itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` },
       { "@type": "ListItem", position: 2, name: p.name, item: urlOf(p.slug) }
     ] }
   ];
   if (p.banner) {
-    graph.push({ "@type": "ImageObject", "@id": urlOf(p.slug) + `#${p.imageId}-page`, contentUrl: `${BASE}${p.banner.url}`, encodingFormat: "image/jpeg", name: p.name, caption: p.banner.caption, description: `${p.banner.alt}, supplied by Aurora Filtech.`, inLanguage: "en" });
+    graph.push({ "@type": "ImageObject", "@id": urlOf(p.slug) + `#image`, contentUrl: `${BASE}${p.banner.url}`, encodingFormat: "image/jpeg", width: String(p.banner.w || 800), height: String(p.banner.h || 252), name: p.name, caption: p.banner.caption, description: `${p.banner.alt}, supplied by Aurora Filtech.`, inLanguage: "en" });
   }
-  const prod = { "@type": "Product", "@id": urlOf(p.slug) + `#product-${p.jsonldId}-page`, name: p.name, alternateName: p.altNames, description: p.pdesc, url: urlOf(p.slug), brand: { "@id": `${BASE}/#organization` }, manufacturer: { "@id": `${BASE}/#organization` }, category: p.category, keywords: p.keywords };
-  if (p.banner) prod.image = { "@id": urlOf(p.slug) + `#${p.imageId}-page` };
+  const prod = { "@type": "Product", "@id": urlOf(p.slug) + `#product`, name: p.name, alternateName: p.altNames, description: p.pdesc, url: urlOf(p.slug), brand: { "@id": `${BASE}/#organization` }, manufacturer: { "@id": `${BASE}/#organization` }, category: p.category, keywords: p.keywords };
+  if (p.banner) prod.image = { "@id": urlOf(p.slug) + `#image` };
   graph.push(prod);
+  if (p.slug === "dryer-fabric") {
+    graph.push(
+      { "@type": "VideoObject", name: "Anti-static pre-press belt running on an MDF line", description: "Aurora anti-static dryer belt working the pre-press section of an MDF plant (Dieffenbacher-type line).", thumbnailUrl: `${BASE}/qfy-content/uploads/df/hero.jpg`, contentUrl: `${BASE}/qfy-content/uploads/df/prepress.mp4`, uploadDate: "2026-09-10" },
+      { "@type": "VideoObject", name: "4106S silicone-coated dryer belt in operation", description: "Aurora 4106S silicone-coated dryer belt in live MDF board production.", thumbnailUrl: `${BASE}/qfy-content/uploads/df/silicone.jpg`, contentUrl: `${BASE}/qfy-content/uploads/df/silicon.mp4`, uploadDate: "2026-09-10" }
+    );
+  }
   if (faqs && faqs.length) {
-    graph.push({ "@type": "FAQPage", mainEntity: faqs.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) });
+    graph.push({ "@type": "FAQPage", mainEntity: faqs.map(([q,a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) });
   }
   return JSON.stringify({ "@context": "https://schema.org", "@graph": graph }, null, 2);
 }
@@ -753,10 +792,15 @@ ${contactSection}`;
 }
 
 // ---------- write files ----------
+const renderedPages = [];
 function write(rel, content) {
   const fp = path.join(OUT, rel);
   fs.mkdirSync(path.dirname(fp), { recursive: true });
   fs.writeFileSync(fp, content);
+  if (rel.endsWith(".html") && rel !== "404.html") {
+    const pageUrl = rel === "index.html" ? `${BASE}/` : `${BASE}/${rel.replace(/index\.html$/, "")}`;
+    renderedPages.push({ url: pageUrl, html: content });
+  }
   console.log("wrote", rel);
 }
 
@@ -1373,90 +1417,222 @@ write("about/index.html", layout({ url: `${BASE}/about/`, title: "About Us | Fil
 
     <div class="accounting"><span class="ico">Σ</span><p><b>Why the chain matters to you.</b> Every parameter you buy — CFM, micron rating, tensile, seam strength — was controlled at a step inside these walls. When something must be tuned for your machine, the people who spun, warped, wove, set, cut and sewed the fabric are the people who take your call.</p></div>
 </div>${contactSection}`, activeNav: "industries" }));
-write("blog/index.html", layout({ url: `${BASE}/blog/`, title: "Blog & Guides | Aurora Filtech", desc: "Selection guides and terminology explainers from Aurora Filtech engineers.", type: "website", body: `<section class="p3-head"><div class="wrap"><nav class="crumbs"><a href="/">Home</a> › <span>Blog</span></nav><h1>Blog &amp; Guides</h1></div></section><div class="wrap article3"><ul class="apps3"><li><a href="/blog/forming-fabric-guide/">What Is a Forming Fabric (Forming Wire)? A Practical Guide</a></li><li><a href="/blog/spiral-fabric-guide/">Spiral Fabric Guide: Dryer Fabric vs Press Belt, and Filler Yarns Explained</a></li><li><a href="/blog/ptfe-belt-joint-types/">PTFE / Teflon Belt Joint Types Compared: Bullnose, Scarfed, Pin & Endless</a></li></ul></div>${contactSection}` }));
-write("blog/forming-fabric-guide/index.html", layout({ url: `${BASE}/blog/forming-fabric-guide/`, title: "What Is a Forming Fabric (Forming Wire)? A Practical Guide | Aurora Filtech", desc: "What a forming fabric (forming wire) is, layer constructions, mesh count and CFM explained, and how to choose — a practical guide from Aurora Filtech.", type: "website", body: `
-<section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/blog/">Blog</a> › <span>Forming Fabric Guide</span></nav><h1>What Is a Forming Fabric (Forming Wire)? A Practical Guide</h1></div></section>
-<div class="wrap article3">
+// ---------- Blog Index & 3 Guide Posts (Full Content & Schema) ----------
+write("blog/index.html", layout({
+  url: `${BASE}/blog/`,
+  title: "Blog & Guides | Filtration & PMC | Aurora Filtech",
+  desc: "Filtration and paper machine clothing selection guides and terminology explainers from Aurora Filtech engineers.",
+  type: "website",
+  jsonld: JSON.stringify({ "@context": "https://schema.org", "@graph": [
+    orgNode,
+    { "@type": "BreadcrumbList", itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` },
+      { "@type": "ListItem", position: 2, name: "Blog & Guides", item: `${BASE}/blog/` }] },
+    { "@type": "Blog", name: "Aurora Filtech Blog & Guides", description: "Filtration and paper machine clothing selection guides and terminology explainers from Aurora Filtech engineers.", url: `${BASE}/blog/`, publisher: { "@id": `${BASE}/#organization` } }
+  ] }, null, 2),
+  body: `<section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <span>Blog</span></nav><h1>Blog &amp; Guides</h1><p class="lede" style="margin-top:10px;color:var(--mute)">Selection guides and engineering explainers from Aurora Filtech loom masters.</p></div></section>
+<div class="wrap article3" style="padding-top:24px;padding-bottom:60px">
+  <div class="related-grid" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr))">
+    <a href="/blog/forming-fabric-guide/" style="padding:22px"><span class="label" style="display:block;margin-bottom:8px">Forming Section</span><strong style="font-size:1.1rem;display:block;margin-bottom:6px">What Is a Forming Fabric (Forming Wire)?</strong><span style="font-size:.88rem;color:var(--mute);line-height:1.5;display:block">A practical guide to single-layer, double-layer and SSB 3-layer forming wires for paper machines.</span></a>
+    <a href="/blog/spiral-fabric-guide/" style="padding:22px"><span class="label" style="display:block;margin-bottom:8px">Spiral Systems</span><strong style="font-size:1.1rem;display:block;margin-bottom:6px">Spiral Fabric Guide: Dryer Fabric vs Press Belt</strong><span style="font-size:.88rem;color:var(--mute);line-height:1.5;display:block">Filler yarns (round vs flat), air permeability tuning and choosing between drying and dewatering duties.</span></a>
+    <a href="/blog/ptfe-belt-joint-types/" style="padding:22px"><span class="label" style="display:block;margin-bottom:8px">Belt Seams</span><strong style="font-size:1.1rem;display:block;margin-bottom:6px">PTFE / Teflon Belt Joint Types Compared</strong><span style="font-size:.88rem;color:var(--mute);line-height:1.5;display:block">Bullnose, scarfed, clipper pin and endless seams compared for heat resistance and mechanical strength.</span></a>
+  </div>
+</div>${contactSection}`,
+  activeNav: "blog"
+}));
 
-</div>${contactSection}`, activeNav: "industries" }));
-write("blog/spiral-fabric-guide/index.html", layout({ url: `${BASE}/blog/spiral-fabric-guide/`, title: "Spiral Fabric Guide: Dryer Fabric vs Press Belt, and Filler Yarns Explained | Aurora Filtech", desc: "Spiral fabric explained: spiral links, filler yarns (round vs flat), spiral dryer fabric vs spiral press filter belt, and how to choose.", type: "website", body: `
-<section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/blog/">Blog</a> › <span>Spiral Fabric Guide</span></nav><h1>Spiral Fabric Guide: Dryer Fabric vs Press Belt, and Filler Yarns Explained</h1></div></section>
-<div class="wrap article3">
+for (const slug of Object.keys(posts)) {
+  const post = posts[slug];
+  const postJsonld = JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      orgNode,
+      { "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` },
+        { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE}/blog/` },
+        { "@type": "ListItem", position: 3, name: post.title, item: `${BASE}${post.url}` }
+      ] },
+      { "@type": "Article", headline: post.title, description: post.desc, datePublished: post.date, dateModified: post.date,
+        author: { "@id": `${BASE}/#organization` }, publisher: { "@id": `${BASE}/#organization` }, inLanguage: "en", mainEntityOfPage: `${BASE}${post.url}` }
+    ]
+  }, null, 2);
 
-</div>${contactSection}`, activeNav: "industries" }));
-write("blog/ptfe-belt-joint-types/index.html", layout({ url: `${BASE}/blog/ptfe-belt-joint-types/`, title: "PTFE / Teflon Belt Joint Types Compared: Bullnose, Scarfed, Pin & Endless | Aurora Filtech", desc: "PTFE belt joint types compared: bullnose, scarfed, pin (alligator) and endless — strength, smoothness and when to use each joint.", type: "website", body: `
-<section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/blog/">Blog</a> › <span>Ptfe Belt Joint Types</span></nav><h1>PTFE / Teflon Belt Joint Types Compared: Bullnose, Scarfed, Pin & Endless</h1></div></section>
+  const postHtml = `<section class="p3-head"><div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/blog/">Blog</a> › <span>${post.title.split(":")[0]}</span></nav>
+    <div style="margin-top:10px"><span class="label">Engineering Guide · ${post.date}</span></div>
+    <h1 style="margin-top:10px">${post.title}</h1>
+    <p class="lede" style="margin-top:10px;color:var(--mute)">${post.desc}</p>
+  </div></section>
 <div class="wrap article3">
+  <div class="post-body">
+    ${post.body.map(([t, c]) => t === "h2" ? `<h2>${c}</h2>` : t === "p" ? `<p>${c}</p>` : `<ul>${c.map(li => `<li>${li}</li>`).join("")}</ul>`).join("\n    ")}
+    ${post.related && post.related.length ? `
+    <div class="post-related">
+      <h3>Related Products &amp; Duty Guides</h3>
+      <div class="related-grid">
+        ${post.related.map(r => `<a href="/${r}/">${r.replace(/[-/]/g, ' ').toUpperCase()} →</a>`).join("\n        ")}
+      </div>
+    </div>` : ""}
+  </div>
+</div>${contactSection}`;
 
-</div>${contactSection}`, activeNav: "industries" }));
-write("resources/glossary/index.html", layout({ url: `${BASE}/resources/glossary/`, title: "Filtration Glossary | Filter Fabric & PMC Terms | Aurora Filtech", desc: "Glossary of filtration and paper machine clothing terms.", type: "website", body: `
-<section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <span>Glossary</span></nav><h1>Filtration Glossary</h1></div></section>
-<div class="wrap article3">
-<p>Glossary.</p>
-</div>${contactSection}`, activeNav: "industries" }));
-write("404.html", layout({ url: `${BASE}/404.html`, title: "Page Not Found | Aurora Filtech", desc: "The page you requested does not exist.", type: "website", jsonld: "", body: `<section class="p3-head"><div class="wrap"><h1>Page not found</h1><p class="lede">That URL does not exist — it may have moved when we merged product families.</p></div></section><div class="wrap article3"><ul class="apps3"><li><a href="/">Home</a></li><li><a href="/dryer-fabric/">Dryer Fabric</a></li><li><a href="/forming-fabric/">Forming Fabric</a></li><li><a href="/spiral-belt/">Spiral Fabric</a></li><li><a href="/about/">About Us</a></li></ul></div>` }));
-write("_redirects", "/teflon-belt/ /spiral-belt/ 301\n/spiral-dryer-fabric/ /spiral-belt/ 301\n/spiral-press-filter-belt/ /spiral-belt/ 301\n/products/paper-machine-clothing/ /forming-fabric/ 301\n/about-us/ /about/ 301\n/contact-us/ / 301\n/food-filtration-fabric/ /industries/food-and-pharma/ 301\n/mining-filter-fabric/ /industries/mining/ 301\n/nonwoven/ /industries/nonwovens/ 301\n/products/panel-board/ /industries/wood-based-panels/ 301\n/peek-fiber-pps-monofilament/ /spiral-belt/ 301\n/products/feed/ /blog/ 301\n");
+  write(`${post.url.replace(/^\//, '')}index.html`, layout({
+    url: `${BASE}${post.url}`,
+    title: `${post.title} | Aurora Filtech`,
+    desc: post.desc,
+    type: "article",
+    jsonld: postJsonld,
+    body: postHtml,
+    activeNav: "blog"
+  }));
+}
 
-// sitemap.xml
-const urls = [`${BASE}/`, ...products.map(p => urlOf(p.slug))];
+// ---------- Glossary Page (Full 35+ Terms & Schema) ----------
+const glossJsonld = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    orgNode,
+    { "@type": "BreadcrumbList", itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` },
+      { "@type": "ListItem", position: 2, name: "Filtration Glossary", item: `${BASE}/resources/glossary/` }
+    ] },
+    { "@type": "DefinedTermSet", name: "Filtration & Paper Machine Clothing Glossary", url: `${BASE}/resources/glossary/`, publisher: { "@id": `${BASE}/#organization` } }
+  ]
+}, null, 2);
+
+const glossHtml = `<section class="p3-head"><div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <span>Glossary</span></nav>
+  <h1>Filtration &amp; Paper Machine Clothing Glossary</h1>
+  <p class="lede" style="margin-top:10px;color:var(--mute)">The technical vocabulary of industrial filter media, forming wires, press cloths and dryer belts — in clear definitions.</p>
+</div></section>
+<div class="wrap article3" style="padding-top:30px;padding-bottom:60px">
+  <h2 style="font-size:1.35rem;margin-bottom:20px;letter-spacing:-.01em">Key Technical Terms (A–Z)</h2>
+  <dl class="gloss">
+    ${glossary.map(([t, d]) => `<div><dt>${t}</dt><dd>${d}</dd></div>`).join("\n    ")}
+  </dl>
+</div>${contactSection}`;
+
+write("resources/glossary/index.html", layout({
+  url: `${BASE}/resources/glossary/`,
+  title: "Filtration Glossary | PMC & Filter Terms | Aurora Filtech",
+  desc: "Glossary of filtration and paper machine clothing terms: forming fabric, forming wire, CFM, filler yarns, spiral dryer fabric, press cloth, mesh count and more.",
+  type: "website",
+  jsonld: glossJsonld,
+  body: glossHtml,
+  activeNav: "resources"
+}));
+
+// ---------- 404 Page ----------
+write("404.html", layout({
+  url: `${BASE}/404.html`,
+  title: "Page Not Found | Aurora Filtech",
+  desc: "The page you requested does not exist. Browse Aurora filter fabrics, dryer fabrics and mesh belts, or ask for a quote.",
+  type: "website",
+  jsonld: "",
+  noindex: true,
+  body: `<section class="p3-head"><div class="wrap">
+    <h1>Page not found (404)</h1>
+    <p class="lede" style="margin-top:10px;color:var(--mute)">That URL does not exist — it may have moved when we consolidated product specifications. Try one of our core sections:</p>
+  </div></section>
+  <div class="wrap article3" style="padding-top:30px;padding-bottom:60px">
+    <div class="related-grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">
+      <a href="/">Home →</a>
+      <a href="/forming-fabric/">Forming Fabric →</a>
+      <a href="/dryer-fabric/">Dryer Fabric →</a>
+      <a href="/spiral-belt/">Spiral Fabric →</a>
+      <a href="/vacuum-fabric/">Vacuum Filter Fabric →</a>
+      <a href="/press-fabric/">Press Filter Fabric →</a>
+      <a href="/press-belt/">Press Filter Belt →</a>
+      <a href="/products/square-mesh/">Square Mesh →</a>
+      <a href="/industries/">Industries →</a>
+      <a href="/about/">About Us →</a>
+      <a href="/blog/">Blog &amp; Guides →</a>
+      <a href="/resources/glossary/">Glossary →</a>
+    </div>
+  </div>${contactSection}`
+}));
+
+// ---------- _redirects & .assetsignore ----------
+write("_redirects", `/spiral-dryer-fabric/ /spiral-belt/ 301
+/spiral-press-filter-belt/ /spiral-belt/ 301
+/products/paper-machine-clothing/ /forming-fabric/ 301
+/teflon-belt/ /spiral-belt/ 301
+/production-capability/ /about/ 301
+/about-us/ /about/ 301
+/contact-us/ / 301
+/food-filtration-fabric/ /industries/food-and-pharma/ 301
+/mining-filter-fabric/ /industries/mining/ 301
+/nonwoven/ /industries/nonwovens/ 301
+/products/panel-board/ /industries/wood-based-panels/ 301
+/peek-fiber-pps-monofilament/ /spiral-belt/ 301
+/products/feed/ /blog/ 301
+`);
+
+write(".assetsignore", `build.js
+data-site.js
+data-products.js
+design.js
+pages-df-vf.js
+pages-sm.js
+pages-eq.js
+live-std.json
+`);
+
+// ---------- Full 25-Page Sitemap & Dynamic 138-Image Sitemap ----------
+const allSitemapUrls = [
+  `${BASE}/`,
+  `${BASE}/about/`,
+  `${BASE}/forming-fabric/`,
+  `${BASE}/dryer-fabric/`,
+  `${BASE}/vacuum-fabric/`,
+  `${BASE}/press-fabric/`,
+  `${BASE}/press-belt/`,
+  `${BASE}/products/filter-bag/`,
+  `${BASE}/products/filter-cartridge/`,
+  `${BASE}/spiral-belt/`,
+  `${BASE}/products/square-mesh/`,
+  `${BASE}/industries/wood-based-panels/`,
+  `${BASE}/industries/paper-and-pulp/`,
+  `${BASE}/industries/mining/`,
+  `${BASE}/industries/power-generation-fgd/`,
+  `${BASE}/industries/food-and-pharma/`,
+  `${BASE}/industries/nonwovens/`,
+  `${BASE}/industries/`,
+  `${BASE}/industries/wood-based-panels/mesh-belts/`,
+  `${BASE}/industries/wood-flour-sifting/`,
+  `${BASE}/blog/`,
+  `${BASE}/blog/forming-fabric-guide/`,
+  `${BASE}/blog/spiral-fabric-guide/`,
+  `${BASE}/blog/ptfe-belt-joint-types/`,
+  `${BASE}/resources/glossary/`
+];
+
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>${BASE}/about/</loc><lastmod>2026-09-30</lastmod></url>
-<url><loc>${BASE}/industries/</loc><lastmod>2026-09-30</lastmod></url>
-<url><loc>${BASE}/blog/</loc><lastmod>2026-09-30</lastmod></url>
-<url><loc>${BASE}/resources/glossary/</loc><lastmod>2026-09-30</lastmod></url>
-${urls.map(u => `  <url><loc>${u}</loc><changefreq>monthly</changefreq></url>`).join("\n")}
+${allSitemapUrls.map(u => `  <url><loc>${u}</loc><lastmod>2026-10-26</lastmod></url>`).join("\n")}
 </urlset>`);
 
-// sitemap-image.xml (spec §9.2 — same URLs/captions as V1)
-const esc = s => s.replace(/&/g, "&amp;");
-function imgEntry(loc, title, caption) {
-  return `    <image:image>
-      <image:loc>${loc}</image:loc>
-      <image:title>${esc(title)}</image:title>
-      <image:caption>${esc(caption)}</image:caption>
-    </image:image>`;
-}
-const imgSitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  <url>
-    <loc>${BASE}/</loc>
-${[
-  [`${BASE}${IMG.h1}`, "Filter fabric weaving workshop", "Aurora Filtech filter fabric weaving workshop."],
-  [`${BASE}${IMG.h2}`, "Monofilament", "In-house monofilament production — quality under our control, and a high degree of customization."],
-  ...homeCards.map(p => [`${BASE}${p.card.img}`, p.card.h2.charAt(0)+p.card.h2.slice(1).toLowerCase(), p.card.caption.replace(/—/g, "-")]),
-].map(([l,t,c]) => imgEntry(l,t,c)).join("\n")}
-  </url>
-  <url><loc>${BASE}/forming-fabric/</loc>
-${imgEntry(`${BASE}/qfy-content/uploads/2019/09/c77f027fd05a12043ba86232dbdbd87a.jpg`, "Forming fabric", "Forming fabric for paper machines and non-woven forming machines.")}
-  </url>
-  <url><loc>${BASE}/dryer-fabric/</loc>
-${imgEntry(`${BASE}/qfy-content/uploads/2023/02/fe14b23c21fc9da13b521b792acf44ee.jpg`, "Dryer fabric", "Dryer fabric for board, paper and food drying.")}
-${imgEntry(`${BASE}/qfy-content/uploads/2019/09/01208d8bdb0d682815afe19b9446d8c6.jpg`, "Anti-static dryer fabric", "Anti-static dryer fabric for wood panel forming.")}
-  </url>
-  <url><loc>${BASE}/vacuum-fabric/</loc>
-${imgEntry(`${BASE}/qfy-content/uploads/2018/01/c758862f83257dc972f1e1934586c5f1.jpg`, "Vacuum filter fabric", "Vacuum filter fabric for vacuum belt filters and vacuum disc filters.")}
-  </url>
-  <url><loc>${BASE}/press-fabric/</loc>
-${imgEntry(`${BASE}/qfy-content/uploads/2019/09/d4f377239978d23c7b1098681b945ba0.jpg`, "Press filter fabric", "Press filter fabric / filter cloth for frame and membrane filter presses.")}
-  </url>
-  <url><loc>${BASE}/press-belt/</loc>
-${imgEntry(`${BASE}/qfy-content/uploads/2018/01/fe3317fefb27841fe260dfab9a83a362.jpg`, "Press filter belt", "Press filter belt (dewatering belt) for belt press filters.")}
-  </url>
-  <url><loc>${BASE}/teflon-belt/</loc>
-${imgEntry(`${BASE}/qfy-content/uploads/2019/09/0016072e9e586e75a7b3560370c90d92.jpg`, "Teflon mesh belt", "Teflon mesh belt for dryers and conveyors.")}
-  </url>
-  <url><loc>${BASE}/products/filter-bag/</loc>
-${imgEntry(`${BASE}/qfy-content/uploads/2023/02/filter-bag-banner.jpg`, "Dust filter bags", "Dust filter bags for bag filters and dust collectors - power plant and cement plant applications.")}
-  </url>
-  <url><loc>${BASE}/products/filter-cartridge/</loc>
-${imgEntry(`${BASE}/qfy-content/uploads/2023/02/3aacdceeba645c1a58a832b60137c3b7.jpg`, "Filter cartridge", "Industrial filter cartridge for air, water and oil filtration.")}
-  </url>
-  <url><loc>${BASE}/spiral-belt/</loc><!-- 待补:该页图片稳定 URL(spec §9.2) -->
-  </url>
-</urlset>`;
-write("sitemap-image.xml", imgSitemap);
+const escXml = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const imgUrlEntries = renderedPages.map(({ url, html }) => {
+  const seen = new Set();
+  const imgs = [];
+  const re = /<img\b[^>]*?\bsrc="([^"]+)"[^>]*>/gi;
+  let m;
+  while ((m = re.exec(html)) !== null) {
+    const src = m[1];
+    if (!src || src.startsWith("data:") || src.endsWith(".svg")) continue;
+    const loc = src.startsWith("http") ? src : BASE + src;
+    if (seen.has(loc)) continue;
+    seen.add(loc);
+    imgs.push(`    <image:image>\n      <image:loc>${escXml(loc)}</image:loc>\n    </image:image>`);
+  }
+  return imgs.length ? `  <url>\n    <loc>${url}</loc>\n${imgs.join("\n")}\n  </url>` : "";
+}).filter(Boolean);
+
+write("sitemap-image.xml", `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${imgUrlEntries.join("\n")}
+</urlset>`);
 
 write("sitemap-index.xml", `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -1480,7 +1656,7 @@ Sitemap: ${BASE}/sitemap.xml
 Sitemap: ${BASE}/sitemap-image.xml
 `);
 
-write("favicon.svg", `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0FA89B"/><stop offset=".5" stop-color="#4F7CF7"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient></defs><rect width="64" height="64" rx="18" fill="url(#g)"/><path d="M12 44c8-2 10-24 20-24s10 22 20 24" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/></svg>`);
+write("favicon.svg", `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="#121B24"/><path d="M12 44c8-2 10-24 20-24s10 22 20 24" stroke="#1E4FD8" stroke-width="5" fill="none" stroke-linecap="round"/></svg>`);
 
 write("_headers", `# Cloudflare Pages cache policy (harmless on other hosts)
 /assets/*
@@ -1493,4 +1669,4 @@ write("_headers", `# Cloudflare Pages cache policy (harmless on other hosts)
   X-Content-Type-Options: nosniff
 `);
 
-console.log("DONE V3 — 10 pages + sitemaps + robots.txt");
+console.log("DONE " + OUT + " — full 25 pages + dynamic sitemaps + robots.txt");

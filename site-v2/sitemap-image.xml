@@ -1,125 +1,306 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.aurora-filtech.com/</loc>
     <image:image>
       <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2019/12/711b4e3ef611d676aa22b38c17cf53e4.jpg</image:loc>
-      <image:title>Filter fabric weaving workshop</image:title>
-      <image:caption>Aurora Filtech filter fabric weaving workshop.</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2019/11/67a7f86dc4882ac91d995df779417576.jpg</image:loc>
-      <image:title>Monofilament</image:title>
-      <image:caption>In-house monofilament production — quality under our control, and a high degree of customization.</image:caption>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/live/peek-yarn.jpg</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2019/09/c77f027fd05a12043ba86232dbdbd87a.jpg</image:loc>
-      <image:title>Forming fabric</image:title>
-      <image:caption>Forming fabrics for paper machines and nonwoven fabric forming machines - paper forming, nonwoven forming and graphite flake forming.</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2019/09/01208d8bdb0d682815afe19b9446d8c6.jpg</image:loc>
-      <image:title>Dryer fabric</image:title>
-      <image:caption>Anti-static dryer fabrics for board forming machines, food drying machines and belt drying machines - wood panel board forming, paper drying and food drying.</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/sp/sp-pps9010.jpg</image:loc>
-      <image:title>Spiral fabric</image:title>
-      <image:caption>Spiral fabrics (spiral belts) in PET, PPS and PTFE-added grades - with or without filler yarns for dryer, belt press filter and conveying duties.</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2019/09/bb3b48e5c553055326e399fcff852e84.jpg</image:loc>
-      <image:title>Vacuum filter fabric</image:title>
-      <image:caption>Vacuum filter fabrics for vacuum belt filters and vacuum disc filters - power plant FGD, phosphoric acid and mining filtration.</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2019/09/d4f377239978d23c7b1098681b945ba0.jpg</image:loc>
-      <image:title>Press filter fabric</image:title>
-      <image:caption>Press filter fabrics for frame press filters, membrane press filters, drum, disc and leaf filters - oil, mining, lithium phosphate filtration and sludge dewatering.</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2019/09/a6367e490f2e5ab99344dcb378e531e9.jpg</image:loc>
-      <image:title>Press filter belt</image:title>
-      <image:caption>Press filter belts (dewatering belts) for belt press filters - sludge dewatering, sand washing, juice squeezing and palm oil squeezing.</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2019/09/45a34d52de579ededcbaa17342a7bba5.jpg</image:loc>
-      <image:title>Filter bag</image:title>
-      <image:caption>Dust filter bags for bag filters and dust collectors - power plant and cement plant applications.</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2023/02/3aacdceeba645c1a58a832b60137c3b7.jpg</image:loc>
-      <image:title>Filter cartridge</image:title>
-      <image:caption>Filter cartridges for air filtration, water filtration and oil filtration.</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/df/sq-sem.jpg</image:loc>
-      <image:title>Square mesh</image:title>
-      <image:caption>Polyester square mesh, plain weave - 0.4–2.1 mm apertures, custom-woven belts and sieve cloth.</image:caption>
     </image:image>
   </url>
-  <url><loc>https://www.aurora-filtech.com/forming-fabric/</loc>
+  <url>
+    <loc>https://www.aurora-filtech.com/forming-fabric/</loc>
     <image:image>
-      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2019/09/c77f027fd05a12043ba86232dbdbd87a.jpg</image:loc>
-      <image:title>Forming fabric</image:title>
-      <image:caption>Forming fabric for paper machines and non-woven forming machines.</image:caption>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/live/forming-f.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/gf/graphite-sheet.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/live/forming-g1.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/df/single-flat.jpg</image:loc>
     </image:image>
   </url>
-  <url><loc>https://www.aurora-filtech.com/dryer-fabric/</loc>
+  <url>
+    <loc>https://www.aurora-filtech.com/dryer-fabric/</loc>
     <image:image>
-      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2023/02/fe14b23c21fc9da13b521b792acf44ee.jpg</image:loc>
-      <image:title>Dryer fabric</image:title>
-      <image:caption>Dryer fabric for board, paper and food drying.</image:caption>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/live/dryer-f.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2019/09/01208d8bdb0d682815afe19b9446d8c6.jpg</image:loc>
-      <image:title>Anti-static dryer fabric</image:title>
-      <image:caption>Anti-static dryer fabric for wood panel forming.</image:caption>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/df/hero.jpg</image:loc>
     </image:image>
-  </url>
-  <url><loc>https://www.aurora-filtech.com/vacuum-fabric/</loc>
     <image:image>
-      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2018/01/c758862f83257dc972f1e1934586c5f1.jpg</image:loc>
-      <image:title>Vacuum filter fabric</image:title>
-      <image:caption>Vacuum filter fabric for vacuum belt filters and vacuum disc filters.</image:caption>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/df/4106s.jpg</image:loc>
     </image:image>
-  </url>
-  <url><loc>https://www.aurora-filtech.com/press-fabric/</loc>
     <image:image>
-      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2019/09/d4f377239978d23c7b1098681b945ba0.jpg</image:loc>
-      <image:title>Press filter fabric</image:title>
-      <image:caption>Press filter fabric / filter cloth for frame and membrane filter presses.</image:caption>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/df/wool-uni.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/sp/sp-pet.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/df/sq-blue.jpg</image:loc>
     </image:image>
   </url>
-  <url><loc>https://www.aurora-filtech.com/press-belt/</loc>
+  <url>
+    <loc>https://www.aurora-filtech.com/spiral-belt/</loc>
     <image:image>
-      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2018/01/fe3317fefb27841fe260dfab9a83a362.jpg</image:loc>
-      <image:title>Press filter belt</image:title>
-      <image:caption>Press filter belt (dewatering belt) for belt press filters.</image:caption>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/sp/sp-pet.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/sp/sp-9010-4.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/live/teflon-g2.jpg</image:loc>
     </image:image>
   </url>
-  <url><loc>https://www.aurora-filtech.com/teflon-belt/</loc>
+  <url>
+    <loc>https://www.aurora-filtech.com/vacuum-fabric/</loc>
     <image:image>
-      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2019/09/0016072e9e586e75a7b3560370c90d92.jpg</image:loc>
-      <image:title>Teflon mesh belt</image:title>
-      <image:caption>Teflon mesh belt for dryers and conveyors.</image:caption>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/live/vacuum-f.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/vf/strip.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/vf/m623a.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/vf/vf-joint-clipper.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/vf/vf-joint-flap.jpg</image:loc>
     </image:image>
   </url>
-  <url><loc>https://www.aurora-filtech.com/products/filter-bag/</loc>
+  <url>
+    <loc>https://www.aurora-filtech.com/press-fabric/</loc>
     <image:image>
-      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2023/02/filter-bag-banner.jpg</image:loc>
-      <image:title>Dust filter bags</image:title>
-      <image:caption>Dust filter bags for bag filters and dust collectors - power plant and cement plant applications.</image:caption>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/live/pressfabric-dc4e3b5377d3d0f15ffd465b29b79700.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/pf/pf-cotton.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/pf/pf-mono.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/pf/pf-vertical.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/pf/pf-site1.jpg</image:loc>
     </image:image>
   </url>
-  <url><loc>https://www.aurora-filtech.com/products/filter-cartridge/</loc>
+  <url>
+    <loc>https://www.aurora-filtech.com/press-belt/</loc>
     <image:image>
-      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/2023/02/3aacdceeba645c1a58a832b60137c3b7.jpg</image:loc>
-      <image:title>Filter cartridge</image:title>
-      <image:caption>Industrial filter cartridge for air, water and oil filtration.</image:caption>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/live/pressbelt-g7.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/df/pb-656.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/df/joint-double-loop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/df/pb-press3.jpg</image:loc>
     </image:image>
   </url>
-  <url><loc>https://www.aurora-filtech.com/spiral-belt/</loc><!-- 待补:该页图片稳定 URL(spec §9.2) -->
+  <url>
+    <loc>https://www.aurora-filtech.com/products/filter-bag/</loc>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/live/filterbag-f.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.aurora-filtech.com/products/filter-cartridge/</loc>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/live/cartridge-f.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/live/cartridge-ef0c498fdcbafdffb7218ce71b4da62a.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/live/cartridge-0e225dccecd7ce6eca62b7930d9d6964.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/live/cartridge-6cba53c0be68a084572efd4e5139a53b.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.aurora-filtech.com/products/square-mesh/</loc>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/live/squaremesh-f.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/df/sq-sem.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/df/sq-white.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/df/joint-loop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/df/sq-fruit.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.aurora-filtech.com/industries/wood-based-panels/</loc>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/df/hero.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/df/4106s.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/sp/sp-pet.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/df/sq-blue.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.aurora-filtech.com/industries/paper-and-pulp/</loc>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/live/forming-g1.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/df/single-flat.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/df/double-layer.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/sp/sp-9010-4.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/live/pulp-nylon.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.aurora-filtech.com/industries/mining/</loc>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/vf/m620.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/pf/pf-disc.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/live/pressfabric-g1.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/live/pressbelt-f.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.aurora-filtech.com/industries/power-generation-fgd/</loc>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/vf/m617.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/vf/m623.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.aurora-filtech.com/industries/food-and-pharma/</loc>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/df/sq-white.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/df/as-mixed.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/live/pressbelt-f.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.aurora-filtech.com/industries/nonwovens/</loc>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/nw/nw-diag-drylaid.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/nw/nw-pr-drylaid.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/nw/nw-diag-airlaid.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/nw/nw-pr-airlaid.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/nw/nw-diag-spunlaid.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/nw/nw-pr-spunlaid.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/nw/nw-diag-wetlaid.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/nw/nw-pr-wetlaid.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/nw/nw-seam-single.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/nw/nw-seam-double.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/nw/nw-seam-endless.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.aurora-filtech.com/about/</loc>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/eq/eq-yarn.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/eq/eq-warping.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/eq/eq-weaving.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/eq/eq-dornier.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/eq/eq-heatset.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/eq/eq-laser.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.aurora-filtech.com/qfy-content/uploads/eq/eq-sewing.jpg</image:loc>
+    </image:image>
   </url>
 </urlset>

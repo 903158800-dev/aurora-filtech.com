@@ -1,4 +1,21 @@
 /* Aurora Filtech V3 — aurora gradient theme */
+/* Blog article and glossary styles */
+.article3 h2{font-size:1.5rem;font-weight:800;letter-spacing:-.015em;margin:44px 0 16px;display:flex;align-items:center;gap:14px}
+.article3 h2::after{content:"";height:3px;flex:1;border-radius:3px;background:var(--grad-soft)}
+.article3 p{color:var(--mute);margin-bottom:18px;line-height:1.75}
+.article3 ul{margin:0 0 24px 20px;line-height:1.7;color:var(--mute)}
+.article3 li{margin-bottom:8px}
+.post-related{margin-top:48px;padding-top:28px;border-top:1px solid var(--line)}
+.post-related h3{font-size:1.15rem;font-weight:700;color:var(--ink);margin-bottom:16px}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.related-grid a{display:block;padding:16px 20px;border:1px solid var(--line);border-radius:16px;background:var(--panel);color:var(--ink);font-weight:600;font-size:.92rem;text-decoration:none;box-shadow:0 4px 14px rgba(35,42,64,.04)}
+.related-grid a:hover{border-color:#4F7CF7;transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,124,247,.12);color:#4F7CF7}
+.gloss{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;margin:28px 0 50px}
+.gloss>div{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:20px 22px;box-shadow:0 4px 14px rgba(35,42,64,.04)}
+.gloss dt{font-size:1.05rem;font-weight:700;color:var(--ink);margin-bottom:6px}
+.gloss dd{font-size:.92rem;color:var(--mute);line-height:1.55;margin:0}
+.gloss dd a{color:var(--teal);text-decoration:underline}
+
 :root{
   --bg:#FBFBFD; --surface:#FFFFFF; --ink:#232A40; --mute:#5D6480;
   --line:#E7E8F0;
