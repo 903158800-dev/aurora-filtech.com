@@ -30,7 +30,7 @@ function dryerPage(p) {
 
 <!-- 旗舰大图 -->
 <figure class="pp-hero">
-  <img src="${DF}/hero.jpg" alt="Anti-static dryer fabric flagship close-up with conductive monofilaments" width="1200" height="525" loading="eager" decoding="async">
+  <img src="${DF}/hero.jpg" alt="Anti-static dryer fabric flagship close-up with conductive monofilaments" width="1200" height="525" loading="eager" fetchpriority="high" decoding="async">
   <figcaption>Anti-static dryer fabric — the flagship family of the Aurora DF dryer fabric range.</figcaption>
 </figure>
 
@@ -88,14 +88,14 @@ function dryerPage(p) {
     <h3 class="vid-h">See them run — filmed at customers' plants</h3>
     <div class="vid-grid">
       <figure class="vid-card">
-        <video controls preload="metadata" playsinline poster="${DF}/hero.jpg">
+        <video controls preload="metadata" playsinline width="640" height="480" poster="${DF}/hero.jpg">
           <source src="${DF}/prepress.mp4" type="video/mp4">
           Anti-static pre-press belt running on an MDF line.
         </video>
         <figcaption><b>Anti-static pre-press belt, MDF line</b><span>The belt working the pre-press section of a Chinese MDF plant (Dieffenbacher-type line).</span></figcaption>
       </figure>
       <figure class="vid-card">
-        <video controls preload="metadata" playsinline poster="${DF}/silicone.jpg">
+        <video controls preload="metadata" playsinline width="640" height="480" poster="${DF}/silicone.jpg">
           <source src="${DF}/silicon.mp4" type="video/mp4">
           4106S silicone-coated belt in operation.
         </video>
@@ -278,7 +278,7 @@ function formingPage(p) {
     <p>Thermal-management sheets are continuous-forming products too. <b>Flexible graphite sheet</b> starts as expandable natural graphite: the intercalated flakes are shock-heated past 800&nbsp;°C into expanded graphite "worms", spread into a uniform mat on a moving forming surface, then calendered roll after roll into a binder-free foil (95–99% carbon) — Toyo Tanso's PERMA-FOIL is the classic example. <b>Synthetic graphite film</b> for smartphones takes the casting route: a polyimide precursor film is cast continuously, then carbonized and graphitized at up to 3&nbsp;300&nbsp;°C into film with 700–1&nbsp;950&nbsp;W/m·K of in-plane conductivity. Both routes run on precisely woven forming and support fabrics.</p>
     <div class="app-row app-major">
       <figure class="app-img">
-        <img src="/qfy-content/uploads/gf/graphite-sheet.jpg" alt="Flexible graphite sheets, the heat-spreading graphite film layer formed on our fabrics" width="800" height="533" loading="lazy" decoding="async">
+        <img src="/qfy-content/uploads/gf/graphite-sheet.jpg" alt="Flexible graphite sheets, the heat-spreading graphite film layer formed on our fabrics" width="800" height="533" loading="eager" fetchpriority="high" decoding="async">
         <figcaption>Flexible graphite sheet — 95–99% carbon, no binder, rolled from 0.01 mm up. The layer our fabrics form.</figcaption>
       </figure>
       <div class="app-txt">
@@ -402,7 +402,7 @@ function spiralPage(p) {
     <p>Without filler yarns the spiral structure stays fully open — our 6890 and 9010 weaves measure <b>875–1016 CFM</b>, so drying air passes through belt and product instead of fighting the belt. That is exactly what multi-layer board dryers, paper and food belt dryers and washing/cooling conveyors want, and the open structure resists blinding and cleans easily. Anti-static monofilament versions serve static-prone board forming dryers; <b>PPS</b> versions run around 240&nbsp;°C long-term.</p>
     <div class="app-row app-major">
       <figure class="app-img">
-        <img src="/qfy-content/uploads/sp/sp-pet.jpg" alt="Standard PET spiral dryer fabric, monofilament spirals joined by hinge pins" width="1000" height="750" loading="eager" decoding="async">
+        <img src="/qfy-content/uploads/sp/sp-pet.jpg" alt="Standard PET spiral dryer fabric, monofilament spirals joined by hinge pins" width="1000" height="750" loading="eager" fetchpriority="high" decoding="async">
         <figcaption>Standard PET — the SP-D workhorse construction.</figcaption>
       </figure>
       <div class="app-txt">
@@ -501,7 +501,7 @@ function vacuumPage(p) {
 </section>
 
 <figure class="pp-hero">
-  <img src="${VF}/strip.jpg" alt="Vacuum belt filter operation schematic showing how the filter fabric runs on the machine" width="960" height="255" loading="eager" decoding="async">
+  <img src="${VF}/strip.jpg" alt="Vacuum belt filter operation schematic showing how the filter fabric runs on the machine" width="960" height="255" loading="eager" fetchpriority="high" decoding="async">
   <figcaption>Operation schematic — how the fabric runs on a horizontal vacuum belt filter.</figcaption>
 </figure>
 

@@ -23,7 +23,7 @@ function aboutPage() {
 </section>
 
 <figure class="pp-hero">
-  <img src="${EQ}/eq-hero.jpg" alt="Panorama of the Aurora filter fabric weaving workshop with rows of looms" width="1400" height="527" loading="eager" decoding="async">
+  <img src="${EQ}/eq-hero.jpg" alt="Panorama of the Aurora filter fabric weaving workshop with rows of looms" width="1400" height="527" loading="eager" fetchpriority="high" decoding="async">
   <figcaption>The weaving workshop — filter fabrics for paper machines, dryers and filters, woven on German looms.</figcaption>
 </figure>
 

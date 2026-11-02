@@ -69,7 +69,7 @@ const industries = {
         txt: "Two cloths for the pulp mill: vacuum filter fabrics for disc, drum and belt washing/thickening duties — and our PA nylon press mesh for pulp pressing (the press-ap fabric): nylon outperforms PET on hot alkaline stock, and our proprietary formulation lasts 2× longer than competing cloths." },
     ],
     oemNote: "Fabrics to fit Fourdrinier, hybrid and gap former machines; also nonwoven spunlace, needle-punch and airlaid lines.",
-    related: ["forming-fabric", "dryer-fabric", "spiral-belt", "vacuum-fabric"],
+    related: ["forming-fabric", "dryer-fabric", "spiral-belt", "vacuum-fabric", "blog/forming-fabric-guide"],
   },
   "mining": {
     url: `/industries/mining/`, name: "Mining & Minerals",

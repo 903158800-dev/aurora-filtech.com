@@ -29,7 +29,7 @@ function squareMeshPage(p) {
     <p>Every opening is formed by the weave itself — warp over weft, one crossing at a time — then heat-set so the aperture stays square at working temperature. Under the electron microscope the discipline shows: uniform openings, clean yarn crossings, no filler, no coating.</p>
     <div class="as-grid">
       <figure class="as-card">
-        <img src="/qfy-content/uploads/df/sq-sem.jpg" alt="Electron microscope close-up of blue polyester square mesh showing uniform woven openings" width="1400" height="1050" loading="eager" decoding="async">
+        <img src="/qfy-content/uploads/df/sq-sem.jpg" alt="Electron microscope close-up of blue polyester square mesh showing uniform woven openings" width="1400" height="1050" loading="eager" fetchpriority="high" decoding="async">
         <figcaption><b>Blue square mesh, SEM view</b><span>Uniform square openings, clean monofilament crossings.</span></figcaption>
       </figure>
       <figure class="as-card">
@@ -164,7 +164,7 @@ function pressFabricPage(p) {
 </section>
 
 <figure class="pp-hero">
-  <img src="${LF}/pressfabric-dc4e3b5377d3d0f15ffd465b29b79700.jpg" alt="Press filter cloth running on a frame filter press" width="1920" height="834" loading="eager" decoding="async">
+  <img src="${LF}/pressfabric-dc4e3b5377d3d0f15ffd465b29b79700.jpg" alt="Press filter cloth running on a frame filter press" width="1920" height="834" loading="eager" fetchpriority="high" decoding="async">
   <figcaption>Aurora PF cloth in service on a frame filter press.</figcaption>
 </figure>
 
@@ -291,7 +291,7 @@ function pressBeltPage(p) {
 </section>
 
 <figure class="pp-hero" style="max-width:820px">
-  <img src="${LF}/pressbelt-g7.jpg" alt="Press belt header strip from the production line, wide belt ready for finishing" width="800" height="213" loading="eager" decoding="async">
+  <img src="${LF}/pressbelt-g7.jpg" alt="Press belt header strip from the production line, wide belt ready for finishing" width="800" height="213" loading="eager" fetchpriority="high" decoding="async">
   <figcaption>PB press belts on the production line — woven wide, finished and joined to the press.</figcaption>
 </figure>
 
@@ -391,7 +391,7 @@ function filterCartridgePage(p) {
 </section>
 
 <figure class="pp-hero">
-  <img src="${LF}/cartridge-ef0c498fdcbafdffb7218ce71b4da62a.jpg" alt="Filter cartridge range lined up, from cellulose to PTFE membrane series" width="1640" height="732" loading="eager" decoding="async">
+  <img src="${LF}/cartridge-ef0c498fdcbafdffb7218ce71b4da62a.jpg" alt="Filter cartridge range lined up, from cellulose to PTFE membrane series" width="1640" height="732" loading="eager" fetchpriority="high" decoding="async">
   <figcaption>The Aurora cartridge range — cellulose, spun-bonded PET, PTFE-membrane and high-temperature series.</figcaption>
 </figure>
 

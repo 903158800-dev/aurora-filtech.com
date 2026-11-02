@@ -193,8 +193,8 @@ const products = [
   },
   {
     slug: "products/filter-cartridge", name: "Filter Cartridge", h1: "Filter Cartridge (Cartridge Filter)",
-    title: "Filter Cartridge | Air, Water and Oil Cartridges | Aurora Filtech",
-    desc: "Industrial filter cartridges for air, water and oil filtration. Anti-static, PTFE, PPS, cellulose and Nomex series.",
+    title: "Filter Cartridge | Air, Water and Oil Cartridges | Aurora",
+    desc: "Industrial filter cartridges for air, water and oil filtration systems. Anti-static, PTFE, PPS, cellulose and Nomex series with custom end caps & OEM/ODM.",
     card: { h2: "FILTER CARTRIDGE", img: "/qfy-content/uploads/2023/02/3aacdceeba645c1a58a832b60137c3b7.jpg", w: 442, h: 401, alt: "Industrial filter cartridge for air, water and oil filtration", caption: "Filter cartridges for air filtration, water filtration and oil filtration.", first: "Filter cartridges for air, water and oil filtration systems — anti-static, PTFE, PPS, cellulose and Nomex series available.",
       equipment: ["Air filter", "Water filter", "Oil filter"], applications: ["Air filtration", "Water filtration", "Oil filtration"] },
     jsonldId: "products-filter-cartridge", imageId: "image-products-filter-cartridge",
@@ -214,8 +214,8 @@ const products = [
   },
   {
     slug: "products/square-mesh", name: "Polyester Square Mesh", h1: "Polyester Square Mesh (Plain Weave)",
-    title: "Polyester Square Mesh | Square Weave Mesh Belts | Aurora Filtech",
-    desc: "Polyester monofilament square mesh, plain weave — 0.4–2.1 mm apertures, up to 1750 CFM. Custom-woven belts and sieve cloth for food, wood panel and biomass duties.",
+    title: "Polyester Square Mesh | Square Weave Mesh Belts | Aurora",
+    desc: "Polyester monofilament square mesh, plain weave — 0.4–2.1 mm apertures, up to 1750 CFM. Custom-woven belts & sieve cloth for food, wood panel and biomass.",
     card: { h2: "SQUARE MESH", img: "/qfy-content/uploads/df/sq-sem.jpg", w: 1400, h: 1050, alt: "Electron microscope close-up of polyester square mesh showing uniform woven openings", caption: "Polyester square mesh, plain weave — 0.4–2.1 mm apertures, custom-woven belts and sieve cloth.", first: "Custom-woven square mesh belts and sieve cloth — flat, stable, apertures and materials to your spec.",
       equipment: ["Belt dryers", "Vibrating sifters"], applications: ["Food drying", "Wood flour sieving"] },
     jsonldId: "products-square-mesh", imageId: "image-products-square-mesh",
@@ -231,7 +231,7 @@ const products = [
     related: ["dryer-fabric", "spiral-belt", "vacuum-fabric"],
     faqs: [["Mesh, screen or fabric — what is the difference?", "Mesh refers to the woven structure and its opening count; screen means the whole sieve surface fitted to a machine; fabric is the woven goods. In practice: fine round-sifter duties say sieve/sifter mesh, heavier duties say screen mesh, belt duties say mesh belt — we cover all three wordings."], ["What mesh count do I need for wood flour?", "WPC wood flour is typically classified on 40–140 mesh screens (60 and 80 mesh the common cuts). Our standard square mesh belts cover 0.4–2.1 mm apertures for drying and conveying; finer sifting meshes are woven on request — tell us your cut points."], ["Can polyester square mesh replace stainless steel mesh?", "On dry, low-abrasion duties (wood flour, fines sifting) woven PET mesh lasts well at a fraction of the cost, with lighter frames and quieter running. Heavy, wet or abrasive duties still favour steel."], ["Do you supply belts and cut panels?", "Both — seamed or endless belts for dryers and conveyors, and panels cut and edged to your sifter frame (including re-mesh for circular sifters)."], ["Do you weave for OEM mesh houses?", "We are a former OEM weaver for European mesh brands — same tolerances, available direct."]],
     specs: ["Weave: plain (1/1), all-PET monofilament", "Standard apertures: 400–2100 µm (models listed above); finer sifting meshes on request", "Air permeability: 650–1750 CFM standard", "Forms: belts (seamed/endless) or panels cut to your frame", "Edges: sealed, welded or reinforced", "OEM/ODM: available"],
-    apps: ["Fine mesh belts — wood panel, pellet & biomass drying (see wood panel mesh belts)", "Screening & sifting — wood flour, WPC fines (see wood flour sifting)", "Food, chemical and general purpose sieve cloth"],
+    apps: ["Fine mesh belts — wood panel, pellet & biomass drying (<a href=\"/industries/wood-based-panels/mesh-belts/\">see wood panel mesh belts</a>)", "Screening & sifting — wood flour, WPC fines (<a href=\"/industries/wood-flour-sifting/\">see wood flour sifting</a>)", "Food, chemical and general purpose sieve cloth"],
   },
 ];
 
@@ -465,7 +465,46 @@ input:focus,textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 
 
 const navLinks3 = products.map(p => `<a href="/${p.slug}/">${p.name}</a>`).join("");
 
+function autoJsonld(url, title, desc) {
+  const pathPart = url.replace(BASE, "");
+  if (!pathPart || pathPart === "/" || pathPart.endsWith("404.html")) return "";
+  const segs = pathPart.split("/").filter(Boolean);
+  const crumbs = [{ "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` }];
+  let acc = "";
+  segs.forEach((s, idx) => {
+    acc += `/${s}`;
+    const isLast = idx === segs.length - 1;
+    const label = isLast ? title.split(" | ")[0] : s.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+    crumbs.push({ "@type": "ListItem", position: idx + 2, name: label, item: `${BASE}${acc}/` });
+  });
+  const pageType = pathPart === "/about/" ? "AboutPage" : "CollectionPage";
+  const graph = [
+    orgNode,
+    { "@type": "BreadcrumbList", itemListElement: crumbs },
+    { "@type": pageType, "@id": `${url}#webpage`, url, name: title.split(" | ")[0], description: desc, isPartOf: { "@id": `${BASE}/#website` }, about: { "@id": `${BASE}/#organization` }, inLanguage: "en" }
+  ];
+  if (pathPart === "/industries/wood-based-panels/") {
+    graph.push({
+      "@type": "VideoObject",
+      name: "Anti-static pre-press belt running on an MDF line",
+      description: "Aurora anti-static dryer belt working the pre-press section of an MDF plant (Dieffenbacher-type line).",
+      thumbnailUrl: `${BASE}/qfy-content/uploads/df/as-mono.jpg`,
+      contentUrl: `${BASE}/qfy-content/uploads/df/prepress.mp4`,
+      uploadDate: "2026-09-10T08:00:00+08:00"
+    });
+  }
+  return JSON.stringify({ "@context": "https://schema.org", "@graph": graph }, null, 2);
+}
+
 function layout({ url, title, desc, type = "website", jsonld = "", noindex = false, body, activeNav = "" }) {
+  const finalJsonld = jsonld || (!noindex ? autoJsonld(url, title, desc) : "");
+  let patchedBody = body.replace(/<video(?![^>]*\bwidth=)/g, '<video width="640" height="480"');
+  if (!patchedBody.includes('fetchpriority="high"')) {
+    patchedBody = patchedBody.replace(/<img\s+([^>]*?)loading="lazy"/, '<img $1loading="eager" fetchpriority="high"');
+    if (!patchedBody.includes('fetchpriority="high"')) {
+      patchedBody = patchedBody.replace(/<img\s+/, '<img fetchpriority="high" ');
+    }
+  }
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -485,10 +524,10 @@ ${noindex ? '<meta name="robots" content="noindex, follow">\n' : ""}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${title}">
 <meta name="twitter:description" content="${desc}">
-<meta name="twitter:image" content="${IMG.og}">
+<meta name="twitter:image" content="https://www.aurora-filtech.com${IMG.og}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/style.css">
-${jsonld ? `<script type="application/ld+json">\n${jsonld}\n</script>` : ""}
+${finalJsonld ? `<script type="application/ld+json">\n${finalJsonld}\n</script>` : ""}
 </head>
 <body>
 <div class="topbar">
@@ -498,17 +537,19 @@ ${jsonld ? `<script type="application/ld+json">\n${jsonld}\n</script>` : ""}
     <div class="menu">
       <a href="/"${activeNav === "home" ? ' aria-current="page"' : ""}>Home</a>
       <div class="pm">
-        <a href="#products"${activeNav === "products" ? ' aria-current="page"' : ""}>Products ▾</a>
+        <a href="/#products"${activeNav === "products" ? ' aria-current="page"' : ""}>Products ▾</a>
         <div class="pop">${navLinks3}</div>
       </div>
-      <a href="/#contact">Contact</a>
-      <a href="/#why">About Us</a>
+      <a href="/industries/"${activeNav === "industries" ? ' aria-current="page"' : ""}>Industries</a>
+      <a href="/resources/glossary/"${activeNav === "resources" ? ' aria-current="page"' : ""}>Glossary</a>
+      <a href="/blog/"${activeNav === "blog" ? ' aria-current="page"' : ""}>Blog</a>
+      <a href="/about/"${activeNav === "about" ? ' aria-current="page"' : ""}>About Us</a>
       <a class="cta" href="/#contact">Get a Quote</a>
     </div>
   </nav>
 </div>
 <main>
-${body}
+${patchedBody}
 </main>
 <footer class="foot3">
   <div class="top"></div>
@@ -526,12 +567,26 @@ ${body}
       <a href="/press-fabric/">Press Filter Fabric</a>
       <a href="/products/filter-bag/">Filter Bag</a>
       <a href="/products/filter-cartridge/">Cartridge Filter</a>
+      <a href="/products/square-mesh/">Polyester Square Mesh</a>
     </div>
     <div>
-      <h3>More Products</h3>
+      <h3>More Products &amp; Resources</h3>
       <a href="/press-belt/">Press Filter Belt</a>
+      <a href="/industries/">Industries We Serve</a>
+      <a href="/industries/wood-based-panels/">Wood-based Panels</a>
+      <a href="/industries/wood-based-panels/mesh-belts/">Wood Panel Mesh Belts</a>
+      <a href="/industries/wood-flour-sifting/">Wood Flour Sifting</a>
+      <a href="/industries/paper-and-pulp/">Paper &amp; Pulp</a>
+      <a href="/industries/mining/">Mining &amp; Minerals</a>
+      <a href="/industries/power-generation-fgd/">Power &amp; FGD</a>
+      <a href="/industries/food-and-pharma/">Food &amp; Pharma</a>
+      <a href="/industries/nonwovens/">Nonwovens</a>
+      <a href="/resources/glossary/">Filtration Glossary</a>
+      <a href="/blog/">Technical Guides &amp; Blog</a>
+      <a href="/blog/forming-fabric-guide/">Forming Fabric Guide</a>
+      <a href="/blog/spiral-fabric-guide/">Spiral Fabric Guide</a>
+      <a href="/blog/ptfe-belt-joint-types/">PTFE Belt Joint Guide</a>
       <a href="/about/">About Us</a>
-      <a href="/forming-fabric/">Forming Fabric</a>
     </div>
     <div>
       <h3>Contact</h3>
@@ -588,7 +643,7 @@ const wideAt = new Set([0, 3, 7]);
 const bentoCards = homeCards.map((p, i) => `
 <article class="bcard${wideAt.has(i) ? " wide" : ""}">
   <figure>
-    <a href="/${p.slug}/"><img src="${p.card.img}" alt="${p.card.alt}" width="${p.card.w}" height="${p.card.h}" loading="${i < 3 ? "eager" : "lazy"}" decoding="async"></a>
+    <a href="/${p.slug}/"><img src="${p.card.img}" alt="${p.card.alt}" width="${p.card.w}" height="${p.card.h}" loading="lazy" decoding="async"></a>
     <figcaption>${p.card.caption}</figcaption>
   </figure>
   <div class="body">
@@ -605,27 +660,24 @@ const bentoCards = homeCards.map((p, i) => `
 const homeJsonld = {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "Organization",
-      "@id": `${BASE}/#organization`,
-      name: "Aurora Filtech Co., Ltd",
-      alternateName: "Aurora Filtech",
-      url: `${BASE}/`,
-      logo: { "@type": "ImageObject", url: `${BASE}/qfy-content/uploads/2023/02/7a282ca2a1e95695ea78344b556f18b7.jpg` },
-      description: "Professional manufacturer of filter fabrics and industrial belts. Forming fabrics, dryer fabrics, press filter fabrics, vacuum filter fabrics, filter bags and filter cartridges for paper, mining, power, food and pharmaceutical industries.",
-      email: "aaron@aurora-filtech.com",
-      telephone: "+8615206119266",
-      address: [
-        { "@type": "PostalAddress", streetAddress: "8 Standard Road", addressLocality: "London", postalCode: "NY10 6EU", addressCountry: "GB" },
-        { "@type": "PostalAddress", streetAddress: "Room 1103, Guanhe East Rd, Tianning District", addressLocality: "Changzhou", addressCountry: "CN" }
-      ],
-      contactPoint: [{ "@type": "ContactPoint", contactType: "sales", email: "johnson@aurora-filtech.com", telephone: "+8615206119266" }]
-    },
+    orgNode,
     { "@type": "WebSite", "@id": `${BASE}/#website`, url: `${BASE}/`, name: "Aurora Filtech", publisher: { "@id": `${BASE}/#organization` }, inLanguage: "en" },
-    ...homeCards.flatMap(p => [
-      { "@type": "ImageObject", "@id": `${BASE}/#${p.imageId}`, contentUrl: `${BASE}${p.card.img}`, encodingFormat: "image/jpeg", width: String(p.card.w), height: String(p.card.h), name: p.card.h2.charAt(0) + p.card.h2.slice(1).toLowerCase(), caption: p.card.caption.split(" — ")[0], description: `${p.card.alt}, supplied by Aurora Filtech.`, inLanguage: "en" },
-      { "@type": "Product", "@id": `${BASE}/#product-${p.jsonldId}`, name: p.name, alternateName: p.altNames, description: p.pdesc, url: urlOf(p.slug), image: { "@id": `${BASE}/#${p.imageId}` }, brand: { "@id": `${BASE}/#organization` }, manufacturer: { "@id": `${BASE}/#organization` }, category: p.category, keywords: p.keywords }
-    ])
+    {
+      "@type": "ItemList",
+      "@id": `${BASE}/#product-catalog`,
+      name: "Aurora Filtech Industrial Filter Fabrics & Belts",
+      itemListElement: homeCards.map((p, idx) => ({
+        "@type": "ListItem",
+        position: idx + 1,
+        name: p.name,
+        description: p.pdesc,
+        url: urlOf(p.slug),
+        image: `${BASE}${p.card.img}`
+      }))
+    },
+    ...homeCards.map(p => (
+      { "@type": "ImageObject", "@id": `${BASE}/#${p.imageId}`, contentUrl: `${BASE}${p.card.img}`, encodingFormat: "image/jpeg", width: String(p.card.w), height: String(p.card.h), name: p.card.h2.charAt(0) + p.card.h2.slice(1).toLowerCase(), caption: p.card.caption.split(" — ")[0], description: `${p.card.alt}, supplied by Aurora Filtech.`, inLanguage: "en" }
+    ))
   ]
 };
 
@@ -642,7 +694,7 @@ const homeBody = `
     </div>
     <div class="stage">
       <figure>
-        <img src="${IMG.h1}" alt="Filter fabric weaving looms inside the Aurora Filtech weaving workshop" width="2048" height="772" loading="eager" decoding="async">
+        <img src="${IMG.h1}" alt="Filter fabric weaving looms inside the Aurora Filtech weaving workshop" width="2048" height="772" loading="eager" fetchpriority="high" decoding="async">
         <figcaption>Aurora Filtech filter fabric weaving workshop.</figcaption>
       </figure>
     </div>
@@ -704,17 +756,44 @@ function productJsonld(p, faqs) {
   if (p.banner) {
     graph.push({ "@type": "ImageObject", "@id": urlOf(p.slug) + `#image`, contentUrl: `${BASE}${p.banner.url}`, encodingFormat: "image/jpeg", width: String(p.banner.w || 800), height: String(p.banner.h || 252), name: p.name, caption: p.banner.caption, description: `${p.banner.alt}, supplied by Aurora Filtech.`, inLanguage: "en" });
   }
-  const prod = { "@type": "Product", "@id": urlOf(p.slug) + `#product`, name: p.name, alternateName: p.altNames, description: p.pdesc, url: urlOf(p.slug), brand: { "@id": `${BASE}/#organization` }, manufacturer: { "@id": `${BASE}/#organization` }, category: p.category, keywords: p.keywords };
+  const prod = {
+    "@type": "Product",
+    "@id": urlOf(p.slug) + `#product`,
+    name: p.name,
+    alternateName: p.altNames,
+    description: p.pdesc,
+    url: urlOf(p.slug),
+    brand: { "@id": `${BASE}/#organization` },
+    manufacturer: { "@id": `${BASE}/#organization` },
+    category: p.category,
+    keywords: p.keywords,
+    offers: {
+      "@type": "Offer",
+      url: urlOf(p.slug) + "#contact",
+      priceCurrency: "USD",
+      price: "0",
+      availability: "https://schema.org/InStock",
+      itemCondition: "https://schema.org/NewCondition",
+      seller: { "@id": `${BASE}/#organization` }
+    }
+  };
   if (p.banner) prod.image = { "@id": urlOf(p.slug) + `#image` };
+  if (p.specs && p.specs.length) {
+    prod.additionalProperty = p.specs.map(s => {
+      const idx = s.indexOf(":");
+      return {
+        "@type": "PropertyValue",
+        name: idx > 0 ? s.slice(0, idx).trim() : "Specification",
+        value: idx > 0 ? s.slice(idx + 1).trim() : s
+      };
+    });
+  }
   graph.push(prod);
   if (p.slug === "dryer-fabric") {
     graph.push(
-      { "@type": "VideoObject", name: "Anti-static pre-press belt running on an MDF line", description: "Aurora anti-static dryer belt working the pre-press section of an MDF plant (Dieffenbacher-type line).", thumbnailUrl: `${BASE}/qfy-content/uploads/df/hero.jpg`, contentUrl: `${BASE}/qfy-content/uploads/df/prepress.mp4`, uploadDate: "2026-09-10" },
-      { "@type": "VideoObject", name: "4106S silicone-coated dryer belt in operation", description: "Aurora 4106S silicone-coated dryer belt in live MDF board production.", thumbnailUrl: `${BASE}/qfy-content/uploads/df/silicone.jpg`, contentUrl: `${BASE}/qfy-content/uploads/df/silicon.mp4`, uploadDate: "2026-09-10" }
+      { "@type": "VideoObject", name: "Anti-static pre-press belt running on an MDF line", description: "Aurora anti-static dryer belt working the pre-press section of an MDF plant (Dieffenbacher-type line).", thumbnailUrl: `${BASE}/qfy-content/uploads/df/hero.jpg`, contentUrl: `${BASE}/qfy-content/uploads/df/prepress.mp4`, uploadDate: "2026-09-10T08:00:00+08:00" },
+      { "@type": "VideoObject", name: "4106S silicone-coated dryer belt in operation", description: "Aurora 4106S silicone-coated dryer belt in live MDF board production.", thumbnailUrl: `${BASE}/qfy-content/uploads/df/silicone.jpg`, contentUrl: `${BASE}/qfy-content/uploads/df/silicon.mp4`, uploadDate: "2026-09-10T08:00:00+08:00" }
     );
-  }
-  if (faqs && faqs.length) {
-    graph.push({ "@type": "FAQPage", mainEntity: faqs.map(([q,a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) });
   }
   return JSON.stringify({ "@context": "https://schema.org", "@graph": graph }, null, 2);
 }
@@ -734,17 +813,29 @@ function ptable(t) { if (!t) return "";
   return `<figure><table class="ptable"><caption>${t.caption}</caption><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></figure>`;
 }
 
+function parseSecHtml3(html) {
+  if (!html) return "";
+  return html.replace(/__UL_START__(\[[\s\S]*?\])__UL_END__/g, (_, jsonStr) => {
+    try {
+      const items = JSON.parse(jsonStr);
+      return `<ul class="apps3">${items.map(it => `<li>${it}</li>`).join("")}</ul>`;
+    } catch (e) {
+      return jsonStr;
+    }
+  });
+}
+
 function productBody(p) {
   let faqs, main;
     if (p.slug === "spiral-belt") {
     faqs = [["What is the difference between a spiral fabric and a woven dryer fabric?", "A spiral fabric is assembled from monofilament spirals joined by hinge pins, giving an open, non-tracking structure with high drainage. A woven dryer fabric is woven from warp and weft yarns and provides a smoother surface. Spiral fabrics are easier to repair on the machine; woven fabrics usually offer higher stability at high speeds. Full comparison in our spiral fabric guide."], ["With or without filler yarns — how do I choose?", "Without fillers you get maximum open area and air flow (drying and conveying). Adding 1–5 filler yarns increases density and lowers permeability — right for filtration duties on belt press filters."], ["Can spiral fabric be used on belt press filters?", "Yes — with filler yarns, spiral fabrics work as filter belts for sludge dewatering, sand washing, juice squeezing and palm oil squeezing. Their open structure drains quickly and releases the filter cake easily."], ["Do you offer PPS spiral fabrics for higher temperatures?", "Yes — PPS monofilament spiral fabrics serve higher-temperature drying applications (long-term duty around 240 °C, verified on request). Tell us your working temperature and we will recommend the right material."], ["Is it called spiral belt or spiral fabric?", "Both are used. Spiral fabric matches our structure best and matches Google image results; spiral belt is a common alias (often for food conveyor spirals). We cover both spellings across this family of pages."], ["Why no filler yarns on a dryer fabric?", "Dryers need air: without filler yarns the spiral structure stays fully open — our 6890 and 9010 weaves measure 875–1016 CFM — so drying air passes through belt and product instead of being blocked."], ["Do you offer anti-static spiral dryer fabrics?", "Yes — anti-static monofilament versions for static-prone board forming dryers."], ["Round or flat filler yarns — which should I choose?", "Round monofilament fillers maximize open area and CFM, keeping channels clear longer — good for heavy drainage. Flat fillers give a smoother contact surface and better fines retention while keeping good permeability."], ["How many filler yarns do I need?", "2–3 fillers for coarse, free-draining duties (sand washing); 3–4 for typical municipal sludge; 5 (or flat fillers) for fine solids and juice/oil squeezing. Measured CFM per model is in our spec table — we match the count to your target."]];
     main = `
 <p>Aurora SP spiral fabrics are endless belts built from polyester (PET) or PPS monofilament spirals joined by hinge pins — an open, non-tracking structure with high drainage and easy cleaning, equally at home as dryer belts and as filter belts. Two families cover the two duties: <b>without filler yarns</b> for maximum air flow (up to ~1000 CFM) — the open SP-D models 6890 / 9010 for drying and conveying; or <b>with 2–5 filler yarns</b> for higher density and lower permeability (down to ~325 CFM) — the <a href="#fam-spp">spiral press filter belt (SP-P, below)</a> for belt press filtration. See them alongside the whole <a href="/dryer-fabric/">dryer fabric range</a>.</p>
-<div class="gal3"><figure><img src="/qfy-content/uploads/sp/sp-pet.jpg" alt="Standard PET spiral dryer fabric, monofilament spirals joined by hinge pins" width="1000" height="750" loading="lazy" decoding="async"><figcaption>SP-D in standard PET.</figcaption></figure><figure><img src="/qfy-content/uploads/sp/sp-9010-4.jpg" alt="Type 9010-4 spiral fabric with PET filler yarns for press filtration" width="466" height="350" loading="lazy" decoding="async"><figcaption>SP-P — filled 9010-4 construction.</figcaption></figure><figure><img src="/qfy-content/uploads/live/teflon-g2.jpg" alt="Hydrolysis-resistant spiral fabric for acid and alkaline environments, close-up" width="500" height="350" loading="lazy" decoding="async"><figcaption>Special materials — hydrolysis-resistant, PPS, PTFE-added.</figcaption></figure></div>
+<div class="gal3"><figure><img src="/qfy-content/uploads/sp/sp-pet.jpg" alt="Standard PET spiral dryer fabric, monofilament spirals joined by hinge pins" width="1000" height="750" loading="eager" fetchpriority="high" decoding="async"><figcaption>SP-D in standard PET.</figcaption></figure><figure><img src="/qfy-content/uploads/sp/sp-9010-4.jpg" alt="Type 9010-4 spiral fabric with PET filler yarns for press filtration" width="466" height="350" loading="lazy" decoding="async"><figcaption>SP-P — filled 9010-4 construction.</figcaption></figure><figure><img src="/qfy-content/uploads/live/teflon-g2.jpg" alt="Hydrolysis-resistant spiral fabric for acid and alkaline environments, close-up" width="500" height="350" loading="lazy" decoding="async"><figcaption>Special materials — hydrolysis-resistant, PPS, PTFE-added.</figcaption></figure></div>
 <h2>SP-D &middot; Spiral dryer fabrics — hollow, no filler yarns</h2>
 <p>Without filler yarns the spiral structure stays fully open — our 688 and 9010 weaves measure 875–1016 CFM, so drying air passes through belt and product instead of fighting the belt. Anti-static monofilament versions serve static-prone board forming dryers; PPS versions run around 240 &deg;C long-term.</p>
 ${ptable(p.paramsSPD)}
-<h2>SP-P &middot; Spiral press filter belts — filled for filtration</h2>
+<h2 id="fam-spp">SP-P &middot; Spiral press filter belts — filled for filtration</h2>
 <p>Add 2–5 filler yarns inside the spiral loops and the open dryer structure becomes a true filter belt: density rises, air permeability drops from ~1000 to as low as 325 CFM, and fines stay in the product. Round fillers maximise open area; flat fillers give a smoother surface for juice and palm-oil squeezing.</p>
 ${ptable(p.paramsSPP)}
 <h2>Special materials series</h2>
@@ -752,10 +843,10 @@ ${ptable(p.paramsSPP)}
   } else {
     faqs = p.faqs;
     main = `
-<p>${p.intro}</p>
-${p.banner ? `<div class="shot3" style="max-width:${p.banner.maxW || 1180}px;margin-left:auto;margin-right:auto"><figure><img src="${p.banner.url}" alt="${p.banner.alt}" width="${p.banner.w}" height="${p.banner.h}" loading="eager" decoding="async"><figcaption>${p.banner.caption}</figcaption></figure></div>` : ""}
-${p.gallery ? `<div class="gal3">${p.gallery.map(g => `<figure><img src="${g.url}" alt="${g.alt}" loading="lazy" decoding="async"><figcaption>${g.caption}</figcaption></figure>`).join("")}</div>` : ""}
-${(p.sections || []).map(s => `<h2>${s.h}</h2>${s.html}`).join("")}
+<p>${p.intro || p.card?.first || p.pdesc}</p>
+${p.banner ? `<div class="shot3" style="max-width:${p.banner.maxW || 1180}px;margin-left:auto;margin-right:auto"><figure><img src="${p.banner.url}" alt="${p.banner.alt}" width="${p.banner.w}" height="${p.banner.h}" loading="eager" fetchpriority="high" decoding="async"><figcaption>${p.banner.caption}</figcaption></figure></div>` : ""}
+${p.gallery && p.gallery.length ? `<div class="gal3">${p.gallery.map(g => `<figure><img src="${g.url}" alt="${g.alt}" width="${g.w}" height="${g.h}" loading="lazy" decoding="async"><figcaption>${g.caption}</figcaption></figure>`).join("")}</div>` : ""}
+${(p.sections || []).map(s => `<h2>${s.h}</h2>${parseSecHtml3(s.html)}`).join("")}
 ${p.paramsData ? ptable(p.paramsData) : ""}
 <h2>Applications</h2>
 <ul class="apps3">${p.apps.map(a => `<li>${a}</li>`).join("")}</ul>
@@ -827,8 +918,8 @@ for (const p of products) {
 }
 
 // ---------- 内容移植新增页面（正文提取自生产版, 版式为本方案组件） ----------
-write("industries/index.html", layout({ url: `${BASE}/industries/`, title: "Industries | Aurora Filtech", desc: "Aurora Filtech fabrics by industry.", type: "website", body: `<section class="p3-head"><div class="wrap"><nav class="crumbs"><a href="/">Home</a> › <span>Industries</span></nav><h1>Industries We Serve</h1><p class="lede">Fabrics matched to each stage of the process.</p></div></section><div class="wrap article3"><ul class="apps3"><li><a href="/industries/wood-based-panels/">Wood-based Panels</a></li><li><a href="/industries/paper-and-pulp/">Paper & Pulp</a></li><li><a href="/industries/mining/">Mining & Minerals</a></li><li><a href="/industries/power-generation-fgd/">Power Generation & FGD</a></li><li><a href="/industries/food-and-pharma/">Food & Pharmaceutical</a></li><li><a href="/industries/nonwovens/">Nonwovens</a></li></ul></div>${contactSection}` }));
-write("industries/wood-based-panels/index.html", layout({ url: `${BASE}/industries/wood-based-panels/`, title: "Wood-based Panel Belts | MDF, OSB & Particleboard | Aurora Filtech", desc: "Forming fabrics, dryer fabrics, spiral dryer belts and square mesh belts for MDF, OSB and particleboard lines. Dieffenbacher / Siempelkamp type plants.", type: "website", body: `
+write("industries/index.html", layout({ url: `${BASE}/industries/`, title: "Industries We Serve | Industrial Filter Fabrics | Aurora", desc: "Industrial filter fabrics, dryer belts and forming wires by industry: wood-based panels, paper & pulp, mining, power generation FGD, food, pharma & nonwovens.", type: "website", body: `<section class="p3-head"><div class="wrap"><nav class="crumbs"><a href="/">Home</a> › <span>Industries</span></nav><h1>Industries We Serve</h1><p class="lede">Fabrics matched to each stage of the process.</p></div></section><div class="wrap article3"><ul class="apps3"><li><a href="/industries/wood-based-panels/">Wood-based Panels</a> (<a href="/industries/wood-based-panels/mesh-belts/">Wood Panel Mesh Belts</a>)</li><li><a href="/industries/wood-flour-sifting/">Wood Flour Sifting</a></li><li><a href="/industries/paper-and-pulp/">Paper & Pulp</a></li><li><a href="/industries/mining/">Mining & Minerals</a></li><li><a href="/industries/power-generation-fgd/">Power Generation & FGD</a></li><li><a href="/industries/food-and-pharma/">Food & Pharmaceutical</a></li><li><a href="/industries/nonwovens/">Nonwovens</a></li></ul></div>${contactSection}`, activeNav: "industries" }));
+write("industries/wood-based-panels/index.html", layout({ url: `${BASE}/industries/wood-based-panels/`, title: "Wood-based Panel Belts | MDF, OSB & Particleboard | Aurora", desc: "Forming fabrics, dryer fabrics, spiral dryer belts and square mesh belts for MDF, OSB and particleboard lines. Dieffenbacher / Siempelkamp type plants.", type: "website", body: `
 <section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/industries/">Industries</a> › <span>Wood Based Panels</span></nav><h1>Wood-based Panel Belts</h1></div></section>
 <div class="wrap article3">
 <p>From the forming line to the press outfeed, every deck of an MDF, OSB or particleboard line runs on woven and spiral fabrics. Aurora supplies the belts that matter at each stage — forming and pre-press, the drying decks, the biomass dryers — cut to the common plant platforms.</p>
@@ -896,7 +987,7 @@ write("industries/wood-based-panels/index.html", layout({ url: `${BASE}/industri
           <h3>Biomass & pellet drying</h3>
           
           <p>Fine square mesh belts for wood chip, shavings and pellet dryers — heat-set polyester that stays flat and stable to 180 °C; compatible with / alternative to OEM mesh belts.</p>
-          <p class="app-links"><a href="/products/square-mesh/">Polyester Square Mesh →</a></p>
+          <p class="app-links"><a href="/products/square-mesh/">Polyester Square Mesh →</a> · <a href="/industries/wood-based-panels/mesh-belts/">Wood Panel Mesh Belts →</a></p>
         </div>
       </div>
       
@@ -908,10 +999,10 @@ write("industries/wood-based-panels/index.html", layout({ url: `${BASE}/industri
     <div class="oem-note"><strong>Platform note.</strong> Belts dimensioned for the common plant platforms — Dieffenbacher, Siempelkamp / Büttner, Swiss Combi-type belt dryers and Chinese line builders.</div>
     <div class="related">
       <h2>Products for this industry</h2>
-      <div class="related-grid"><a href="/forming-fabric/">Forming Fabric →</a><a href="/dryer-fabric/">Dryer Fabric →</a><a href="/spiral-belt/">Spiral Fabric →</a><a href="/products/square-mesh/">Polyester Square Mesh →</a><a href="/spiral-belt/">Spiral Fabric →</a></div>
+      <div class="related-grid"><a href="/forming-fabric/">Forming Fabric →</a><a href="/dryer-fabric/">Dryer Fabric →</a><a href="/spiral-belt/">Spiral Fabric →</a><a href="/products/square-mesh/">Polyester Square Mesh →</a><a href="/industries/wood-based-panels/mesh-belts/">Wood Panel Mesh Belts →</a><a href="/industries/wood-flour-sifting/">Wood Flour Sifting →</a></div>
     </div>
 </div>${contactSection}`, activeNav: "industries" }));
-write("industries/paper-and-pulp/index.html", layout({ url: `${BASE}/industries/paper-and-pulp/`, title: "Paper Machine Clothing | Forming, Press & Dryer Fabrics | Aurora Filtech", desc: "Paper machine clothing for paper mills: forming fabrics (forming wire), dryer fabrics and spiral fabrics. Packaging, printing, tissue and nonwovens.", type: "website", body: `
+write("industries/paper-and-pulp/index.html", layout({ url: `${BASE}/industries/paper-and-pulp/`, title: "Paper Machine Clothing | Forming, Press & Dryer Fabrics", desc: "Paper machine clothing for paper mills: forming fabrics (forming wire), dryer fabrics and spiral fabrics. Packaging, printing, tissue and nonwovens.", type: "website", body: `
 <section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/industries/">Industries</a> › <span>Paper And Pulp</span></nav><h1>Paper Machine Clothing</h1></div></section>
 <div class="wrap article3">
 <p>Paper machine clothing is our founding trade. Aurora supplies the full wet-to-dry fabric line — forming fabrics (the forming wire of the old bronze era), dryer fabrics with anti-static yarns, and spiral fabrics for dryer and press duties — to paper mills and nonwovens producers.</p>
@@ -989,7 +1080,7 @@ write("industries/paper-and-pulp/index.html", layout({ url: `${BASE}/industries/
       <div class="related-grid"><a href="/forming-fabric/">Forming Fabric →</a><a href="/dryer-fabric/">Dryer Fabric →</a><a href="/spiral-belt/">Spiral Fabric →</a><a href="/vacuum-fabric/">Vacuum Filter Fabric →</a></div>
     </div>
 </div>${contactSection}`, activeNav: "industries" }));
-write("industries/mining/index.html", layout({ url: `${BASE}/industries/mining/`, title: "Mining Filtration Fabrics | Dewatering & Tailings | Aurora Filtech", desc: "Filter fabrics for mining: vacuum filter fabrics, press filter cloths and spiral press belts for iron ore, copper, lithium and non-metallic minerals.", type: "website", body: `
+write("industries/mining/index.html", layout({ url: `${BASE}/industries/mining/`, title: "Mining Filtration Fabrics | Dewatering & Tailings | Aurora", desc: "Filter fabrics for mining: vacuum filter fabrics, press filter cloths and spiral press belts for iron ore, copper, lithium and non-metallic minerals.", type: "website", body: `
 <section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/industries/">Industries</a> › <span>Mining</span></nav><h1>Mining Filtration Fabrics</h1></div></section>
 <div class="wrap article3">
 <p>Mineral processing runs on filter area. Aurora supplies vacuum filter fabrics for horizontal belt, disc and drum filters (ANDRITZ / Dorr-Oliver type platforms among them), press filter cloths for frame and membrane presses, and spiral press filter belts for belt-press dewatering — across iron ore, copper, lithium and industrial minerals.</p>
@@ -1443,6 +1534,7 @@ write("blog/index.html", layout({
 
 for (const slug of Object.keys(posts)) {
   const post = posts[slug];
+  const postIsoDate = post.date.includes("T") ? post.date : `${post.date}T08:00:00+08:00`;
   const postJsonld = JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
@@ -1452,7 +1544,7 @@ for (const slug of Object.keys(posts)) {
         { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE}/blog/` },
         { "@type": "ListItem", position: 3, name: post.title, item: `${BASE}${post.url}` }
       ] },
-      { "@type": "Article", headline: post.title, description: post.desc, datePublished: post.date, dateModified: post.date,
+      { "@type": "Article", headline: post.title, description: post.desc, image: `${BASE}${IMG.og}`, datePublished: postIsoDate, dateModified: postIsoDate,
         author: { "@id": `${BASE}/#organization` }, publisher: { "@id": `${BASE}/#organization` }, inLanguage: "en", mainEntityOfPage: `${BASE}${post.url}` }
     ]
   }, null, 2);
@@ -1478,7 +1570,7 @@ for (const slug of Object.keys(posts)) {
 
   write(`${post.url.replace(/^\//, '')}index.html`, layout({
     url: `${BASE}${post.url}`,
-    title: `${post.title} | Aurora Filtech`,
+    title: post.seoTitle || `${post.title} | Aurora Filtech`,
     desc: post.desc,
     type: "article",
     jsonld: postJsonld,
@@ -1496,7 +1588,20 @@ const glossJsonld = JSON.stringify({
       { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` },
       { "@type": "ListItem", position: 2, name: "Filtration Glossary", item: `${BASE}/resources/glossary/` }
     ] },
-    { "@type": "DefinedTermSet", name: "Filtration & Paper Machine Clothing Glossary", url: `${BASE}/resources/glossary/`, publisher: { "@id": `${BASE}/#organization` } }
+    {
+      "@type": "DefinedTermSet",
+      "@id": `${BASE}/resources/glossary/#termset`,
+      name: "Filtration & Paper Machine Clothing Glossary",
+      description: "Glossary of filtration and paper machine clothing terms: forming fabric, forming wire, CFM, filler yarns, spiral dryer fabric, press cloth, mesh count and more.",
+      url: `${BASE}/resources/glossary/`,
+      publisher: { "@id": `${BASE}/#organization` },
+      hasDefinedTerm: glossary.map(([t, d]) => ({
+        "@type": "DefinedTerm",
+        name: t,
+        description: d.replace(/<[^>]+>/g, ""),
+        inDefinedTermSet: `${BASE}/resources/glossary/#termset`
+      }))
+    }
   ]
 }, null, 2);
 
@@ -1656,6 +1761,44 @@ Sitemap: ${BASE}/sitemap.xml
 Sitemap: ${BASE}/sitemap-image.xml
 `);
 
+write("llms.txt", `# Aurora Filtech Co., Ltd (www.aurora-filtech.com)
+> Industrial Filter Fabrics, Paper Machine Clothing (PMC), Spiral Fabrics & Mesh Belts Manufacturer. 30+ years experience, 3 factories in China & UK office, in-house monofilament extrusion, German Dornier weaving looms, laser cutting & automated seaming. OEM/ODM worldwide.
+
+## Core Products
+- [Forming Fabric (Forming Wire)](${BASE}/forming-fabric/): 1-layer, 1.5-layer, 2-layer and 3-layer SSB polyester forming wires for paper machines, nonwoven lines and flexible graphite sheet forming.
+- [Dryer Fabric (Dryer Belt)](${BASE}/dryer-fabric/): Anti-static dryer belts (12804TK, 16804K), 4106S silicone-coated belts for MDF/OSB board lines, wool scouring dryer belts, and flat-yarn paper dryer fabrics.
+- [Spiral Fabric (Spiral Belt)](${BASE}/spiral-belt/): SP-D open spiral dryer fabrics (up to 1016 CFM, no filler yarns) and SP-P filled spiral press filter belts (2–5 round or flat filler yarns, down to 325 CFM) in PET, PPS, hydrolysis-resistant and PTFE-added grades.
+- [Vacuum Filter Fabric](${BASE}/vacuum-fabric/): Woven monofilament & satin filter belts for horizontal vacuum belt filters (HVBF), rotary drum and disc filters (FGD gypsum, mining concentrates, alumina, phosphoric acid).
+- [Press Filter Fabric](${BASE}/press-fabric/): Chamber, frame and membrane filter press cloths in PET, PP, PA66 (nylon) and PVA, laser-cut with reinforced necks and eyelets.
+- [Press Filter Belt](${BASE}/press-belt/): Herringbone and satin woven dewatering belts for belt filter presses in municipal sewage, paper mill sludge, coal washing and fruit juice pressing.
+- [Polyester Square Mesh](${BASE}/products/square-mesh/): Plain-weave 1/1 PET monofilament square mesh (400–2100 µm standard belts, 40–200 mesh sifting cloth) for wood panel drying, food dehydration and WPC wood flour classification.
+- [Dust Collector Filter Bags](${BASE}/products/filter-bag/): Non-woven needle felt filter bags in PET, PPS, Nomex, P84, Acrylic and PTFE membrane laminates.
+- [Industrial Filter Cartridges](${BASE}/products/filter-cartridge/): Pleated dust, air, water and oil filter cartridges (anti-static, PTFE-membrane, cellulose, PPS/Nomex).
+
+## Industries & Applications
+- [Wood-based Panels (MDF, OSB, Particleboard)](${BASE}/industries/wood-based-panels/)
+- [Wood Panel & Biomass Drying Mesh Belts](${BASE}/industries/wood-based-panels/mesh-belts/)
+- [Wood Flour & WPC Fines Sifting Mesh](${BASE}/industries/wood-flour-sifting/)
+- [Paper & Pulp (Paper Machine Clothing)](${BASE}/industries/paper-and-pulp/)
+- [Mining & Mineral Processing](${BASE}/industries/mining/)
+- [Power Generation & FGD Gypsum Dewatering](${BASE}/industries/power-generation-fgd/)
+- [Food & Pharmaceutical Filtration & Drying](${BASE}/industries/food-and-pharma/)
+- [Nonwovens (Spunbond, Meltblown, Airlaid, Wetlaid)](${BASE}/industries/nonwovens/)
+
+## Technical Guides & Reference
+- [Manufacturing & Production Capability](${BASE}/about/)
+- [Filtration & PMC Technical Glossary (32+ Terms)](${BASE}/resources/glossary/)
+- [What Is a Forming Fabric (Forming Wire)?](${BASE}/blog/forming-fabric-guide/)
+- [Spiral Fabric Guide: Dryer Fabric vs Press Belt & Filler Yarns](${BASE}/blog/spiral-fabric-guide/)
+- [PTFE / Teflon Belt Joint Types Compared](${BASE}/blog/ptfe-belt-joint-types/)
+
+## Contact & Engineering Support
+- Sales & Engineering Email: johnson@aurora-filtech.com / aaron@aurora-filtech.com
+- Tel / WhatsApp: +86 152 0611 9266
+- UK Office: 8 Standard Road, London NY10 6EU, United Kingdom
+- China Factory: Room 1103, Guanhe East Rd, Tianning District, Changzhou, China
+`);
+
 write("favicon.svg", `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="#121B24"/><path d="M12 44c8-2 10-24 20-24s10 22 20 24" stroke="#1E4FD8" stroke-width="5" fill="none" stroke-linecap="round"/></svg>`);
 
 write("_headers", `# Cloudflare Pages cache policy (harmless on other hosts)
@@ -1669,4 +1812,4 @@ write("_headers", `# Cloudflare Pages cache policy (harmless on other hosts)
   X-Content-Type-Options: nosniff
 `);
 
-console.log("DONE " + OUT + " — full 25 pages + dynamic sitemaps + robots.txt");
+console.log("DONE " + OUT + " — full 25 pages + dynamic sitemaps + robots.txt + llms.txt");

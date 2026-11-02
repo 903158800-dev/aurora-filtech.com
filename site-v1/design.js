@@ -446,7 +446,7 @@ function layout({ url, title, desc, type = "website", jsonld = "", body, activeN
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${title}</title>
 <meta name="description" content="${desc}">
-${noindex ? `<meta name="robots" content="noindex, follow">` : `<link rel="canonical" href="${url}">`}
+${noindex ? `<meta name="robots" content="noindex, follow">\n` : ""}<link rel="canonical" href="${url}">
 <meta property="og:site_name" content="Aurora Filtech">
 <meta property="og:type" content="${type}">
 <meta property="og:title" content="${title}">

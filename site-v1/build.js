@@ -43,15 +43,32 @@ function productJsonld(p, extra = {}) {
       { "@type": "ListItem", position: 2, name: p.h1.split(" (")[0], item: p.url }] },
   ];
   if (p.banner) graph.push({ "@type": "ImageObject", "@id": p.url + `#image`, contentUrl: BASE + p.banner.url, encodingFormat: "image/jpeg", width: String(p.banner.w), height: String(p.banner.h), name: p.h1.split(" (")[0], caption: p.banner.caption, inLanguage: "en" });
-  const prod = { "@type": "Product", "@id": p.url + "#product", name: p.h1.split(" (")[0], alternateName: p.altNames, description: p.pdesc, url: p.url,
+  const prod = {
+    "@type": "Product", "@id": p.url + "#product", name: p.h1.split(" (")[0], alternateName: p.altNames, description: p.pdesc, url: p.url,
     brand: { "@id": `${BASE}/#organization` }, manufacturer: { "@id": `${BASE}/#organization` },
-    category: p.category || "Industrial filter fabrics", keywords: p.keywords };
+    category: p.category || "Industrial filter fabrics", keywords: p.keywords,
+    offers: {
+      "@type": "Offer",
+      url: p.url,
+      priceCurrency: "USD",
+      price: "0",
+      priceValidUntil: "2027-12-31",
+      availability: "https://schema.org/InStock",
+      itemCondition: "https://schema.org/NewCondition",
+      seller: { "@id": `${BASE}/#organization` }
+    },
+    additionalProperty: (p.specs || []).map(s => {
+      const idx = s.indexOf(":");
+      return {
+        "@type": "PropertyValue",
+        name: idx > 0 ? s.slice(0, idx).trim() : "Specification",
+        value: idx > 0 ? s.slice(idx + 1).trim() : s
+      };
+    })
+  };
   if (p.banner) prod.image = { "@id": p.url + "#image" };
   graph.push(prod);
   if (extra.videos && extra.videos.length) graph.push(...extra.videos);
-  if (p.faqs && p.faqs.length) {
-    graph.push({ "@type": "FAQPage", mainEntity: p.faqs.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) });
-  }
   return JSON.stringify({ "@context": "https://schema.org", "@graph": graph }, null, 2);
 }
 
@@ -59,7 +76,7 @@ function productJsonld(p, extra = {}) {
 function card(pcard, i) {
   return `<div class="solution-card">
   <figure>
-    <a href="/${pcard.slug}/"><img src="${pcard.img}" alt="${pcard.alt}" width="${pcard.w}" height="${pcard.h}" loading="${i < 3 ? "eager" : "lazy"}" decoding="async"></a>
+    <a href="/${pcard.slug}/"><img src="${pcard.img}" alt="${pcard.alt}" width="${pcard.w}" height="${pcard.h}" loading="lazy" decoding="async"></a>
     <figcaption>${pcard.caption}</figcaption>
   </figure>
   <div class="card-body">
@@ -75,11 +92,26 @@ function card(pcard, i) {
 
 const homeJsonld = { "@context": "https://schema.org", "@graph": [orgNode,
   { "@type": "WebSite", "@id": `${BASE}/#website`, url: `${BASE}/`, name: "Aurora Filtech", publisher: { "@id": `${BASE}/#organization` }, inLanguage: "en" },
+  {
+    "@type": "ItemList",
+    "@id": `${BASE}/#solutions-list`,
+    name: "Aurora Filtech Industrial Filter Fabrics & Belts",
+    itemListElement: homeCards.map((c, idx) => {
+      const p = products[c.slug];
+      return {
+        "@type": "ListItem",
+        position: idx + 1,
+        name: p ? p.h1.split(" (")[0] : c.h2,
+        url: p ? p.url : `${BASE}/${c.slug}/`,
+        description: p ? p.pdesc : c.first
+      };
+    })
+  },
   ...homeCards.flatMap(c => {
     const p = products[c.slug]; if (!p) return [];
     return [
-      { "@type": "ImageObject", "@id": `${BASE}/#img-${c.slug.replace(/\//g, "-")}`, contentUrl: BASE + c.img, encodingFormat: "image/jpeg", width: String(c.w), height: String(c.h), name: c.h2.charAt(0) + c.h2.slice(1).toLowerCase(), caption: c.caption.split(" — ")[0], description: `${c.alt}, supplied by Aurora Filtech.`, inLanguage: "en" },
-      { "@type": "Product", "@id": `${BASE}/#product-${c.slug.replace(/\//g, "-")}`, name: p.h1.split(" (")[0], alternateName: p.altNames, description: p.pdesc, url: p.url, image: { "@id": `${BASE}/#img-${c.slug.replace(/\//g, "-")}` }, brand: { "@id": `${BASE}/#organization` }, manufacturer: { "@id": `${BASE}/#organization` }, category: "Industrial filter fabrics", keywords: p.keywords }];
+      { "@type": "ImageObject", "@id": `${BASE}/#img-${c.slug.replace(/\//g, "-")}`, contentUrl: BASE + c.img, encodingFormat: "image/jpeg", width: String(c.w), height: String(c.h), name: c.h2.charAt(0) + c.h2.slice(1).toLowerCase(), caption: c.caption.split(" — ")[0], description: `${c.alt}, supplied by Aurora Filtech.`, inLanguage: "en" }
+    ];
   })] };
 
 const homeBody = `
@@ -100,7 +132,7 @@ const homeBody = `
       </div>
     </div>
     <figure class="hero-photo">
-      <img src="${IMG.h1}" alt="Filter fabric weaving looms inside the Aurora Filtech weaving workshop" width="2048" height="772" loading="eager" decoding="async" style="aspect-ratio:2048/772;object-fit:cover">
+      <img src="${IMG.h1}" alt="Filter fabric weaving looms inside the Aurora Filtech weaving workshop" width="2048" height="772" loading="eager" fetchpriority="high" decoding="async" style="aspect-ratio:2048/772;object-fit:cover">
       <figcaption>Aurora Filtech filter fabric weaving workshop.</figcaption>
     </figure>
   </div>
@@ -157,7 +189,7 @@ function prodParams(p) {
 
 function productPage(p, slug) {
   const bannerBlock = p.banner
-    ? `<div class="page-banner" style="margin:36px auto 0;max-width:none;padding:0 24px;max-width:${p.banner.maxW}px"><figure><img src="${p.banner.url}" alt="${p.banner.alt}" width="${p.banner.w}" height="${p.banner.h}" loading="eager" decoding="async"><figcaption>${p.banner.caption}</figcaption></figure></div>`
+    ? `<div class="page-banner" style="margin:36px auto 0;max-width:none;padding:0 24px;max-width:${p.banner.maxW}px"><figure><img src="${p.banner.url}" alt="${p.banner.alt}" width="${p.banner.w}" height="${p.banner.h}" loading="eager" fetchpriority="high" decoding="async"><figcaption>${p.banner.caption}</figcaption></figure></div>`
     : `<div class="page-banner" style="margin:36px auto 0;padding:0 24px"><div style="border:2px dashed var(--gold);border-radius:12px;background:var(--bg-soft);display:flex;align-items:center;justify-content:center;color:var(--ink-soft);min-height:170px">Banner image — to be supplied before launch</div></div>`;
 
 
@@ -229,7 +261,7 @@ function industryPage(key) {
 </section>
 ${ind.banner ? `
 <figure class="pp-hero ind-banner">
-  <img src="${ind.banner.img}" alt="${ind.banner.alt}" width="${ind.banner.w}" height="${ind.banner.h}" loading="eager" decoding="async">
+  <img src="${ind.banner.img}" alt="${ind.banner.alt}" width="${ind.banner.w}" height="${ind.banner.h}" loading="eager" fetchpriority="high" decoding="async">
   <figcaption>${ind.banner.cap}</figcaption>
 </figure>` : ""}
 <section>
@@ -240,7 +272,7 @@ ${ind.banner ? `
       ${ind.processes.map((pr, i) => pr.vid ? `
       <div class="app-row app-minor${i % 2 ? " rev" : ""}">
         <figure class="app-img">
-          <video controls preload="metadata" playsinline poster="${pr.poster}"><source src="${pr.vid}" type="video/mp4">${pr.t}</video>
+          <video controls preload="metadata" playsinline width="640" height="480" poster="${pr.poster}"><source src="${pr.vid}" type="video/mp4">${pr.t}</video>
           <figcaption>${pr.cap}</figcaption>
         </figure>
         <div class="app-txt">
@@ -371,7 +403,7 @@ function postPage(slug) {
       { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` },
       { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE}/blog/` },
       { "@type": "ListItem", position: 3, name: post.title, item: `${BASE}${post.url}` }] },
-    { "@type": "Article", headline: post.title, description: post.desc, datePublished: post.date, dateModified: post.date,
+    { "@type": "Article", headline: post.title, description: post.desc, image: `${BASE}${OG}`, datePublished: `${post.date}T08:00:00+08:00`, dateModified: `${post.date}T08:00:00+08:00`,
       author: { "@id": `${BASE}/#organization` }, publisher: { "@id": `${BASE}/#organization` }, inLanguage: "en", mainEntityOfPage: `${BASE}${post.url}` },
   ] };
   return { jsonld: JSON.stringify(jsonld, null, 2), body: `
@@ -438,8 +470,8 @@ for (const [slug, p] of Object.entries(products)) {
   else body = productPage(p, slug);
   const extra = slug === "dryer-fabric" ? {
     videos: [
-      { "@type": "VideoObject", name: "Anti-static pre-press belt running on an MDF line", description: "Aurora anti-static dryer belt working the pre-press section of an MDF plant (Dieffenbacher-type line).", thumbnailUrl: `${BASE}/qfy-content/uploads/df/hero.jpg`, contentUrl: `${BASE}/qfy-content/uploads/df/prepress.mp4`, uploadDate: "2026-09-10" },
-      { "@type": "VideoObject", name: "4106S silicone-coated dryer belt in operation", description: "Aurora 4106S silicone-coated dryer belt in live MDF board production.", thumbnailUrl: `${BASE}/qfy-content/uploads/df/silicone.jpg`, contentUrl: `${BASE}/qfy-content/uploads/df/silicon.mp4`, uploadDate: "2026-09-10" },
+      { "@type": "VideoObject", name: "Anti-static pre-press belt running on an MDF line", description: "Aurora anti-static dryer belt working the pre-press section of an MDF plant (Dieffenbacher-type line).", thumbnailUrl: `${BASE}/qfy-content/uploads/df/hero.jpg`, contentUrl: `${BASE}/qfy-content/uploads/df/prepress.mp4`, uploadDate: "2026-09-10T08:00:00+08:00" },
+      { "@type": "VideoObject", name: "4106S silicone-coated dryer belt in operation", description: "Aurora 4106S silicone-coated dryer belt in live MDF board production.", thumbnailUrl: `${BASE}/qfy-content/uploads/df/silicone.jpg`, contentUrl: `${BASE}/qfy-content/uploads/df/silicon.mp4`, uploadDate: "2026-09-10T08:00:00+08:00" },
     ]
   } : {};
   write(`${slug}/index.html`, layout({ url: p.url, title: p.title, desc: p.desc, type: "product", jsonld: productJsonld(p, extra), body, activeNav: "products", og: p.banner ? p.banner.url : "" }), p.url);
@@ -450,7 +482,7 @@ write("about/index.html", layout({
   title: "About Us | Filter Fabric Manufacturer | Aurora Filtech",
   desc: "Aurora Filtech: 30+ years weaving filter fabrics and paper machine clothing across 3 factories. In-house chain from yarn extrusion to German Dornier looms.",
   type: "website",
-  og: "/qfy-content/uploads/eq/eq-loom-panorama.jpg",
+  og: "/qfy-content/uploads/eq/eq-hero.jpg",
   jsonld: JSON.stringify({ "@context": "https://schema.org", "@graph": [
     orgNode,
     { "@type": "BreadcrumbList", itemListElement: [
@@ -470,7 +502,7 @@ for (const key of Object.keys(industries)) {
     { "@type": "CollectionPage", name: ind.name, description: ind.desc, url: `${BASE}${ind.url}`, publisher: { "@id": `${BASE}/#organization` } }
   ];
   if (key === "wood-based-panels") {
-    indGraph.push({ "@type": "VideoObject", name: "Anti-static pre-press belt filmed on an MDF line", description: "Aurora anti-static belt working the pre-press section of a Chinese MDF plant (Dieffenbacher-type line).", thumbnailUrl: `${BASE}/qfy-content/uploads/df/as-mono.jpg`, contentUrl: `${BASE}/qfy-content/uploads/df/prepress.mp4`, uploadDate: "2026-09-10" });
+    indGraph.push({ "@type": "VideoObject", name: "Anti-static pre-press belt filmed on an MDF line", description: "Aurora anti-static belt working the pre-press section of a Chinese MDF plant (Dieffenbacher-type line).", thumbnailUrl: `${BASE}/qfy-content/uploads/df/as-mono.jpg`, contentUrl: `${BASE}/qfy-content/uploads/df/prepress.mp4`, uploadDate: "2026-09-10T08:00:00+08:00" });
   }
   write(`${ind.url}index.html`, layout({ url: `${BASE}${ind.url}`, title: ind.title, desc: ind.desc, type: "website",
     og: ind.banner ? ind.banner.img : "",
@@ -538,9 +570,60 @@ write("resources/glossary/index.html", layout({ url: `${BASE}/resources/glossary
     { "@type": "BreadcrumbList", itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` },
       { "@type": "ListItem", position: 2, name: "Filtration Glossary", item: `${BASE}/resources/glossary/` }] },
-    { "@type": "DefinedTermSet", name: "Filtration & Paper Machine Clothing Glossary", url: `${BASE}/resources/glossary/`, publisher: { "@id": `${BASE}/#organization` } }
+    {
+      "@type": "DefinedTermSet",
+      name: "Filtration & Paper Machine Clothing Glossary",
+      url: `${BASE}/resources/glossary/`,
+      publisher: { "@id": `${BASE}/#organization` },
+      hasDefinedTerm: glossary.map(([t, d]) => ({
+        "@type": "DefinedTerm",
+        name: t,
+        description: d.replace(/<[^>]+>/g, "")
+      }))
+    }
   ] }, null, 2),
   body: glossBody }), `${BASE}/resources/glossary/`);
+
+write("llms.txt", `# Aurora Filtech Co., Ltd
+
+> Manufacturer of paper machine clothing (PMC), industrial filter fabrics, spiral fabrics, square mesh belts, dust filter bags and filter cartridges. 30+ years of weaving expertise across 3 factories (German Dornier looms, full in-house chain from monofilament extrusion to finished cloth).
+
+## Core Product Lines
+- [Forming Fabric (Forming Wire)](${BASE}/forming-fabric/): 1-layer to 3-layer SSB anti-hydrolysis polyester forming fabrics for paper machines, nonwoven lines and flexible graphite sheet forming.
+- [Dryer Fabric](${BASE}/dryer-fabric/): Anti-static dryer belts (wool scouring & wood panel forming), 4106S silicone-coated belts, spiral dryer fabrics, square mesh belts and flat-yarn paper dryer fabrics.
+- [Spiral Fabric (Spiral Belt)](${BASE}/spiral-belt/): Open SP-D spiral dryer fabrics (875–1016 CFM) and filled SP-P spiral press filter belts (325–783 CFM) in PET, PPS (~240 °C) and PTFE-added grades.
+- [Polyester Square Mesh](${BASE}/products/square-mesh/): Heat-set plain-weave (1/1) polyester monofilament square mesh (400–2100 µm, up to 1750 CFM) and 40–200 mesh sifting cloth.
+- [Vacuum Filter Fabric](${BASE}/vacuum-fabric/): Horizontal vacuum belt filter, disc filter and drum filter cloths (models 610, 617, 620, 623, 623A, PP MD-series) for FGD gypsum, phosphoric acid and mining concentrates.
+- [Press Filter Fabric](${BASE}/press-fabric/): Monofilament, multifilament and cotton filter press cloths for chamber, membrane and Larox-type vertical tower presses (up to 16 bar).
+- [Press Filter Belt](${BASE}/press-belt/): Woven dewatering belts (models 601, 603, 604, 608, 613, 626, 656 PA nylon, 701) for belt press filters.
+- [Filter Bag](${BASE}/products/filter-bag/): Baghouse dust collector bags in PET, PPS, Nomex, P84 and PTFE membrane.
+- [Filter Cartridge](${BASE}/products/filter-cartridge/): Pleated dust, air, water and oil filter cartridges (anti-static, PTFE membrane, spun-bonded PET, cellulose, PPS/Nomex).
+
+## Industries & Applications
+- [Industries Overview](${BASE}/industries/)
+- [Wood-based Panels (MDF, OSB, Particleboard)](${BASE}/industries/wood-based-panels/)
+- [Wood Panel & Biomass Drying Mesh Belts](${BASE}/industries/wood-based-panels/mesh-belts/)
+- [Wood Flour Sieving Mesh for WPC](${BASE}/industries/wood-flour-sifting/)
+- [Paper & Pulp (Paper Machine Clothing)](${BASE}/industries/paper-and-pulp/)
+- [Mining & Minerals](${BASE}/industries/mining/)
+- [Power Generation & FGD](${BASE}/industries/power-generation-fgd/)
+- [Food & Pharmaceutical](${BASE}/industries/food-and-pharma/)
+- [Nonwovens (Drylaid, Airlaid, Spunlaid, Wetlaid)](${BASE}/industries/nonwovens/)
+
+## Technical Guides & Resources
+- [About Aurora Filtech & In-house Production Chain](${BASE}/about/)
+- [Filtration & PMC Glossary (32 Terms)](${BASE}/resources/glossary/)
+- [Blog & Engineering Guides](${BASE}/blog/)
+- [What Is a Forming Fabric (Forming Wire)?](${BASE}/blog/forming-fabric-guide/)
+- [Spiral Fabric Guide: Dryer Fabric vs Press Belt](${BASE}/blog/spiral-fabric-guide/)
+- [PTFE / Teflon Belt Joint Types Compared](${BASE}/blog/ptfe-belt-joint-types/)
+
+## Contact & RFQ
+- Email: johnson@aurora-filtech.com / aaron@aurora-filtech.com
+- Tel / WhatsApp: +86 152 0611 9266
+- UK Office: 8 Standard Road, London NY10 6EU, United Kingdom
+- China Factory HQ: Room 1103, Guanhe East Rd, Tianning District, Changzhou, China
+`);
 
 // sitemap
 const urls = [`${BASE}/`, `${BASE}/about/`, ...Object.values(products).map(p => p.url),
