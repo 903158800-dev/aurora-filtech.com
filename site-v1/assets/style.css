@@ -223,7 +223,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--gold-soft);borde
   .spec-table td,.spec-table th{white-space:nowrap}
 }
 @media(max-width:640px){
-  .card-cols{grid-template-columns:1fr}.solutions{grid-template-columns:1fr}.hero-stats{flex-wrap:wrap;gap:14px}.ind-strip{grid-template-columns:1fr 1fr}.spec-table{font-size:.8rem}.spec-table td,.spec-table th{padding:8px 8px}}
+  .card-cols{grid-template-columns:1fr}.solutions{grid-template-columns:1fr}.hero-stats{flex-wrap:nowrap;gap:0;margin-top:24px;padding-top:16px}.hero-stats div{flex:1;min-width:0;padding:0 12px}.hero-stats div:first-child{padding-left:0}.hero-stats div:last-child{padding-right:0}.hero-stats b{font-size:1.25rem;line-height:1.15}.hero-stats span{display:block;font-size:.72rem;letter-spacing:.04em;line-height:1.25;margin-top:2px}.ind-strip{grid-template-columns:1fr 1fr}.spec-table{font-size:.8rem}.spec-table td,.spec-table th{padding:8px 8px}}
 
 /* ===== 旗舰产品页版式: 干燥网带 / 真空滤布 ===== */
 .pp-hero{max-width:1180px;margin:48px auto 0;padding:0 24px}
