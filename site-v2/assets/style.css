@@ -173,6 +173,22 @@ label{display:block;font-size:11px;font-weight:700;letter-spacing:.16em;text-tra
 .cta2 .btn{background:#fff;color:var(--accent-deep)}
 .ph-banner-placeholder{border:2px dashed var(--accent);background:var(--accent-wash);color:var(--accent-deep);display:flex;align-items:center;justify-content:center;min-height:170px;font-size:.9rem;font-weight:600;margin:8px 0 10px}
 
+
+/* Google Ads CRO Action Bar & Online Lead Form */
+.cro-bar{margin-top:18px;padding-top:14px;border-top:1px dashed var(--line);display:flex;flex-direction:column;gap:10px}
+.cro-btns{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.cro-btn-pri{display:inline-flex;align-items:center;padding:10px 20px;background:var(--accent);color:#fff !important;font-weight:700;font-size:.86rem;letter-spacing:.04em;text-transform:uppercase;text-decoration:none !important}
+.cro-btn-pri:hover{background:var(--accent-deep)}
+.cro-btn-sec{display:inline-flex;align-items:center;padding:9px 16px;background:var(--panel);border:1.5px solid var(--rule);color:var(--ink) !important;font-weight:700;font-size:.84rem;letter-spacing:.03em;text-transform:uppercase;text-decoration:none !important}
+.cro-btn-sec:hover{background:var(--ink);color:#fff !important}
+.cro-btn-wa{display:inline-flex;align-items:center;padding:9px 16px;background:#EFFAF3;border:1px solid #74C69D;color:#1B4332 !important;font-weight:700;font-size:.84rem;text-decoration:none !important}
+.cro-trust{display:flex;flex-wrap:wrap;gap:16px;font-family:var(--mono);font-size:.78rem;color:var(--mute)}
+.cro-form-status{display:none;margin-top:14px;padding:16px;background:#0F291E;border:1px solid #2D6A4F;color:#D8F3DC;font-size:.88rem}
+.cro-status-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.cro-status-actions a{display:inline-block;padding:8px 14px;font-weight:700;font-size:.82rem;text-decoration:none !important}
+.cro-st-wa{background:#40916C;color:#fff !important}
+.cro-st-mail{background:transparent;border:1px solid #74C69D;color:#D8F3DC !important}
+
 /* footer */
 .foot{background:var(--panel);border-top:2px solid var(--rule)}
 .foot .grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;padding:56px 0 36px}

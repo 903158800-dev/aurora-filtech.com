@@ -27,9 +27,9 @@ const orgNode = {
   name: "Aurora Filtech Co., Ltd", alternateName: "Aurora Filtech", url: `${BASE}/`,
   logo: { "@type": "ImageObject", url: `${BASE}/favicon.svg` },
   description: "Manufacturer of paper machine clothing, filter fabrics, spiral fabrics and mesh belts for paper, wood-based panel, mining, power, food and pharmaceutical industries.",
-  email: "aaron@aurora-filtech.com", telephone: "+8615206119266",
+  email: "johnson@aurora-filtech.com", telephone: "+8615206119266",
   address: [
-    { "@type": "PostalAddress", streetAddress: "8 Standard Road", addressLocality: "London", postalCode: "NY10 6EU", addressCountry: "GB" },
+    { "@type": "PostalAddress", streetAddress: "8 Standard Road", addressLocality: "London", postalCode: "NW10 6EU", addressCountry: "GB" },
     { "@type": "PostalAddress", streetAddress: "Room 1103, Guanhe East Rd, Tianning District", addressLocality: "Changzhou", addressCountry: "CN" }
   ],
   contactPoint: [{ "@type": "ContactPoint", contactType: "sales", email: "johnson@aurora-filtech.com", telephone: "+8615206119266" }]
@@ -143,7 +143,7 @@ const homeBody = `
     <div>
       <span class="kicker">Why Choose Us</span>
       <h2 style="margin-top:12px">Why Choose Us</h2>
-      <p>Aurora Filtech combines 30+ years of expertise with advanced German technology to deliver filtration media that lasts longer and performs better. From proprietary monofilament production to automated joint, we control every step of the process. We also provide OEM/ODM service to help you develop your local business.</p>
+      <p>Aurora Filtech combines 30+ years of expertise with advanced German technology to deliver filtration media that lasts longer and performs better. From in-house monofilament extrusion to automated seaming, we control every step of production. We also provide private-label OEM/ODM manufacturing for regional filtration distributors and equipment builders.</p>
     </div>
     <figure class="why-photo">
       <img src="/qfy-content/uploads/live/peek-yarn.jpg" alt="PEEK monofilament spool, in-house monofilament production for controlled quality and customization" width="700" height="291" loading="lazy" decoding="async">
@@ -200,6 +200,18 @@ function productPage(p, slug) {
     <span class="series-chip">${p.series} — ${p.seriesIntro}</span>
     <h1>${p.h1}</h1>
     <p class="lede">${p.pdesc}</p>
+    <div class="cro-bar">
+      <div class="cro-btns">
+        <a class="cro-btn-pri" href="#rfq" data-prefill="Quote Request">Get 24h Engineering Quote →</a>
+        <a class="cro-btn-sec" href="#rfq" data-prefill="Free Sample Swatch Request">Request Free Sample Swatch</a>
+        <a class="cro-btn-wa" href="https://wa.me/8615206119266?text=Hi%20Aurora%20Filtech%2C%20I%20need%20a%20technical%20quote%20%2F%20sample%20for%20" target="_blank" rel="noopener">💬 WhatsApp Engineer</a>
+      </div>
+      <div class="cro-trust">
+        <span>✓ Direct Factory OEM/ODM</span>
+        <span>✓ Widths up to 6,000 mm</span>
+        <span>✓ CAD / Drawing Match in 24h</span>
+      </div>
+    </div>
   </div>
 </section>
 <section>
@@ -257,6 +269,18 @@ function industryPage(key) {
     <span class="kicker">${ind.kicker}</span>
     <h1 style="margin-top:12px">${ind.name}</h1>
     <p class="lede">${ind.title.split("|")[0].trim()} — fabrics, belts and cloths matched to each stage of the process.</p>
+    <div class="cro-bar">
+      <div class="cro-btns">
+        <a class="cro-btn-pri" href="#rfq" data-prefill="Quote Request">Get 24h Engineering Quote →</a>
+        <a class="cro-btn-sec" href="#rfq" data-prefill="Free Sample Swatch Request">Request Free Sample Swatch</a>
+        <a class="cro-btn-wa" href="https://wa.me/8615206119266?text=Hi%20Aurora%20Filtech%2C%20I%20need%20a%20technical%20quote%20%2F%20sample%20for%20" target="_blank" rel="noopener">💬 WhatsApp Engineer</a>
+      </div>
+      <div class="cro-trust">
+        <span>✓ Direct Factory OEM/ODM</span>
+        <span>✓ Widths up to 6,000 mm</span>
+        <span>✓ CAD / Drawing Match in 24h</span>
+      </div>
+    </div>
   </div>
 </section>
 ${ind.banner ? `
@@ -345,6 +369,18 @@ function appPage(key) {
     <span class="kicker">${ap.kicker}</span>
     <h1 style="margin-top:12px">${ap.name}</h1>
     <p class="lede">${ap.title.split("|")[0].trim()} — mesh and belt selections for this duty.</p>
+    <div class="cro-bar">
+      <div class="cro-btns">
+        <a class="cro-btn-pri" href="#rfq" data-prefill="Quote Request">Get 24h Engineering Quote →</a>
+        <a class="cro-btn-sec" href="#rfq" data-prefill="Free Sample Swatch Request">Request Free Sample Swatch</a>
+        <a class="cro-btn-wa" href="https://wa.me/8615206119266?text=Hi%20Aurora%20Filtech%2C%20I%20need%20a%20technical%20quote%20%2F%20sample%20for%20" target="_blank" rel="noopener">💬 WhatsApp Engineer</a>
+      </div>
+      <div class="cro-trust">
+        <span>✓ Direct Factory OEM/ODM</span>
+        <span>✓ Widths up to 6,000 mm</span>
+        <span>✓ CAD / Drawing Match in 24h</span>
+      </div>
+    </div>
   </div>
 </section>
 <section>
@@ -619,9 +655,9 @@ write("llms.txt", `# Aurora Filtech Co., Ltd
 - [PTFE / Teflon Belt Joint Types Compared](${BASE}/blog/ptfe-belt-joint-types/)
 
 ## Contact & RFQ
-- Email: johnson@aurora-filtech.com / aaron@aurora-filtech.com
+- Email: johnson@aurora-filtech.com
 - Tel / WhatsApp: +86 152 0611 9266
-- UK Office: 8 Standard Road, London NY10 6EU, United Kingdom
+- UK Office: 8 Standard Road, London NW10 6EU, United Kingdom
 - China Factory HQ: Room 1103, Guanhe East Rd, Tianning District, Changzhou, China
 `);
 

@@ -38,7 +38,7 @@ function aboutPage() {
       <div><b>6</b><span>Step in-house chain</span></div>
       <div><b>Global</b><span>Standards</span></div>
     </div>
-    <p>Offices in London (UK) and Changzhou (China) keep engineering support close to both markets — send a drawing to either — the looms answer from the same floor.</p>
+    <p>Offices in London (UK) and Changzhou (China) keep engineering support close to both markets — send your machine drawing to either office — your fabric is engineered and woven directly on our own factory floor.</p>
 
     <h2>Production capability — the in-house chain</h2>
     <p>Most trading companies weave nothing. Aurora weaves everything: yarn production, warping, weaving, heat setting, laser cutting and sewing all sit inside our own plants — which is why a fabric that leaves here has a traceable history at every step, and why we can hold OEM tolerances that outsourced supply chains cannot. This is the chain as your fabric experiences it:</p>

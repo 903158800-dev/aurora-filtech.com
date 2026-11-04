@@ -17,6 +17,18 @@ function dryerPage(p) {
       <span class="series-chip">${p.series} — ${p.seriesIntro}</span>
       <h1>${p.h1}</h1>
       <p class="lede">Four families on one page: anti-static dryer belts for wool scouring and wood panel forming, spiral fabrics for open high-airflow drying, square mesh drying &amp; conveyor belts, and flat-yarn dryer fabrics for paper and nonwoven lines — all factory-tested and seamed to your machine.</p>
+      <div class="cro-bar">
+      <div class="cro-btns">
+        <a class="cro-btn-pri" href="#rfq" data-prefill="Quote Request">Get 24h Engineering Quote →</a>
+        <a class="cro-btn-sec" href="#rfq" data-prefill="Free Sample Swatch Request">Request Free Sample Swatch</a>
+        <a class="cro-btn-wa" href="https://wa.me/8615206119266?text=Hi%20Aurora%20Filtech%2C%20I%20need%20a%20technical%20quote%20%2F%20sample%20for%20" target="_blank" rel="noopener">💬 WhatsApp Engineer</a>
+      </div>
+      <div class="cro-trust">
+        <span>✓ Direct Factory OEM/ODM</span>
+        <span>✓ Widths up to 6,000 mm</span>
+        <span>✓ CAD / Drawing Match in 24h</span>
+      </div>
+    </div>
     </div>
     <nav class="hero-jumps" aria-label="Jump to a product family">
       <span class="hj-label">On this page</span>
@@ -258,6 +270,18 @@ function formingPage(p) {
       <span class="series-chip">${p.series} — ${p.seriesIntro}</span>
       <h1>${p.h1}</h1>
       <p class="lede">One weaving platform, three forming routes: graphite and thermal-sheet forming lines, paper machine forming (the wet end of the paper machine), and nonwoven web formation — anti-hydrolysis polyester monofilament, seamed to your machine.</p>
+      <div class="cro-bar">
+      <div class="cro-btns">
+        <a class="cro-btn-pri" href="#rfq" data-prefill="Quote Request">Get 24h Engineering Quote →</a>
+        <a class="cro-btn-sec" href="#rfq" data-prefill="Free Sample Swatch Request">Request Free Sample Swatch</a>
+        <a class="cro-btn-wa" href="https://wa.me/8615206119266?text=Hi%20Aurora%20Filtech%2C%20I%20need%20a%20technical%20quote%20%2F%20sample%20for%20" target="_blank" rel="noopener">💬 WhatsApp Engineer</a>
+      </div>
+      <div class="cro-trust">
+        <span>✓ Direct Factory OEM/ODM</span>
+        <span>✓ Widths up to 6,000 mm</span>
+        <span>✓ CAD / Drawing Match in 24h</span>
+      </div>
+    </div>
     </div>
     <nav class="hero-jumps" aria-label="Jump to a forming route">
       <span class="hj-label">On this page</span>
@@ -383,6 +407,18 @@ function spiralPage(p) {
       <span class="series-chip">${p.series} — ${p.seriesIntro}</span>
       <h1>${p.h1}</h1>
       <p class="lede">Endless belts of monofilament spirals joined by hinge pins — one weaving platform, two families: open spiral dryer fabrics with no filler yarns (SP-D), and filled spiral press filter belts (SP-P) where 2–5 filler yarns tune the permeability down for filtration.</p>
+      <div class="cro-bar">
+      <div class="cro-btns">
+        <a class="cro-btn-pri" href="#rfq" data-prefill="Quote Request">Get 24h Engineering Quote →</a>
+        <a class="cro-btn-sec" href="#rfq" data-prefill="Free Sample Swatch Request">Request Free Sample Swatch</a>
+        <a class="cro-btn-wa" href="https://wa.me/8615206119266?text=Hi%20Aurora%20Filtech%2C%20I%20need%20a%20technical%20quote%20%2F%20sample%20for%20" target="_blank" rel="noopener">💬 WhatsApp Engineer</a>
+      </div>
+      <div class="cro-trust">
+        <span>✓ Direct Factory OEM/ODM</span>
+        <span>✓ Widths up to 6,000 mm</span>
+        <span>✓ CAD / Drawing Match in 24h</span>
+      </div>
+    </div>
     </div>
     <nav class="hero-jumps" aria-label="Jump to a spiral family">
       <span class="hj-label">On this page</span>
@@ -497,6 +533,18 @@ function vacuumPage(p) {
     <span class="series-chip">${p.series} — ${p.seriesIntro}</span>
     <h1>${p.h1}</h1>
     <p class="lede">Horizontal vacuum belt filter fabrics engineered model by model — from FGD gypsum dewatering to phosphoric acid and mining concentrates, each weave tuned for permeability, release and scraper life.</p>
+      <div class="cro-bar">
+      <div class="cro-btns">
+        <a class="cro-btn-pri" href="#rfq" data-prefill="Quote Request">Get 24h Engineering Quote →</a>
+        <a class="cro-btn-sec" href="#rfq" data-prefill="Free Sample Swatch Request">Request Free Sample Swatch</a>
+        <a class="cro-btn-wa" href="https://wa.me/8615206119266?text=Hi%20Aurora%20Filtech%2C%20I%20need%20a%20technical%20quote%20%2F%20sample%20for%20" target="_blank" rel="noopener">💬 WhatsApp Engineer</a>
+      </div>
+      <div class="cro-trust">
+        <span>✓ Direct Factory OEM/ODM</span>
+        <span>✓ Widths up to 6,000 mm</span>
+        <span>✓ CAD / Drawing Match in 24h</span>
+      </div>
+    </div>
   </div>
 </section>
 

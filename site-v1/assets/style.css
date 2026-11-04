@@ -345,6 +345,27 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--gold-soft);borde
   .model-row,.model-row.rev{grid-template-columns:1fr}.model-row.rev .model-img{order:0}
   .duo-compare{grid-template-columns:1fr}
 }
+
+/* ===== Google Ads CRO Action Bar & Online Lead Form ===== */
+.cro-bar{margin-top:20px;padding-top:16px;border-top:1px dashed var(--line);display:flex;flex-direction:column;gap:10px}
+.cro-btns{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.cro-btn-pri{display:inline-flex;align-items:center;padding:10px 22px;border-radius:999px;background:var(--teal);color:#fff !important;font-weight:700;font-size:.9rem;text-decoration:none !important;box-shadow:0 4px 14px rgba(15,110,102,.2)}
+.cro-btn-pri:hover{background:var(--teal-deep)}
+.cro-btn-sec{display:inline-flex;align-items:center;padding:9px 18px;border-radius:999px;background:var(--surface);border:1.5px solid var(--gold);color:var(--ink) !important;font-weight:700;font-size:.88rem;text-decoration:none !important}
+.cro-btn-sec:hover{background:var(--gold-soft)}
+.cro-btn-wa{display:inline-flex;align-items:center;padding:9px 16px;border-radius:999px;background:#EFFAF3;border:1px solid #95D5B2;color:#1B4332 !important;font-weight:700;font-size:.86rem;text-decoration:none !important}
+.cro-btn-wa:hover{background:#D8F3DC}
+.cro-trust{display:flex;flex-wrap:wrap;gap:16px;font-size:.8rem;font-weight:600;color:var(--ink-soft)}
+.cro-trust span{display:inline-flex;align-items:center;gap:4px}
+.rfq-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:6px}
+.rfq-direct{font-size:.86rem;color:var(--ink-soft)}
+.rfq-direct a{font-weight:700;color:var(--teal-deep)}
+.cro-form-status{display:none;margin-top:16px;padding:16px 20px;border-radius:12px;background:#EFFAF3;border:1px solid #74C69D;color:#1B4332;font-size:.9rem}
+.cro-status-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.cro-status-actions a{display:inline-block;padding:8px 16px;border-radius:999px;font-weight:700;font-size:.84rem;text-decoration:none !important}
+.cro-st-wa{background:#2D6A4F;color:#fff !important}
+.cro-st-mail{background:#fff;border:1px solid #2D6A4F;color:#1B4332 !important}
+
 /* ===== 移动端紧凑排版:缩字号、收行距、减留白 ===== */
 @media(max-width:860px){
   html{font-size:15.5px}

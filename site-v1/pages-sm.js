@@ -9,6 +9,18 @@ function squareMeshPage(p) {
       <span class="series-chip">${p.series} — ${p.seriesIntro}</span>
       <h1>${p.h1}</h1>
       <p class="lede">Polyester monofilament woven 1/1 into precise square openings — heat-set belts and sieve cloth from 400 × 400 µm to 2100 × 2100 µm, up to 1750 CFM, flat and stable to 180 °C.</p>
+      <div class="cro-bar">
+      <div class="cro-btns">
+        <a class="cro-btn-pri" href="#rfq" data-prefill="Quote Request">Get 24h Engineering Quote →</a>
+        <a class="cro-btn-sec" href="#rfq" data-prefill="Free Sample Swatch Request">Request Free Sample Swatch</a>
+        <a class="cro-btn-wa" href="https://wa.me/8615206119266?text=Hi%20Aurora%20Filtech%2C%20I%20need%20a%20technical%20quote%20%2F%20sample%20for%20" target="_blank" rel="noopener">💬 WhatsApp Engineer</a>
+      </div>
+      <div class="cro-trust">
+        <span>✓ Direct Factory OEM/ODM</span>
+        <span>✓ Widths up to 6,000 mm</span>
+        <span>✓ CAD / Drawing Match in 24h</span>
+      </div>
+    </div>
     </div>
     <nav class="hero-jumps" aria-label="Jump to a square mesh topic">
       <span class="hj-label">On this page</span>
@@ -151,6 +163,18 @@ function pressFabricPage(p) {
       <span class="series-chip">${p.series} — ${p.seriesIntro}</span>
       <h1>${p.h1}</h1>
       <p class="lede">Filter cloths for frame press filters, membrane presses and drum, disc or leaf filters — monofilament for clean cake release, multifilament for clear filtrate, woven and finished to your slurry.</p>
+      <div class="cro-bar">
+      <div class="cro-btns">
+        <a class="cro-btn-pri" href="#rfq" data-prefill="Quote Request">Get 24h Engineering Quote →</a>
+        <a class="cro-btn-sec" href="#rfq" data-prefill="Free Sample Swatch Request">Request Free Sample Swatch</a>
+        <a class="cro-btn-wa" href="https://wa.me/8615206119266?text=Hi%20Aurora%20Filtech%2C%20I%20need%20a%20technical%20quote%20%2F%20sample%20for%20" target="_blank" rel="noopener">💬 WhatsApp Engineer</a>
+      </div>
+      <div class="cro-trust">
+        <span>✓ Direct Factory OEM/ODM</span>
+        <span>✓ Widths up to 6,000 mm</span>
+        <span>✓ CAD / Drawing Match in 24h</span>
+      </div>
+    </div>
     </div>
     <nav class="hero-jumps" aria-label="Jump to a press fabric topic">
       <span class="hj-label">On this page</span>
@@ -281,6 +305,18 @@ function pressBeltPage(p) {
       <span class="series-chip">${p.series} — ${p.seriesIntro}</span>
       <h1>${p.h1}</h1>
       <p class="lede">Woven and spiral-link dewatering belts for belt press filters — gravity drainage, wedge and high-pressure pressing zones, with reinforced seams and custom lengths.</p>
+      <div class="cro-bar">
+      <div class="cro-btns">
+        <a class="cro-btn-pri" href="#rfq" data-prefill="Quote Request">Get 24h Engineering Quote →</a>
+        <a class="cro-btn-sec" href="#rfq" data-prefill="Free Sample Swatch Request">Request Free Sample Swatch</a>
+        <a class="cro-btn-wa" href="https://wa.me/8615206119266?text=Hi%20Aurora%20Filtech%2C%20I%20need%20a%20technical%20quote%20%2F%20sample%20for%20" target="_blank" rel="noopener">💬 WhatsApp Engineer</a>
+      </div>
+      <div class="cro-trust">
+        <span>✓ Direct Factory OEM/ODM</span>
+        <span>✓ Widths up to 6,000 mm</span>
+        <span>✓ CAD / Drawing Match in 24h</span>
+      </div>
+    </div>
     </div>
     <nav class="hero-jumps" aria-label="Jump to a press belt topic">
       <span class="hj-label">On this page</span>
@@ -380,6 +416,18 @@ function filterCartridgePage(p) {
       <span class="series-chip">${p.series} — ${p.seriesIntro}</span>
       <h1>${p.h1}</h1>
       <p class="lede">Seven cartridge series for dust collection and process filtration — anti-static, waterproof, flame-retardant, spun-bonded PET, PTFE-membrane PET, cellulose and high-temperature PPS / Nomex.</p>
+      <div class="cro-bar">
+      <div class="cro-btns">
+        <a class="cro-btn-pri" href="#rfq" data-prefill="Quote Request">Get 24h Engineering Quote →</a>
+        <a class="cro-btn-sec" href="#rfq" data-prefill="Free Sample Swatch Request">Request Free Sample Swatch</a>
+        <a class="cro-btn-wa" href="https://wa.me/8615206119266?text=Hi%20Aurora%20Filtech%2C%20I%20need%20a%20technical%20quote%20%2F%20sample%20for%20" target="_blank" rel="noopener">💬 WhatsApp Engineer</a>
+      </div>
+      <div class="cro-trust">
+        <span>✓ Direct Factory OEM/ODM</span>
+        <span>✓ Widths up to 6,000 mm</span>
+        <span>✓ CAD / Drawing Match in 24h</span>
+      </div>
+    </div>
     </div>
     <nav class="hero-jumps" aria-label="Jump to a cartridge series">
       <span class="hj-label">Series</span>

@@ -92,14 +92,24 @@
             </div>
           </div>
         </div>
-        <form action="mailto:johnson@aurora-filtech.com" method="post" enctype="text/plain">
+        <form class="cro-rfq-form" action="https://formsubmit.co/johnson@aurora-filtech.com" method="POST">
+          <input type="hidden" name="_subject" value="New B2B RFQ — Aurora Filtech">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
           <div class="row">
-            <div class="field"><label for="f-company">Company Name *</label><input id="f-company" name="company" required></div>
-            <div class="field"><label for="f-email">Email *</label><input id="f-email" name="email" type="email" required></div>
+            <div class="field"><label for="f-company">Company Name *</label><input id="f-company" name="company" required placeholder="Company or plant name"></div>
+            <div class="field"><label for="f-email">Work Email *</label><input id="f-email" name="email" type="email" required placeholder="name@company.com"></div>
           </div>
-          <div class="field"><label for="f-name">Your Name</label><input id="f-name" name="name"></div>
-          <div class="field"><label for="f-request">Request</label><textarea id="f-request" name="request" rows="5" placeholder="Machine type, product, dimensions, operating temperature..."></textarea></div>
-          <button class="btn btn-grad" type="submit">Send Request</button>
+          <div class="row">
+            <div class="field"><label for="f-name">Your Name &amp; WhatsApp / Tel</label><input id="f-name" name="name" placeholder="Name &amp; phone/WhatsApp"></div>
+            <div class="field"><label for="f-size">Belt / Cloth Dimensions</label><input id="f-size" name="size" placeholder="Width × length (mm) or plate size"></div>
+          </div>
+          <div class="field"><label for="f-request">Technical Specifications / Sample Request</label><textarea id="f-request" name="request" rows="4" placeholder="Machine model, slurry/product, target CFM, operating temperature, or sample swatch request..."></textarea></div>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+            <button class="btn btn-grad" type="submit">Get 24h Engineering Quote →</button>
+            <a href="https://wa.me/8615206119266" target="_blank" rel="noopener" style="font-size:.86rem;font-weight:700;color:var(--teal-dark)">💬 WhatsApp +86 152 0611 9266</a>
+          </div>
+          <div class="cro-form-status" aria-live="polite"></div>
         </form>
       </div>
     </div>
@@ -145,7 +155,7 @@
     </div>
     <div>
       <h3>Contact</h3>
-      <p><a href="mailto:aaron@aurora-filtech.com" style="display:inline">aaron@aurora-filtech.com</a><br>London: 8 Standard Road, NY10 6EU, UK<br>Changzhou: Room 1103, Guanhe East Rd, Tianning District, China<br>Tel: +86 152 0611 9266</p>
+      <p><a href="mailto:johnson@aurora-filtech.com" style="display:inline">johnson@aurora-filtech.com</a><br>London: 8 Standard Road, NW10 6EU, UK<br>Changzhou: Room 1103, Guanhe East Rd, Tianning District, China<br>Tel / WhatsApp: <a href="https://wa.me/8615206119266" target="_blank" rel="noopener" style="display:inline">+86 152 0611 9266</a></p>
     </div>
   </div>
   <div class="wrap base">
@@ -155,6 +165,107 @@
 </footer>
 <script>
 document.querySelector('.burger3').addEventListener('click',function(){document.querySelector('.pillnav .menu').classList.toggle('open')});
+
+(function(){
+  // Auto-update WhatsApp button with current page H1
+  var h1 = document.querySelector('h1');
+  var pageTopic = h1 ? h1.textContent.trim() : document.title.split('|')[0].trim();
+  document.querySelectorAll('.cro-btn-wa').forEach(function(el){
+    el.href = 'https://wa.me/8615206119266?text=' + encodeURIComponent('Hi Aurora Filtech, I am inquiring about: ' + pageTopic + ' (' + window.location.pathname + ')');
+  });
+  // Handle data-prefill buttons (Quote / Sample Swatch)
+  document.querySelectorAll('[data-prefill]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var intent = btn.getAttribute('data-prefill') || 'Quote Request';
+      var prodSelect = document.getElementById('f-product');
+      if (prodSelect) {
+        for (var i = 0; i < prodSelect.options.length; i++) {
+          if (pageTopic.toLowerCase().indexOf(prodSelect.options[i].text.toLowerCase()) !== -1) {
+            prodSelect.selectedIndex = i;
+            break;
+          }
+        }
+      }
+      var reqBox = document.getElementById('f-request');
+      if (reqBox && !reqBox.value) {
+        reqBox.value = '[' + intent + ' — ' + pageTopic + '] ';
+      }
+      setTimeout(function(){
+        var firstInput = document.getElementById('f-company');
+        if (firstInput) firstInput.focus();
+      }, 350);
+    });
+  });
+  // Handle Online RFQ Form Submission + Google Ads Conversion Event
+  var form = document.querySelector('.cro-rfq-form');
+  if (form) {
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var fd = new FormData(form);
+      var data = {};
+      fd.forEach(function(v, k){ data[k] = v; });
+      data.page_url = window.location.href;
+      data.page_topic = pageTopic;
+
+      // Fire Google Ads / GTM / GA4 Conversion Event
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'generate_lead',
+        form_id: 'aurora_rfq_form',
+        page_topic: pageTopic,
+        customer_company: data.company || ''
+      });
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'generate_lead', {
+          event_category: 'B2B_RFQ',
+          event_label: pageTopic
+        });
+      }
+
+      var btn = form.querySelector('button[type="submit"]');
+      var origText = btn ? btn.textContent : 'Send RFQ';
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending Request...'; }
+
+      var summaryLines = [
+        'Company: ' + (data.company || '-'),
+        'Email: ' + (data.email || '-'),
+        'Name: ' + (data.name || '-'),
+        data.customer_type ? ('Role: ' + data.customer_type) : '',
+        data.product ? ('Product: ' + data.product) : ('Page: ' + pageTopic),
+        data.machine ? ('Machine: ' + data.machine) : '',
+        data.size ? ('Dimensions: ' + data.size) : '',
+        data.material ? ('Slurry/Media: ' + data.material) : '',
+        data.temperature ? ('Temp: ' + data.temperature) : '',
+        data.ph ? ('pH: ' + data.ph) : '',
+        'Details: ' + (data.notes || data.request || '-')
+      ].filter(Boolean).join('
+');
+
+      var waUrl = 'https://wa.me/8615206119266?text=' + encodeURIComponent('New RFQ from ' + (data.company || 'Website') + ':
+' + summaryLines);
+      var mailUrl = 'mailto:johnson@aurora-filtech.com?subject=' + encodeURIComponent('RFQ: ' + pageTopic + ' — ' + (data.company || '')) + '&body=' + encodeURIComponent(summaryLines);
+
+      var statusBox = form.querySelector('.cro-form-status');
+      function showSuccess() {
+        if (btn) { btn.disabled = false; btn.textContent = '✓ Quote Request Logged'; }
+        if (statusBox) {
+          statusBox.style.display = 'block';
+          statusBox.innerHTML = '<strong>✓ Your engineering inquiry is ready!</strong> Our team replies within 24 hours. For priority dispatch or to attach drawings/photos immediately, click below:' +
+            '<div class="cro-status-actions">' +
+            '<a class="cro-st-wa" href="' + waUrl + '" target="_blank" rel="noopener">💬 Send Instant WhatsApp (+86 152 0611 9266)</a>' +
+            '<a class="cro-st-mail" href="' + mailUrl + '">✉️ Open Pre-filled Email (johnson@aurora-filtech.com)</a>' +
+            '</div>';
+        }
+      }
+
+      fetch('https://formsubmit.co/ajax/johnson@aurora-filtech.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      }).then(showSuccess).catch(showSuccess);
+    });
+  }
+})();
 </script>
 </body>
 </html>

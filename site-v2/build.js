@@ -12,9 +12,9 @@ const orgNode = {
   name: "Aurora Filtech Co., Ltd", alternateName: "Aurora Filtech", url: `${BASE}/`,
   logo: { "@type": "ImageObject", url: `${BASE}/favicon.svg` },
   description: "Manufacturer of paper machine clothing, filter fabrics, spiral fabrics and mesh belts for paper, wood-based panel, mining, power, food and pharmaceutical industries.",
-  email: "aaron@aurora-filtech.com", telephone: "+8615206119266",
+  email: "johnson@aurora-filtech.com", telephone: "+8615206119266",
   address: [
-    { "@type": "PostalAddress", streetAddress: "8 Standard Road", addressLocality: "London", postalCode: "NY10 6EU", addressCountry: "GB" },
+    { "@type": "PostalAddress", streetAddress: "8 Standard Road", addressLocality: "London", postalCode: "NW10 6EU", addressCountry: "GB" },
     { "@type": "PostalAddress", streetAddress: "Room 1103, Guanhe East Rd, Tianning District", addressLocality: "Changzhou", addressCountry: "CN" }
   ],
   contactPoint: [{ "@type": "ContactPoint", contactType: "sales", email: "johnson@aurora-filtech.com", telephone: "+8615206119266" }]
@@ -82,7 +82,7 @@ const products = [
     paramsData: {"caption": "Aurora dryer fabrics — factory test data (max width 6000 mm)", "head": ["Model", "Warp yarn (mm)", "Weft yarn (mm)", "Warp/Weft dens. (/cm)", "Weave", "Air perm. (CFM)", "Thickness (mm)", "Weight (g/m²)"], "rows": [["12804TK", "PET 0.8/0.65/0.45 anti-static", "PET 0.8", "12.7 / 4.5", "Anti-static", "528", "2.19", "1460"], ["16804K", "PET 0.68/0.64 anti-static", "PET 0.8", "16.6 / 6.9", "Anti-static", "282", "1.84", "1420"], ["611", "PET 0.8 × 0.42 red", "PET 0.8 white", "11 / 5.5", "2/2 twill", "799", "1.25", "896"], ["624", "PET 0.5 white", "PET 0.5 white", "24 / 12", "Double layer", "781", "2.26", "1212"], ["625A", "PET 0.38 × 0.58 red", "PET 0.5 red", "20 / 11.7", "Satin", "427", "1.73", "1050"]]}, paramsSPD: null, paramsSPP: null,
     custom: true,
     related: ["forming-fabric", "spiral-belt"],
-    faqs: [["Why choose an anti-static dryer fabric?", "Anti-static yarns (carbon filament) drain the static charges that build up on high-speed dryers — preventing dust attraction, sheet wrap-ups and shocks to crews, especially on board forming and food drying machines."], ["What is air permeability (CFM) and why does it matter?", "CFM (cubic feet per minute per square foot) measures how easily drying air passes through the fabric. Too open and the sheet loses contact; too tight and the fan works against the fabric. We select CFM per dryer zone, product and temperature."], ["What seam options are available?", "Strong warp loop seams as standard — the seam is usually the first failure point on a dryer fabric — plus pin seams and endless seaming for smooth high-speed running."], ["Can dryer fabrics be used for food drying?", "Yes. We supply food-grade anti-static dryer fabrics for food belt dryers, with food-contact compliant materials."], ["Do you supply fabrics for wood panel drying?", "Yes — belt dryer fabrics for particleboard and OSB lines are a core application. See also our spiral dryer fabrics for open, high-CFM duties."], ["How do I keep dryer fabrics clean?", "Periodic cleaning keeps CFM stable: clogged fabrics raise steam use. Ask us for a cleaning and conditioning schedule for your duty."], ["What is the silicone-coated (4106S) version for?", "4106S coats a single-layer dryer fabric with high-temperature silicone — used in MDF production where the belt must release resin-laden product cleanly. See the video above."], ["What are the joints made of?", "Spiral joints on our anti-static belts are made of PEEK — heat-resistant, hydrolysis-resistant and chemically inert — so the joint outlives the fabric. Steel clipper and endless joints are available on request."], ["Dryer fabric, dryer belt or dryer conveyor fabric — what is the difference?", "The three names cover the same product family. “Dryer fabric” is the paper-industry term; “dryer belt” and “dryer conveyor belt” emphasise the conveying duty on board, food and wool lines. We map every enquiry to the right construction for the machine."], ["What opening sizes do your square mesh belts come in?", "More than 20 heat-set square openings from 200 µm × 200 µm up to 4 mm × 4 mm, woven from polyester monofilament and heat-set for low shrinkage at working temperatures to 180 °C — supplied flat and stable in seamless widths up to 6 m."]],
+    faqs: [["Why choose an anti-static dryer fabric?", "Anti-static yarns (carbon filament) drain the static charges that build up on high-speed dryers — preventing dust attraction, sheet wrap-ups and shocks to crews, especially on board forming and food drying machines."], ["What is air permeability (CFM) and why does it matter?", "CFM (cubic feet per minute per square foot) measures how easily drying air passes through the fabric. Too open and the sheet loses contact; too tight and the fan works against the fabric. We select CFM per dryer zone, product and temperature."], ["What seam options are available?", "Strong warp loop seams as standard — the seam is usually the first failure point on a dryer fabric — plus pin seams and endless seaming for smooth high-speed running."], ["Can dryer fabrics be used for food drying?", "Yes. We supply food-grade anti-static dryer fabrics for food belt dryers, with food-contact compliant materials."], ["Do you supply fabrics for wood panel drying?", "Yes — belt dryer fabrics for particleboard and OSB lines are a core application. See also our spiral dryer fabrics for open, high-CFM duties."], ["How do I keep dryer fabrics clean?", "Periodic cleaning keeps CFM stable: clogged fabrics raise steam use. Ask us for a cleaning and conditioning schedule for your duty."], ["What is the silicone-coated (4106S) version for?", "4106S coats a single-layer dryer fabric with high-temperature silicone — used in MDF production where the belt must release resin-laden product cleanly. See the video above."], ["What are the joints made of?", "Spiral joints on our anti-static belts are made of PEEK — heat-resistant, hydrolysis-resistant and chemically inert — so the joint outlives the fabric. Steel clipper and endless joints are available on request."], ["Dryer fabric, dryer belt or dryer conveyor fabric — what is the difference?", "The three names cover the same product family. “Dryer fabric” is the paper-industry term; “dryer belt” and “dryer conveyor belt” emphasize the conveying duty on board, food and wool lines. We map every enquiry to the right construction for the machine."], ["What opening sizes do your square mesh belts come in?", "More than 20 heat-set square openings from 200 µm × 200 µm up to 4 mm × 4 mm, woven from polyester monofilament and heat-set for low shrinkage at working temperatures to 180 °C — supplied flat and stable in seamless widths up to 6 m."]],
     specs: ["Constructions: anti-static, anti-hydrolysis, heat-resistant", "Seam: strong warp loop seam, pin seam or endless", "Custom widths for every dryer width", "Food-grade options available", "OEM/ODM: available"],
     apps: ["Wood panel board forming and MDF/PB drying lines", "Wool scouring dryers", "Paper machines — drying section", "Food drying machines and belt drying machines", "Square mesh drying, conveying and screening"],
   },
@@ -184,11 +184,11 @@ const products = [
     banner: {"url": "/qfy-content/uploads/live/filterbag-f.jpg", "alt": "Dust filter bags in a baghouse", "caption": "Dust filter bags in a baghouse.", "w": 800, "h": 386, "maxW": 800},
     gallery: [],
     sections: [],
-    paramsData: {"caption": "Aurora BG series — typical media (values to be confirmed per application)", "head": ["Media", "Weight (g/m²)", "Cont. temp (°C)", "Chemistry", "Typical duty"], "rows": [["PET (polyester)", "450–550", "130", "General, dry", "Cement, steel, generic dust"], ["PPS (ryton)", "500–600", "160", "Sulphur / moisture resistant", "Coal-fired power baghouses"], ["Nomex (m-aramid)", "500–600", "180–200", "Dry heat", "Asphalt, cement kiln"], ["PTFE membrane on PPS/PET", "550–650", "160 / 130", "Fine emission limits", "PM limits < 10 mg/Nm³"]]}, paramsSPD: null, paramsSPP: null,
+    paramsData: {"caption": "Aurora BG series — typical media (standard factory test data — custom grades engineered per duty)", "head": ["Media", "Weight (g/m²)", "Cont. temp (°C)", "Chemistry", "Typical duty"], "rows": [["PET (polyester)", "450–550", "130", "General, dry", "Cement, steel, generic dust"], ["PPS (ryton)", "500–600", "160", "Sulfur / moisture resistant", "Coal-fired power baghouses"], ["Nomex (m-aramid)", "500–600", "180–200", "Dry heat", "Asphalt, cement kiln"], ["PTFE membrane on PPS/PET", "550–650", "160 / 130", "Fine emission limits", "PM limits < 10 mg/Nm³"]]}, paramsSPD: null, paramsSPP: null,
     custom: true,
     related: ["products/filter-cartridge", "press-fabric"],
-    faqs: [["Which filter bag material suits a coal-fired power plant?", "PPS felt bags are the standard for coal-fired baghouses, offering sulphur and heat resistance. PTFE-membrane PPS bags are used where finer emission limits apply."], ["How do I select dust collector filter bags?", "Match media to gas temperature, moisture and chemistry first, then to emission limits: PET for dry generic dust, PPS for acidic coal flue gas, Nomex for dry heat, membrane laminates for strict PM limits."], ["Do you make custom bag sizes?", "Yes — every dust filter bag is sewn to your tube sheet diameter and length, with snap-band, flange or ring tops."], ["Are anti-static filter bags available?", "Yes — anti-static felt bags (carbon-scrim / conductive yarn) for explosive dust applications."], ["What is the difference between singed and membrane finish?", "Singed surfaces improve cake release cheaply; PTFE membrane laminates capture fine dust on the surface and serve the strictest emission limits."]],
-    specs: ["Materials: PET, PPS, Nomex, P84, PTFE", "Weights: 350–800 g/m²", "Finish: singed, calendared, PTFE membrane, anti-static", "Sizes: custom to your tube sheet", "Tops: snap-band, flange or ring; triple-stitched seams", "OEM/ODM: available"],
+    faqs: [["Which filter bag material suits a coal-fired power plant?", "PPS felt bags are the standard for coal-fired baghouses, offering sulfur and heat resistance. PTFE-membrane PPS bags are used where finer emission limits apply."], ["How do I select dust collector filter bags?", "Match media to gas temperature, moisture and chemistry first, then to emission limits: PET for dry generic dust, PPS for acidic coal flue gas, Nomex for dry heat, membrane laminates for strict PM limits."], ["Do you make custom bag sizes?", "Yes — every dust filter bag is sewn to your tube sheet diameter and length, with snap-band, flange or ring tops."], ["Are anti-static filter bags available?", "Yes — anti-static felt bags (carbon-scrim / conductive yarn) for explosive dust applications."], ["What is the difference between singed and membrane finish?", "Singed surfaces improve cake release cheaply; PTFE membrane laminates capture fine dust on the surface and serve the strictest emission limits."]],
+    specs: ["Materials: PET, PPS, Nomex, P84, PTFE", "Weights: 350–800 g/m²", "Finish: singed, calendered, PTFE membrane, anti-static", "Sizes: custom to your tube sheet", "Tops: snap-band, flange or ring; triple-stitched seams", "OEM/ODM: available"],
     apps: ["Power plant baghouses — coal-fired and biomass FGD dust collection", "Cement plant bag filters — kiln, raw mill and cement mill dedusting", "Steel, chemical and general industrial dust collection"],
   },
   {
@@ -205,11 +205,11 @@ const products = [
     banner: {"url": "/qfy-content/uploads/live/cartridge-f.jpg", "alt": "Industrial filter cartridges for air, water and oil", "caption": "Industrial filter cartridges for air, water and oil.", "w": 693, "h": 309, "maxW": 693},
     gallery: [{"url": "/qfy-content/uploads/live/cartridge-ef0c498fdcbafdffb7218ce71b4da62a.jpg", "w": 1640, "h": 732, "alt": "Filter cartridge range lined up, from cellulose to PTFE membrane series", "caption": "The Aurora cartridge range — seven series."}, {"url": "/qfy-content/uploads/live/cartridge-0e225dccecd7ce6eca62b7930d9d6964.jpg", "w": 602, "h": 801, "alt": "PTFE membrane coated PET filter cartridge for sub-micron dust", "caption": "PTFE-membrane PET — the flagship, 99.99%+ efficiency."}, {"url": "/qfy-content/uploads/live/cartridge-6cba53c0be68a084572efd4e5139a53b.jpg", "w": 793, "h": 1181, "alt": "Cellulose pleated filter cartridge with wide pleat design", "caption": "Cellulose series — wide pleats, large filtration surface."}],
     sections: [{h:"The series",html:"__UL_START__[\"Anti-static series — conductive ALU coating; 90 °C moist / 120 °C dry\",\"Waterproof and anti-oil series — wet, oily dust at high concentration\",\"Flame-retardant series — EU grade, for welding, cutting, grinding\",\"Spun-bonded PET — galvanized caps, chlorine-rubber gasket\",\"Spun-bonded PET + PTFE membrane — 99.99%+, EPA (PM2.5/MACT/NESHAP)\",\"Cellulose series — wide pleats, turbines and compressors\",\"High-temperature series — PPS (Ryton) / Nomex, to 190 °C\"]__UL_END__"}],
-    paramsData: {"caption": "Aurora CT series — typical media (values to be confirmed per application)", "head": ["Media", "Rating (µm)", "Temp (°C)", "Finish", "Typical duty"], "rows": [["Cellulose / polyester pleated", "1–100", "80 / 130", "Standard", "General dust, intake air"], ["PTFE membrane polyester", "0.5–5 surface", "130", "Water/oil-repellent", "Fine dust, strict emissions"], ["PPS / Nomex pleated", "1–50", "160 / 190", "Standard", "Hot flue gas dust"], ["Water/oil process media", "0.5–50", "per media", "NSF options", "Water & oil systems"]]}, paramsSPD: null, paramsSPP: null,
+    paramsData: {"caption": "Aurora CT series — typical media (standard factory test data — custom grades engineered per duty)", "head": ["Media", "Rating (µm)", "Temp (°C)", "Finish", "Typical duty"], "rows": [["Cellulose / polyester pleated", "1–100", "80 / 130", "Standard", "General dust, intake air"], ["PTFE membrane polyester", "0.5–5 surface", "130", "Water/oil-repellent", "Fine dust, strict emissions"], ["PPS / Nomex pleated", "1–50", "160 / 190", "Standard", "Hot flue gas dust"], ["Water/oil process media", "0.5–50", "per media", "NSF options", "Water & oil systems"]]}, paramsSPD: null, paramsSPP: null,
     custom: true,
     related: ["products/filter-bag", "press-fabric"],
     faqs: [["Which cartridge media suits hot flue gas dust collection?", "PPS and Nomex cartridges handle higher temperatures; PTFE-membrane polyester serves the finest emissions at moderate temperature. We recommend per gas condition."], ["Do cartridges fit standard housings?", "Yes — cartridges are made to standard and custom housing sizes, with matched end caps and gaskets."], ["Are anti-static cartridges available?", "Yes — anti-static series cartridges prevent static discharge in explosive-dust applications."], ["Cartridge or bag — which for my dust collector?", "Cartridges give more filter area in the same housing and suit fine, dry dust; bags handle higher dust loads and heavier duty. Ask us to compare on your loading."]],
-    specs: ["Media: cellulose, polyester, PTFE membrane, PPS, Nomex", "Series: anti-static, water-repellent, oil-repellent finishes", "Ratings from 0.5 to 100 microns", "Sizes: custom to your housing", "End caps: galvanised or stainless steel; gasket options", "OEM/ODM: available"],
+    specs: ["Media: cellulose, polyester, PTFE membrane, PPS, Nomex", "Series: anti-static, water-repellent, oil-repellent finishes", "Ratings from 0.5 to 100 microns", "Sizes: custom to your housing", "End caps: galvanized or stainless steel; gasket options", "OEM/ODM: available"],
     apps: ["Air filtration — dust collector cartridge filters and intake air", "Water filtration — process and circulating water cartridges", "Oil filtration — hydraulic and lubrication oil cartridge filters"],
   },
   {
@@ -418,6 +418,22 @@ label{display:block;font-size:11px;font-weight:700;letter-spacing:.16em;text-tra
 .cta2 .btn{background:#fff;color:var(--accent-deep)}
 .ph-banner-placeholder{border:2px dashed var(--accent);background:var(--accent-wash);color:var(--accent-deep);display:flex;align-items:center;justify-content:center;min-height:170px;font-size:.9rem;font-weight:600;margin:8px 0 10px}
 
+
+/* Google Ads CRO Action Bar & Online Lead Form */
+.cro-bar{margin-top:18px;padding-top:14px;border-top:1px dashed var(--line);display:flex;flex-direction:column;gap:10px}
+.cro-btns{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.cro-btn-pri{display:inline-flex;align-items:center;padding:10px 20px;background:var(--accent);color:#fff !important;font-weight:700;font-size:.86rem;letter-spacing:.04em;text-transform:uppercase;text-decoration:none !important}
+.cro-btn-pri:hover{background:var(--accent-deep)}
+.cro-btn-sec{display:inline-flex;align-items:center;padding:9px 16px;background:var(--panel);border:1.5px solid var(--rule);color:var(--ink) !important;font-weight:700;font-size:.84rem;letter-spacing:.03em;text-transform:uppercase;text-decoration:none !important}
+.cro-btn-sec:hover{background:var(--ink);color:#fff !important}
+.cro-btn-wa{display:inline-flex;align-items:center;padding:9px 16px;background:#EFFAF3;border:1px solid #74C69D;color:#1B4332 !important;font-weight:700;font-size:.84rem;text-decoration:none !important}
+.cro-trust{display:flex;flex-wrap:wrap;gap:16px;font-family:var(--mono);font-size:.78rem;color:var(--mute)}
+.cro-form-status{display:none;margin-top:14px;padding:16px;background:#0F291E;border:1px solid #2D6A4F;color:#D8F3DC;font-size:.88rem}
+.cro-status-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.cro-status-actions a{display:inline-block;padding:8px 14px;font-weight:700;font-size:.82rem;text-decoration:none !important}
+.cro-st-wa{background:#40916C;color:#fff !important}
+.cro-st-mail{background:transparent;border:1px solid #74C69D;color:#D8F3DC !important}
+
 /* footer */
 .foot{background:var(--panel);border-top:2px solid var(--rule)}
 .foot .grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;padding:56px 0 36px}
@@ -528,7 +544,7 @@ ${finalJsonld ? `<script type="application/ld+json">\n${finalJsonld}\n</script>`
 <div class="util">
   <div class="wrap">
     <span>Industrial filter media manufacturer — 3 factories · 30+ years · OEM/ODM</span>
-    <span><a href="mailto:johnson@aurora-filtech.com">johnson@aurora-filtech.com</a> &nbsp;·&nbsp; +86 152 0611 9266</span>
+    <span><a href="mailto:johnson@aurora-filtech.com">johnson@aurora-filtech.com</a> &nbsp;·&nbsp; <a href="https://wa.me/8615206119266" target="_blank" rel="noopener">WhatsApp: +86 152 0611 9266</a></span>
   </div>
 </div>
 <header class="masthead">
@@ -591,7 +607,7 @@ ${finalBody}
     </div>
     <div>
       <h3>Contact</h3>
-      <p><a href="mailto:aaron@aurora-filtech.com" style="display:inline">aaron@aurora-filtech.com</a><br>London: 8 Standard Road, NY10 6EU, UK<br>Changzhou: Room 1103, Guanhe East Rd, Tianning District, China<br>Tel: +86 152 0611 9266</p>
+      <p><a href="mailto:johnson@aurora-filtech.com" style="display:inline">johnson@aurora-filtech.com</a><br>London: 8 Standard Road, NW10 6EU, UK<br>Changzhou: Room 1103, Guanhe East Rd, Tianning District, China<br>Tel / WhatsApp: <a href="https://wa.me/8615206119266" target="_blank" rel="noopener" style="display:inline">+86 152 0611 9266</a></p>
     </div>
   </div>
   <div class="wrap base">
@@ -601,6 +617,105 @@ ${finalBody}
 </footer>
 <script>
 document.querySelector('.burger').addEventListener('click',function(){document.querySelector('.nav2').classList.toggle('open')});
+
+(function(){
+  // Auto-update WhatsApp button with current page H1
+  var h1 = document.querySelector('h1');
+  var pageTopic = h1 ? h1.textContent.trim() : document.title.split('|')[0].trim();
+  document.querySelectorAll('.cro-btn-wa').forEach(function(el){
+    el.href = 'https://wa.me/8615206119266?text=' + encodeURIComponent('Hi Aurora Filtech, I am inquiring about: ' + pageTopic + ' (' + window.location.pathname + ')');
+  });
+  // Handle data-prefill buttons (Quote / Sample Swatch)
+  document.querySelectorAll('[data-prefill]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var intent = btn.getAttribute('data-prefill') || 'Quote Request';
+      var prodSelect = document.getElementById('f-product');
+      if (prodSelect) {
+        for (var i = 0; i < prodSelect.options.length; i++) {
+          if (pageTopic.toLowerCase().indexOf(prodSelect.options[i].text.toLowerCase()) !== -1) {
+            prodSelect.selectedIndex = i;
+            break;
+          }
+        }
+      }
+      var reqBox = document.getElementById('f-request');
+      if (reqBox && !reqBox.value) {
+        reqBox.value = '[' + intent + ' — ' + pageTopic + '] ';
+      }
+      setTimeout(function(){
+        var firstInput = document.getElementById('f-company');
+        if (firstInput) firstInput.focus();
+      }, 350);
+    });
+  });
+  // Handle Online RFQ Form Submission + Google Ads Conversion Event
+  var form = document.querySelector('.cro-rfq-form');
+  if (form) {
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var fd = new FormData(form);
+      var data = {};
+      fd.forEach(function(v, k){ data[k] = v; });
+      data.page_url = window.location.href;
+      data.page_topic = pageTopic;
+
+      // Fire Google Ads / GTM / GA4 Conversion Event
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'generate_lead',
+        form_id: 'aurora_rfq_form',
+        page_topic: pageTopic,
+        customer_company: data.company || ''
+      });
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'generate_lead', {
+          event_category: 'B2B_RFQ',
+          event_label: pageTopic
+        });
+      }
+
+      var btn = form.querySelector('button[type="submit"]');
+      var origText = btn ? btn.textContent : 'Send RFQ';
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending Request...'; }
+
+      var summaryLines = [
+        'Company: ' + (data.company || '-'),
+        'Email: ' + (data.email || '-'),
+        'Name: ' + (data.name || '-'),
+        data.customer_type ? ('Role: ' + data.customer_type) : '',
+        data.product ? ('Product: ' + data.product) : ('Page: ' + pageTopic),
+        data.machine ? ('Machine: ' + data.machine) : '',
+        data.size ? ('Dimensions: ' + data.size) : '',
+        data.material ? ('Slurry/Media: ' + data.material) : '',
+        data.temperature ? ('Temp: ' + data.temperature) : '',
+        data.ph ? ('pH: ' + data.ph) : '',
+        'Details: ' + (data.notes || data.request || '-')
+      ].filter(Boolean).join('\n');
+
+      var waUrl = 'https://wa.me/8615206119266?text=' + encodeURIComponent('New RFQ from ' + (data.company || 'Website') + ':\n' + summaryLines);
+      var mailUrl = 'mailto:johnson@aurora-filtech.com?subject=' + encodeURIComponent('RFQ: ' + pageTopic + ' — ' + (data.company || '')) + '&body=' + encodeURIComponent(summaryLines);
+
+      var statusBox = form.querySelector('.cro-form-status');
+      function showSuccess() {
+        if (btn) { btn.disabled = false; btn.textContent = '✓ Quote Request Logged'; }
+        if (statusBox) {
+          statusBox.style.display = 'block';
+          statusBox.innerHTML = '<strong>✓ Your engineering inquiry is ready!</strong> Our team replies within 24 hours. For priority dispatch or to attach drawings/photos immediately, click below:' +
+            '<div class="cro-status-actions">' +
+            '<a class="cro-st-wa" href="' + waUrl + '" target="_blank" rel="noopener">💬 Send Instant WhatsApp (+86 152 0611 9266)</a>' +
+            '<a class="cro-st-mail" href="' + mailUrl + '">✉️ Open Pre-filled Email (johnson@aurora-filtech.com)</a>' +
+            '</div>';
+        }
+      }
+
+      fetch('https://formsubmit.co/ajax/johnson@aurora-filtech.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      }).then(showSuccess).catch(showSuccess);
+    });
+  }
+})();
 </script>
 </body>
 </html>`;
@@ -616,18 +731,28 @@ const contactSection = `
       <div class="meta">
         <div><b>Email:</b> johnson@aurora-filtech.com</div>
         <div><b>Tel / WhatsApp:</b> +86 152 0611 9266</div>
-        <div><b>UK office:</b> 8 Standard Road, London NY10 6EU, GB</div>
+        <div><b>UK office:</b> 8 Standard Road, London NW10 6EU, GB</div>
         <div><b>China factory:</b> Room 1103, Guanhe East Rd, Tianning District, Changzhou, CN</div>
       </div>
     </div>
-    <form action="mailto:johnson@aurora-filtech.com" method="post" enctype="text/plain">
+    <form class="cro-rfq-form" action="https://formsubmit.co/johnson@aurora-filtech.com" method="POST">
+      <input type="hidden" name="_subject" value="New B2B RFQ — Aurora Filtech">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
       <div class="row">
-        <div class="field"><label for="f-company">Company Name *</label><input id="f-company" name="company" required></div>
-        <div class="field"><label for="f-email">Email *</label><input id="f-email" name="email" type="email" required></div>
+        <div class="field"><label for="f-company">Company Name *</label><input id="f-company" name="company" required placeholder="Company or plant name"></div>
+        <div class="field"><label for="f-email">Work Email *</label><input id="f-email" name="email" type="email" required placeholder="name@company.com"></div>
       </div>
-      <div class="field"><label for="f-name">Your Name</label><input id="f-name" name="name"></div>
-      <div class="field"><label for="f-request">Request</label><textarea id="f-request" name="request" rows="5" placeholder="Machine type, product, dimensions, operating temperature..."></textarea></div>
-      <button class="btn btn-a" type="submit">SEND REQUEST</button>
+      <div class="row">
+        <div class="field"><label for="f-name">Your Name &amp; WhatsApp / Tel</label><input id="f-name" name="name" placeholder="Name &amp; phone/WhatsApp"></div>
+        <div class="field"><label for="f-size">Belt / Cloth Dimensions</label><input id="f-size" name="size" placeholder="Width × length (mm) or plate size"></div>
+      </div>
+      <div class="field"><label for="f-request">Technical Specifications / Sample Request</label><textarea id="f-request" name="request" rows="4" placeholder="Machine model, slurry/product, target CFM, operating temperature, or sample swatch request..."></textarea></div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+        <button class="btn btn-a" type="submit">GET 24H ENGINEERING QUOTE →</button>
+        <a href="https://wa.me/8615206119266" target="_blank" rel="noopener" style="color:#95D5B2;font-size:.85rem;font-weight:700">💬 WhatsApp Engineer (+86 152 0611 9266)</a>
+      </div>
+      <div class="cro-form-status" aria-live="polite"></div>
     </form>
   </div>
 </section>`;
@@ -677,7 +802,7 @@ const homeBody = `
   <div class="plate">
     <span class="label">Industrial Filter Media · 30+ Years</span>
     <h1>Precision engineered <span>filtration.</span></h1>
-    <p class="lede">Experience the next generation of industrial filter media. Designed for extreme durability, maximum efficiency, and zero compromise.</p>
+    <p class="lede">Forming fabrics, anti-static dryer belts, spiral fabrics and filter press cloths — custom-woven on German Dornier looms up to 6,000 mm wide with factory-direct OEM/ODM pricing.</p>
     <div class="cta">
       <a class="btn btn-a" href="#index">VIEW PRODUCT INDEX</a>
       <a class="btn btn-o" href="#contact">GET A QUOTE</a>
@@ -698,7 +823,7 @@ const homeBody = `
       <div>
         <span class="label">Why Choose Us</span>
         <h2>Every step of the process, under our control.</h2>
-        <p>Aurora Filtech combines 30+ years of expertise with advanced German technology to deliver filtration media that lasts longer and performs better. From proprietary monofilament production to automated joint, we control every step of the process. We also provide OEM/ODM service to help you develop your local business.</p>
+        <p>Aurora Filtech combines 30+ years of expertise with advanced German technology to deliver filtration media that lasts longer and performs better. From in-house monofilament extrusion to automated seaming, we control every step of production. We also provide private-label OEM/ODM manufacturing for regional filtration distributors and equipment builders.</p>
       </div>
       <figure class="mono-shot">
         <img src="/qfy-content/uploads/live/peek-yarn.jpg" alt="PEEK monofilament spool, in-house monofilament production for controlled quality and customization" width="700" height="291" loading="lazy" decoding="async">
@@ -710,7 +835,7 @@ const homeBody = `
       <div class="pillar"><i>/02</i><b>German weaving technology</b><span>Advanced looms and finishing for extreme durability.</span></div>
       <div class="pillar"><i>/03</i><b>Automated joints</b><span>Precision seams and endless belts, ready to run.</span></div>
       <div class="pillar"><i>/04</i><b>Full in-house chain</b><span>Yarn to sewn cloth — see <a href="/about/">the production line</a>.</span></div>
-      <div class="pillar"><i>/05</i><b>OEM / ODM</b><span>Custom fabrics and belts to grow your local business.</span></div>
+      <div class="pillar"><i>/05</i><b>OEM / ODM</b><span>Private-label and custom-engineered belts for equipment builders and regional distributors.</span></div>
     </div>
   </div>
 </section>
@@ -803,7 +928,7 @@ function productBody(p) {
 <p>Without filler yarns the spiral structure stays fully open — our 6890 and 9010 weaves measure 875–1016 CFM, so drying air passes through belt and product instead of fighting the belt. Anti-static monofilament versions serve static-prone board forming dryers; PPS versions run around 240 &deg;C long-term.</p>
 ${ptable(p.paramsSPD)}
 <h2 id="fam-spp">SP-P &middot; Spiral press filter belts — filled for filtration</h2>
-<p>Add 2–5 filler yarns inside the spiral loops and the open dryer structure becomes a true filter belt: density rises, air permeability drops from ~1000 to as low as 325 CFM, and fines stay in the product. Round fillers maximise open area; flat fillers give a smoother surface for juice and palm-oil squeezing.</p>
+<p>Add 2–5 filler yarns inside the spiral loops and the open dryer structure becomes a true filter belt: density rises, air permeability drops from ~1000 to as low as 325 CFM, and fines stay in the product. Round fillers maximize open area; flat fillers give a smoother surface for juice and palm-oil squeezing.</p>
 ${ptable(p.paramsSPP)}
 <h2>Special materials series</h2>
 <p>Three specialty lines run on the same spiral platform — chosen by environment, not by duty: hydrolysis-resistant (outstanding resistance for acid and alkaline environments), high-temperature PPS, and PTFE-added non-stick.</p>`;
@@ -1042,13 +1167,13 @@ write("industries/paper-and-pulp/index.html", layout({ url: `${BASE}/industries/
       
       <div class="rowblock">
         <figure class="rowshot">
-          <img src="/qfy-content/uploads/live/pulp-nylon.jpg" alt="PA nylon press mesh for pulp dewatering, the press-ap pulp fabric" width="900" height="675" loading="lazy" decoding="async">
+          <img src="/qfy-content/uploads/live/pulp-nylon.jpg" alt="PA nylon press mesh for pulp dewatering, high-alkali PA66 pulp dewatering mesh" width="900" height="675" loading="lazy" decoding="async">
           <figcaption>PA nylon press mesh for pulp — and vacuum fabrics for washing.</figcaption>
         </figure>
         <div class="rowtxt">
           <h3>Pulp mill filtration</h3>
           
-          <p>Two cloths for the pulp mill: vacuum filter fabrics for disc, drum and belt washing/thickening duties — and our PA nylon press mesh for pulp pressing (the press-ap fabric): nylon outperforms PET on hot alkaline stock, and our proprietary formulation lasts 2× longer than competing cloths.</p>
+          <p>Two cloths for the pulp mill: vacuum filter fabrics for disc, drum and belt washing/thickening duties — and our PA nylon press mesh for pulp pressing (high-alkali PA66 pulp press mesh): nylon outperforms PET on hot alkaline stock, and our proprietary formulation lasts 2× longer than competing cloths.</p>
           <p class="app-links"><a href="/vacuum-fabric/">Vacuum Filter Fabric →</a></p>
         </div>
       </div>
@@ -1403,7 +1528,7 @@ write("about/index.html", layout({ url: `${BASE}/about/`, title: "About Us | Fil
       <div><b>6</b><span>Step in-house chain</span></div>
       <div><b>Global</b><span>Standards</span></div>
     </div>
-    <p>Offices in London (UK) and Changzhou (China) keep engineering support close to both markets — send a drawing to either — the looms answer from the same floor.</p>
+    <p>Offices in London (UK) and Changzhou (China) keep engineering support close to both markets — send your machine drawing to either office — your fabric is engineered and woven directly on our own factory floor.</p>
 
     <h2>Production capability — the in-house chain</h2>
     <p>Most trading companies weave nothing. Aurora weaves everything: yarn production, warping, weaving, heat setting, laser cutting and sewing all sit inside our own plants — which is why a fabric that leaves here has a traceable history at every step, and why we can hold OEM tolerances that outsourced supply chains cannot. This is the chain as your fabric experiences it:</p>
