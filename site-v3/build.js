@@ -524,10 +524,13 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue);ba
 .cro-trust{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;font-size:.8rem;font-weight:600;color:var(--mute)}
 .cro-trust span{display:inline-flex;align-items:center;gap:4px}
 .cro-form-status{display:none;margin-top:16px;padding:16px 20px;border-radius:14px;background:#EFFAF3;border:1px solid #74C69D;color:#1B4332;font-size:.9rem}
+.cro-form-status--warn{background:#FFF8EB;border-color:#F59E0B;color:#78350F}
 .cro-status-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
-.cro-status-actions a{display:inline-block;padding:8px 16px;border-radius:999px;font-weight:700;font-size:.84rem;text-decoration:none !important}
-.cro-st-wa{background:#2D6A4F;color:#fff !important}
-.cro-st-mail{background:#fff;border:1px solid #2D6A4F;color:#1B4332 !important}
+.cro-status-actions a,.cro-status-actions button{display:inline-block;padding:8px 16px;border-radius:999px;font-weight:700;font-size:.84rem;font-family:inherit;text-decoration:none !important;cursor:pointer}
+.cro-st-wa{background:#2D6A4F;color:#fff !important;border:1px solid #2D6A4F}
+.cro-st-mail,.cro-st-copy{background:#fff;border:1px solid #2D6A4F;color:#1B4332 !important}
+.cro-form-status--warn .cro-st-mail,.cro-form-status--warn .cro-st-copy{border-color:#D97706;color:#78350F !important}
+.cro-status-note{margin-top:8px;font-size:.78rem;opacity:.85}
 
 /* Inner page core styles */
 .article3 h2{font-size:1.5rem;font-weight:800;letter-spacing:-.015em;margin:44px 0 16px;display:flex;align-items:center;gap:14px}
@@ -764,7 +767,7 @@ const APP_JS = `(function(){
       var prodSelect = document.getElementById('f-product');
       if (prodSelect) {
         for (var i = 0; i < prodSelect.options.length; i++) {
-          if (pageTopic.toLowerCase().indexOf(prodSelect.options[i].text.toLowerCase()) !== -1) {
+          if (prodSelect.options[i].value && pageTopic.toLowerCase().indexOf(prodSelect.options[i].text.toLowerCase()) !== -1) {
             prodSelect.selectedIndex = i;
             break;
           }
@@ -782,24 +785,21 @@ const APP_JS = `(function(){
   });
   var form = document.querySelector('.cro-rfq-form');
   if (form) {
+    var btn = form.querySelector('button[type="submit"]');
+    var defaultBtnText = btn ? btn.textContent : 'Get 24h Engineering Quote →';
     form.addEventListener('submit', function(e){
       e.preventDefault();
+      if (form.checkValidity && !form.checkValidity()) {
+        if (form.reportValidity) form.reportValidity();
+        return;
+      }
       var fd = new FormData(form);
       var data = {};
-      fd.forEach(function(v, k){ data[k] = v; });
+      fd.forEach(function(v, k){ data[k] = typeof v === 'string' ? v.trim() : v; });
+      if (data._honey) return;
       data.page_url = window.location.href;
       data.page_topic = pageTopic;
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: 'generate_lead',
-        form_id: 'aurora_rfq_form',
-        page_topic: pageTopic,
-        customer_company: data.company || ''
-      });
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', 'generate_lead', { event_category: 'B2B_RFQ', event_label: pageTopic });
-      }
-      var btn = form.querySelector('button[type="submit"]');
+      if (data.email && !data._replyto) data._replyto = data.email;
       if (btn) { btn.disabled = true; btn.textContent = 'Sending Request...'; }
       var summaryLines = [
         'Company: ' + (data.company || '-'),
@@ -812,22 +812,101 @@ const APP_JS = `(function(){
       var waUrl = 'https://wa.me/8615206119266?text=' + encodeURIComponent('New RFQ from ' + (data.company || 'Website') + ':\\n' + summaryLines);
       var mailUrl = 'mailto:johnson@aurora-filtech.com?subject=' + encodeURIComponent('RFQ: ' + pageTopic + ' — ' + (data.company || '')) + '&body=' + encodeURIComponent(summaryLines);
       var statusBox = form.querySelector('.cro-form-status');
-      function showSuccess() {
-        if (btn) { btn.disabled = false; btn.textContent = '✓ Quote Request Logged'; }
-        if (statusBox) {
-          statusBox.style.display = 'block';
-          statusBox.innerHTML = '<strong>✓ Your engineering inquiry is ready!</strong> Our team replies within 24 hours. For priority dispatch or to attach drawings/photos immediately, click below:' +
-            '<div class="cro-status-actions">' +
-            '<a class="cro-st-wa" href="' + waUrl + '" target="_blank" rel="noopener">💬 Send Instant WhatsApp (+86 152 0611 9266)</a>' +
-            '<a class="cro-st-mail" href="' + mailUrl + '">✉️ Open Pre-filled Email (johnson@aurora-filtech.com)</a>' +
-            '</div>';
+      function renderStatus(delivered, reason) {
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = delivered ? '✓ Inquiry Delivered' : defaultBtnText;
+        }
+        if (delivered) {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: 'generate_lead',
+            form_id: 'aurora_rfq_form',
+            page_topic: pageTopic,
+            customer_company: data.company || ''
+          });
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', 'generate_lead', { event_category: 'B2B_RFQ', event_label: pageTopic });
+          }
+        } else if (typeof console !== 'undefined' && console.warn) {
+          console.warn('[Aurora RFQ] Direct email relay did not confirm delivery:', reason);
+        }
+        if (!statusBox) return;
+        statusBox.className = 'cro-form-status ' + (delivered ? 'cro-form-status--ok' : 'cro-form-status--warn');
+        statusBox.style.display = 'block';
+        statusBox.innerHTML = '';
+        var strong = document.createElement('strong');
+        strong.textContent = delivered
+          ? '✓ Inquiry delivered! '
+          : '⚠️ Direct email relay could not confirm delivery. ';
+        statusBox.appendChild(strong);
+        statusBox.appendChild(document.createTextNode(delivered
+          ? 'Our engineers received your request and reply within 24 hours. Need faster response or to send drawings/photos?'
+          : 'Your form data is saved below — click Email, WhatsApp, or Copy Summary so nothing is lost:'));
+        var actions = document.createElement('div');
+        actions.className = 'cro-status-actions';
+        var aWa = document.createElement('a');
+        aWa.className = 'cro-st-wa';
+        aWa.href = waUrl;
+        aWa.target = '_blank';
+        aWa.rel = 'noopener';
+        aWa.textContent = '💬 Send Instant WhatsApp (+86 152 0611 9266)';
+        var aMail = document.createElement('a');
+        aMail.className = 'cro-st-mail';
+        aMail.href = mailUrl;
+        aMail.textContent = '✉️ Open Pre-filled Email (johnson@aurora-filtech.com)';
+        var bCopy = document.createElement('button');
+        bCopy.type = 'button';
+        bCopy.className = 'cro-st-copy';
+        bCopy.textContent = '📋 Copy Inquiry Summary';
+        bCopy.addEventListener('click', function(){
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(summaryLines).then(function(){ bCopy.textContent = '✓ Copied Summary!'; }).catch(function(){ window.prompt('Copy inquiry summary:', summaryLines); });
+          } else {
+            window.prompt('Copy inquiry summary:', summaryLines);
+          }
+        });
+        actions.appendChild(aWa);
+        actions.appendChild(aMail);
+        actions.appendChild(bCopy);
+        statusBox.appendChild(actions);
+        if (!delivered && reason) {
+          var note = document.createElement('div');
+          note.className = 'cro-status-note';
+          note.textContent = 'Relay detail: ' + reason;
+          statusBox.appendChild(note);
         }
       }
-      fetch('https://formsubmit.co/ajax/johnson@aurora-filtech.com', {
+      if (window.location.protocol === 'file:') {
+        renderStatus(false, 'Local file:// preview does not allow HTTP relay');
+        return;
+      }
+      var endpoint = form.getAttribute('data-endpoint') || 'https://formsubmit.co/ajax/johnson@aurora-filtech.com';
+      var ac = typeof AbortController === 'function' ? new AbortController() : null;
+      var timer = ac ? setTimeout(function(){ ac.abort(); }, 10000) : null;
+      fetch(endpoint, {
         method: 'POST',
+        signal: ac ? ac.signal : undefined,
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(data)
-      }).then(showSuccess).catch(showSuccess);
+      }).then(function(res){
+        if (timer) clearTimeout(timer);
+        return res.text().then(function(txt){
+          var json = null;
+          try { json = JSON.parse(txt); } catch (err) {}
+          var ok = res.ok && json && (json.success === true || json.success === 'true' || json.ok === true);
+          if (ok) {
+            renderStatus(true, '');
+          } else {
+            var msg = (json && json.message) ? String(json.message) : ('HTTP ' + res.status);
+            renderStatus(false, msg);
+          }
+        });
+      }).catch(function(err){
+        if (timer) clearTimeout(timer);
+        var msg = (err && err.name === 'AbortError') ? 'Request timed out after 10s' : (err && err.message ? err.message : 'Network error');
+        renderStatus(false, msg);
+      });
     });
   }
 })();`;
@@ -895,13 +974,14 @@ const contactSection = `
           <input type="hidden" name="_subject" value="New B2B RFQ — Aurora Filtech">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
           <div class="row">
             <div class="field"><label for="f-company">Company Name *</label><input id="f-company" name="company" required placeholder="Company or plant name"></div>
             <div class="field"><label for="f-email">Work Email *</label><input id="f-email" name="email" type="email" required placeholder="name@company.com"></div>
           </div>
           <div class="row">
             <div class="field"><label for="f-name">Your Name &amp; WhatsApp / Tel</label><input id="f-name" name="name" placeholder="Name &amp; phone/WhatsApp"></div>
-            <div class="field"><label for="f-product">Product Line</label><select id="f-product" name="product">${products.map(pr => `<option>${pr.name}</option>`).join("")}<option>Other / custom specification</option></select></div>
+            <div class="field"><label for="f-product">Product Line</label><select id="f-product" name="product"><option value="">Select product line (optional)…</option>${products.map(pr => `<option>${pr.name}</option>`).join("")}<option>Other / custom specification</option></select></div>
           </div>
           <div class="field"><label for="f-size">Belt / Cloth Dimensions</label><input id="f-size" name="size" placeholder="Width × length (mm) or plate size"></div>
           <div class="field"><label for="f-request">Technical Specifications / Sample Request</label><textarea id="f-request" name="request" rows="4" placeholder="Machine model, slurry/product, target CFM, operating temperature, or sample swatch request..."></textarea></div>
