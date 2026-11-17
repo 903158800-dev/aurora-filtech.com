@@ -7,17 +7,22 @@ const { posts, glossary } = require("./data-site.js");
 
 const BASE = "https://www.aurora-filtech.com";
 const OUT = __dirname;
+const TODAY = new Date().toISOString().slice(0, 10);
+const minifyCss = s => s.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s*([{:;,}])\s*/g, "$1").replace(/;}/g, "}").replace(/\s+/g, " ").trim();
 const orgNode = {
   "@type": "Organization", "@id": `${BASE}/#organization`,
   name: "Aurora Filtech Co., Ltd", alternateName: "Aurora Filtech", url: `${BASE}/`,
-  logo: { "@type": "ImageObject", url: `${BASE}/favicon.svg` },
+  logo: { "@type": "ImageObject", url: `${BASE}/aurora-logo.png`, width: 192, height: 192 },
+  foundingDate: "1996",
+  areaServed: "Worldwide",
+  knowsAbout: ["Paper Machine Clothing", "Forming Fabrics", "Anti-Static Dryer Fabrics", "Spiral Filter Belts", "Horizontal Vacuum Belt Filter Cloths", "Filter Press Cloths", "Polyester Square Mesh", "Dust Collector Filter Bags"],
   description: "Manufacturer of paper machine clothing, filter fabrics, spiral fabrics and mesh belts for paper, wood-based panel, mining, power, food and pharmaceutical industries.",
   email: "johnson@aurora-filtech.com", telephone: "+8615206119266",
   address: [
     { "@type": "PostalAddress", streetAddress: "8 Standard Road", addressLocality: "London", postalCode: "NW10 6EU", addressCountry: "GB" },
     { "@type": "PostalAddress", streetAddress: "Room 1103, Guanhe East Rd, Tianning District", addressLocality: "Changzhou", addressCountry: "CN" }
   ],
-  contactPoint: [{ "@type": "ContactPoint", contactType: "sales", email: "johnson@aurora-filtech.com", telephone: "+8615206119266" }]
+  contactPoint: [{ "@type": "ContactPoint", contactType: "sales", email: "johnson@aurora-filtech.com", telephone: "+8615206119266", availableLanguage: ["English", "Chinese"] }]
 };
 
 
@@ -88,7 +93,7 @@ const products = [
   },
   {
     slug: "spiral-belt", name: "Spiral Fabric", h1: "Spiral Fabric (Spiral Belt)",
-    title: "Spiral Fabric | Spiral Dryer and Filter Belts | Aurora Filtech",
+    title: "Spiral Fabric & Spiral Belts | PET & PPS | Aurora Filtech",
     desc: "Spiral fabrics in two families — open dryer belts (no filler yarns) and filled press filter belts. PET and PPS monofilament, custom widths. OEM/ODM.",
     card: { h2: "SPIRAL FABRIC", img: "/qfy-content/uploads/sp/sp-pps9010.jpg", w: 1000, h: 750, alt: "PPS spiral fabric belt with pin-joined monofilament spirals for high-temperature drying", caption: "Spiral fabrics (spiral belts) in PET, PPS and PTFE-added grades — with or without filler yarns for dryer, belt press filter and conveying duties.", first: "Spiral fabrics and spiral belts built from PET or PPS monofilament spirals — open high-airflow dryer belts, or dense filled belts for belt press filtration.",
       equipment: ["Belt & tunnel dryers", "Belt press filters", "Washing & conveying lines"], applications: ["Board & food drying", "Sludge dewatering", "High-temperature drying (PPS)"] },
@@ -102,14 +107,14 @@ const products = [
     sections: [],
     paramsData: null, paramsSPD: {"caption": "Aurora SP-D spiral dryer fabrics — factory test data (open, no filler yarns)", "head": ["Model", "Spiral/cross yarn (mm)", "Filler yarns", "Air perm. (CFM)", "Thickness (mm)", "Weight (g/m²)", "Tensile (N/cm)"], "rows": [["6890", "PET 0.68 / 0.90", "None — open", "959–1016", "2.4", "1301", "890"], ["9010", "PET 0.90 / 1.05", "None — open", "875–991", "3.12", "1627", "1300"]]}, paramsSPP: {"caption": "Aurora SP-P spiral press filter belts — factory test data (filler yarns per loop)", "head": ["Model", "Spiral/cross yarn (mm)", "Filler yarns (weft)", "Air perm. (CFM)", "Thickness (mm)", "Weight (g/m²)", "Tensile (N/cm)"], "rows": [["6890T2", "PET 0.68 / 0.90", "×0.8 × 2 round", "741–783", "2.4", "1521", "890"], ["6890T3", "PET 0.68 / 0.90", "×0.7 × 3 round", "633–666", "2.4", "1632", "890"], ["9010T3", "PET 0.90 / 1.05", "×0.9 × 3 round", "675–716", "3.12", "2017", "1300"], ["9010T4", "PET 0.90 / 1.05", "×0.9 × 4 round", "413–441", "3.12", "2147", "1300"], ["9010T5", "PET 0.90 / 1.05", "×0.8 × 5 round", "325–358", "3.12", "2277", "1300"], ["9010TF1", "PET 0.90 / 1.05", "0.65 × 2.0 flat", "741–783", "3.12", "1905", "1300"]]},
     custom: true,
-    related: ["dryer-fabric", "spiral-belt", "blog/spiral-fabric-guide"],
+    related: ["dryer-fabric", "press-belt", "blog/spiral-fabric-guide"],
     faqs: [["What is the difference between a spiral fabric and a woven dryer fabric?", "A spiral fabric is assembled from monofilament spirals joined by hinge pins, giving an open, non-tracking structure with high drainage. A woven dryer fabric is woven from warp and weft yarns and provides a smoother surface. Spiral fabrics are easier to repair on the machine; woven fabrics usually offer higher stability at high speeds. Full comparison in our spiral fabric guide."], ["With or without filler yarns — how do I choose?", "Without fillers you get maximum open area and air flow (drying and conveying). Adding 1–5 filler yarns increases density and lowers permeability — right for filtration duties on belt press filters."], ["Can spiral fabric be used on belt press filters?", "Yes — with filler yarns, spiral fabrics work as filter belts for sludge dewatering, sand washing, juice squeezing and palm oil squeezing. Their open structure drains quickly and releases the filter cake easily."], ["Do you offer PPS spiral fabrics for higher temperatures?", "Yes — PPS monofilament spiral fabrics serve higher-temperature drying applications (long-term duty around 240 °C, verified on request). Tell us your working temperature and we will recommend the right material."], ["Is it called spiral belt or spiral fabric?", "Both are used. Spiral fabric matches our structure best and matches Google image results; spiral belt is a common alias (often for food conveyor spirals). We cover both spellings across this family of pages."], ["Why no filler yarns on a dryer fabric?", "Dryers need air: without filler yarns the spiral structure stays fully open — our 6890 and 9010 weaves measure 875–1016 CFM — so drying air passes through belt and product instead of being blocked."], ["Do you offer anti-static spiral dryer fabrics?", "Yes — anti-static monofilament versions for static-prone board forming dryers."], ["Round or flat filler yarns — which should I choose?", "Round monofilament fillers maximize open area and CFM, keeping channels clear longer — good for heavy drainage. Flat fillers give a smoother contact surface and better fines retention while keeping good permeability."], ["How many filler yarns do I need?", "2–3 fillers for coarse, free-draining duties (sand washing); 3–4 for typical municipal sludge; 5 (or flat fillers) for fine solids and juice/oil squeezing. Measured CFM per model is in our spec table — we match the count to your target."]],
     specs: ["Material: PET (polyester) / PPS monofilament", "Spiral loop sizes: wide range", "Filler yarns: 2–5, round (Ø0.65–0.9 mm) or flat (0.65 × 2.0 mm), to tune permeability", "Edges: sealed, welded or reinforced", "Widths: custom", "OEM/ODM: available"],
     apps: ["Belt press filters — sludge, sand, juice and palm oil (SP-P)", "Dryers — board, paper and food drying (SP-D)", "General conveyor duties — washing, cooling, transporting"],
   },
   {
     slug: "vacuum-fabric", name: "Vacuum Filter Fabric", h1: "Vacuum Filter Fabric (Vacuum Filter Belt)",
-    title: "Vacuum Filter Fabric | FGD and Mining Filtration | Aurora Filtech",
+    title: "Vacuum Filter Fabric | FGD & Mining Cloths | Aurora",
     desc: "Vacuum filter fabrics for vacuum belt filters and vacuum disc filters. Power plant FGD, phosphoric acid and mining filtration. Custom sizes.",
     card: { h2: "VACUUM FILTER FABRIC", img: "/qfy-content/uploads/2019/09/bb3b48e5c553055326e399fcff852e84.jpg", w: 671, h: 386, alt: "Vacuum belt filter with filter fabric for FGD gypsum dewatering", caption: "Vacuum filter fabrics for vacuum belt filters and vacuum disc filters — power plant FGD, phosphoric acid and mining filtration.", first: "Vacuum filter fabrics engineered for vacuum belt filters and vacuum disc filters in demanding dewatering duties.",
       equipment: ["Vacuum belt filter", "Vacuum disc filter"], applications: ["Power plant FGD filtration", "Phosphoric acid filtration", "Mining plant filtration"] },
@@ -130,7 +135,7 @@ const products = [
   },
   {
     slug: "press-fabric", name: "Press Filter Fabric", h1: "Press Filter Fabric (Filter Cloth)",
-    title: "Press Filter Fabric | Frame and Membrane Press | Aurora Filtech",
+    title: "Press Filter Fabric | Filter Press Cloths | Aurora Filtech",
     desc: "Press filter fabrics for frame press filters, membrane presses, drum, disc and leaf filters. Oil, mining, lithium phosphate and sludge dewatering.",
     card: { h2: "PRESS FILTER FABRIC", img: "/qfy-content/uploads/2019/09/d4f377239978d23c7b1098681b945ba0.jpg", w: 671, h: 386, alt: "Frame press filter with press filter fabric for sludge dewatering", caption: "Press filter fabrics for frame press filters, membrane press filters, drum, disc and leaf filters — oil, mining, lithium phosphate filtration and sludge dewatering.", first: "Press filter fabrics for frame press filters, membrane press filters and drum, disc or leaf filters.",
       equipment: ["Frame press filter", "Membrane press filter", "Drum / Disc / Leaf filter"], applications: ["Oil filtration", "Mining filtration", "Lithium phosphate filtration", "Sludge dewatering"] },
@@ -258,16 +263,19 @@ const CSS = `/* Aurora Filtech V3 — Aurora Gradient Theme (1.0 Revised Edition
   --sans:"Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:16.5px;line-height:1.7;-webkit-font-smoothing:antialiased}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:16.5px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:clip}
 a{color:var(--blue);text-decoration:none}
 a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:200;background:var(--ink);color:#fff;padding:10px 18px;font-weight:700;border-radius:0 0 12px 0}
+.skip-link:focus{left:12px;top:12px;text-decoration:none}
 img{display:block;max-width:100%;height:auto}
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
 .g-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 
 /* kicker chip with verified WCAG contrast (5.2:1) */
 .kicker-chip{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-dark);background:rgba(15,168,155,.10);border:1px solid rgba(15,168,155,.25);border-radius:999px;padding:7px 18px}
-.kicker-chip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--grad)}
+.kicker-chip::before{content:"";width:7px;height:7px;flex:none;border-radius:50%;background:var(--grad)}
 
 /* floating glass pill nav */
 .topbar{position:sticky;top:14px;z-index:60;padding:0 24px;margin-top:14px}
@@ -278,11 +286,11 @@ img{display:block;max-width:100%;height:auto}
 .pillnav .menu>a:hover,.pillnav .menu>.pm>a:hover{background:rgba(59,107,245,.10);color:var(--ink);text-decoration:none}
 .pm{position:relative}
 .pm .pop{display:none;position:absolute;top:calc(100% + 10px);right:0;min-width:270px;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:10px}
-.pm:hover .pop{display:block}
+.pm:hover .pop,.pm:focus-within .pop{display:block}
 .pm .pop a{display:block;padding:9px 14px;border-radius:10px;font-size:14px;font-weight:600;color:var(--ink)}
 .pm .pop a:hover{background:rgba(59,107,245,.08);text-decoration:none}
-.pillnav .cta{background:var(--grad);color:#fff;border-radius:999px;padding:9px 20px;font-size:13.5px;font-weight:700}
-.pillnav .cta:hover{filter:brightness(1.06);text-decoration:none}
+.pillnav .menu a.cta{background:var(--grad);color:#fff;border-radius:999px;padding:9px 20px;font-size:13.5px;font-weight:700}
+.pillnav .menu a.cta:hover{filter:brightness(1.06);color:#fff;text-decoration:none}
 .burger3{display:none;margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font:inherit;font-weight:700;cursor:pointer}
 
 /* hero: fluid typography, no overflow on mobile */
@@ -305,7 +313,7 @@ img{display:block;max-width:100%;height:auto}
 .hero3 .stage figure{border-radius:calc(var(--r-lg) - 2px);overflow:hidden;background:#fff;position:relative}
 .hero3 .stage img{width:100%;height:auto;aspect-ratio:2048/820;object-fit:cover}
 .hero3 .stage figcaption{font-size:.86rem;font-weight:600;color:var(--mute);padding:13px 20px;background:#fff;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.hero3 .stage figcaption .badge{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;letter-spacing:.05em;color:var(--blue);background:rgba(59,107,245,.08);padding:4px 12px;border-radius:999px}
+.hero3 .stage figcaption .badge{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;letter-spacing:.05em;color:var(--blue);background:rgba(59,107,245,.08);padding:4px 12px;border-radius:999px;white-space:nowrap}
 
 /* stats pills */
 .hero3 .stats{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:32px}
@@ -336,9 +344,9 @@ img{display:block;max-width:100%;height:auto}
 .feat3 .f b{display:block;font-size:.95rem;color:var(--ink);margin-bottom:2px}
 .feat3 .f span{font-size:.83rem;color:var(--mute);line-height:1.45}
 
-.why-column-right{display:flex;flex-direction:column;gap:14px;justify-content:space-between}
-.why-column-right .shot{border-radius:var(--r-md);overflow:hidden;border:4px solid #fff;box-shadow:var(--shadow-sm);background:#fff}
-.why-column-right .shot img{width:100%;height:210px;object-fit:cover}
+.why-column-right{display:flex;flex-direction:column;gap:14px;height:100%}
+.why-column-right .shot{border-radius:var(--r-md);overflow:hidden;border:4px solid #fff;box-shadow:var(--shadow-sm);background:#fff;flex:1;display:flex;flex-direction:column}
+.why-column-right .shot img{width:100%;flex:1;min-height:220px;height:auto;object-fit:cover}
 .why-column-right .shot figcaption{font-size:.82rem;font-weight:600;color:var(--mute);padding:10px 14px;background:#fff;border-top:1px solid var(--line)}
 .why-kpis{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .kpi-card{background:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,1);border-radius:var(--r-md);padding:16px 18px;box-shadow:var(--shadow-subtle)}
@@ -392,8 +400,8 @@ img{display:block;max-width:100%;height:auto}
 form .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .field{margin-bottom:14px}
 label{display:block;font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
-input,textarea{width:100%;padding:13px 16px;border:1.5px solid var(--line);border-radius:14px;background:#FAFAFC;font:inherit;color:var(--ink);transition:all .15s}
-input:focus,textarea:focus{outline:none;border-color:var(--blue);background:#fff;box-shadow:0 0 0 4px rgba(59,107,245,.12)}
+input,select,textarea{width:100%;padding:13px 16px;border:1.5px solid var(--line);border-radius:14px;background:#FAFAFC;font:inherit;color:var(--ink);transition:all .15s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue);background:#fff;box-shadow:0 0 0 4px rgba(59,107,245,.12)}
 
 /* footer: clean 4-column links without duplicates */
 .foot3{background:#1E2436;color:#A2A8BE;margin-top:20px}
@@ -420,14 +428,17 @@ input:focus,textarea:focus{outline:none;border-color:var(--blue);background:#fff
   .foot3 .grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:660px){
+  .wrap,.article3{padding-left:16px;padding-right:16px}
   .topbar{padding:0 14px;margin-top:10px}
   .pillnav{padding:8px 12px}
   .hero3{padding:48px 0 42px}
   .hero3 h1{font-size:1.85rem;line-height:1.2;margin:16px 0 14px;max-width:100%}
   .hero3 .lede{font-size:1rem}
   .hero3 .stage figcaption{flex-direction:column;align-items:flex-start}
-  .hero3 .stats{flex-direction:column;align-items:center;width:100%}
-  .hero3 .stats .s{width:100%;max-width:280px;justify-content:center}
+  .hero3 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;margin-top:24px}
+  .hero3 .stats .s{flex-direction:column;gap:2px;padding:10px 6px;width:100%;max-width:none;border-radius:16px;justify-content:center}
+  .hero3 .stats b{font-size:1.15rem;line-height:1.15}
+  .hero3 .stats span{font-size:10px;letter-spacing:.04em;text-align:center}
   .trust-strip{flex-direction:column;gap:8px;align-items:center}
   .bento{grid-template-columns:1fr}
   .bcard.wide{grid-column:span 1;flex-direction:column}
@@ -447,48 +458,40 @@ input:focus,textarea:focus{outline:none;border-color:var(--blue);background:#fff
 .hero-stats span{font-size:.84rem;font-weight:700;color:var(--mute);letter-spacing:.04em;text-transform:uppercase}
 @media(max-width:768px){.hero-stats{grid-template-columns:1fr 1fr}}
 
+/* GEO Answer-First Quick-Specs Card */
+.geo-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0 28px}
+.geo-facts>div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:14px 16px;box-shadow:var(--shadow-subtle);min-width:0}
+.geo-facts dt{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:4px}
+.geo-facts dd{font-size:.88rem;font-weight:700;color:var(--ink);line-height:1.4;margin:0}
+@media(max-width:768px){.geo-facts{grid-template-columns:1fr 1fr;gap:10px}}
+
 /* Fix Product Gallery 3-col balance */
 .gal3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:26px 0 34px}
-.gal3 figure{border-radius:var(--r-md);overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow-subtle);transition:transform .2s,box-shadow .2s}
+.gal3 figure{border-radius:var(--r-md);overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow-subtle);transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
 .gal3 figure:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm)}
 .gal3 img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
 .gal3 figcaption{font-size:.82rem;font-weight:600;color:var(--mute);padding:10px 14px;background:#fff;border-top:1px solid var(--line)}
-@media(max-width:768px){.gal3{grid-template-columns:1fr}}
-
-/* Fix Manufacturing Chain on About Page */
-.chain-step{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:26px;margin:22px 0 28px;box-shadow:var(--shadow-subtle)}
-.chain-step-head{display:flex;align-items:center;gap:14px;margin-bottom:10px}
-.chain-num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;background:var(--grad);color:#fff;font-weight:800;font-size:.85rem;flex-shrink:0}
-.chain-step-head h3{font-size:1.2rem;font-weight:800;color:var(--ink);margin:0}
-.chain-subhead{color:var(--blue);font-weight:700;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
-.chain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:16px}
-.chain-grid img{width:100%;height:180px;object-fit:cover;border-radius:var(--r-md);border:1px solid var(--line)}
+@media(max-width:660px){.gal3{grid-template-columns:1fr 1fr;gap:10px}.gal3 figcaption{font-size:.74rem;padding:7px 9px}}
 
 /* Fix Industry Rowblock Process Cards */
 .rowblock{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1.2fr);gap:28px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:24px;margin:18px 0;box-shadow:var(--shadow-subtle)}
+.rowblock>*,.article3>*,.article-main,.p3-head .wrap,.why3 .inner>*,.contact3 .inner>*{min-width:0}
 .rowblock .rowshot{border-radius:var(--r-md);overflow:hidden;border:1px solid var(--line);background:#000}
 .rowblock .rowshot img{width:100%;height:230px;object-fit:cover;display:block}
 .rowblock .rowshot video{width:100%;height:230px;object-fit:cover;display:block}
 .rowblock .rowshot figcaption{font-size:.8rem;font-weight:600;color:var(--mute);padding:8px 12px;background:#fff;border-top:1px solid var(--line)}
 .rowtxt h3{font-size:1.18rem;font-weight:800;color:var(--ink);margin-bottom:6px}
-.rowtxt .apptag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-dark);background:rgba(15,168,155,.1);padding:3px 10px;border-radius:999px;margin-bottom:10px}
 .rowtxt p{font-size:.92rem;color:var(--mute);line-height:1.6;margin-bottom:12px}
-.rowtxt .duty-link{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:.88rem;color:var(--blue);text-decoration:none}
-.rowtxt .duty-link:hover{text-decoration:underline}
 @media(max-width:820px){.rowblock{grid-template-columns:1fr}}
-
-/* OEM compatibility banner */
-.oem-banner{background:linear-gradient(100deg,rgba(15,168,155,.07),rgba(59,107,245,.08));border:1px solid rgba(59,107,245,.2);border-radius:var(--r-md);padding:18px 24px;margin:24px 0;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.oem-banner strong{color:var(--ink);font-weight:800;font-size:.92rem;text-transform:uppercase;letter-spacing:.05em}
-.oem-banner .tags{display:flex;gap:8px;flex-wrap:wrap}
-.oem-banner .tag{background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.82rem;font-weight:700;color:var(--mute)}
 
 /* Sticky Table of Contents for Blog */
 .article-layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:44px;max-width:1200px;margin:0 auto;padding:0 24px 80px;align-items:start}
 .article-main{min-width:0}
 .article-sidebar{position:sticky;top:88px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:22px 24px;box-shadow:var(--shadow-subtle)}
-.article-sidebar h4{font-size:.86rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin-bottom:14px;display:flex;align-items:center;gap:8px}
-.article-sidebar h4::before{content:"";width:4px;height:16px;border-radius:2px;background:var(--grad)}
+.article-sidebar .sidebar-title{font-size:.86rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.article-sidebar .sidebar-title::before{content:"";width:4px;height:16px;border-radius:2px;background:var(--grad)}
+@media(max-width:960px){.article-layout{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms !important;animation-duration:.01ms !important}}
 .toc-list{list-style:none;display:flex;flex-direction:column;gap:8px}
 .toc-list a{display:block;font-size:.85rem;color:var(--mute);text-decoration:none;padding:4px 0;transition:color .15s;line-height:1.4}
 .toc-list a:hover{color:var(--blue);text-decoration:underline}
@@ -609,7 +612,7 @@ function autoJsonld(url, title, desc) {
   const graph = [
     orgNode,
     { "@type": "BreadcrumbList", itemListElement: crumbs },
-    { "@type": pageType, "@id": `${url}#webpage`, url, name: title.split(" | ")[0], description: desc, isPartOf: { "@id": `${BASE}/#website` }, about: { "@id": `${BASE}/#organization` }, inLanguage: "en" }
+    { "@type": pageType, "@id": `${url}#webpage`, url, name: title.split(" | ")[0], description: desc, dateModified: `${TODAY}T08:00:00+08:00`, isPartOf: { "@id": `${BASE}/#website` }, about: { "@id": `${BASE}/#organization` }, inLanguage: "en" }
   ];
   if (pathPart === "/industries/wood-based-panels/") {
     graph.push({
@@ -621,11 +624,12 @@ function autoJsonld(url, title, desc) {
       uploadDate: "2026-09-10T08:00:00+08:00"
     });
   }
-  return JSON.stringify({ "@context": "https://schema.org", "@graph": graph }, null, 2);
+  return JSON.stringify({ "@context": "https://schema.org", "@graph": graph });
 }
 
-function layout({ url, title, desc, type = "website", jsonld = "", noindex = false, body, activeNav = "" }) {
+function layout({ url, title, desc, type = "website", jsonld = "", noindex = false, body, activeNav = "", og = "", preload = "" }) {
   const finalJsonld = jsonld || (!noindex ? autoJsonld(url, title, desc) : "");
+  const ogImg = og ? (og.startsWith("http") ? og : `${BASE}${og}`) : `${BASE}${IMG.og}`;
   let patchedBody = body.replace(/<video(?![^>]*\bwidth=)/g, '<video width="640" height="480"');
   if (!patchedBody.includes('fetchpriority="high"')) {
     patchedBody = patchedBody.replace(/<img\s+([^>]*?)loading="lazy"/, '<img $1loading="eager" fetchpriority="high"');
@@ -638,8 +642,7 @@ function layout({ url, title, desc, type = "website", jsonld = "", noindex = fal
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-${noindex ? '<meta name="robots" content="noindex, follow">\n' : ""}
-<title>${title}</title>
+${noindex ? '<meta name="robots" content="noindex, follow">\n' : ""}<title>${title}</title>
 <meta name="description" content="${desc}">
 <link rel="canonical" href="${url}">
 <meta property="og:site_name" content="Aurora Filtech">
@@ -647,21 +650,24 @@ ${noindex ? '<meta name="robots" content="noindex, follow">\n' : ""}
 <meta property="og:title" content="${title}">
 <meta property="og:description" content="${desc}">
 <meta property="og:url" content="${url}">
-<meta property="og:image" content="https://www.aurora-filtech.com${IMG.og}">
+<meta property="og:image" content="${ogImg}">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${title}">
 <meta name="twitter:description" content="${desc}">
-<meta name="twitter:image" content="https://www.aurora-filtech.com${IMG.og}">
+<meta name="twitter:image" content="${ogImg}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/style.css">
-${finalJsonld ? `<script type="application/ld+json">\n${finalJsonld}\n</script>` : ""}
+<link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+${preload ? `<link rel="preload" as="image" href="${preload}" fetchpriority="high">\n` : ""}<link rel="stylesheet" href="/assets/style.css">
+${finalJsonld ? `<script type="application/ld+json">${finalJsonld}</script>` : ""}
 </head>
 <body>
-<div class="topbar">
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="topbar">
   <nav class="pillnav" aria-label="Main navigation">
     <a class="brand" href="/"><svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0FA89B"/><stop offset=".5" stop-color="#4F7CF7"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient></defs><rect width="64" height="64" rx="18" fill="url(#g3)"/><path d="M12 44c8-2 10-24 20-24s10 22 20 24" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/></svg>Aurora Filtech</a>
-    <button class="burger3" aria-label="Toggle menu">☰ Menu</button>
+    <button class="burger3" type="button" aria-expanded="false" aria-label="Toggle menu">☰ Menu</button>
     <div class="menu">
       <a href="/"${activeNav === "home" ? ' aria-current="page"' : ""}>Home</a>
       <div class="pm">
@@ -675,8 +681,8 @@ ${finalJsonld ? `<script type="application/ld+json">\n${finalJsonld}\n</script>`
       <a class="cta" href="/#contact">Get a Quote</a>
     </div>
   </nav>
-</div>
-<main>
+</header>
+<main id="main">
 ${patchedBody}
 </main>
 <footer class="foot3">
@@ -726,17 +732,32 @@ ${patchedBody}
     <span>Industrial filter fabrics &amp; filter belts manufacturer</span>
   </div>
 </footer>
-<script>
-document.querySelector('.burger3').addEventListener('click',function(){document.querySelector('.pillnav .menu').classList.toggle('open')});
+<script src="/assets/app.js" defer></script>
+</body>
+</html>`;
+}
 
-(function(){
-  // Auto-update WhatsApp button with current page H1
+const APP_JS = `(function(){
+  var burger = document.querySelector('.burger3');
+  var menu = document.querySelector('.pillnav .menu');
+  if (burger && menu) {
+    burger.addEventListener('click', function(){
+      var open = menu.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && menu.classList.contains('open')) {
+        menu.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.focus();
+      }
+    });
+  }
   var h1 = document.querySelector('h1');
   var pageTopic = h1 ? h1.textContent.trim() : document.title.split('|')[0].trim();
   document.querySelectorAll('.cro-btn-wa').forEach(function(el){
     el.href = 'https://wa.me/8615206119266?text=' + encodeURIComponent('Hi Aurora Filtech, I am inquiring about: ' + pageTopic + ' (' + window.location.pathname + ')');
   });
-  // Handle data-prefill buttons (Quote / Sample Swatch)
   document.querySelectorAll('[data-prefill]').forEach(function(btn){
     btn.addEventListener('click', function(){
       var intent = btn.getAttribute('data-prefill') || 'Quote Request';
@@ -759,7 +780,6 @@ document.querySelector('.burger3').addEventListener('click',function(){document.
       }, 350);
     });
   });
-  // Handle Online RFQ Form Submission + Google Ads Conversion Event
   var form = document.querySelector('.cro-rfq-form');
   if (form) {
     form.addEventListener('submit', function(e){
@@ -769,8 +789,6 @@ document.querySelector('.burger3').addEventListener('click',function(){document.
       fd.forEach(function(v, k){ data[k] = v; });
       data.page_url = window.location.href;
       data.page_topic = pageTopic;
-
-      // Fire Google Ads / GTM / GA4 Conversion Event
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: 'generate_lead',
@@ -779,33 +797,20 @@ document.querySelector('.burger3').addEventListener('click',function(){document.
         customer_company: data.company || ''
       });
       if (typeof window.gtag === 'function') {
-        window.gtag('event', 'generate_lead', {
-          event_category: 'B2B_RFQ',
-          event_label: pageTopic
-        });
+        window.gtag('event', 'generate_lead', { event_category: 'B2B_RFQ', event_label: pageTopic });
       }
-
       var btn = form.querySelector('button[type="submit"]');
-      var origText = btn ? btn.textContent : 'Send RFQ';
       if (btn) { btn.disabled = true; btn.textContent = 'Sending Request...'; }
-
       var summaryLines = [
         'Company: ' + (data.company || '-'),
         'Email: ' + (data.email || '-'),
         'Name: ' + (data.name || '-'),
-        data.customer_type ? ('Role: ' + data.customer_type) : '',
         data.product ? ('Product: ' + data.product) : ('Page: ' + pageTopic),
-        data.machine ? ('Machine: ' + data.machine) : '',
         data.size ? ('Dimensions: ' + data.size) : '',
-        data.material ? ('Slurry/Media: ' + data.material) : '',
-        data.temperature ? ('Temp: ' + data.temperature) : '',
-        data.ph ? ('pH: ' + data.ph) : '',
-        'Details: ' + (data.notes || data.request || '-')
-      ].filter(Boolean).join('\n');
-
-      var waUrl = 'https://wa.me/8615206119266?text=' + encodeURIComponent('New RFQ from ' + (data.company || 'Website') + ':\n' + summaryLines);
+        'Details: ' + (data.request || data.notes || '-')
+      ].filter(Boolean).join('\\n');
+      var waUrl = 'https://wa.me/8615206119266?text=' + encodeURIComponent('New RFQ from ' + (data.company || 'Website') + ':\\n' + summaryLines);
       var mailUrl = 'mailto:johnson@aurora-filtech.com?subject=' + encodeURIComponent('RFQ: ' + pageTopic + ' — ' + (data.company || '')) + '&body=' + encodeURIComponent(summaryLines);
-
       var statusBox = form.querySelector('.cro-form-status');
       function showSuccess() {
         if (btn) { btn.disabled = false; btn.textContent = '✓ Quote Request Logged'; }
@@ -818,7 +823,6 @@ document.querySelector('.burger3').addEventListener('click',function(){document.
             '</div>';
         }
       }
-
       fetch('https://formsubmit.co/ajax/johnson@aurora-filtech.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -826,10 +830,35 @@ document.querySelector('.burger3').addEventListener('click',function(){document.
       }).then(showSuccess).catch(showSuccess);
     });
   }
-})();
-</script>
-</body>
-</html>`;
+})();`;
+
+const croBarHtml = `<div class="cro-bar">
+      <div class="cro-btns">
+        <a class="cro-btn-pri" href="#contact" data-prefill="Quote Request">Get 24h Engineering Quote →</a>
+        <a class="cro-btn-sec" href="#contact" data-prefill="Free Sample Swatch Request">Request Free Sample Swatch</a>
+        <a class="cro-btn-wa" href="https://wa.me/8615206119266?text=Hi%20Aurora%20Filtech%2C%20I%20need%20a%20technical%20quote%20%2F%20sample%20for%20" target="_blank" rel="noopener">💬 WhatsApp Engineer</a>
+      </div>
+      <div class="cro-trust">
+        <span>✓ Direct Factory OEM/ODM</span>
+        <span>✓ Widths up to 6,000 mm</span>
+        <span>✓ CAD / Drawing Match in 24h</span>
+      </div>
+    </div>`;
+
+function geoFactsHtml(p) {
+  const specs = p.specs || [];
+  const matSpec = specs.find(s => /yarn|material|constructions|media/i.test(s)) || specs[0] || "PET / PPS / PP / PA66";
+  const seamSpec = specs.find(s => /seam|edges|sizes|lengths/i.test(s)) || "Pin, clipper, PEEK spiral or endless";
+  const capText = ((p.paramsData?.caption || p.paramsSPP?.caption || p.paramsSPD?.caption || "")).match(/6000\s*(?:\/\s*4200\s*)?mm/i) ? "Up to 6,000 mm custom width" : "Custom-engineered widths & plate sizes";
+  const matVal = matSpec.includes(":") ? matSpec.split(":").slice(1).join(":").trim() : matSpec;
+  const seamVal = seamSpec.includes(":") ? seamSpec.split(":").slice(1).join(":").trim() : seamSpec;
+  const appsSample = (p.card && p.card.equipment) ? p.card.equipment.join(", ") : "Dieffenbacher, ANDRITZ, Larox";
+  return `<dl class="geo-facts" aria-label="Engineering quick facts">
+  <div><dt>Product &amp; Aliases</dt><dd>${[p.name, ...(p.altNames || []).slice(0, 2)].join(" / ")}</dd></div>
+  <div><dt>Materials &amp; Weave</dt><dd>${matVal}</dd></div>
+  <div><dt>Width &amp; Seam Options</dt><dd>${capText}; ${seamVal}</dd></div>
+  <div><dt>Equipment Fit &amp; Lead Time</dt><dd>${appsSample} · 24h RFQ reply</dd></div>
+</dl>`;
 }
 
 const contactSection = `
@@ -872,8 +901,9 @@ const contactSection = `
           </div>
           <div class="row">
             <div class="field"><label for="f-name">Your Name &amp; WhatsApp / Tel</label><input id="f-name" name="name" placeholder="Name &amp; phone/WhatsApp"></div>
-            <div class="field"><label for="f-size">Belt / Cloth Dimensions</label><input id="f-size" name="size" placeholder="Width × length (mm) or plate size"></div>
+            <div class="field"><label for="f-product">Product Line</label><select id="f-product" name="product">${products.map(pr => `<option>${pr.name}</option>`).join("")}<option>Other / custom specification</option></select></div>
           </div>
+          <div class="field"><label for="f-size">Belt / Cloth Dimensions</label><input id="f-size" name="size" placeholder="Width × length (mm) or plate size"></div>
           <div class="field"><label for="f-request">Technical Specifications / Sample Request</label><textarea id="f-request" name="request" rows="4" placeholder="Machine model, slurry/product, target CFM, operating temperature, or sample swatch request..."></textarea></div>
           <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
             <button class="btn btn-grad" type="submit">Get 24h Engineering Quote →</button>
@@ -1054,16 +1084,7 @@ function productJsonld(p, faqs) {
     brand: { "@id": `${BASE}/#organization` },
     manufacturer: { "@id": `${BASE}/#organization` },
     category: p.category,
-    keywords: p.keywords,
-    offers: {
-      "@type": "Offer",
-      url: urlOf(p.slug) + "#contact",
-      priceCurrency: "USD",
-      price: "0",
-      availability: "https://schema.org/InStock",
-      itemCondition: "https://schema.org/NewCondition",
-      seller: { "@id": `${BASE}/#organization` }
-    }
+    keywords: p.keywords
   };
   if (p.banner) prod.image = { "@id": urlOf(p.slug) + `#image` };
   if (p.specs && p.specs.length) {
@@ -1083,7 +1104,7 @@ function productJsonld(p, faqs) {
       { "@type": "VideoObject", name: "4106S silicone-coated dryer belt in operation", description: "Aurora 4106S silicone-coated dryer belt in live MDF board production.", thumbnailUrl: `${BASE}/qfy-content/uploads/df/silicone.jpg`, contentUrl: `${BASE}/qfy-content/uploads/df/silicon.mp4`, uploadDate: "2026-09-10T08:00:00+08:00" }
     );
   }
-  return JSON.stringify({ "@context": "https://schema.org", "@graph": graph }, null, 2);
+  return JSON.stringify({ "@context": "https://schema.org", "@graph": graph });
 }
 
 function chipList(list) {
@@ -1119,6 +1140,7 @@ function productBody(p) {
     faqs = [["What is the difference between a spiral fabric and a woven dryer fabric?", "A spiral fabric is assembled from monofilament spirals joined by hinge pins, giving an open, non-tracking structure with high drainage. A woven dryer fabric is woven from warp and weft yarns and provides a smoother surface. Spiral fabrics are easier to repair on the machine; woven fabrics usually offer higher stability at high speeds. Full comparison in our spiral fabric guide."], ["With or without filler yarns — how do I choose?", "Without fillers you get maximum open area and air flow (drying and conveying). Adding 1–5 filler yarns increases density and lowers permeability — right for filtration duties on belt press filters."], ["Can spiral fabric be used on belt press filters?", "Yes — with filler yarns, spiral fabrics work as filter belts for sludge dewatering, sand washing, juice squeezing and palm oil squeezing. Their open structure drains quickly and releases the filter cake easily."], ["Do you offer PPS spiral fabrics for higher temperatures?", "Yes — PPS monofilament spiral fabrics serve higher-temperature drying applications (long-term duty around 240 °C, verified on request). Tell us your working temperature and we will recommend the right material."], ["Is it called spiral belt or spiral fabric?", "Both are used. Spiral fabric matches our structure best and matches Google image results; spiral belt is a common alias (often for food conveyor spirals). We cover both spellings across this family of pages."], ["Why no filler yarns on a dryer fabric?", "Dryers need air: without filler yarns the spiral structure stays fully open — our 6890 and 9010 weaves measure 875–1016 CFM — so drying air passes through belt and product instead of being blocked."], ["Do you offer anti-static spiral dryer fabrics?", "Yes — anti-static monofilament versions for static-prone board forming dryers."], ["Round or flat filler yarns — which should I choose?", "Round monofilament fillers maximize open area and CFM, keeping channels clear longer — good for heavy drainage. Flat fillers give a smoother contact surface and better fines retention while keeping good permeability."], ["How many filler yarns do I need?", "2–3 fillers for coarse, free-draining duties (sand washing); 3–4 for typical municipal sludge; 5 (or flat fillers) for fine solids and juice/oil squeezing. Measured CFM per model is in our spec table — we match the count to your target."]];
     main = `
 <p>Aurora SP spiral fabrics are endless belts built from polyester (PET) or PPS monofilament spirals joined by hinge pins — an open, non-tracking structure with high drainage and easy cleaning, equally at home as dryer belts and as filter belts. Two families cover the two duties: <b>without filler yarns</b> for maximum air flow (up to ~1000 CFM) — the open SP-D models 6890 / 9010 for drying and conveying; or <b>with 2–5 filler yarns</b> for higher density and lower permeability (down to ~325 CFM) — the <a href="#fam-spp">spiral press filter belt (SP-P, below)</a> for belt press filtration. See them alongside the whole <a href="/dryer-fabric/">dryer fabric range</a>.</p>
+${geoFactsHtml(p)}
 <div class="gal3"><figure><img src="/qfy-content/uploads/sp/sp-pet.jpg" alt="Standard PET spiral dryer fabric, monofilament spirals joined by hinge pins" width="1000" height="750" loading="eager" fetchpriority="high" decoding="async"><figcaption>SP-D in standard PET.</figcaption></figure><figure><img src="/qfy-content/uploads/sp/sp-9010-4.jpg" alt="Type 9010-4 spiral fabric with PET filler yarns for press filtration" width="466" height="350" loading="lazy" decoding="async"><figcaption>SP-P — filled 9010-4 construction.</figcaption></figure><figure><img src="/qfy-content/uploads/live/teflon-g2.jpg" alt="Hydrolysis-resistant spiral fabric for acid and alkaline environments, close-up" width="500" height="350" loading="lazy" decoding="async"><figcaption>Special materials — hydrolysis-resistant, PPS, PTFE-added.</figcaption></figure></div>
 <h2>SP-D &middot; Spiral dryer fabrics — hollow, no filler yarns</h2>
 <p>Without filler yarns the spiral structure stays fully open — our 6890 and 9010 weaves measure 875–1016 CFM, so drying air passes through belt and product instead of fighting the belt. Anti-static monofilament versions serve static-prone board forming dryers; PPS versions run around 240 &deg;C long-term.</p>
@@ -1132,6 +1154,7 @@ ${ptable(p.paramsSPP)}
     faqs = p.faqs;
     main = `
 <p>${p.intro || p.card?.first || p.pdesc}</p>
+${geoFactsHtml(p)}
 ${p.banner ? `<div class="shot3" style="max-width:${p.banner.maxW || 1180}px;margin-left:auto;margin-right:auto"><figure><img src="${p.banner.url}" alt="${p.banner.alt}" width="${p.banner.w}" height="${p.banner.h}" loading="eager" fetchpriority="high" decoding="async"><figcaption>${p.banner.caption}</figcaption></figure></div>` : ""}
 ${p.gallery && p.gallery.length ? `<div class="gal3">${p.gallery.map(g => `<figure><img src="${g.url}" alt="${g.alt}" width="${g.w}" height="${g.h}" loading="lazy" decoding="async"><figcaption>${g.caption}</figcaption></figure>`).join("")}</div>` : ""}
 ${(p.sections || []).map(s => `<h2>${s.h}</h2>${parseSecHtml3(s.html)}`).join("")}
@@ -1149,6 +1172,7 @@ ${chipList(p.specs)}`;
     <span class="kicker-chip">${p.name}</span>
     <h1>${p.h1.replace(/\((.*?)\)/, '<span class="g-text">($1)</span>')}</h1>
     <p class="lede">${p.pdesc}</p>
+    ${croBarHtml}
   </div>
 </section>
 <div class="article3">
@@ -1182,23 +1206,29 @@ function write(rel, content) {
   console.log("wrote", rel);
 }
 
-write("assets/style.css", `/* Aurora Filtech V3 — aurora gradient theme */${CSS}`);
+write("assets/style.css", `/* Aurora Filtech V3 */${minifyCss(CSS)}`);
+write("assets/app.js", APP_JS);
 write("index.html", layout({
   url: `${BASE}/`,
   title: "Aurora Filtech | Industrial Filter Fabrics and Filter Belts",
   desc: "Manufacturer of forming fabrics, dryer fabrics, press filter fabrics, vacuum filter fabrics, filter bags and cartridges. 30+ years, 3 factories, OEM/ODM.",
   type: "website",
-  jsonld: JSON.stringify(homeJsonld, null, 2),
+  og: IMG.h1,
+  preload: IMG.h1,
+  jsonld: JSON.stringify(homeJsonld),
   body: homeBody, activeNav: "home"
 }));
 
 for (const p of products) {
   const faqs = p.slug === "spiral-belt" ? null : p.faqs;
+  const prodImg = p.banner ? p.banner.url : (p.card ? p.card.img : "");
   write(`${p.slug}/index.html`, layout({
     url: urlOf(p.slug),
     title: p.title,
     desc: p.desc,
     type: "product",
+    og: prodImg,
+    preload: p.banner ? p.banner.url : "",
     jsonld: productJsonld(p, faqs),
     body: productBody(p), activeNav: "products"
   }));
@@ -1206,8 +1236,8 @@ for (const p of products) {
 
 // ---------- 内容移植新增页面（正文提取自生产版, 版式为本方案组件） ----------
 write("industries/index.html", layout({ url: `${BASE}/industries/`, title: "Industries We Serve | Industrial Filter Fabrics | Aurora", desc: "Industrial filter fabrics, dryer belts and forming wires by industry: wood-based panels, paper & pulp, mining, power generation FGD, food, pharma & nonwovens.", type: "website", body: `<section class="p3-head"><div class="wrap"><nav class="crumbs"><a href="/">Home</a> › <span>Industries</span></nav><h1>Industries We Serve</h1><p class="lede">Fabrics matched to each stage of the process.</p></div></section><div class="wrap article3"><ul class="apps3"><li><a href="/industries/wood-based-panels/">Wood-based Panels</a> (<a href="/industries/wood-based-panels/mesh-belts/">Wood Panel Mesh Belts</a>)</li><li><a href="/industries/wood-flour-sifting/">Wood Flour Sifting</a></li><li><a href="/industries/paper-and-pulp/">Paper & Pulp</a></li><li><a href="/industries/mining/">Mining & Minerals</a></li><li><a href="/industries/power-generation-fgd/">Power Generation & FGD</a></li><li><a href="/industries/food-and-pharma/">Food & Pharmaceutical</a></li><li><a href="/industries/nonwovens/">Nonwovens</a></li></ul></div>${contactSection}`, activeNav: "industries" }));
-write("industries/wood-based-panels/index.html", layout({ url: `${BASE}/industries/wood-based-panels/`, title: "Wood-based Panel Belts | MDF, OSB & Particleboard | Aurora", desc: "Forming fabrics, dryer fabrics, spiral dryer belts and square mesh belts for MDF, OSB and particleboard lines. Dieffenbacher / Siempelkamp type plants.", type: "website", body: `
-<section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/industries/">Industries</a> › <span>Wood Based Panels</span></nav><h1>Wood-based Panel Belts</h1></div></section>
+write("industries/wood-based-panels/index.html", layout({ url: `${BASE}/industries/wood-based-panels/`, title: "Wood-based Panel Belts | MDF, OSB & Particleboard | Aurora", desc: "Forming fabrics, dryer fabrics, spiral dryer belts and square mesh belts for MDF, OSB and particleboard lines. Dieffenbacher / Siempelkamp type plants.", type: "website", og: "/qfy-content/uploads/df/hero.jpg", body: `
+<section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/industries/">Industries</a> › <span>Wood Based Panels</span></nav><h1>Wood-based Panel Belts</h1>${croBarHtml}</div></section>
 <div class="wrap article3">
 <p>From the forming line to the press outfeed, every deck of an MDF, OSB or particleboard line runs on woven and spiral fabrics. Aurora supplies the belts that matter at each stage — forming and pre-press, the drying decks, the biomass dryers — cut to the common plant platforms.</p>
     <h2>By process stage</h2>
@@ -1297,8 +1327,8 @@ write("industries/wood-based-panels/index.html", layout({ url: `${BASE}/industri
       <div class="related-grid"><a href="/forming-fabric/">Forming Fabric →</a><a href="/dryer-fabric/">Dryer Fabric →</a><a href="/spiral-belt/">Spiral Fabric →</a><a href="/products/square-mesh/">Polyester Square Mesh →</a><a href="/industries/wood-based-panels/mesh-belts/">Wood Panel Mesh Belts →</a><a href="/industries/wood-flour-sifting/">Wood Flour Sifting →</a></div>
     </div>
 </div>${contactSection}`, activeNav: "industries" }));
-write("industries/paper-and-pulp/index.html", layout({ url: `${BASE}/industries/paper-and-pulp/`, title: "Paper Machine Clothing | Forming, Press & Dryer Fabrics", desc: "Paper machine clothing for paper mills: forming fabrics (forming wire), dryer fabrics and spiral fabrics. Packaging, printing, tissue and nonwovens.", type: "website", body: `
-<section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/industries/">Industries</a> › <span>Paper And Pulp</span></nav><h1>Paper Machine Clothing</h1></div></section>
+write("industries/paper-and-pulp/index.html", layout({ url: `${BASE}/industries/paper-and-pulp/`, title: "Paper Machine Clothing | Forming, Press & Dryer Fabrics", desc: "Paper machine clothing for paper mills: forming fabrics (forming wire), dryer fabrics and spiral fabrics. Packaging, printing, tissue and nonwovens.", type: "website", og: "/qfy-content/uploads/live/forming-g1.jpg", body: `
+<section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/industries/">Industries</a> › <span>Paper And Pulp</span></nav><h1>Paper Machine Clothing</h1>${croBarHtml}</div></section>
 <div class="wrap article3">
 <p>Paper machine clothing is our founding trade. Aurora supplies the full wet-to-dry fabric line — forming fabrics (the forming wire of the old bronze era), dryer fabrics with anti-static yarns, and spiral fabrics for dryer and press duties — to paper mills and nonwovens producers.</p>
     <h2>By process stage</h2>
@@ -1375,8 +1405,8 @@ write("industries/paper-and-pulp/index.html", layout({ url: `${BASE}/industries/
       <div class="related-grid"><a href="/forming-fabric/">Forming Fabric →</a><a href="/dryer-fabric/">Dryer Fabric →</a><a href="/spiral-belt/">Spiral Fabric →</a><a href="/vacuum-fabric/">Vacuum Filter Fabric →</a></div>
     </div>
 </div>${contactSection}`, activeNav: "industries" }));
-write("industries/mining/index.html", layout({ url: `${BASE}/industries/mining/`, title: "Mining Filtration Fabrics | Dewatering & Tailings | Aurora", desc: "Filter fabrics for mining: vacuum filter fabrics, press filter cloths and spiral press belts for iron ore, copper, lithium and non-metallic minerals.", type: "website", body: `
-<section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/industries/">Industries</a> › <span>Mining</span></nav><h1>Mining Filtration Fabrics</h1></div></section>
+write("industries/mining/index.html", layout({ url: `${BASE}/industries/mining/`, title: "Mining Filtration Fabrics | Dewatering & Tailings | Aurora", desc: "Filter fabrics for mining: vacuum filter fabrics, press filter cloths and spiral press belts for iron ore, copper, lithium and non-metallic minerals.", type: "website", og: "/qfy-content/uploads/pf/pf-disc.jpg", body: `
+<section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/industries/">Industries</a> › <span>Mining</span></nav><h1>Mining Filtration Fabrics</h1>${croBarHtml}</div></section>
 <div class="wrap article3">
 <p>Mineral processing runs on filter area. Aurora supplies vacuum filter fabrics for horizontal belt, disc and drum filters (ANDRITZ / Dorr-Oliver type platforms among them), press filter cloths for frame and membrane presses, and spiral press filter belts for belt-press dewatering — across iron ore, copper, lithium and industrial minerals.</p>
     <h2>By process stage</h2>
@@ -1445,8 +1475,8 @@ write("industries/mining/index.html", layout({ url: `${BASE}/industries/mining/`
       <div class="related-grid"><a href="/vacuum-fabric/">Vacuum Filter Fabric →</a><a href="/press-fabric/">Press Filter Fabric →</a><a href="/spiral-belt/">Spiral Fabric →</a><a href="/products/filter-bag/">Filter Bag →</a></div>
     </div>
 </div>${contactSection}`, activeNav: "industries" }));
-write("industries/power-generation-fgd/index.html", layout({ url: `${BASE}/industries/power-generation-fgd/`, title: "FGD Filtration & Baghouse Media | Power Plants | Aurora Filtech", desc: "FGD gypsum dewatering fabrics, sludge dewatering belts and PPS dust filter bags for coal-fired and biomass power plants.", type: "website", body: `
-<section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/industries/">Industries</a> › <span>Power Generation Fgd</span></nav><h1>FGD Filtration & Baghouse Media</h1></div></section>
+write("industries/power-generation-fgd/index.html", layout({ url: `${BASE}/industries/power-generation-fgd/`, title: "FGD Filtration & Baghouse Media | Aurora Filtech", desc: "FGD gypsum dewatering fabrics, sludge dewatering belts and PPS dust filter bags for coal-fired and biomass power plants.", type: "website", og: "/qfy-content/uploads/vf/m623.jpg", body: `
+<section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/industries/">Industries</a> › <span>Power Generation Fgd</span></nav><h1>FGD Filtration & Baghouse Media</h1>${croBarHtml}</div></section>
 <div class="wrap article3">
 <p>A power plant filters at both ends of the boiler: flue gas through the baghouse, and gypsum / sludge through the vacuum and press filters. Aurora supplies both — PPS dust bags for the baghouse, and the 617 / 623 vacuum fabric pair for limestone-gypsum FGD dewatering.</p>
     <h2>By process stage</h2>
@@ -1499,8 +1529,8 @@ write("industries/power-generation-fgd/index.html", layout({ url: `${BASE}/indus
       <div class="related-grid"><a href="/vacuum-fabric/">Vacuum Filter Fabric →</a><a href="/products/filter-bag/">Filter Bag →</a><a href="/press-belt/">Press Filter Belt →</a><a href="/products/filter-cartridge/">Filter Cartridge →</a></div>
     </div>
 </div>${contactSection}`, activeNav: "industries" }));
-write("industries/food-and-pharma/index.html", layout({ url: `${BASE}/industries/food-and-pharma/`, title: "Food & Pharma Filtration and Drying Belts | Aurora Filtech", desc: "Food-grade dryer fabrics, PTFE (teflon) belts for vacuum dryers, spiral belts for juice and palm oil pressing. Food-contact materials.", type: "website", body: `
-<section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/industries/">Industries</a> › <span>Food And Pharma</span></nav><h1>Food & Pharma Filtration and Drying Belts</h1></div></section>
+write("industries/food-and-pharma/index.html", layout({ url: `${BASE}/industries/food-and-pharma/`, title: "Food & Pharma Filtration and Drying Belts | Aurora Filtech", desc: "Food-grade dryer fabrics, PTFE (teflon) belts for vacuum dryers, spiral belts for juice and palm oil pressing. Food-contact materials.", type: "website", og: "/qfy-content/uploads/df/sq-white.jpg", body: `
+<section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/industries/">Industries</a> › <span>Food And Pharma</span></nav><h1>Food & Pharma Filtration and Drying Belts</h1>${croBarHtml}</div></section>
 <div class="wrap article3">
 <p>Food and pharma lines need belts that release cleanly and fabrics that meet the standards. Aurora supplies food-grade square mesh drying conveyors, anti-static dryer fabrics for food belt dryers, non-stick PTFE belts for vacuum belt dryers (liquid medicine, food pastes) and noodle drying lines, plus spiral press belts for juice and palm-oil pressing.</p>
     <h2>By process stage</h2>
@@ -1563,11 +1593,11 @@ write("industries/food-and-pharma/index.html", layout({ url: `${BASE}/industries
     <div class="oem-note"><strong>Platform note.</strong> Food-contact compliant materials on request; document pack available.</div>
     <div class="related">
       <h2>Products for this industry</h2>
-      <div class="related-grid"><a href="/spiral-belt/">Spiral Fabric →</a><a href="/dryer-fabric/">Dryer Fabric →</a><a href="/spiral-belt/">Spiral Fabric →</a><a href="/products/square-mesh/">Polyester Square Mesh →</a></div>
+      <div class="related-grid"><a href="/spiral-belt/">Spiral Fabric →</a><a href="/dryer-fabric/">Dryer Fabric →</a><a href="/press-belt/">Press Filter Belt →</a><a href="/products/square-mesh/">Polyester Square Mesh →</a></div>
     </div>
 </div>${contactSection}`, activeNav: "industries" }));
-write("industries/nonwovens/index.html", layout({ url: `${BASE}/industries/nonwovens/`, title: "Nonwoven Forming Belts & Conveyor Meshes | Aurora Filtech", desc: "Forming belts and conveyor meshes for nonwoven production — drylaid, airlaid, spunlaid (spunbond & meltblown) and wetlaid. Polyester, PPS and stainless steel.", type: "website", body: `
-<section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/industries/">Industries</a> › <span>Nonwovens</span></nav><h1>Nonwoven Forming Belts & Conveyor Meshes</h1></div></section>
+write("industries/nonwovens/index.html", layout({ url: `${BASE}/industries/nonwovens/`, title: "Nonwoven Forming Belts & Conveyor Meshes | Aurora Filtech", desc: "Forming belts and conveyor meshes for nonwoven production — drylaid, airlaid, spunlaid (spunbond & meltblown) and wetlaid. Polyester, PPS and stainless steel.", type: "website", og: "/qfy-content/uploads/df/single-flat.jpg", body: `
+<section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/industries/">Industries</a> › <span>Nonwovens</span></nav><h1>Nonwoven Forming Belts & Conveyor Meshes</h1>${croBarHtml}</div></section>
 <div class="wrap article3">
 <p>Every nonwoven starts as a web laid on a forming belt, and is consolidated in a second step — hydroentanglement (spunlace), needle punch or thermal bonding. The route differs; the belt is the constant. Aurora weaves the forming belts and conveyor meshes for all four web-formation routes — drylaid, airlaid, spunlaid and wetlaid — plus the dryer fabrics downstream. Anti-static, quick-draining, fiber-retaining, in polyester, PPS or stainless steel.</p>
     <h2>By process stage</h2>
@@ -1658,8 +1688,8 @@ write("industries/nonwovens/index.html", layout({ url: `${BASE}/industries/nonwo
       <div class="related-grid"><a href="/dryer-fabric/">Dryer Fabric →</a><a href="/products/square-mesh/">Polyester Square Mesh →</a><a href="/spiral-belt/">Spiral Fabric →</a></div>
     </div>
 </div>${contactSection}`, activeNav: "industries" }));
-write("industries/wood-based-panels/mesh-belts/index.html", layout({ url: `${BASE}/industries/wood-based-panels/mesh-belts/`, title: "Wood Panel & Biomass Drying Mesh Belts | Aurora Filtech", desc: "Square mesh and spiral dryer belts for wood chip, shavings, strand and pellet drying — alternative to OEM mesh belts for panel board plants.", type: "website", body: `
-<section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/industries/">Industries</a> › <span>Mesh Belts</span></nav><h1>Wood Panel & Biomass Drying Mesh Belts</h1></div></section>
+write("industries/wood-based-panels/mesh-belts/index.html", layout({ url: `${BASE}/industries/wood-based-panels/mesh-belts/`, title: "Wood Panel & Biomass Drying Mesh Belts | Aurora Filtech", desc: "Square mesh and spiral dryer belts for wood chip, shavings, strand and pellet drying — alternative to OEM mesh belts for panel board plants.", type: "website", og: "/qfy-content/uploads/df/sq-sem.jpg", body: `
+<section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/industries/">Industries</a> › <span>Mesh Belts</span></nav><h1>Wood Panel & Biomass Drying Mesh Belts</h1>${croBarHtml}</div></section>
 <div class="wrap article3">
 <p>Wood panel and biomass dryers run on permeable mesh belts: chips, shavings and strands carried on decks where hot air is pulled through belt and product. Aurora SM square mesh belts and SP-D spiral dryer fabrics serve these decks — woven to the same disciplines as the OEM mesh belts they replace, at direct factory pricing.</p>
     <h2>By duty</h2>
@@ -1683,8 +1713,8 @@ write("industries/wood-based-panels/mesh-belts/index.html", layout({ url: `${BAS
       <div class="related-grid"><a href="/products/square-mesh/">Polyester Square Mesh →</a><a href="/spiral-belt/">Spiral Fabric →</a><a href="/dryer-fabric/">Dryer Fabric →</a></div>
     </div>
 </div>${contactSection}`, activeNav: "industries" }));
-write("industries/wood-flour-sifting/index.html", layout({ url: `${BASE}/industries/wood-flour-sifting/`, title: "Wood Flour Sieving Mesh for WPC | Aurora Filtech", desc: "Polyester square mesh (40-140 mesh count) for wood flour and WPC fines classification on vibrating, gyratory and circular sifters.", type: "website", body: `
-<section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/industries/">Industries</a> › <span>Wood Flour Sifting</span></nav><h1>Wood Flour Sieving Mesh for WPC</h1></div></section>
+write("industries/wood-flour-sifting/index.html", layout({ url: `${BASE}/industries/wood-flour-sifting/`, title: "Wood Flour Sieving Mesh for WPC | Aurora Filtech", desc: "Polyester square mesh (40-140 mesh count) for wood flour and WPC fines classification on vibrating, gyratory and circular sifters.", type: "website", og: "/qfy-content/uploads/df/sq-sem.jpg", body: `
+<section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/industries/">Industries</a> › <span>Wood Flour Sifting</span></nav><h1>Wood Flour Sieving Mesh for WPC</h1>${croBarHtml}</div></section>
 <div class="wrap article3">
 <p>Wood-plastic composite (WPC) lines classify wood flour on vibrating, rotating or oscillating screens — typically 40 to 140 mesh, with 60 and 80 mesh the common cuts. Aurora SM polyester square mesh gives stainless-steel precision at lighter weight and lower cost on these dry, low-abrasion duties, supplied as cut panels edged to your frame or as re-mesh for circular sifters.</p>
     <h2>By duty</h2>
@@ -1708,7 +1738,7 @@ write("industries/wood-flour-sifting/index.html", layout({ url: `${BASE}/industr
       <div class="related-grid"><a href="/products/square-mesh/">Polyester Square Mesh →</a><a href="/products/filter-cartridge/">Filter Cartridge →</a></div>
     </div>
 </div>${contactSection}`, activeNav: "industries" }));
-write("about/index.html", layout({ url: `${BASE}/about/`, title: "About Us | Filter Fabric Manufacturer | Aurora Filtech", desc: "30+ years weaving filter fabrics across 3 factories. In-house chain from yarn to sewn cloth on German looms.", type: "website", body: `
+write("about/index.html", layout({ url: `${BASE}/about/`, title: "About Us | Filter Fabric Manufacturer | Aurora Filtech", desc: "Aurora Filtech: 30+ years weaving filter fabrics and paper machine clothing across 3 factories. In-house chain from yarn extrusion to German Dornier looms.", type: "website", og: "/qfy-content/uploads/eq/eq-yarn.jpg", body: `
 <section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <span>About</span></nav><h1>About Aurora Filtech</h1></div></section>
 <div class="wrap article3">
 <h2>Who we are</h2>
@@ -1802,7 +1832,7 @@ write("about/index.html", layout({ url: `${BASE}/about/`, title: "About Us | Fil
     </div>
 
     <div class="accounting"><span class="ico">Σ</span><p><b>Why the chain matters to you.</b> Every parameter you buy — CFM, micron rating, tensile, seam strength — was controlled at a step inside these walls. When something must be tuned for your machine, the people who spun, warped, wove, set, cut and sewed the fabric are the people who take your call.</p></div>
-</div>${contactSection}`, activeNav: "industries" }));
+</div>${contactSection}`, activeNav: "about" }));
 // ---------- Blog Index & 3 Guide Posts (Full Content & Schema) ----------
 write("blog/index.html", layout({
   url: `${BASE}/blog/`,
@@ -1814,8 +1844,8 @@ write("blog/index.html", layout({
     { "@type": "BreadcrumbList", itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: `${BASE}/` },
       { "@type": "ListItem", position: 2, name: "Blog & Guides", item: `${BASE}/blog/` }] },
-    { "@type": "Blog", name: "Aurora Filtech Blog & Guides", description: "Filtration and paper machine clothing selection guides and terminology explainers from Aurora Filtech engineers.", url: `${BASE}/blog/`, publisher: { "@id": `${BASE}/#organization` } }
-  ] }, null, 2),
+    { "@type": "Blog", name: "Aurora Filtech Blog & Guides", description: "Filtration and paper machine clothing selection guides and terminology explainers from Aurora Filtech engineers.", url: `${BASE}/blog/`, dateModified: `${TODAY}T08:00:00+08:00`, publisher: { "@id": `${BASE}/#organization` } }
+  ] }),
   body: `<section class="p3-head"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <span>Blog</span></nav><h1>Blog &amp; Guides</h1><p class="lede" style="margin-top:10px;color:var(--mute)">Selection guides and engineering explainers from Aurora Filtech loom masters.</p></div></section>
 <div class="wrap article3" style="padding-top:24px;padding-bottom:60px">
   <div class="related-grid" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr))">
@@ -1839,10 +1869,10 @@ for (const slug of Object.keys(posts)) {
         { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE}/blog/` },
         { "@type": "ListItem", position: 3, name: post.title, item: `${BASE}${post.url}` }
       ] },
-      { "@type": "Article", headline: post.title, description: post.desc, image: `${BASE}${IMG.og}`, datePublished: postIsoDate, dateModified: postIsoDate,
+      { "@type": "Article", headline: post.title, description: post.desc, image: `${BASE}${IMG.og}`, datePublished: postIsoDate, dateModified: `${TODAY}T08:00:00+08:00`,
         author: { "@id": `${BASE}/#organization` }, publisher: { "@id": `${BASE}/#organization` }, inLanguage: "en", mainEntityOfPage: `${BASE}${post.url}` }
     ]
-  }, null, 2);
+  });
 
   let secIdx = 0;
   const tocItems = [];
@@ -1874,7 +1904,7 @@ for (const slug of Object.keys(posts)) {
     </div>` : ""}
   </div>
   <aside class="article-sidebar">
-    <h4>Guide Index</h4>
+    <h2 class="sidebar-title">Guide Index</h2>
     <ul class="toc-list">
       ${tocItems.map(it => `<li><a href="#${it.id}">${it.text}</a></li>`).join("\n      ")}
     </ul>
@@ -1911,6 +1941,7 @@ const glossJsonld = JSON.stringify({
       name: "Filtration & Paper Machine Clothing Glossary",
       description: "Glossary of filtration and paper machine clothing terms: forming fabric, forming wire, CFM, filler yarns, spiral dryer fabric, press cloth, mesh count and more.",
       url: `${BASE}/resources/glossary/`,
+      dateModified: `${TODAY}T08:00:00+08:00`,
       publisher: { "@id": `${BASE}/#organization` },
       hasDefinedTerm: glossary.map(([t, d]) => ({
         "@type": "DefinedTerm",
@@ -1920,7 +1951,7 @@ const glossJsonld = JSON.stringify({
       }))
     }
   ]
-}, null, 2);
+});
 
 const seenLetters = new Set();
 const glossItemsHtml = glossary.map(([t, d]) => {
@@ -2048,7 +2079,7 @@ const allSitemapUrls = [
 
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${allSitemapUrls.map(u => `  <url><loc>${u}</loc><lastmod>2026-10-26</lastmod></url>`).join("\n")}
+${allSitemapUrls.map(u => `  <url><loc>${u}</loc><lastmod>${TODAY}</lastmod></url>`).join("\n")}
 </urlset>`);
 
 const escXml = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -2075,11 +2106,35 @@ ${imgUrlEntries.join("\n")}
 
 write("sitemap-index.xml", `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <sitemap><loc>${BASE}/sitemap.xml</loc></sitemap>
-  <sitemap><loc>${BASE}/sitemap-image.xml</loc></sitemap>
+  <sitemap><loc>${BASE}/sitemap.xml</loc><lastmod>${TODAY}</lastmod></sitemap>
+  <sitemap><loc>${BASE}/sitemap-image.xml</loc><lastmod>${TODAY}</lastmod></sitemap>
 </sitemapindex>`);
 
 write("robots.txt", `# robots.txt — www.aurora-filtech.com
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
 User-agent: *
 Allow: /
 Disallow: /wp-admin/
@@ -2091,23 +2146,30 @@ Disallow: /qfy-content/cache/
 Disallow: /*?s=
 Disallow: /*?iphorm_swfupload
 
+Sitemap: ${BASE}/sitemap-index.xml
 Sitemap: ${BASE}/sitemap.xml
 Sitemap: ${BASE}/sitemap-image.xml
 `);
 
-write("llms.txt", `# Aurora Filtech Co., Ltd (www.aurora-filtech.com)
-> Industrial Filter Fabrics, Paper Machine Clothing (PMC), Spiral Fabrics & Mesh Belts Manufacturer. 30+ years experience, 3 factories in China & UK office, in-house monofilament extrusion, German Dornier weaving looms, laser cutting & automated seaming. OEM/ODM worldwide.
+const mdTable = t => {
+  if (!t || !t.head || !t.rows) return "";
+  return [
+    t.caption ? `**${t.caption}**\n` : "",
+    "| " + t.head.join(" | ") + " |",
+    "| " + t.head.map(() => "---").join(" | ") + " |",
+    ...t.rows.map(r => "| " + r.join(" | ") + " |")
+  ].filter(Boolean).join("\n");
+};
 
-## Core Products
-- [Forming Fabric (Forming Wire)](${BASE}/forming-fabric/): 1-layer, 1.5-layer, 2-layer and 3-layer SSB polyester forming wires for paper machines, nonwoven lines and flexible graphite sheet forming.
-- [Dryer Fabric (Dryer Belt)](${BASE}/dryer-fabric/): Anti-static dryer belts (12804TK, 16804K), 4106S silicone-coated belts for MDF/OSB board lines, wool scouring dryer belts, and flat-yarn paper dryer fabrics.
-- [Spiral Fabric (Spiral Belt)](${BASE}/spiral-belt/): SP-D open spiral dryer fabrics (up to 1016 CFM, no filler yarns) and SP-P filled spiral press filter belts (2–5 round or flat filler yarns, down to 325 CFM) in PET, PPS, hydrolysis-resistant and PTFE-added grades.
-- [Vacuum Filter Fabric](${BASE}/vacuum-fabric/): Woven monofilament & satin filter belts for horizontal vacuum belt filters (HVBF), rotary drum and disc filters (FGD gypsum, mining concentrates, alumina, phosphoric acid).
-- [Press Filter Fabric](${BASE}/press-fabric/): Chamber, frame and membrane filter press cloths in PET, PP, PA66 (nylon) and PVA, laser-cut with reinforced necks and eyelets.
-- [Press Filter Belt](${BASE}/press-belt/): Herringbone and satin woven dewatering belts for belt filter presses in municipal sewage, paper mill sludge, coal washing and fruit juice pressing.
-- [Polyester Square Mesh](${BASE}/products/square-mesh/): Plain-weave 1/1 PET monofilament square mesh (400–2100 µm standard belts, 40–200 mesh sifting cloth) for wood panel drying, food dehydration and WPC wood flour classification.
-- [Dust Collector Filter Bags](${BASE}/products/filter-bag/): Non-woven needle felt filter bags in PET, PPS, Nomex, P84, Acrylic and PTFE membrane laminates.
-- [Industrial Filter Cartridges](${BASE}/products/filter-cartridge/): Pleated dust, air, water and oil filter cartridges (anti-static, PTFE-membrane, cellulose, PPS/Nomex).
+write("llms.txt", `# Aurora Filtech Co., Ltd (${BASE})
+
+> Industrial Filter Fabrics, Paper Machine Clothing (PMC), Spiral Fabrics & Mesh Belts Manufacturer. 30+ years experience, 3 factories in China & UK office, in-house monofilament extrusion, German Dornier weaving looms (widths up to 6,000 mm), heat setting, laser cutting & automated seaming. OEM/ODM worldwide.
+
+## Full Machine-Readable Catalog
+- [Complete Engineering Catalog & Spec Tables](${BASE}/llms-full.txt): All models, CFM air permeability ratings, yarn diameters, OEM machine compatibility, and glossary.
+
+## Core Product Lines
+${products.map(p => `- [${p.h1}](${urlOf(p.slug)}): ${p.pdesc}`).join("\n")}
 
 ## Industries & Applications
 - [Wood-based Panels (MDF, OSB, Particleboard)](${BASE}/industries/wood-based-panels/)
@@ -2121,10 +2183,8 @@ write("llms.txt", `# Aurora Filtech Co., Ltd (www.aurora-filtech.com)
 
 ## Technical Guides & Reference
 - [Manufacturing & Production Capability](${BASE}/about/)
-- [Filtration & PMC Technical Glossary (32+ Terms)](${BASE}/resources/glossary/)
-- [What Is a Forming Fabric (Forming Wire)?](${BASE}/blog/forming-fabric-guide/)
-- [Spiral Fabric Guide: Dryer Fabric vs Press Belt & Filler Yarns](${BASE}/blog/spiral-fabric-guide/)
-- [PTFE / Teflon Belt Joint Types Compared](${BASE}/blog/ptfe-belt-joint-types/)
+- [Filtration & PMC Technical Glossary (${glossary.length} Terms)](${BASE}/resources/glossary/)
+${Object.values(posts).map(pt => `- [${pt.title}](${BASE}${pt.url})`).join("\n")}
 
 ## Contact & Engineering Support
 - Sales & Engineering Email: johnson@aurora-filtech.com
@@ -2133,17 +2193,46 @@ write("llms.txt", `# Aurora Filtech Co., Ltd (www.aurora-filtech.com)
 - China Factory: Room 1103, Guanhe East Rd, Tianning District, Changzhou, China
 `);
 
-write("favicon.svg", `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="#121B24"/><path d="M12 44c8-2 10-24 20-24s10 22 20 24" stroke="#1E4FD8" stroke-width="5" fill="none" stroke-linecap="round"/></svg>`);
+write("llms-full.txt", [
+  `# Aurora Filtech Co., Ltd — Complete Technical Catalog & Engineering Reference`,
+  `Updated: ${TODAY} | Website: ${BASE}/ | Email: johnson@aurora-filtech.com | WhatsApp: +86 152 0611 9266`,
+  `> Manufacturer of paper machine clothing, industrial filter fabrics, spiral belts, square mesh and dust filtration media. 30+ years experience, 3 factories, in-house monofilament extrusion, German Dornier weaving looms up to 6,000 mm width, heat setting, laser cutting and automated seaming. OEM/ODM worldwide.`,
+  `\n## Product Specifications & Factory Test Data`,
+  ...products.map(p => [
+    `### ${p.h1}`,
+    `- Canonical URL: ${urlOf(p.slug)}`,
+    `- Also known as: ${(p.altNames || []).join(", ")}`,
+    `- Summary: ${p.pdesc}`,
+    p.specs ? `- Key Supply Specs: ${p.specs.join(" | ")}` : "",
+    p.paramsData ? mdTable(p.paramsData) : "",
+    p.paramsSPD ? mdTable(p.paramsSPD) : "",
+    p.paramsSPP ? mdTable(p.paramsSPP) : "",
+    p.faqs && p.faqs.length ? `**Technical Q&A:**\n` + p.faqs.slice(0, 4).map(([q, a]) => `- **${q}** ${a}`).join("\n") : ""
+  ].filter(Boolean).join("\n\n")),
+  `\n## Filtration & PMC Glossary Highlights`,
+  ...glossary.map(([t, d]) => `- **${t}**: ${d.replace(/<[^>]+>/g, "")}`)
+].join("\n\n"));
 
-write("_headers", `# Cloudflare Pages cache policy (harmless on other hosts)
+write("favicon.svg", `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0FA89B"/><stop offset=".5" stop-color="#4F7CF7"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient></defs><rect width="64" height="64" rx="18" fill="url(#g3)"/><path d="M12 44c8-2 10-24 20-24s10 22 20 24" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/></svg>`);
+
+write("_headers", `# Cloudflare Pages cache & security headers
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 /qfy-content/*
   Cache-Control: public, max-age=31536000, immutable
 /favicon.svg
   Cache-Control: public, max-age=604800
+/favicon-48x48.png
+  Cache-Control: public, max-age=604800
+/apple-touch-icon.png
+  Cache-Control: public, max-age=604800
+/aurora-logo.png
+  Cache-Control: public, max-age=604800
 /*
   X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
 `);
 
 console.log("DONE " + OUT + " — full 25 pages + dynamic sitemaps + robots.txt + llms.txt");

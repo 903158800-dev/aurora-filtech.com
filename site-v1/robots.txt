@@ -1,9 +1,40 @@
 # robots.txt — www.aurora-filtech.com
+# Allow search engines & AI search / retrieval bots for citations
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
 User-agent: *
 Allow: /
 Disallow: /wp-admin/
 Disallow: /wp-login.php
+Disallow: /qfy-admin/
+Disallow: /qfy-includes/
+Disallow: /qfy-content/plugins/
+Disallow: /qfy-content/cache/
 Disallow: /*?s=
+Disallow: /*?iphorm_swfupload
 
+Sitemap: https://www.aurora-filtech.com/sitemap-index.xml
 Sitemap: https://www.aurora-filtech.com/sitemap.xml
 Sitemap: https://www.aurora-filtech.com/sitemap-image.xml

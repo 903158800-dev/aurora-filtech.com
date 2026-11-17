@@ -1,0 +1,328 @@
+# Aurora Filtech Co., Ltd — Complete Technical Catalog & Engineering Reference
+
+Updated: 2026-11-17 | Website: https://www.aurora-filtech.com/ | Email: johnson@aurora-filtech.com | WhatsApp: +86 152 0611 9266
+
+> Manufacturer of paper machine clothing, industrial filter fabrics, spiral belts, square mesh and dust filtration media. 30+ years experience, 3 factories, in-house monofilament extrusion, German Dornier weaving looms up to 6,000 mm width, heat setting, laser cutting and automated seaming. OEM/ODM worldwide.
+
+
+## Product Specifications & Factory Test Data
+
+### Forming Fabric
+
+- Canonical URL: https://www.aurora-filtech.com/forming-fabric/
+
+- Also known as: Paper machine clothing, Forming wire, Polyester forming wire, Forming belt, Paper making mesh
+
+- Summary: Forming fabrics (also known as forming wire) for paper machines and nonwoven forming machines. 1-layer, 1.5-layer, 2-layer and 3-layer constructions with anti-hydrolysis monofilament.
+
+- Key Supply Specs: Constructions: 1-layer, 1.5-layer, 2-layer, 3-layer (SSB) | Yarn: polyester (PET) monofilament, anti-hydrolysis option | Seam: pin seam, clipper seam or endless on request | Edges: sealed or reinforced | Widths and lengths: custom | OEM/ODM: available
+
+**Aurora forming fabrics — factory test data (max width 6000 / 4200 mm)**
+
+| Model | Warp yarn (mm) | Weft yarn (mm) | Warp/Weft dens. (/cm) | Weave | Air perm. (CFM) | Thickness (mm) | Weight (g/m²) | Tensile (N/cm) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 611 | PET 0.8 × 0.42 red | PET 0.8 white | 11 / 5.5 | 2/2 twill | 799 | 1.25 | 896 | 1102 |
+| 624 | PET 0.5 white | PET 0.5 white | 24 / 12 | Double layer | 781 | 2.26 | 1212 | 1029 |
+| 656 | PET 0.35 white | PET 0.55 white | 33 / 8.4 | 4/1 satin | 211–219 | 0.92 | 890 | 1502 |
+| 656A | PET 0.35 white | PET 0.55 white | 40 / 11 | 4/1 satin | 76–86 | 0.92 | 890 | 1151 |
+
+**Technical Q&A:**
+- **What is a forming fabric and why is it also called forming wire?** A forming fabric is the woven monofilament belt that forms and dewaters the fiber web at the wet end of a paper machine. It is still commonly called a forming wire (or simply wire) because early paper machines used woven bronze wires — polyester fabrics replaced them, but the old name survives among machine crews.
+- **Which layer construction should I choose?** 1-layer fabrics give maximum drainage for fast machines and heavy stock; 2-layer and 3-layer (SSB) constructions give a smoother surface, better fiber support and finer retention for quality grades. We recommend per paper grade and machine speed.
+- **What does mesh count mean on a forming fabric?** Mesh count is the number of MD yarns (and CD yarns) per centimetre — higher counts mean smaller openings and better fiber retention, lower counts drain faster. Our spec table lists typical mesh counts per series.
+- **Do you offer anti-hydrolysis forming fabrics?** Yes. Anti-hydrolysis monofilament extends fabric life in hot, humid forming sections — typically the economical choice for brown-stock and recycled lines.
+
+### Dryer Fabric
+
+- Canonical URL: https://www.aurora-filtech.com/dryer-fabric/
+
+- Also known as: Dryer belt, Anti-static dryer belt, Dryer screen mesh, Drying mesh, Anti-hydrolysis dryer fabric, Dryer fabric
+
+- Summary: Anti-static dryer fabrics and dryer belts for board forming, paper drying and food drying machines. Anti-static, anti-hydrolysis and heat-resistant constructions with strong warp loop seams.
+
+- Key Supply Specs: Constructions: anti-static, anti-hydrolysis, heat-resistant | Seam: strong warp loop seam, pin seam or endless | Custom widths for every dryer width | Food-grade options available | OEM/ODM: available
+
+**Aurora dryer fabrics — factory test data (max width 6000 mm)**
+
+| Model | Warp yarn (mm) | Weft yarn (mm) | Warp/Weft dens. (/cm) | Weave | Air perm. (CFM) | Thickness (mm) | Weight (g/m²) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 12804TK | PET 0.8/0.65/0.45 anti-static | PET 0.8 | 12.7 / 4.5 | Anti-static | 528 | 2.19 | 1460 |
+| 16804K | PET 0.68/0.64 anti-static | PET 0.8 | 16.6 / 6.9 | Anti-static | 282 | 1.84 | 1420 |
+| 611 | PET 0.8 × 0.42 red | PET 0.8 white | 11 / 5.5 | 2/2 twill | 799 | 1.25 | 896 |
+| 624 | PET 0.5 white | PET 0.5 white | 24 / 12 | Double layer | 781 | 2.26 | 1212 |
+| 625A | PET 0.38 × 0.58 red | PET 0.5 red | 20 / 11.7 | Satin | 427 | 1.73 | 1050 |
+
+**Technical Q&A:**
+- **Why choose an anti-static dryer fabric?** Anti-static yarns (carbon filament) drain the static charges that build up on high-speed dryers — preventing dust attraction, sheet wrap-ups and shocks to crews, especially on board forming and food drying machines.
+- **What is air permeability (CFM) and why does it matter?** CFM (cubic feet per minute per square foot) measures how easily drying air passes through the fabric. Too open and the sheet loses contact; too tight and the fan works against the fabric. We select CFM per dryer zone, product and temperature.
+- **What seam options are available?** Strong warp loop seams as standard — the seam is usually the first failure point on a dryer fabric — plus pin seams and endless seaming for smooth high-speed running.
+- **Can dryer fabrics be used for food drying?** Yes. We supply food-grade anti-static dryer fabrics for food belt dryers, with food-contact compliant materials.
+
+### Spiral Fabric (Spiral Belt)
+
+- Canonical URL: https://www.aurora-filtech.com/spiral-belt/
+
+- Also known as: Spiral belt, Spiral dryer fabric, Spiral press filter belt, Spiral filter belt, Spiral conveyor belt, Spiral link fabric
+
+- Summary: Spiral fabrics and spiral belts for belt press filter dewatering and dryer applications. PET and PPS monofilament spirals joined by hinge pins — with or without filler yarns — custom widths and edge treatments.
+
+- Key Supply Specs: Material: PET (polyester) / PPS monofilament | Spiral loop sizes: wide range | Filler yarns: 2–5, round (Ø0.65–0.9 mm) or flat (0.65 × 2.0 mm), to tune permeability | Edges: sealed, welded or reinforced | Widths: custom | OEM/ODM: available
+
+**Aurora SP-D spiral dryer fabrics — factory test data (open, no filler yarns)**
+
+| Model | Spiral/cross yarn (mm) | Filler yarns | Air perm. (CFM) | Thickness (mm) | Weight (g/m²) | Tensile (N/cm) |
+| --- | --- | --- | --- | --- | --- | --- |
+| 6890 | PET 0.68 / 0.90 | None — open | 959–1016 | 2.4 | 1301 | 890 |
+| 9010 | PET 0.90 / 1.05 | None — open | 875–991 | 3.12 | 1627 | 1300 |
+
+**Aurora SP-P spiral press filter belts — factory test data (filler yarns per loop)**
+
+| Model | Spiral/cross yarn (mm) | Filler yarns (weft) | Air perm. (CFM) | Thickness (mm) | Weight (g/m²) | Tensile (N/cm) |
+| --- | --- | --- | --- | --- | --- | --- |
+| 6890T2 | PET 0.68 / 0.90 | ×0.8 × 2 round | 741–783 | 2.4 | 1521 | 890 |
+| 6890T3 | PET 0.68 / 0.90 | ×0.7 × 3 round | 633–666 | 2.4 | 1632 | 890 |
+| 9010T3 | PET 0.90 / 1.05 | ×0.9 × 3 round | 675–716 | 3.12 | 2017 | 1300 |
+| 9010T4 | PET 0.90 / 1.05 | ×0.9 × 4 round | 413–441 | 3.12 | 2147 | 1300 |
+| 9010T5 | PET 0.90 / 1.05 | ×0.8 × 5 round | 325–358 | 3.12 | 2277 | 1300 |
+| 9010TF1 | PET 0.90 / 1.05 | 0.65 × 2.0 flat | 741–783 | 3.12 | 1905 | 1300 |
+
+**Technical Q&A:**
+- **What is the difference between a spiral fabric and a woven dryer fabric?** A spiral fabric is assembled from monofilament spirals joined by hinge pins, giving an open, non-tracking structure with high drainage. A woven dryer fabric is woven from warp and weft yarns and provides a smoother surface. Spiral fabrics are easier to repair on the machine; woven fabrics usually offer higher stability at high speeds. Full comparison in our spiral fabric guide.
+- **With or without filler yarns — how do I choose?** Without fillers you get maximum open area and air flow (drying and conveying). Adding 1–5 filler yarns increases density and lowers permeability — right for filtration duties on belt press filters.
+- **Can spiral fabric be used on belt press filters?** Yes — with filler yarns, spiral fabrics work as filter belts for sludge dewatering, sand washing, juice squeezing and palm oil squeezing. Their open structure drains quickly and releases the filter cake easily.
+- **Do you offer PPS spiral fabrics for higher temperatures?** Yes — PPS monofilament spiral fabrics serve higher-temperature drying applications (long-term duty around 240 °C, verified on request). Tell us your working temperature and we will recommend the right material.
+
+### Vacuum Filter Fabric (Vacuum Filter Belt)
+
+- Canonical URL: https://www.aurora-filtech.com/vacuum-fabric/
+
+- Also known as: Vacuum filter belt, Vacuum fabric, FGD filter fabric, Vacuum belt filter fabric, Horizontal vacuum belt filter cloth
+
+- Summary: Vacuum filter fabrics for vacuum belt filters and vacuum disc filters in power plant FGD, phosphoric acid and mining filtration. Seamless or seamed, custom sizes.
+
+- Key Supply Specs: Materials: polyester (PET), polypropylene (PP), PVDF options | Custom sizes for every belt and disc filter | Seam: pin seam or endless | Edges: sealed, welded or reinforced | OEM/ODM: available
+
+**Aurora vacuum filter fabrics — factory test data (PET max width 6000 mm; PP MD series 3500 mm)**
+
+| Model | Yarn | Warp/Weft dens. (/cm) | Weave | Air perm. (CFM) | Thickness (mm) | Weight (g/m²) | Tensile (N/cm) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 610D | PET 0.33 / 0.5 blue | 40 / 11.5 | 5/1 satin | 205–218 | 1.16 | 870 | 1604 |
+| 620 | PET 0.2+0.35 / 0.23+0.32 | 52+13 / 27 | 3/1 + 2/2 | 306–640 | 1.43 | 796 | 1231 |
+| 620A | PET 0.2+0.35 / 0.4+600D | 52+13 / 27 | 3/1 + 2/2 | 50–54 | 1.27 | 776 | 1099 |
+| 623A | PET 0.48 orange / 0.5 white | 27.5 / 18.5 | 6/2 satin | 100–150 | 1.83 | 1448 | 1543 |
+| 3356 | PET 0.35 / 0.5 blue | 27 / 12 | 5/1 satin | 292 | 1.1 | 816 | 1159 |
+| 008MD | PP — 8 µm rating | 192 / 54 | Double layer | 13–20 | 0.85 | 560 | 5500 |
+| 030MD | PP — 30 µm rating | 192 / 54 | Double layer | 38–43 | 0.9 | 560 | 5500 |
+| 120D | PP — 120 µm rating | 140 / 57 | Plain | 333–366 | 1.18 | 510 | 5000 |
+
+**Technical Q&A:**
+- **617 or 623 for FGD gypsum — which should I choose?** 617 is the economical FGD workhorse: a multifilament weft gives low permeability (33–41 CFM) for gypsum and fly-ash slurries. 623 upgrades it — 100% monofilament surface with the multifilament hidden on the back — for better cake release, better scraper-wear resistance and longer life; the trade-off is a thicker fabric that a few close-clearance filters won't take. We help you compare on total cost per tonne.
+- **Do you supply fabrics for vacuum disc filters?** Yes — we cut and seam vacuum filter fabrics to fit disc filter sectors, and drum filter panels, in custom sizes for every model.
+- **Can vacuum filter belts be made endless?** Yes. Horizontal vacuum belt filter fabrics can be supplied endless or with pin/spiral seams, with sealed or reinforced edges.
+- **How do I match cloth to my cake?** Fine cakes need tighter weaves for clear filtrate; coarse, free-draining cakes reward open monofilament weaves for capacity. We select weave and CFM from your particle size and loading.
+
+### Press Filter Fabric (Filter Cloth)
+
+- Canonical URL: https://www.aurora-filtech.com/press-fabric/
+
+- Also known as: Press fabric, Filter cloth, Filter press cloth, Membrane filter fabric, Frame press filter fabric, Drum filter fabric
+
+- Summary: Press filter fabrics and filter cloths for frame press filters, membrane press filters, drum, disc and leaf filters — oil, mining, lithium phosphate filtration and sludge dewatering.
+
+- Key Supply Specs: Materials: PET, PP, PA, PVDF | Weaves: plain, twill, satin; mono-filament, multi-filament and staple yarn | Filter ratings from 1 to 200 microns | Custom cut & sewn to your plate size | OEM/ODM: available
+
+**Aurora PF filter cloths — factory test data (air permeability at 125 Pa)**
+
+| Model | Yarn family | Air perm. (CFM) | Thickness (mm) | Weight (g/m²) | Tensile (N/cm) |
+| --- | --- | --- | --- | --- | --- |
+| Z223-PP | Monofilament PP | 30 | 0.74 | 431 | 775 |
+| Z3232-PP | Monofilament PP (open) | 346 | 0.80 | 380 | 829 |
+| Z1616-PP | Monofilament PP (dense) | 6 | 0.44 | 289 | 908 |
+| Z53-PP | Monofilament PP (fine) | 25 | 0.39 | 288 | 592 |
+| Z1820-PA | Monofilament PA | 68 | 0.87 | 500 | 980 |
+| Z2230-PET | Monofilament PET (open) | 370 | 0.60 | 383 | 780 |
+| Z600-PP | Multifilament PP | 42 | 0.65 | 328 | 850 |
+| Z21213-PP | Multifilament PP (dense) | 3 | 0.94 | 613 | 1200 |
+| Z1584-PP | Mono + multifilament PP | 15 | 0.70 | 405 | 746 |
+| Z40150-99 | Mono + multifilament (heavy) | 2 | 1.38 | 819 | 2000 |
+
+**Technical Q&A:**
+- **How do I choose a filter press cloth?** Start from your filter type, particle size and chemistry: monofilament weaves release cakes easily and resist blinding; multifilament and staple weaves give finer retention; combination weaves balance both. We recommend per slurry.
+- **What is the difference between monofilament and multifilament cloth?** Monofilament cloth is woven from single smooth yarns — best cake release and blinding resistance. Multifilament cloth uses twisted yarn bundles — finer filtration and clearer filtrate, at the cost of harder cake release.
+- **Do you supply cloths for membrane filter presses?** Yes — including centrate drainage designs and seal edges for membrane plates.
+- **Can the cloths be made seamless?** Barrel-neck and seamless cloths are available for full-plate designs on request.
+
+### Press Filter Belt (Dewatering Belt)
+
+- Canonical URL: https://www.aurora-filtech.com/press-belt/
+
+- Also known as: Press belt, Dewatering belt, Belt press filter belt, Belt press cloth
+
+- Summary: Press filter belts (dewatering belts) for belt press filters in sludge dewatering, sand washing, juice squeezing and palm oil squeezing. Reinforced seams, custom lengths.
+
+- Key Supply Specs: Material: polyester (PET) monofilament | Seam: reinforced pin seam (stainless steel clipper on request) | Permeability range: wide selection by dewatering stage | Edges: sealed, welded or reinforced | Widths and lengths: custom | OEM/ODM: available
+
+**Aurora PB woven press belts — factory test data (max width 6000 mm)**
+
+| Model | Warp yarn (mm) | Weft yarn (mm) | Warp/Weft dens. (/cm) | Weave | Air perm. (CFM) | Thickness (mm) | Weight (g/m²) | Tensile (N/cm) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 601 | PET 0.68 white | PET 0.9 white | 16 / 5 | 2/1 twill | 433 | 2.02 | 1476 | 1366 |
+| 603 | PET 0.5 white | PET 0.8 white | 24 / 7.3 | 6/2 satin | 478 | 1.85 | 1310 | 1282 |
+| 604 | PET 0.5 white | PET 0.7 white | 24 / 9 | 6/2 satin | 341 | 1.80 | 1280 | 1306 |
+| 608 | PET 0.65 white | PET 1.0 red | 18 / 5.5 | 3/2 satin | 510 | 2.23 | 1588 | 1786 |
+| 613 | PET 0.7 white | PET 0.9 white | 16 / 4.5 | 2/2 twill | 633 | 2.20 | 1405 | 1604 |
+| 626 | PET 0.5 white | PET 1.0 red | 24 / 6.7 | 6/2 satin | 457 | 2.15 | 1657 | 1370 |
+| 701 | PA 0.5 | PA 0.95 | 25 / 6.5 | 3/2 satin | 360 | 2.05 | 1428 | 1356 |
+
+**Technical Q&A:**
+- **What is a dewatering belt?** A dewatering belt is the press filter belt that runs on a belt press filter: it drains water through its openings while withstanding high squeeze pressure between the press rollers.
+- **Which belt permeability do I need?** Coarser, more permeable belts suit the gravity drainage zone; tighter weaves suit the high-pressure pressing zone. We select permeability per press zone and material.
+- **Are reinforced seams available?** Yes — reinforced seams extend belt life under high squeeze pressure; stainless steel clipper seams are available on request.
+- **Spiral or woven belt — which one?** Spiral belts (with filler yarns) resist heavy squeeze and release cakes well; woven belts give a smoother surface and finer retention. See our spiral press filter belt page for the spiral option.
+
+### Filter Bag (Dust Collector Bag)
+
+- Canonical URL: https://www.aurora-filtech.com/products/filter-bag/
+
+- Also known as: Dust filter bag, Dust collector bag, Bag filter, Baghouse filter bag, Filter bag for dust collector
+
+- Summary: Dust filter bags for bag filters and dust collectors in power plants and cement plants. PET, PPS, Nomex, P84 and PTFE felt options with membrane and anti-static finishes.
+
+- Key Supply Specs: Materials: PET, PPS, Nomex, P84, PTFE | Weights: 350–800 g/m² | Finish: singed, calendered, PTFE membrane, anti-static | Sizes: custom to your tube sheet | Tops: snap-band, flange or ring; triple-stitched seams | OEM/ODM: available
+
+**Aurora BG series — typical media (standard factory test data — custom grades engineered per duty)**
+
+| Media | Weight (g/m²) | Cont. temp (°C) | Chemistry | Typical duty |
+| --- | --- | --- | --- | --- |
+| PET (polyester) | 450–550 | 130 | General, dry | Cement, steel, generic dust |
+| PPS (ryton) | 500–600 | 160 | Sulfur / moisture resistant | Coal-fired power baghouses |
+| Nomex (m-aramid) | 500–600 | 180–200 | Dry heat | Asphalt, cement kiln |
+| PTFE membrane on PPS/PET | 550–650 | 160 / 130 | Fine emission limits | PM limits < 10 mg/Nm³ |
+
+**Technical Q&A:**
+- **Which filter bag material suits a coal-fired power plant?** PPS felt bags are the standard for coal-fired baghouses, offering sulfur and heat resistance. PTFE-membrane PPS bags are used where finer emission limits apply.
+- **How do I select dust collector filter bags?** Match media to gas temperature, moisture and chemistry first, then to emission limits: PET for dry generic dust, PPS for acidic coal flue gas, Nomex for dry heat, membrane laminates for strict PM limits.
+- **Do you make custom bag sizes?** Yes — every dust filter bag is sewn to your tube sheet diameter and length, with snap-band, flange or ring tops.
+- **Are anti-static filter bags available?** Yes — anti-static felt bags (carbon-scrim / conductive yarn) for explosive dust applications.
+
+### Filter Cartridge (Cartridge Filter)
+
+- Canonical URL: https://www.aurora-filtech.com/products/filter-cartridge/
+
+- Also known as: Cartridge filter, Air filter cartridge, Oil filter cartridge, Water filter cartridge, Dust collector cartridge
+
+- Summary: Industrial filter cartridges for air, water and oil filtration systems. Anti-static, PTFE, PPS, cellulose and Nomex series with matched end caps and gaskets.
+
+- Key Supply Specs: Media: cellulose, polyester, PTFE membrane, PPS, Nomex | Series: anti-static, water-repellent, oil-repellent finishes | Ratings from 0.5 to 100 microns | Sizes: custom to your housing | End caps: galvanized or stainless steel; gasket options | OEM/ODM: available
+
+**Aurora CT series — typical media (standard factory test data — custom grades engineered per duty)**
+
+| Media | Rating (µm) | Temp (°C) | Finish | Typical duty |
+| --- | --- | --- | --- | --- |
+| Cellulose / polyester pleated | 1–100 | 80 / 130 | Standard | General dust, intake air |
+| PTFE membrane polyester | 0.5–5 surface | 130 | Water/oil-repellent | Fine dust, strict emissions |
+| PPS / Nomex pleated | 1–50 | 160 / 190 | Standard | Hot flue gas dust |
+| Water/oil process media | 0.5–50 | per media | NSF options | Water & oil systems |
+
+**Technical Q&A:**
+- **Which cartridge media suits hot flue gas dust collection?** PPS and Nomex cartridges handle higher temperatures; PTFE-membrane polyester serves the finest emissions at moderate temperature. We recommend per gas condition.
+- **Do cartridges fit standard housings?** Yes — cartridges are made to standard and custom housing sizes, with matched end caps and gaskets.
+- **Are anti-static cartridges available?** Yes — anti-static series cartridges prevent static discharge in explosive-dust applications.
+- **Cartridge or bag — which for my dust collector?** Cartridges give more filter area in the same housing and suit fine, dry dust; bags handle higher dust loads and heavier duty. Ask us to compare on your loading.
+
+### Polyester Square Mesh (Plain Weave)
+
+- Canonical URL: https://www.aurora-filtech.com/products/square-mesh/
+
+- Also known as: Square weave mesh, Plain weave mesh, Polyester monofilament mesh, Square opening mesh, PET square mesh, Tetoron mesh
+
+- Summary: Polyester monofilament square mesh (plain weave, square weave) from 40 to 200 mesh count — fine mesh conveyor belts for wood panel and biomass drying, and screening/sifting mesh for wood flour and WPC.
+
+- Key Supply Specs: Weave: plain (1/1), all-PET monofilament | Standard apertures: 400–2100 µm (models listed above); finer sifting meshes on request | Air permeability: 650–1750 CFM standard | Forms: belts (seamed/endless) or panels cut to your frame | Edges: sealed, welded or reinforced | OEM/ODM: available
+
+**Aurora SM square mesh belts — factory test data (max width 6000 mm)**
+
+| Model | Aperture (µm) | Yarn (mm) | Warp/Weft dens. (/cm) | Air perm. (CFM) | Thickness (mm) | Weight (g/m²) | Tensile (N/cm) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 622 | 400 × 400 | PET 0.5 white | 9 / 9 | 650 | 0.9 | 677 | 1050 |
+| 600×650 | 600 × 650 | PET 0.65 white | 3 / 3.2 | 730 | 1.2 | 732 | 1028 |
+| 800×600 | 800 × 600 | PET 0.65 white | 4.6 / 5.4 | 870 | 1.3 | 685 | 1029 |
+| 800×800 | 800 × 800 | PET 0.8 white | 5.6 / 6.1 | 767 | 1.4 | 872 | 860 |
+| 800×1200 | 800 × 1200 | PET 0.8 white | 4.6 / 6.0 | 752 | 1.38 | 849 | 910 |
+| 1100×1100 | 1100 × 1100 | PET 0.8 white | 7 / 6.6 | 1192 | 1.47 | 809 | 812 |
+| 1300×1600 | 1300 × 1600 | PET 0.8 white | 4.6 / 4.0 | 1477 | 1.68 | 656 | 1042 |
+| 2000×2000 | 2000 × 2000 | PET 1.0 white | 7 / 7.5 | 1750 | 1.9 | 769 | 930 |
+| 621 | 2100 × 2100 | PET 0.9 / 1.0 white | 3 / 3 | 1726 | 1.65 | 695 | 580 |
+
+**Technical Q&A:**
+- **Mesh, screen or fabric — what is the difference?** Mesh refers to the woven structure and its opening count; screen means the whole sieve surface fitted to a machine; fabric is the woven goods. In practice: fine round-sifter duties say sieve/sifter mesh, heavier duties say screen mesh, belt duties say mesh belt — we cover all three wordings.
+- **What mesh count do I need for wood flour?** WPC wood flour is typically classified on 40–140 mesh screens (60 and 80 mesh the common cuts). Our standard square mesh belts cover 0.4–2.1 mm apertures for drying and conveying; finer sifting meshes are woven on request — tell us your cut points.
+- **Can polyester square mesh replace stainless steel mesh?** On dry, low-abrasion duties (wood flour, fines sifting) woven PET mesh lasts well at a fraction of the cost, with lighter frames and quieter running. Heavy, wet or abrasive duties still favour steel.
+- **Do you supply belts and cut panels?** Both — seamed or endless belts for dryers and conveyors, and panels cut and edged to your sifter frame (including re-mesh for circular sifters).
+
+
+## Filtration & PMC Glossary Highlights
+
+- **Air permeability (CFM)**: The volume of air (cubic feet per minute) passed by one square foot of fabric at a standard pressure drop. The core specification for dryer and filter fabrics.
+
+- **Anti-hydrolysis yarn**: Polyester monofilament stabilized against hot-water attack — standard for humid forming sections and FGD duties.
+
+- **Anti-static yarn**: Conductive (usually carbon-cored) filament woven into the fabric to drain static charges on high-speed dryers.
+
+- **Belt press filter**: A continuous filter that squeezes sludge between two moving press filter belts through gravity, wedge and pressing zones.
+
+- **Bullnose joint**: A PTFE belt joint where folded, rounded belt ends overlap — quick to fit and re-lace.
+
+- **CFM**: See Air permeability. Typical spiral dryer fabrics reach ~900 CFM; filled press belts run 20–150 CFM.
+
+- **Clipper seam**: A metal clip (wire hook) seam joining belt ends — strong and repairable.
+
+- **Disc filter**: A rotary vacuum filter with segmented discs covered by filter fabric sectors.
+
+- **Dryer fabric**: The dryer fabric carrying paper, board or food through heated dryer sections; also called dryer belt.
+
+- **FGD**: Flue gas desulfurization in power plants — its gypsum by-product is dewatered on vacuum belt filters.
+
+- **Filler yarns**: Extra monofilaments inserted into spiral belt loops to raise density and lower permeability (1–5 yarns; round or flat section).
+
+- **Filter press cloth**: Press filter fabric (monofilament, multifilament, staple or combinations) cut and sewn for chamber and membrane filter plates.
+
+- **Forming fabric**: The wet-end forming fabric belt that forms and dewaters the fiber web; historically called forming wire (from the bronze-wire era).
+
+- **Forming wire**: Trade name for a forming fabric — still standard among machine crews and in B2B listings.
+
+- **Fourdrinier**: The classic flat-wire paper machine; the forming section is still often called the wire section.
+
+- **Horizontal vacuum belt filter (HVBF)**: A continuously indexing or endless-belt vacuum filter for dewatering and washing duties.
+
+- **Mesh count**: The number of openings per centimetre (or per inch) of a woven mesh — higher count, finer opening.
+
+- **Monofilament**: A single smooth yarn — best cake release and blinding resistance in filter cloths.
+
+- **Multifilament**: A yarn twisted from many filaments — finer retention, clearer filtrate, harder cake release.
+
+- **Open area**: The percentage of fabric surface that is opening; high open area = high flow.
+
+- **Paper machine clothing (PMC)**: The umbrella term for forming, press and dryer fabrics on a paper machine.
+
+- **Pin seam**: A joint where a pin (or clipper wire) runs through loops formed in the belt ends.
+
+- **PPS**: Polyphenylene sulfide — a monofilament/felt polymer for hot, chemical duty (~240 °C long-term in spiral fabrics).
+
+- **PTFE**: Polytetrafluoroethylene — non-stick, food-grade, 260 °C; used as belt coating and membrane material.
+
+- **Scarfed joint**: A PTFE belt joint planed to a taper so the overlap stays near belt thickness — smooth over rollers.
+
+- **Screen mesh / sifter mesh**: Woven mesh fitted as the working surface of a vibrating, gyratory or circular sifter.
+
+- **Spiral dryer fabric**: Spiral-link belt without filler yarns — open structure (up to ~900 CFM) for drying and conveying.
+
+- **Spiral press filter belt**: Spiral-link belt with 1–5 filler yarns — dense, low-permeability filter belt for belt press filters.
+
+- **SSB (triple layer)**: Sheet-side / machine-side triple-layer forming fabric construction for quality paper grades.
+
+- **Square weave mesh**: Plain-weave (1/1) polyester square mesh with precise square openings, e.g. 40–200 mesh count.
+
+- **Tube sheet**: The perforated plate of a baghouse that filter bags hang from — bags are sized to it.
+
+- **Vacuum filter fabric**: Vacuum filter fabric for vacuum belt, disc and drum filters, in PET, PP and PVDF.

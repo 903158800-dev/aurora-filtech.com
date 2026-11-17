@@ -12,9 +12,12 @@ const CSS = `
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.7;font-size:16.5px}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.7;font-size:16.5px;overflow-x:clip}
 a{color:var(--teal);text-decoration:none}
 a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:200;background:var(--teal-deep);color:#fff;padding:10px 18px;font-weight:700;border-radius:0 0 8px 0}
+.skip-link:focus{left:8px;top:8px;text-decoration:none}
 img{max-width:100%;height:auto;display:block}
 .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
 
@@ -27,7 +30,7 @@ img{max-width:100%;height:auto;display:block}
 .nav-menu>a:hover,.nav-menu .has-sub>a:hover{background:var(--bg-soft);color:var(--teal-deep);text-decoration:none}
 .nav-menu .has-sub{position:relative}
 .nav-menu .has-sub>.sub{display:none;position:absolute;top:100%;left:0;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:10px;min-width:250px;z-index:60}
-.nav-menu .has-sub:hover>.sub{display:block}
+.nav-menu .has-sub:hover>.sub,.nav-menu .has-sub:focus-within>.sub{display:block}
 .nav-menu .has-sub>.sub a{display:block;padding:8px 12px;border-radius:8px;color:var(--ink);font-size:.9rem}
 .nav-menu .has-sub>.sub a:hover{background:var(--bg-soft);text-decoration:none}
 .nav-menu .sub h4{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding:8px 12px 4px}
@@ -84,11 +87,11 @@ h2.sec-title{font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.3rem);line-he
 .solution-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
 .solution-card figure{position:relative;overflow:hidden;aspect-ratio:671/386;background:var(--bg-soft)}
 .solution-card figure img{width:100%;height:100%;object-fit:cover}
-.solution-card figcaption{position:absolute;inset:auto 0 0 0;background:linear-gradient(transparent,rgba(11,79,74,.88));color:#fff;font-size:.8rem;line-height:1.45;padding:34px 16px 12px}
+.solution-card figcaption{position:absolute;inset:auto 0 0 0;background:linear-gradient(transparent 0%,rgba(11,79,74,.78) 38%,rgba(11,79,74,.96) 100%);color:#fff;font-size:.8rem;line-height:1.45;padding:38px 16px 12px}
 .card-body{padding:22px 24px 26px;display:flex;flex-direction:column;gap:12px;flex:1}
-.card-body h2{font-family:var(--serif);font-size:1.25rem;letter-spacing:.03em}
+.card-body h2{font-family:var(--serif);font-size:1.16rem;letter-spacing:.02em}
 .card-body h2 a{color:var(--ink)}
-.card-body h2 a::after{content:" →";color:var(--gold)}
+.card-body h2 a::after{content:"\\00a0→";color:var(--gold);white-space:nowrap}
 .card-body>p{font-size:.93rem;color:var(--ink-soft)}
 .card-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:auto;padding-top:14px;border-top:1px dashed var(--line)}
 .card-cols h3{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
@@ -253,12 +256,20 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--gold-soft);borde
 .duo-imgs img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--line);border-radius:10px}
 .vid-h{margin-top:34px}
 /* 视频双卡 */
-.vid-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;margin:24px 0}
-.vid-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.vid-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:24px 0}
+.vid-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
 .vid-card video{width:100%;display:block;background:#0d1517;aspect-ratio:4/3;object-fit:cover}
 .vid-card figcaption{padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .vid-card figcaption b{font-family:var(--serif);font-size:1rem}
 .vid-card figcaption span{font-size:.85rem;color:var(--ink-soft)}
+/* GEO Answer-First Quick-Specs Card */
+.geo-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0 28px;background:var(--bg-soft);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:12px;padding:16px 20px}
+.geo-facts>div{min-width:0}
+.geo-facts dt{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:3px}
+.geo-facts dd{font-size:.88rem;color:var(--ink);font-weight:600;line-height:1.4;margin:0}
+.hero-grid>*,.why-grid>*,.solutions>*,.app-row>*,.model-row>*{min-width:0}
+@media(max-width:760px){.geo-facts{grid-template-columns:1fr 1fr;gap:12px 16px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}}
 /* 工序行: 主/次 + 左右交替 */
 .app-row{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:center;padding:26px 0;border-top:1px dashed var(--line)}
 .app-row.rev{grid-template-columns:.95fr 1.05fr}
@@ -458,7 +469,7 @@ const navProducts = `<a href="/forming-fabric/">Forming Fabric</a>
 <a href="/products/filter-cartridge/">Filter Cartridge</a>`;
 const navIndustries = Object.values(industries).map(i => `<a href="${i.url}">${i.name}</a>`).join("\n");
 
-function layout({ url, title, desc, type = "website", jsonld = "", body, activeNav = "", og = "", noindex = false }) {
+function layout({ url, title, desc, type = "website", jsonld = "", body, activeNav = "", og = "", preload = "", noindex = false }) {
   const ogImg = og ? (og.startsWith("http") ? og : "https://www.aurora-filtech.com" + og) : "https://www.aurora-filtech.com/qfy-content/uploads/2019/12/711b4e3ef611d676aa22b38c17cf53e4.jpg";
   return `<!DOCTYPE html>
 <html lang="en">
@@ -480,14 +491,17 @@ ${noindex ? `<meta name="robots" content="noindex, follow">\n` : ""}<link rel="c
 <meta name="twitter:description" content="${desc}">
 <meta name="twitter:image" content="${ogImg}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/style.css">
-${jsonld ? `<script type="application/ld+json">\n${jsonld}\n</script>` : ""}
+<link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+${preload ? `<link rel="preload" as="image" href="${preload}" fetchpriority="high">\n` : ""}<link rel="stylesheet" href="/assets/style.css">
+${jsonld ? `<script type="application/ld+json">${jsonld}</script>` : ""}
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 <header class="site-header">
   <div class="wrap nav">
     <a class="nav-logo" href="/"><svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#0F6E66"/><path d="M12 44c8-2 10-24 20-24s10 22 20 24" stroke="#C4A265" stroke-width="5" fill="none" stroke-linecap="round"/></svg>Aurora Filtech</a>
-    <button class="nav-burger" aria-label="Toggle menu">☰ Menu</button>
+    <button class="nav-burger" type="button" aria-expanded="false" aria-label="Toggle menu">☰ Menu</button>
     <nav class="nav-menu" aria-label="Main navigation">
       <a href="/"${activeNav === "home" ? ' aria-current="page"' : ""}>HOME</a>
       <div class="has-sub">
@@ -508,7 +522,7 @@ ${jsonld ? `<script type="application/ld+json">\n${jsonld}\n</script>` : ""}
     </nav>
   </div>
 </header>
-<main>
+<main id="main">
 ${body}
 </main>
 <footer class="site-footer">
@@ -552,17 +566,48 @@ ${body}
     <span>Industrial filter fabrics & filter belts manufacturer</span>
   </div>
 </footer>
-<script>
-document.querySelector('.nav-burger').addEventListener('click',function(){document.querySelector('.nav-menu').classList.toggle('open')});
+<script src="/assets/app.js" defer></script>
+</body>
+</html>`;
+}
 
-(function(){
-  // Auto-update WhatsApp button with current page H1
+function geoFactsHtml(p) {
+  const specs = p.specs || [];
+  const matSpec = specs.find(s => /yarn|material|constructions|media/i.test(s)) || specs[0] || "PET / PPS / PP / PA66";
+  const seamSpec = specs.find(s => /seam|edges/i.test(s)) || "Pin, clipper, PEEK spiral or endless";
+  const capText = (p.params?.caption || p.paramsSPP?.caption || p.paramsSPD?.caption || "").match(/6000\s*(?:\/\s*4200\s*)?mm/i) ? "Up to 6,000 mm custom width" : "Custom-engineered widths & plate sizes";
+  const matVal = matSpec.includes(":") ? matSpec.split(":").slice(1).join(":").trim() : matSpec;
+  const seamVal = seamSpec.includes(":") ? seamSpec.split(":").slice(1).join(":").trim() : seamSpec;
+  const oemSample = (p.oem && p.oem.length) ? p.oem.slice(0, 3).join(", ") : "Dieffenbacher, ANDRITZ, Larox & OEM fit";
+  return `<dl class="geo-facts" aria-label="Engineering quick facts">
+  <div><dt>Product &amp; Aliases</dt><dd>${[p.h1.split(" (")[0], ...(p.altNames || []).slice(0, 2)].join(" / ")}</dd></div>
+  <div><dt>Materials &amp; Weave</dt><dd>${matVal}</dd></div>
+  <div><dt>Width &amp; Seam Options</dt><dd>${capText}; ${seamVal}</dd></div>
+  <div><dt>OEM Platforms &amp; Quote</dt><dd>${oemSample} · 24h RFQ reply</dd></div>
+</dl>`;
+}
+
+const APP_JS = `(function(){
+  var burger = document.querySelector('.nav-burger');
+  var menu = document.querySelector('.nav-menu');
+  if (burger && menu) {
+    burger.addEventListener('click', function(){
+      var open = menu.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && menu.classList.contains('open')) {
+        menu.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.focus();
+      }
+    });
+  }
   var h1 = document.querySelector('h1');
   var pageTopic = h1 ? h1.textContent.trim() : document.title.split('|')[0].trim();
   document.querySelectorAll('.cro-btn-wa').forEach(function(el){
     el.href = 'https://wa.me/8615206119266?text=' + encodeURIComponent('Hi Aurora Filtech, I am inquiring about: ' + pageTopic + ' (' + window.location.pathname + ')');
   });
-  // Handle data-prefill buttons (Quote / Sample Swatch)
   document.querySelectorAll('[data-prefill]').forEach(function(btn){
     btn.addEventListener('click', function(){
       var intent = btn.getAttribute('data-prefill') || 'Quote Request';
@@ -585,7 +630,6 @@ document.querySelector('.nav-burger').addEventListener('click',function(){docume
       }, 350);
     });
   });
-  // Handle Online RFQ Form Submission + Google Ads Conversion Event
   var form = document.querySelector('.cro-rfq-form');
   if (form) {
     form.addEventListener('submit', function(e){
@@ -595,8 +639,6 @@ document.querySelector('.nav-burger').addEventListener('click',function(){docume
       fd.forEach(function(v, k){ data[k] = v; });
       data.page_url = window.location.href;
       data.page_topic = pageTopic;
-
-      // Fire Google Ads / GTM / GA4 Conversion Event
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: 'generate_lead',
@@ -605,16 +647,10 @@ document.querySelector('.nav-burger').addEventListener('click',function(){docume
         customer_company: data.company || ''
       });
       if (typeof window.gtag === 'function') {
-        window.gtag('event', 'generate_lead', {
-          event_category: 'B2B_RFQ',
-          event_label: pageTopic
-        });
+        window.gtag('event', 'generate_lead', { event_category: 'B2B_RFQ', event_label: pageTopic });
       }
-
       var btn = form.querySelector('button[type="submit"]');
-      var origText = btn ? btn.textContent : 'Send RFQ';
       if (btn) { btn.disabled = true; btn.textContent = 'Sending Request...'; }
-
       var summaryLines = [
         'Company: ' + (data.company || '-'),
         'Email: ' + (data.email || '-'),
@@ -627,11 +663,9 @@ document.querySelector('.nav-burger').addEventListener('click',function(){docume
         data.temperature ? ('Temp: ' + data.temperature) : '',
         data.ph ? ('pH: ' + data.ph) : '',
         'Details: ' + (data.notes || data.request || '-')
-      ].filter(Boolean).join('\n');
-
-      var waUrl = 'https://wa.me/8615206119266?text=' + encodeURIComponent('New RFQ from ' + (data.company || 'Website') + ':\n' + summaryLines);
+      ].filter(Boolean).join('\\n');
+      var waUrl = 'https://wa.me/8615206119266?text=' + encodeURIComponent('New RFQ from ' + (data.company || 'Website') + ':\\n' + summaryLines);
       var mailUrl = 'mailto:johnson@aurora-filtech.com?subject=' + encodeURIComponent('RFQ: ' + pageTopic + ' — ' + (data.company || '')) + '&body=' + encodeURIComponent(summaryLines);
-
       var statusBox = form.querySelector('.cro-form-status');
       function showSuccess() {
         if (btn) { btn.disabled = false; btn.textContent = '✓ Quote Request Logged'; }
@@ -644,7 +678,6 @@ document.querySelector('.nav-burger').addEventListener('click',function(){docume
             '</div>';
         }
       }
-
       fetch('https://formsubmit.co/ajax/johnson@aurora-filtech.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -652,11 +685,7 @@ document.querySelector('.nav-burger').addEventListener('click',function(){docume
       }).then(showSuccess).catch(showSuccess);
     });
   }
-})();
-</script>
-</body>
-</html>`;
-}
+})();`;
 
 // RFQ 表单(全站统一,含客户类型与选型字段 —— 调研 1.2 模块4)
 const rfqSection = `
@@ -699,4 +728,4 @@ const rfqSection = `
   </div>
 </section>`;
 
-module.exports = { CSS, layout, rfqSection, industries, applications, posts, glossary, products, prodLink, slugTitle };
+module.exports = { CSS, APP_JS, layout, geoFactsHtml, rfqSection, industries, applications, posts, glossary, products, prodLink, slugTitle };

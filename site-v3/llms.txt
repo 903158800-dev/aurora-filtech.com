@@ -1,16 +1,20 @@
-# Aurora Filtech Co., Ltd (www.aurora-filtech.com)
-> Industrial Filter Fabrics, Paper Machine Clothing (PMC), Spiral Fabrics & Mesh Belts Manufacturer. 30+ years experience, 3 factories in China & UK office, in-house monofilament extrusion, German Dornier weaving looms, laser cutting & automated seaming. OEM/ODM worldwide.
+# Aurora Filtech Co., Ltd (https://www.aurora-filtech.com)
 
-## Core Products
-- [Forming Fabric (Forming Wire)](https://www.aurora-filtech.com/forming-fabric/): 1-layer, 1.5-layer, 2-layer and 3-layer SSB polyester forming wires for paper machines, nonwoven lines and flexible graphite sheet forming.
-- [Dryer Fabric (Dryer Belt)](https://www.aurora-filtech.com/dryer-fabric/): Anti-static dryer belts (12804TK, 16804K), 4106S silicone-coated belts for MDF/OSB board lines, wool scouring dryer belts, and flat-yarn paper dryer fabrics.
-- [Spiral Fabric (Spiral Belt)](https://www.aurora-filtech.com/spiral-belt/): SP-D open spiral dryer fabrics (up to 1016 CFM, no filler yarns) and SP-P filled spiral press filter belts (2–5 round or flat filler yarns, down to 325 CFM) in PET, PPS, hydrolysis-resistant and PTFE-added grades.
-- [Vacuum Filter Fabric](https://www.aurora-filtech.com/vacuum-fabric/): Woven monofilament & satin filter belts for horizontal vacuum belt filters (HVBF), rotary drum and disc filters (FGD gypsum, mining concentrates, alumina, phosphoric acid).
-- [Press Filter Fabric](https://www.aurora-filtech.com/press-fabric/): Chamber, frame and membrane filter press cloths in PET, PP, PA66 (nylon) and PVA, laser-cut with reinforced necks and eyelets.
-- [Press Filter Belt](https://www.aurora-filtech.com/press-belt/): Herringbone and satin woven dewatering belts for belt filter presses in municipal sewage, paper mill sludge, coal washing and fruit juice pressing.
-- [Polyester Square Mesh](https://www.aurora-filtech.com/products/square-mesh/): Plain-weave 1/1 PET monofilament square mesh (400–2100 µm standard belts, 40–200 mesh sifting cloth) for wood panel drying, food dehydration and WPC wood flour classification.
-- [Dust Collector Filter Bags](https://www.aurora-filtech.com/products/filter-bag/): Non-woven needle felt filter bags in PET, PPS, Nomex, P84, Acrylic and PTFE membrane laminates.
-- [Industrial Filter Cartridges](https://www.aurora-filtech.com/products/filter-cartridge/): Pleated dust, air, water and oil filter cartridges (anti-static, PTFE-membrane, cellulose, PPS/Nomex).
+> Industrial Filter Fabrics, Paper Machine Clothing (PMC), Spiral Fabrics & Mesh Belts Manufacturer. 30+ years experience, 3 factories in China & UK office, in-house monofilament extrusion, German Dornier weaving looms (widths up to 6,000 mm), heat setting, laser cutting & automated seaming. OEM/ODM worldwide.
+
+## Full Machine-Readable Catalog
+- [Complete Engineering Catalog & Spec Tables](https://www.aurora-filtech.com/llms-full.txt): All models, CFM air permeability ratings, yarn diameters, OEM machine compatibility, and glossary.
+
+## Core Product Lines
+- [Forming Fabric](https://www.aurora-filtech.com/forming-fabric/): Forming fabrics (also known as forming wire) for paper machines and nonwoven forming machines. 1-layer, 1.5-layer, 2-layer and 3-layer constructions with anti-hydrolysis monofilament.
+- [Dryer Fabric](https://www.aurora-filtech.com/dryer-fabric/): Anti-static dryer fabrics and dryer belts for board forming, paper drying and food drying machines. Anti-static, anti-hydrolysis and heat-resistant constructions with strong warp loop seams.
+- [Spiral Fabric (Spiral Belt)](https://www.aurora-filtech.com/spiral-belt/): Spiral fabrics and spiral belts for belt press filter dewatering and dryer applications. PET and PPS monofilament spirals joined by hinge pins — with or without filler yarns — custom widths and edge treatments.
+- [Vacuum Filter Fabric (Vacuum Filter Belt)](https://www.aurora-filtech.com/vacuum-fabric/): Vacuum filter fabrics for vacuum belt filters and vacuum disc filters in power plant FGD, phosphoric acid and mining filtration. Seamless or seamed, custom sizes.
+- [Press Filter Fabric (Filter Cloth)](https://www.aurora-filtech.com/press-fabric/): Press filter fabrics and filter cloths for frame press filters, membrane press filters, drum, disc and leaf filters — oil, mining, lithium phosphate filtration and sludge dewatering.
+- [Press Filter Belt (Dewatering Belt)](https://www.aurora-filtech.com/press-belt/): Press filter belts (dewatering belts) for belt press filters in sludge dewatering, sand washing, juice squeezing and palm oil squeezing. Reinforced seams, custom lengths.
+- [Filter Bag (Dust Collector Bag)](https://www.aurora-filtech.com/products/filter-bag/): Dust filter bags for bag filters and dust collectors in power plants and cement plants. PET, PPS, Nomex, P84 and PTFE felt options with membrane and anti-static finishes.
+- [Filter Cartridge (Cartridge Filter)](https://www.aurora-filtech.com/products/filter-cartridge/): Industrial filter cartridges for air, water and oil filtration systems. Anti-static, PTFE, PPS, cellulose and Nomex series with matched end caps and gaskets.
+- [Polyester Square Mesh (Plain Weave)](https://www.aurora-filtech.com/products/square-mesh/): Polyester monofilament square mesh (plain weave, square weave) from 40 to 200 mesh count — fine mesh conveyor belts for wood panel and biomass drying, and screening/sifting mesh for wood flour and WPC.
 
 ## Industries & Applications
 - [Wood-based Panels (MDF, OSB, Particleboard)](https://www.aurora-filtech.com/industries/wood-based-panels/)
@@ -24,10 +28,10 @@
 
 ## Technical Guides & Reference
 - [Manufacturing & Production Capability](https://www.aurora-filtech.com/about/)
-- [Filtration & PMC Technical Glossary (32+ Terms)](https://www.aurora-filtech.com/resources/glossary/)
-- [What Is a Forming Fabric (Forming Wire)?](https://www.aurora-filtech.com/blog/forming-fabric-guide/)
-- [Spiral Fabric Guide: Dryer Fabric vs Press Belt & Filler Yarns](https://www.aurora-filtech.com/blog/spiral-fabric-guide/)
-- [PTFE / Teflon Belt Joint Types Compared](https://www.aurora-filtech.com/blog/ptfe-belt-joint-types/)
+- [Filtration & PMC Technical Glossary (32 Terms)](https://www.aurora-filtech.com/resources/glossary/)
+- [What Is a Forming Fabric (Forming Wire)? A Practical Guide](https://www.aurora-filtech.com/blog/forming-fabric-guide/)
+- [Spiral Fabric Guide: Dryer Fabric vs Press Belt, and Filler Yarns Explained](https://www.aurora-filtech.com/blog/spiral-fabric-guide/)
+- [PTFE / Teflon Belt Joint Types Compared: Bullnose, Scarfed, Pin & Endless](https://www.aurora-filtech.com/blog/ptfe-belt-joint-types/)
 
 ## Contact & Engineering Support
 - Sales & Engineering Email: johnson@aurora-filtech.com
