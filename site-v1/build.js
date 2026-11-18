@@ -750,11 +750,16 @@ pages-df-vf.js
 pages-sm.js
 pages-eq.js
 live-std.json
+functions
 site-v1
 site-seo
 `);
 
+write("functions/api/rfq.js", fs.readFileSync(path.join(__dirname, "../shared/rfq-function.js"), "utf8"));
+
 write("_headers", `# Cloudflare Pages cache & security headers
+/api/*
+  Cache-Control: no-store
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 /qfy-content/*

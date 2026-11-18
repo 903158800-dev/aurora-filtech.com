@@ -800,7 +800,7 @@ const APP_JS = `(function(){
         renderStatus(false, 'Local file:// preview does not allow HTTP relay');
         return;
       }
-      var endpoint = form.getAttribute('data-endpoint') || 'https://formsubmit.co/ajax/johnson@aurora-filtech.com';
+      var endpoint = form.getAttribute('data-endpoint') || form.getAttribute('action') || '/api/rfq';
       var ac = typeof AbortController === 'function' ? new AbortController() : null;
       var timer = ac ? setTimeout(function(){ ac.abort(); }, 10000) : null;
       fetch(endpoint, {
@@ -817,7 +817,7 @@ const APP_JS = `(function(){
           if (ok) {
             renderStatus(true, '');
           } else {
-            var msg = (json && json.message) ? String(json.message) : ('HTTP ' + res.status);
+            var msg = (json && json.message) ? String(json.message) : ((res.status === 404 || res.status === 405 || res.status === 501) ? 'Static server only — /api/rfq runs live on Cloudflare Pages' : ('HTTP ' + res.status));
             renderStatus(false, msg);
           }
         });
@@ -873,10 +873,8 @@ const contactSection = `
         <div><b>China factory:</b> Room 1103, Guanhe East Rd, Tianning District, Changzhou, CN</div>
       </div>
     </div>
-    <form class="cro-rfq-form" action="https://formsubmit.co/johnson@aurora-filtech.com" method="POST">
+    <form class="cro-rfq-form" action="/api/rfq" method="POST">
       <input type="hidden" name="_subject" value="New B2B RFQ — Aurora Filtech">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
       <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
       <div class="row">
         <div class="field"><label for="f-company">Company Name *</label><input id="f-company" name="company" required placeholder="Company or plant name"></div>
@@ -1921,7 +1919,10 @@ pages-df-vf.js
 pages-sm.js
 pages-eq.js
 live-std.json
+functions
 `);
+
+write("functions/api/rfq.js", fs.readFileSync(path.join(__dirname, "../shared/rfq-function.js"), "utf8"));
 
 // ---------- Full 25-Page Sitemap & Dynamic 138-Image Sitemap ----------
 const allSitemapUrls = [
@@ -2093,6 +2094,8 @@ write("llms-full.txt", [
 ].join("\n\n"));
 
 write("_headers", `# Cloudflare Pages cache & security headers
+/api/*
+  Cache-Control: no-store
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 /qfy-content/*

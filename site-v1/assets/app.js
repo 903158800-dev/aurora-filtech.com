@@ -145,7 +145,7 @@
         renderStatus(false, 'Local file:// preview does not allow HTTP relay');
         return;
       }
-      var endpoint = form.getAttribute('data-endpoint') || 'https://formsubmit.co/ajax/johnson@aurora-filtech.com';
+      var endpoint = form.getAttribute('data-endpoint') || form.getAttribute('action') || '/api/rfq';
       var ac = typeof AbortController === 'function' ? new AbortController() : null;
       var timer = ac ? setTimeout(function(){ ac.abort(); }, 10000) : null;
       fetch(endpoint, {
@@ -162,7 +162,7 @@
           if (ok) {
             renderStatus(true, '');
           } else {
-            var msg = (json && json.message) ? String(json.message) : ('HTTP ' + res.status);
+            var msg = (json && json.message) ? String(json.message) : ((res.status === 404 || res.status === 405 || res.status === 501) ? 'Static server only — /api/rfq runs live on Cloudflare Pages' : ('HTTP ' + res.status));
             renderStatus(false, msg);
           }
         });
