@@ -167,7 +167,8 @@ Git 推送到该生产分支也会自动发布；只保存验收文档时可使�
 - 390×844 手机视口实际填表并点击提交，返回 `accepted`；1440×1000 电脑视口复核结果区域。
 - 两种尺寸均无横向溢出。截图位于 `qa/screenshots/production-*.jpg`。
 - 正式站测试主题：`[RFQ] Spiral Fabric — AURORA WEBSITE TEST 20261119-PRODUCTION`，
-  编号 `7a5fb34778f5`；SMTP 已接受，最终收件确认记录见 `qa/smtp-verification.json`。
+  编号 `7a5fb34778f5`；用户已确认 Johnson 实际收到，中文、表单字段及回复地址全部正确。
+  正式站完整发信链路验收通过，记录见 `qa/smtp-verification.json`。
 - 原版提交与标签均为 `11b9dd6`，V2/V3 代码没有改动。
 - 回退当前改版可在 Cloudflare Deployments 中回滚到历史生产部署
   `c717bb4c-d6ad-400e-9efd-66733094e027`；如需继续部署旧分支，再将生产分支改回 `main`。
@@ -190,7 +191,6 @@ Git 推送到该生产分支也会自动发布；只保存验收文档时可使�
 
 ## 已知收尾项
 
-- 正式站最后一封测试邮件编号 `7a5fb34778f5` 已被 SMTP 接受，待用户确认收件。
 - `/package.json` 源站已为 404；旧缓存仍返回仅含依赖名和版本的信息，不含密码。
   清除单个 URL 缓存的 API 权限不足，Cloudflare 缓存页面持续加载，暂未清除这份缓存。
   其他已检查的构建脚本和锁文件路径已返回 404。

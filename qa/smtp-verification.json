@@ -57,7 +57,6 @@
   },
   "inboxDeliveryVerified": true,
   "remaining": [
-    "Confirm receipt of final production-domain inquiry 7a5fb34778f5 in Johnson mailbox",
     "Non-blocking cleanup: purge old package.json dependency metadata cache when Cloudflare dashboard is available"
   ],
   "senderConfiguration": "User-confirmed website sender Aaron; customer contact email is reply-to only",
@@ -163,7 +162,10 @@
         "height": 844
       },
       "outcome": "accepted",
-      "userConfirmedReceived": null
+      "userConfirmedReceived": true,
+      "completeChineseAndFormFields": true,
+      "replyToConfirmed": "903158800@qq.com",
+      "confirmationSource": "User confirmation in chat on 2026-11-19"
     }
   ],
   "buildDiagnosis": {
@@ -230,5 +232,14 @@
     "productionBranch": "v1-smtp-20261119",
     "method": "Cloudflare Git deployment",
     "buildCommand": "if [ -f package-lock.json ]; then npm ci --omit=dev && npm run build --if-present; fi"
+  },
+  "productionInboxDeliveryVerified": true,
+  "productionMailAcceptance": {
+    "reference": "7a5fb34778f5",
+    "mailReceived": true,
+    "contentCorrect": true,
+    "replyToCorrect": true,
+    "confirmedBy": "user",
+    "date": "2026-11-19"
   }
 }
