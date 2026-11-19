@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-19",
+  "version": "V1.1",
+  "browser": "Microsoft Edge",
+  "automatedTests": { "passed": 9, "failed": 0 },
+  "responsiveChecks": {
+    "cssViewportWidths": [320, 390, 1440],
+    "pagesPerWidth": 26,
+    "horizontalPageOverflow": 0,
+    "brokenLoadedImages": 0,
+    "limitation": "Geometry checks supplement visual inspection; lazy images not yet loaded are excluded from broken-image counts."
+  },
+  "visualInspection": [
+    "Desktop home and two-column inquiry form",
+    "Mobile single-column inquiry form with readable labels and input text",
+    "Mobile expanded navigation scrolls internally and its bottom quote link is reachable",
+    "Product hero was squeezed by shortcut links at narrow widths; changed to a column layout below 860px",
+    "After the hero fix: 390px viewport, 348px hero content width, column layout",
+    "Wide product specifications scroll inside their table container"
+  ],
+  "productionInquiry": {
+    "site": "https://aurora-filtech.pages.dev",
+    "browserSubmissionHttpStatus": 503,
+    "configurationPresent": false,
+    "cause": "RESEND_API_KEY is absent from the Cloudflare Pages environment",
+    "providerContacted": false,
+    "realEmailDelivered": false
+  },
+  "localMockIntegration": {
+    "acceptedSubmission": true,
+    "successButtonDisabled": true,
+    "providerRejectionShowsFailure": true,
+    "failedDraftRestoredAfterReload": true,
+    "realEmailSent": false,
+    "note": "Local server mocks only the Resend API and runs the real inquiry handler. This is not evidence of inbox delivery."
+  },
+  "remainingProductionSetup": [
+    "Configure RESEND_API_KEY and a verified sender in Cloudflare Preview and Production as needed",
+    "Redeploy after configuring secrets",
+    "Confirm accepted response, provider delivered event, and receipt in the destination mailbox",
+    "Configure edge rate limits and optional Turnstile keys before exposing a fully enabled public mail endpoint"
+  ]
+}

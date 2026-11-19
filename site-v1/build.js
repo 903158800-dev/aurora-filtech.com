@@ -10,12 +10,39 @@ const { squareMeshPage, pressFabricPage, pressBeltPage, filterCartridgePage } = 
 const { aboutPage } = require("./pages-eq");
 
 const OUT = __dirname;
-const TODAY = new Date().toISOString().slice(0, 10);
+const dates = require('./content-dates.json');
+const TODAY = dates.default; // Content date, deliberately independent of the build clock.
+const pageUpdated = url => dates.pages[new URL(url, BASE).pathname] || dates.default;
+const crypto = require('node:crypto');
+const styleContent = `/* Aurora Filtech V1.1 */${minifyCssLater(CSS)}`;
+function minifyCssLater(s) { return s.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s*([{:;,}])\s*/g, "$1").replace(/;}/g, "}").replace(/\s+/g, " ").trim(); }
+const assetHash = s => crypto.createHash('sha256').update(s).digest('hex').slice(0,16);
+const assetUrls = {css:`/assets/versioned/style.${assetHash(styleContent)}.css`,js:`/assets/versioned/app.${assetHash(APP_JS)}.js`};
+const manifestPath = path.join(__dirname, 'media-manifest.json');
+const media = fs.existsSync(manifestPath) ? JSON.parse(fs.readFileSync(manifestPath,'utf8')) : {};
+function imageSizes(rel) { return rel === 'index.html' ? '(max-width: 640px) calc(100vw - 32px), (max-width: 960px) calc(100vw - 48px), 540px' : '(max-width: 640px) calc(100vw - 32px), (max-width: 960px) calc(100vw - 48px), 1100px'; }
+function optimizeHtml(content, rel) {
+  return content.replace('href="/assets/style.css"', `href="${assetUrls.css}"`).replace('src="/assets/app.js"', `src="${assetUrls.js}"`)
+    .replace(/<img\b[^>]*>/g, tag => {
+      const src = tag.match(/\bsrc="([^"]+)"/)?.[1];
+      const entry = media[src]; if (!entry) return tag;
+      const srcset = entry.variants.map(v => `${v.url} ${v.width}w`).join(', ');
+      const fallback = entry.variants.find(v => v.width >= 960) || entry.variants.at(-1);
+      return tag.replace(`src="${src}"`, `src="${fallback.url}" data-source="${src}" srcset="${srcset}" sizes="${imageSizes(rel)}"`);
+    }).replace(/<link rel="preload" as="image"[^>]*>/g, tag => {
+      const url = tag.match(/href="([^"]+)"/)?.[1]; const entry = media[url]; if (!entry) return tag;
+      return tag.replace(`href="${url}"`, `href="${(entry.variants.find(v => v.width >= 960)||entry.variants.at(-1)).url}" imagesrcset="${entry.variants.map(v => `${v.url} ${v.width}w`).join(', ')}" imagesizes="${imageSizes(rel)}" type="image/webp"`);
+    });
+}
 const OG = `/qfy-content/uploads/2019/12/711b4e3ef611d676aa22b38c17cf53e4.jpg`;
 const minifyCss = s => s.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s*([{:;,}])\s*/g, "$1").replace(/;}/g, "}").replace(/\s+/g, " ").trim();
 
 const renderedPages = [];
 function write(rel, content, pageUrl = null) {
+  if (rel.endsWith('.html')) {
+    content = optimizeHtml(content, rel);
+    if (pageUrl) content = content.replace(/"dateModified":"[^"]+"/g, `"dateModified":"${pageUpdated(pageUrl)}T08:00:00+08:00"`);
+  }
   const fp = path.join(OUT, rel);
   fs.mkdirSync(path.dirname(fp), { recursive: true });
   fs.writeFileSync(fp, content);
@@ -483,7 +510,9 @@ const glossBody = `
 ${rfqSection}`;
 
 // ---------- 输出 ----------
-write("assets/style.css", `/* Aurora Filtech site-v1 */${minifyCss(CSS)}`);
+write("assets/style.css", styleContent);
+write(assetUrls.css.slice(1), styleContent);
+write(assetUrls.js.slice(1), APP_JS);
 write("assets/app.js", APP_JS);
 write("index.html", layout({ url: `${BASE}/`, title: "Aurora Filtech | Industrial Filter Fabrics and Filter Belts",
   desc: "Manufacturer of forming fabrics, dryer fabrics, spiral fabrics, vacuum and press filter fabrics, filter bags and cartridges. 30+ years, 3 factories, OEM/ODM.",
@@ -711,7 +740,7 @@ const urls = [`${BASE}/`, `${BASE}/about/`, ...Object.values(products).map(p => 
   ...Object.values(posts).map(p => `${BASE}${p.url}`), `${BASE}/resources/glossary/`];
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(u => `  <url><loc>${u}</loc><lastmod>${TODAY}</lastmod></url>`).join("\n")}
+${urls.map(u => `  <url><loc>${u}</loc><lastmod>${pageUpdated(u)}</lastmod></url>`).join("\n")}
 </urlset>`);
 
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -750,6 +779,9 @@ pages-df-vf.js
 pages-sm.js
 pages-eq.js
 live-std.json
+client.js
+media-manifest.json
+content-dates.json
 functions
 site-v1
 site-seo
@@ -760,10 +792,14 @@ write("functions/api/rfq.js", fs.readFileSync(path.join(__dirname, "../shared/rf
 write("_headers", `# Cloudflare Pages cache & security headers
 /api/*
   Cache-Control: no-store
-/assets/*
+/assets/versioned/*
   Cache-Control: public, max-age=31536000, immutable
+/assets/style.css
+  Cache-Control: no-cache
+/assets/app.js
+  Cache-Control: no-cache
 /qfy-content/*
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=86400, must-revalidate
 /favicon.svg
   Cache-Control: public, max-age=604800
 /favicon-48x48.png
@@ -778,6 +814,8 @@ write("_headers", `# Cloudflare Pages cache & security headers
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
 `);
+
+write("_routes.json", JSON.stringify({version:1,include:["/api/*"],exclude:[]},null,2));
 
 write("_redirects", `/spiral-dryer-fabric/ /spiral-belt/ 301
 /spiral-press-filter-belt/ /spiral-belt/ 301

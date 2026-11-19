@@ -1,0 +1,2321 @@
+{
+  "/qfy-content/uploads/eq/eq-hero.jpg": {
+    "width": 1400,
+    "height": 527,
+    "originalBytes": 182841,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-1e1780424cdaba22-320.webp",
+        "width": 320,
+        "bytes": 9770
+      },
+      {
+        "url": "/assets/versioned/img-1e1780424cdaba22-640.webp",
+        "width": 640,
+        "bytes": 32102
+      },
+      {
+        "url": "/assets/versioned/img-1e1780424cdaba22-960.webp",
+        "width": 960,
+        "bytes": 64578
+      },
+      {
+        "url": "/assets/versioned/img-1e1780424cdaba22-1280.webp",
+        "width": 1280,
+        "bytes": 105206
+      },
+      {
+        "url": "/assets/versioned/img-1e1780424cdaba22-1400.webp",
+        "width": 1400,
+        "bytes": 126500
+      }
+    ]
+  },
+  "/qfy-content/uploads/eq/eq-yarn.jpg": {
+    "width": 1300,
+    "height": 360,
+    "originalBytes": 104255,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-40586189d6eaed5e-320.webp",
+        "width": 320,
+        "bytes": 7178
+      },
+      {
+        "url": "/assets/versioned/img-40586189d6eaed5e-640.webp",
+        "width": 640,
+        "bytes": 21460
+      },
+      {
+        "url": "/assets/versioned/img-40586189d6eaed5e-960.webp",
+        "width": 960,
+        "bytes": 40800
+      },
+      {
+        "url": "/assets/versioned/img-40586189d6eaed5e-1280.webp",
+        "width": 1280,
+        "bytes": 62208
+      },
+      {
+        "url": "/assets/versioned/img-40586189d6eaed5e-1300.webp",
+        "width": 1300,
+        "bytes": 66434
+      }
+    ]
+  },
+  "/qfy-content/uploads/eq/eq-warping.jpg": {
+    "width": 1300,
+    "height": 360,
+    "originalBytes": 103187,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-6c3a7df4f1578fab-320.webp",
+        "width": 320,
+        "bytes": 6628
+      },
+      {
+        "url": "/assets/versioned/img-6c3a7df4f1578fab-640.webp",
+        "width": 640,
+        "bytes": 21050
+      },
+      {
+        "url": "/assets/versioned/img-6c3a7df4f1578fab-960.webp",
+        "width": 960,
+        "bytes": 40566
+      },
+      {
+        "url": "/assets/versioned/img-6c3a7df4f1578fab-1280.webp",
+        "width": 1280,
+        "bytes": 64006
+      },
+      {
+        "url": "/assets/versioned/img-6c3a7df4f1578fab-1300.webp",
+        "width": 1300,
+        "bytes": 67830
+      }
+    ]
+  },
+  "/qfy-content/uploads/eq/eq-weaving.jpg": {
+    "width": 1300,
+    "height": 360,
+    "originalBytes": 108538,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-ff90be4b7f50f450-320.webp",
+        "width": 320,
+        "bytes": 6840
+      },
+      {
+        "url": "/assets/versioned/img-ff90be4b7f50f450-640.webp",
+        "width": 640,
+        "bytes": 21116
+      },
+      {
+        "url": "/assets/versioned/img-ff90be4b7f50f450-960.webp",
+        "width": 960,
+        "bytes": 41568
+      },
+      {
+        "url": "/assets/versioned/img-ff90be4b7f50f450-1280.webp",
+        "width": 1280,
+        "bytes": 66068
+      },
+      {
+        "url": "/assets/versioned/img-ff90be4b7f50f450-1300.webp",
+        "width": 1300,
+        "bytes": 70930
+      }
+    ]
+  },
+  "/qfy-content/uploads/eq/eq-dornier.jpg": {
+    "width": 1300,
+    "height": 360,
+    "originalBytes": 104564,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-5af7e1e263c354d4-320.webp",
+        "width": 320,
+        "bytes": 7524
+      },
+      {
+        "url": "/assets/versioned/img-5af7e1e263c354d4-640.webp",
+        "width": 640,
+        "bytes": 21594
+      },
+      {
+        "url": "/assets/versioned/img-5af7e1e263c354d4-960.webp",
+        "width": 960,
+        "bytes": 39548
+      },
+      {
+        "url": "/assets/versioned/img-5af7e1e263c354d4-1280.webp",
+        "width": 1280,
+        "bytes": 62940
+      },
+      {
+        "url": "/assets/versioned/img-5af7e1e263c354d4-1300.webp",
+        "width": 1300,
+        "bytes": 66966
+      }
+    ]
+  },
+  "/qfy-content/uploads/eq/eq-heatset.jpg": {
+    "width": 1300,
+    "height": 360,
+    "originalBytes": 94942,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-df635dc531aa224f-320.webp",
+        "width": 320,
+        "bytes": 7280
+      },
+      {
+        "url": "/assets/versioned/img-df635dc531aa224f-640.webp",
+        "width": 640,
+        "bytes": 21042
+      },
+      {
+        "url": "/assets/versioned/img-df635dc531aa224f-960.webp",
+        "width": 960,
+        "bytes": 38628
+      },
+      {
+        "url": "/assets/versioned/img-df635dc531aa224f-1280.webp",
+        "width": 1280,
+        "bytes": 56076
+      },
+      {
+        "url": "/assets/versioned/img-df635dc531aa224f-1300.webp",
+        "width": 1300,
+        "bytes": 57420
+      }
+    ]
+  },
+  "/qfy-content/uploads/eq/eq-laser.jpg": {
+    "width": 1000,
+    "height": 890,
+    "originalBytes": 146203,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-bf71654244d2f683-320.webp",
+        "width": 320,
+        "bytes": 14510
+      },
+      {
+        "url": "/assets/versioned/img-bf71654244d2f683-640.webp",
+        "width": 640,
+        "bytes": 41836
+      },
+      {
+        "url": "/assets/versioned/img-bf71654244d2f683-960.webp",
+        "width": 960,
+        "bytes": 74884
+      },
+      {
+        "url": "/assets/versioned/img-bf71654244d2f683-1000.webp",
+        "width": 1000,
+        "bytes": 83362
+      }
+    ]
+  },
+  "/qfy-content/uploads/eq/eq-sewing.jpg": {
+    "width": 1000,
+    "height": 682,
+    "originalBytes": 128064,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-5e0a27925ac2ef99-320.webp",
+        "width": 320,
+        "bytes": 11456
+      },
+      {
+        "url": "/assets/versioned/img-5e0a27925ac2ef99-640.webp",
+        "width": 640,
+        "bytes": 37284
+      },
+      {
+        "url": "/assets/versioned/img-5e0a27925ac2ef99-960.webp",
+        "width": 960,
+        "bytes": 72116
+      },
+      {
+        "url": "/assets/versioned/img-5e0a27925ac2ef99-1000.webp",
+        "width": 1000,
+        "bytes": 79600
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/hero.jpg": {
+    "width": 1200,
+    "height": 525,
+    "originalBytes": 282682,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-cf1d28ef26c1fd59-320.webp",
+        "width": 320,
+        "bytes": 23638
+      },
+      {
+        "url": "/assets/versioned/img-cf1d28ef26c1fd59-640.webp",
+        "width": 640,
+        "bytes": 97796
+      },
+      {
+        "url": "/assets/versioned/img-cf1d28ef26c1fd59-960.webp",
+        "width": 960,
+        "bytes": 192152
+      },
+      {
+        "url": "/assets/versioned/img-cf1d28ef26c1fd59-1200.webp",
+        "width": 1200,
+        "bytes": 282608
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/as-mono.jpg": {
+    "width": 466,
+    "height": 350,
+    "originalBytes": 75286,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-9b7bda98c5e9ef85-320.webp",
+        "width": 320,
+        "bytes": 33390
+      },
+      {
+        "url": "/assets/versioned/img-9b7bda98c5e9ef85-466.webp",
+        "width": 466,
+        "bytes": 68036
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/as-mixed.jpg": {
+    "width": 466,
+    "height": 350,
+    "originalBytes": 82175,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-9830e8dce2483f58-320.webp",
+        "width": 320,
+        "bytes": 38916
+      },
+      {
+        "url": "/assets/versioned/img-9830e8dce2483f58-466.webp",
+        "width": 466,
+        "bytes": 72886
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/as-608b.jpg": {
+    "width": 1080,
+    "height": 756,
+    "originalBytes": 222303,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-5b6cb907bb315084-320.webp",
+        "width": 320,
+        "bytes": 27660
+      },
+      {
+        "url": "/assets/versioned/img-5b6cb907bb315084-640.webp",
+        "width": 640,
+        "bytes": 83790
+      },
+      {
+        "url": "/assets/versioned/img-5b6cb907bb315084-960.webp",
+        "width": 960,
+        "bytes": 150178
+      },
+      {
+        "url": "/assets/versioned/img-5b6cb907bb315084-1080.webp",
+        "width": 1080,
+        "bytes": 180308
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/wood-line.jpg": {
+    "width": 539,
+    "height": 404,
+    "originalBytes": 57758,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-04585a80664017d7-320.webp",
+        "width": 320,
+        "bytes": 22620
+      },
+      {
+        "url": "/assets/versioned/img-04585a80664017d7-539.webp",
+        "width": 539,
+        "bytes": 50366
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/4106s.jpg": {
+    "width": 500,
+    "height": 350,
+    "originalBytes": 70563,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-e048ae010ee6439a-320.webp",
+        "width": 320,
+        "bytes": 26358
+      },
+      {
+        "url": "/assets/versioned/img-e048ae010ee6439a-500.webp",
+        "width": 500,
+        "bytes": 52554
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/wool-uni.jpg": {
+    "width": 640,
+    "height": 480,
+    "originalBytes": 83414,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-968d825047eddc43-320.webp",
+        "width": 320,
+        "bytes": 14696
+      },
+      {
+        "url": "/assets/versioned/img-968d825047eddc43-640.webp",
+        "width": 640,
+        "bytes": 47276
+      }
+    ]
+  },
+  "/qfy-content/uploads/sp/sp-pps9010.jpg": {
+    "width": 1000,
+    "height": 750,
+    "originalBytes": 155687,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-e5aacf7cd1c93b64-320.webp",
+        "width": 320,
+        "bytes": 20716
+      },
+      {
+        "url": "/assets/versioned/img-e5aacf7cd1c93b64-640.webp",
+        "width": 640,
+        "bytes": 50582
+      },
+      {
+        "url": "/assets/versioned/img-e5aacf7cd1c93b64-960.webp",
+        "width": 960,
+        "bytes": 79314
+      },
+      {
+        "url": "/assets/versioned/img-e5aacf7cd1c93b64-1000.webp",
+        "width": 1000,
+        "bytes": 84254
+      }
+    ]
+  },
+  "/qfy-content/uploads/sp/sp-pet.jpg": {
+    "width": 1000,
+    "height": 750,
+    "originalBytes": 119764,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-79fbc10f27bc35f3-320.webp",
+        "width": 320,
+        "bytes": 16480
+      },
+      {
+        "url": "/assets/versioned/img-79fbc10f27bc35f3-640.webp",
+        "width": 640,
+        "bytes": 34068
+      },
+      {
+        "url": "/assets/versioned/img-79fbc10f27bc35f3-960.webp",
+        "width": 960,
+        "bytes": 52826
+      },
+      {
+        "url": "/assets/versioned/img-79fbc10f27bc35f3-1000.webp",
+        "width": 1000,
+        "bytes": 55812
+      }
+    ]
+  },
+  "/qfy-content/uploads/sp/sp-ptfe.jpg": {
+    "width": 466,
+    "height": 350,
+    "originalBytes": 67905,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-8feb46ac0d26be30-320.webp",
+        "width": 320,
+        "bytes": 27830
+      },
+      {
+        "url": "/assets/versioned/img-8feb46ac0d26be30-466.webp",
+        "width": 466,
+        "bytes": 55874
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/sq-sem.jpg": {
+    "width": 1400,
+    "height": 1050,
+    "originalBytes": 332175,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-89e479e46aa1e765-320.webp",
+        "width": 320,
+        "bytes": 19262
+      },
+      {
+        "url": "/assets/versioned/img-89e479e46aa1e765-640.webp",
+        "width": 640,
+        "bytes": 74524
+      },
+      {
+        "url": "/assets/versioned/img-89e479e46aa1e765-960.webp",
+        "width": 960,
+        "bytes": 150562
+      },
+      {
+        "url": "/assets/versioned/img-89e479e46aa1e765-1280.webp",
+        "width": 1280,
+        "bytes": 225686
+      },
+      {
+        "url": "/assets/versioned/img-89e479e46aa1e765-1400.webp",
+        "width": 1400,
+        "bytes": 262444
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/sq-white.jpg": {
+    "width": 1200,
+    "height": 900,
+    "originalBytes": 277998,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-50d1f723d707df67-320.webp",
+        "width": 320,
+        "bytes": 35308
+      },
+      {
+        "url": "/assets/versioned/img-50d1f723d707df67-640.webp",
+        "width": 640,
+        "bytes": 90330
+      },
+      {
+        "url": "/assets/versioned/img-50d1f723d707df67-960.webp",
+        "width": 960,
+        "bytes": 141494
+      },
+      {
+        "url": "/assets/versioned/img-50d1f723d707df67-1200.webp",
+        "width": 1200,
+        "bytes": 191998
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/sq-blue.jpg": {
+    "width": 1200,
+    "height": 900,
+    "originalBytes": 327465,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-a1a000402a8d98c9-320.webp",
+        "width": 320,
+        "bytes": 35088
+      },
+      {
+        "url": "/assets/versioned/img-a1a000402a8d98c9-640.webp",
+        "width": 640,
+        "bytes": 107406
+      },
+      {
+        "url": "/assets/versioned/img-a1a000402a8d98c9-960.webp",
+        "width": 960,
+        "bytes": 194360
+      },
+      {
+        "url": "/assets/versioned/img-a1a000402a8d98c9-1200.webp",
+        "width": 1200,
+        "bytes": 277902
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/sq-small.jpg": {
+    "width": 500,
+    "height": 350,
+    "originalBytes": 61070,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-86399eef5cc91aa6-320.webp",
+        "width": 320,
+        "bytes": 35234
+      },
+      {
+        "url": "/assets/versioned/img-86399eef5cc91aa6-500.webp",
+        "width": 500,
+        "bytes": 77694
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/sq-loop.jpg": {
+    "width": 800,
+    "height": 600,
+    "originalBytes": 165039,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-a5d38d4b72b48b65-320.webp",
+        "width": 320,
+        "bytes": 26776
+      },
+      {
+        "url": "/assets/versioned/img-a5d38d4b72b48b65-640.webp",
+        "width": 640,
+        "bytes": 80954
+      },
+      {
+        "url": "/assets/versioned/img-a5d38d4b72b48b65-800.webp",
+        "width": 800,
+        "bytes": 113688
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/sq-fruit.jpg": {
+    "width": 1200,
+    "height": 900,
+    "originalBytes": 321514,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-14d4d66407b4b0e1-320.webp",
+        "width": 320,
+        "bytes": 26534
+      },
+      {
+        "url": "/assets/versioned/img-14d4d66407b4b0e1-640.webp",
+        "width": 640,
+        "bytes": 89218
+      },
+      {
+        "url": "/assets/versioned/img-14d4d66407b4b0e1-960.webp",
+        "width": 960,
+        "bytes": 181706
+      },
+      {
+        "url": "/assets/versioned/img-14d4d66407b4b0e1-1200.webp",
+        "width": 1200,
+        "bytes": 275466
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/double-layer.jpg": {
+    "width": 490,
+    "height": 368,
+    "originalBytes": 73799,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-1bf2b81e427489df-320.webp",
+        "width": 320,
+        "bytes": 31478
+      },
+      {
+        "url": "/assets/versioned/img-1bf2b81e427489df-490.webp",
+        "width": 490,
+        "bytes": 63250
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/single-flat.jpg": {
+    "width": 466,
+    "height": 350,
+    "originalBytes": 61893,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-76d7e036bddc6579-320.webp",
+        "width": 320,
+        "bytes": 26442
+      },
+      {
+        "url": "/assets/versioned/img-76d7e036bddc6579-466.webp",
+        "width": 466,
+        "bytes": 49284
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/peek-joint.jpg": {
+    "width": 800,
+    "height": 599,
+    "originalBytes": 217109,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-909e1bf8984a02b7-320.webp",
+        "width": 320,
+        "bytes": 39834
+      },
+      {
+        "url": "/assets/versioned/img-909e1bf8984a02b7-640.webp",
+        "width": 640,
+        "bytes": 128916
+      },
+      {
+        "url": "/assets/versioned/img-909e1bf8984a02b7-800.webp",
+        "width": 800,
+        "bytes": 178576
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/seam-spiral-enhanced.jpg": {
+    "width": 561,
+    "height": 421,
+    "originalBytes": 109261,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-9d19141650777333-320.webp",
+        "width": 320,
+        "bytes": 29900
+      },
+      {
+        "url": "/assets/versioned/img-9d19141650777333-561.webp",
+        "width": 561,
+        "bytes": 96746
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/seam-spiral-pin.jpg": {
+    "width": 466,
+    "height": 350,
+    "originalBytes": 31919,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-6925534622ac6113-320.webp",
+        "width": 320,
+        "bytes": 13900
+      },
+      {
+        "url": "/assets/versioned/img-6925534622ac6113-466.webp",
+        "width": 466,
+        "bytes": 20844
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/seam-endless.jpg": {
+    "width": 465,
+    "height": 309,
+    "originalBytes": 25898,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-8d4173a8575155c1-320.webp",
+        "width": 320,
+        "bytes": 6332
+      },
+      {
+        "url": "/assets/versioned/img-8d4173a8575155c1-465.webp",
+        "width": 465,
+        "bytes": 12142
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/seam-double-loop.jpg": {
+    "width": 466,
+    "height": 350,
+    "originalBytes": 59248,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-152ac35cb615fae3-320.webp",
+        "width": 320,
+        "bytes": 32324
+      },
+      {
+        "url": "/assets/versioned/img-152ac35cb615fae3-466.webp",
+        "width": 466,
+        "bytes": 47860
+      }
+    ]
+  },
+  "/qfy-content/uploads/gf/graphite-sheet.jpg": {
+    "width": 800,
+    "height": 533,
+    "originalBytes": 68163,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-6274c4026f6ff862-320.webp",
+        "width": 320,
+        "bytes": 4306
+      },
+      {
+        "url": "/assets/versioned/img-6274c4026f6ff862-640.webp",
+        "width": 640,
+        "bytes": 23502
+      },
+      {
+        "url": "/assets/versioned/img-6274c4026f6ff862-800.webp",
+        "width": 800,
+        "bytes": 38080
+      }
+    ]
+  },
+  "/qfy-content/uploads/gf/vc.jpg": {
+    "width": 700,
+    "height": 700,
+    "originalBytes": 48494,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-f995d10c6ee9eca3-320.webp",
+        "width": 320,
+        "bytes": 3572
+      },
+      {
+        "url": "/assets/versioned/img-f995d10c6ee9eca3-640.webp",
+        "width": 640,
+        "bytes": 10796
+      },
+      {
+        "url": "/assets/versioned/img-f995d10c6ee9eca3-700.webp",
+        "width": 700,
+        "bytes": 12772
+      }
+    ]
+  },
+  "/qfy-content/uploads/2019/09/c77f027fd05a12043ba86232dbdbd87a.jpg": {
+    "width": 671,
+    "height": 386,
+    "originalBytes": 89724,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-4e82b37ffe4bedd6-320.webp",
+        "width": 320,
+        "bytes": 14930
+      },
+      {
+        "url": "/assets/versioned/img-4e82b37ffe4bedd6-640.webp",
+        "width": 640,
+        "bytes": 48990
+      },
+      {
+        "url": "/assets/versioned/img-4e82b37ffe4bedd6-671.webp",
+        "width": 671,
+        "bytes": 54438
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/forming-g2.jpg": {
+    "width": 800,
+    "height": 594,
+    "originalBytes": 193477,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-0c8f57207288b0a8-320.webp",
+        "width": 320,
+        "bytes": 17582
+      },
+      {
+        "url": "/assets/versioned/img-0c8f57207288b0a8-640.webp",
+        "width": 640,
+        "bytes": 98658
+      },
+      {
+        "url": "/assets/versioned/img-0c8f57207288b0a8-800.webp",
+        "width": 800,
+        "bytes": 152056
+      }
+    ]
+  },
+  "/qfy-content/uploads/2019/12/711b4e3ef611d676aa22b38c17cf53e4.jpg": {
+    "width": 2048,
+    "height": 772,
+    "originalBytes": 331229,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-60606338bd5f03cc-320.webp",
+        "width": 320,
+        "bytes": 9688
+      },
+      {
+        "url": "/assets/versioned/img-60606338bd5f03cc-640.webp",
+        "width": 640,
+        "bytes": 31316
+      },
+      {
+        "url": "/assets/versioned/img-60606338bd5f03cc-960.webp",
+        "width": 960,
+        "bytes": 63344
+      },
+      {
+        "url": "/assets/versioned/img-60606338bd5f03cc-1280.webp",
+        "width": 1280,
+        "bytes": 104328
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/peek-yarn.jpg": {
+    "width": 700,
+    "height": 291,
+    "originalBytes": 55009,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-f4d56a43b6330bf1-320.webp",
+        "width": 320,
+        "bytes": 7410
+      },
+      {
+        "url": "/assets/versioned/img-f4d56a43b6330bf1-640.webp",
+        "width": 640,
+        "bytes": 27282
+      },
+      {
+        "url": "/assets/versioned/img-f4d56a43b6330bf1-700.webp",
+        "width": 700,
+        "bytes": 32866
+      }
+    ]
+  },
+  "/qfy-content/uploads/2019/09/01208d8bdb0d682815afe19b9446d8c6.jpg": {
+    "width": 671,
+    "height": 386,
+    "originalBytes": 63795,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-250e6e089fb6d765-320.webp",
+        "width": 320,
+        "bytes": 10290
+      },
+      {
+        "url": "/assets/versioned/img-250e6e089fb6d765-640.webp",
+        "width": 640,
+        "bytes": 31860
+      },
+      {
+        "url": "/assets/versioned/img-250e6e089fb6d765-671.webp",
+        "width": 671,
+        "bytes": 35722
+      }
+    ]
+  },
+  "/qfy-content/uploads/2019/09/bb3b48e5c553055326e399fcff852e84.jpg": {
+    "width": 671,
+    "height": 386,
+    "originalBytes": 70565,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-e4755061e55fdf78-320.webp",
+        "width": 320,
+        "bytes": 12670
+      },
+      {
+        "url": "/assets/versioned/img-e4755061e55fdf78-640.webp",
+        "width": 640,
+        "bytes": 32892
+      },
+      {
+        "url": "/assets/versioned/img-e4755061e55fdf78-671.webp",
+        "width": 671,
+        "bytes": 35826
+      }
+    ]
+  },
+  "/qfy-content/uploads/2019/09/d4f377239978d23c7b1098681b945ba0.jpg": {
+    "width": 671,
+    "height": 386,
+    "originalBytes": 67264,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-b6bd6bd85cd45807-320.webp",
+        "width": 320,
+        "bytes": 10970
+      },
+      {
+        "url": "/assets/versioned/img-b6bd6bd85cd45807-640.webp",
+        "width": 640,
+        "bytes": 26982
+      },
+      {
+        "url": "/assets/versioned/img-b6bd6bd85cd45807-671.webp",
+        "width": 671,
+        "bytes": 30130
+      }
+    ]
+  },
+  "/qfy-content/uploads/2019/09/a6367e490f2e5ab99344dcb378e531e9.jpg": {
+    "width": 671,
+    "height": 386,
+    "originalBytes": 87165,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-a74338eda08fb6bb-320.webp",
+        "width": 320,
+        "bytes": 14618
+      },
+      {
+        "url": "/assets/versioned/img-a74338eda08fb6bb-640.webp",
+        "width": 640,
+        "bytes": 45056
+      },
+      {
+        "url": "/assets/versioned/img-a74338eda08fb6bb-671.webp",
+        "width": 671,
+        "bytes": 50158
+      }
+    ]
+  },
+  "/qfy-content/uploads/2019/09/45a34d52de579ededcbaa17342a7bba5.jpg": {
+    "width": 671,
+    "height": 386,
+    "originalBytes": 57554,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-be8ba2d0b4931d85-320.webp",
+        "width": 320,
+        "bytes": 9086
+      },
+      {
+        "url": "/assets/versioned/img-be8ba2d0b4931d85-640.webp",
+        "width": 640,
+        "bytes": 22230
+      },
+      {
+        "url": "/assets/versioned/img-be8ba2d0b4931d85-671.webp",
+        "width": 671,
+        "bytes": 24230
+      }
+    ]
+  },
+  "/qfy-content/uploads/2023/02/3aacdceeba645c1a58a832b60137c3b7.jpg": {
+    "width": 442,
+    "height": 401,
+    "originalBytes": 17679,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-effd150939758348-320.webp",
+        "width": 320,
+        "bytes": 5872
+      },
+      {
+        "url": "/assets/versioned/img-effd150939758348-442.webp",
+        "width": 442,
+        "bytes": 10588
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/sq-fruit-w.jpg": {
+    "width": 1000,
+    "height": 500,
+    "originalBytes": 190343,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-cf1b7fe46bbd8d4c-320.webp",
+        "width": 320,
+        "bytes": 18730
+      },
+      {
+        "url": "/assets/versioned/img-cf1b7fe46bbd8d4c-640.webp",
+        "width": 640,
+        "bytes": 61564
+      },
+      {
+        "url": "/assets/versioned/img-cf1b7fe46bbd8d4c-960.webp",
+        "width": 960,
+        "bytes": 122278
+      },
+      {
+        "url": "/assets/versioned/img-cf1b7fe46bbd8d4c-1000.webp",
+        "width": 1000,
+        "bytes": 137196
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/pressbelt-f.jpg": {
+    "width": 500,
+    "height": 350,
+    "originalBytes": 65161,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-bc8b09ed4e92a1f0-320.webp",
+        "width": 320,
+        "bytes": 20132
+      },
+      {
+        "url": "/assets/versioned/img-bc8b09ed4e92a1f0-500.webp",
+        "width": 500,
+        "bytes": 51646
+      }
+    ]
+  },
+  "/qfy-content/uploads/mine/mine-banner.jpg": {
+    "width": 1252,
+    "height": 521,
+    "originalBytes": 202059,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-aeab45e740cad6e4-320.webp",
+        "width": 320,
+        "bytes": 15556
+      },
+      {
+        "url": "/assets/versioned/img-aeab45e740cad6e4-640.webp",
+        "width": 640,
+        "bytes": 51498
+      },
+      {
+        "url": "/assets/versioned/img-aeab45e740cad6e4-960.webp",
+        "width": 960,
+        "bytes": 103212
+      },
+      {
+        "url": "/assets/versioned/img-aeab45e740cad6e4-1252.webp",
+        "width": 1252,
+        "bytes": 166904
+      }
+    ]
+  },
+  "/qfy-content/uploads/vf/m620.jpg": {
+    "width": 466,
+    "height": 350,
+    "originalBytes": 46656,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-bbe291405e33494f-320.webp",
+        "width": 320,
+        "bytes": 11666
+      },
+      {
+        "url": "/assets/versioned/img-bbe291405e33494f-466.webp",
+        "width": 466,
+        "bytes": 38386
+      }
+    ]
+  },
+  "/qfy-content/uploads/pf/pf-disc.jpg": {
+    "width": 1280,
+    "height": 720,
+    "originalBytes": 143489,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-eb54970193480cbf-320.webp",
+        "width": 320,
+        "bytes": 9074
+      },
+      {
+        "url": "/assets/versioned/img-eb54970193480cbf-640.webp",
+        "width": 640,
+        "bytes": 26350
+      },
+      {
+        "url": "/assets/versioned/img-eb54970193480cbf-960.webp",
+        "width": 960,
+        "bytes": 46024
+      },
+      {
+        "url": "/assets/versioned/img-eb54970193480cbf-1280.webp",
+        "width": 1280,
+        "bytes": 67508
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/pressfabric-g1.jpg": {
+    "width": 800,
+    "height": 348,
+    "originalBytes": 61720,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-0962b3e7b2b70a4f-320.webp",
+        "width": 320,
+        "bytes": 8368
+      },
+      {
+        "url": "/assets/versioned/img-0962b3e7b2b70a4f-640.webp",
+        "width": 640,
+        "bytes": 20516
+      },
+      {
+        "url": "/assets/versioned/img-0962b3e7b2b70a4f-800.webp",
+        "width": 800,
+        "bytes": 28388
+      }
+    ]
+  },
+  "/qfy-content/uploads/nw/nw-banner.jpg": {
+    "width": 1200,
+    "height": 377,
+    "originalBytes": 87268,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-10d7ed61a7fda60c-320.webp",
+        "width": 320,
+        "bytes": 8400
+      },
+      {
+        "url": "/assets/versioned/img-10d7ed61a7fda60c-640.webp",
+        "width": 640,
+        "bytes": 22460
+      },
+      {
+        "url": "/assets/versioned/img-10d7ed61a7fda60c-960.webp",
+        "width": 960,
+        "bytes": 36706
+      },
+      {
+        "url": "/assets/versioned/img-10d7ed61a7fda60c-1200.webp",
+        "width": 1200,
+        "bytes": 47364
+      }
+    ]
+  },
+  "/qfy-content/uploads/nw/nw-diag-drylaid.jpg": {
+    "width": 524,
+    "height": 333,
+    "originalBytes": 29506,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-d2c7ed557a70ea1c-320.webp",
+        "width": 320,
+        "bytes": 5130
+      },
+      {
+        "url": "/assets/versioned/img-d2c7ed557a70ea1c-524.webp",
+        "width": 524,
+        "bytes": 10656
+      }
+    ]
+  },
+  "/qfy-content/uploads/nw/nw-pr-drylaid.jpg": {
+    "width": 302,
+    "height": 212,
+    "originalBytes": 49976,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-368b6e3cf62da149-302.webp",
+        "width": 302,
+        "bytes": 24092
+      }
+    ]
+  },
+  "/qfy-content/uploads/nw/nw-diag-airlaid.jpg": {
+    "width": 524,
+    "height": 333,
+    "originalBytes": 38900,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-e413c4a5ffc6d262-320.webp",
+        "width": 320,
+        "bytes": 6756
+      },
+      {
+        "url": "/assets/versioned/img-e413c4a5ffc6d262-524.webp",
+        "width": 524,
+        "bytes": 15216
+      }
+    ]
+  },
+  "/qfy-content/uploads/nw/nw-pr-airlaid.jpg": {
+    "width": 300,
+    "height": 210,
+    "originalBytes": 41284,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-e230c74524e5291d-300.webp",
+        "width": 300,
+        "bytes": 12242
+      }
+    ]
+  },
+  "/qfy-content/uploads/nw/nw-diag-spunlaid.jpg": {
+    "width": 524,
+    "height": 333,
+    "originalBytes": 26346,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-5d08efc467d73cd7-320.webp",
+        "width": 320,
+        "bytes": 4284
+      },
+      {
+        "url": "/assets/versioned/img-5d08efc467d73cd7-524.webp",
+        "width": 524,
+        "bytes": 9174
+      }
+    ]
+  },
+  "/qfy-content/uploads/nw/nw-pr-spunlaid.jpg": {
+    "width": 300,
+    "height": 210,
+    "originalBytes": 45652,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-c947e7c79b53c556-300.webp",
+        "width": 300,
+        "bytes": 18074
+      }
+    ]
+  },
+  "/qfy-content/uploads/nw/nw-diag-wetlaid.jpg": {
+    "width": 524,
+    "height": 333,
+    "originalBytes": 31968,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-abb1403093e4030e-320.webp",
+        "width": 320,
+        "bytes": 4970
+      },
+      {
+        "url": "/assets/versioned/img-abb1403093e4030e-524.webp",
+        "width": 524,
+        "bytes": 10394
+      }
+    ]
+  },
+  "/qfy-content/uploads/nw/nw-pr-wetlaid.jpg": {
+    "width": 278,
+    "height": 209,
+    "originalBytes": 32254,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-20fa8c68a1717831-278.webp",
+        "width": 278,
+        "bytes": 10238
+      }
+    ]
+  },
+  "/qfy-content/uploads/nw/nw-seam-single.jpg": {
+    "width": 300,
+    "height": 210,
+    "originalBytes": 34074,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-42922b7aceca6145-300.webp",
+        "width": 300,
+        "bytes": 12818
+      }
+    ]
+  },
+  "/qfy-content/uploads/nw/nw-seam-double.jpg": {
+    "width": 292,
+    "height": 210,
+    "originalBytes": 32993,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-d909e1e8cf1a75f5-292.webp",
+        "width": 292,
+        "bytes": 25402
+      }
+    ]
+  },
+  "/qfy-content/uploads/nw/nw-seam-endless.jpg": {
+    "width": 281,
+    "height": 186,
+    "originalBytes": 10100,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-89094e5d192f7745-281.webp",
+        "width": 281,
+        "bytes": 4534
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/forming-f.jpg": {
+    "width": 800,
+    "height": 252,
+    "originalBytes": 60746,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-a759aea4d3493176-320.webp",
+        "width": 320,
+        "bytes": 8220
+      },
+      {
+        "url": "/assets/versioned/img-a759aea4d3493176-640.webp",
+        "width": 640,
+        "bytes": 25152
+      },
+      {
+        "url": "/assets/versioned/img-a759aea4d3493176-800.webp",
+        "width": 800,
+        "bytes": 37270
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/forming-g1.jpg": {
+    "width": 800,
+    "height": 400,
+    "originalBytes": 136882,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-63af06cc1064412d-320.webp",
+        "width": 320,
+        "bytes": 9212
+      },
+      {
+        "url": "/assets/versioned/img-63af06cc1064412d-640.webp",
+        "width": 640,
+        "bytes": 70288
+      },
+      {
+        "url": "/assets/versioned/img-63af06cc1064412d-800.webp",
+        "width": 800,
+        "bytes": 121216
+      }
+    ]
+  },
+  "/qfy-content/uploads/sp/sp-9010-4.jpg": {
+    "width": 466,
+    "height": 350,
+    "originalBytes": 67140,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-baa21b255ca51e78-320.webp",
+        "width": 320,
+        "bytes": 25836
+      },
+      {
+        "url": "/assets/versioned/img-baa21b255ca51e78-466.webp",
+        "width": 466,
+        "bytes": 49564
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/pulp-nylon.jpg": {
+    "width": 900,
+    "height": 675,
+    "originalBytes": 163107,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-3e9c8ac91621e8c1-320.webp",
+        "width": 320,
+        "bytes": 24752
+      },
+      {
+        "url": "/assets/versioned/img-3e9c8ac91621e8c1-640.webp",
+        "width": 640,
+        "bytes": 68898
+      },
+      {
+        "url": "/assets/versioned/img-3e9c8ac91621e8c1-900.webp",
+        "width": 900,
+        "bytes": 104600
+      }
+    ]
+  },
+  "/qfy-content/uploads/vf/strip.jpg": {
+    "width": 960,
+    "height": 255,
+    "originalBytes": 66764,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-7ee54be4b3e1e4e9-320.webp",
+        "width": 320,
+        "bytes": 6984
+      },
+      {
+        "url": "/assets/versioned/img-7ee54be4b3e1e4e9-640.webp",
+        "width": 640,
+        "bytes": 22326
+      },
+      {
+        "url": "/assets/versioned/img-7ee54be4b3e1e4e9-960.webp",
+        "width": 960,
+        "bytes": 42558
+      }
+    ]
+  },
+  "/qfy-content/uploads/vf/m617.jpg": {
+    "width": 466,
+    "height": 350,
+    "originalBytes": 81630,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-c034360f4a0a328f-320.webp",
+        "width": 320,
+        "bytes": 36914
+      },
+      {
+        "url": "/assets/versioned/img-c034360f4a0a328f-466.webp",
+        "width": 466,
+        "bytes": 75656
+      }
+    ]
+  },
+  "/qfy-content/uploads/vf/m623.jpg": {
+    "width": 466,
+    "height": 350,
+    "originalBytes": 58379,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-e36827624db1eb61-320.webp",
+        "width": 320,
+        "bytes": 22642
+      },
+      {
+        "url": "/assets/versioned/img-e36827624db1eb61-466.webp",
+        "width": 466,
+        "bytes": 44476
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/wood-banner.jpg": {
+    "width": 1000,
+    "height": 500,
+    "originalBytes": 141328,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-407247a74d03b499-320.webp",
+        "width": 320,
+        "bytes": 12512
+      },
+      {
+        "url": "/assets/versioned/img-407247a74d03b499-640.webp",
+        "width": 640,
+        "bytes": 39566
+      },
+      {
+        "url": "/assets/versioned/img-407247a74d03b499-960.webp",
+        "width": 960,
+        "bytes": 78800
+      },
+      {
+        "url": "/assets/versioned/img-407247a74d03b499-1000.webp",
+        "width": 1000,
+        "bytes": 89548
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/pressbelt-g7.jpg": {
+    "width": 800,
+    "height": 213,
+    "originalBytes": 60682,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-550c86e037a24aad-320.webp",
+        "width": 320,
+        "bytes": 7928
+      },
+      {
+        "url": "/assets/versioned/img-550c86e037a24aad-640.webp",
+        "width": 640,
+        "bytes": 25084
+      },
+      {
+        "url": "/assets/versioned/img-550c86e037a24aad-800.webp",
+        "width": 800,
+        "bytes": 37706
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/pressbelt-g1.jpg": {
+    "width": 500,
+    "height": 350,
+    "originalBytes": 82747,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-e1f5003115f2b4fe-320.webp",
+        "width": 320,
+        "bytes": 27584
+      },
+      {
+        "url": "/assets/versioned/img-e1f5003115f2b4fe-500.webp",
+        "width": 500,
+        "bytes": 65696
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/pressbelt-g2.jpg": {
+    "width": 500,
+    "height": 350,
+    "originalBytes": 58173,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-704a4e150e231a4f-320.webp",
+        "width": 320,
+        "bytes": 19600
+      },
+      {
+        "url": "/assets/versioned/img-704a4e150e231a4f-500.webp",
+        "width": 500,
+        "bytes": 43984
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/pressbelt-g3.jpg": {
+    "width": 500,
+    "height": 350,
+    "originalBytes": 77196,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-ad11f05241f2fdc9-320.webp",
+        "width": 320,
+        "bytes": 23668
+      },
+      {
+        "url": "/assets/versioned/img-ad11f05241f2fdc9-500.webp",
+        "width": 500,
+        "bytes": 56576
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/pb-656.jpg": {
+    "width": 500,
+    "height": 350,
+    "originalBytes": 80783,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-797e0b84b4d8d2fe-320.webp",
+        "width": 320,
+        "bytes": 27762
+      },
+      {
+        "url": "/assets/versioned/img-797e0b84b4d8d2fe-500.webp",
+        "width": 500,
+        "bytes": 66558
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/pb-press3.jpg": {
+    "width": 1066,
+    "height": 800,
+    "originalBytes": 139228,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-af27a01cc4c5e935-320.webp",
+        "width": 320,
+        "bytes": 11212
+      },
+      {
+        "url": "/assets/versioned/img-af27a01cc4c5e935-640.webp",
+        "width": 640,
+        "bytes": 34830
+      },
+      {
+        "url": "/assets/versioned/img-af27a01cc4c5e935-960.webp",
+        "width": 960,
+        "bytes": 63020
+      },
+      {
+        "url": "/assets/versioned/img-af27a01cc4c5e935-1066.webp",
+        "width": 1066,
+        "bytes": 76386
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/pressbelt-g4.jpg": {
+    "width": 500,
+    "height": 303,
+    "originalBytes": 31894,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-6baba3caeb536aa4-320.webp",
+        "width": 320,
+        "bytes": 7798
+      },
+      {
+        "url": "/assets/versioned/img-6baba3caeb536aa4-500.webp",
+        "width": 500,
+        "bytes": 15484
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/pressbelt-g5.jpg": {
+    "width": 500,
+    "height": 350,
+    "originalBytes": 92249,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-657444b042e74a88-320.webp",
+        "width": 320,
+        "bytes": 35296
+      },
+      {
+        "url": "/assets/versioned/img-657444b042e74a88-500.webp",
+        "width": 500,
+        "bytes": 72172
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/joint-double-loop.jpg": {
+    "width": 500,
+    "height": 350,
+    "originalBytes": 47462,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-f0ea9b57f1228d91-320.webp",
+        "width": 320,
+        "bytes": 30072
+      },
+      {
+        "url": "/assets/versioned/img-f0ea9b57f1228d91-500.webp",
+        "width": 500,
+        "bytes": 46068
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/pressfabric-dc4e3b5377d3d0f15ffd465b29b79700.jpg": {
+    "width": 1920,
+    "height": 834,
+    "originalBytes": 189917,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-69c8520eea56b10e-320.webp",
+        "width": 320,
+        "bytes": 8024
+      },
+      {
+        "url": "/assets/versioned/img-69c8520eea56b10e-640.webp",
+        "width": 640,
+        "bytes": 20486
+      },
+      {
+        "url": "/assets/versioned/img-69c8520eea56b10e-960.webp",
+        "width": 960,
+        "bytes": 34860
+      },
+      {
+        "url": "/assets/versioned/img-69c8520eea56b10e-1280.webp",
+        "width": 1280,
+        "bytes": 50226
+      }
+    ]
+  },
+  "/qfy-content/uploads/pf/pf-cotton.jpg": {
+    "width": 1200,
+    "height": 675,
+    "originalBytes": 243402,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-319af8c3dfb8d114-320.webp",
+        "width": 320,
+        "bytes": 7552
+      },
+      {
+        "url": "/assets/versioned/img-319af8c3dfb8d114-640.webp",
+        "width": 640,
+        "bytes": 69306
+      },
+      {
+        "url": "/assets/versioned/img-319af8c3dfb8d114-960.webp",
+        "width": 960,
+        "bytes": 161414
+      },
+      {
+        "url": "/assets/versioned/img-319af8c3dfb8d114-1200.webp",
+        "width": 1200,
+        "bytes": 245828
+      }
+    ]
+  },
+  "/qfy-content/uploads/pf/pf-mono.jpg": {
+    "width": 1182,
+    "height": 887,
+    "originalBytes": 179827,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-51c41c3dea919f25-320.webp",
+        "width": 320,
+        "bytes": 8084
+      },
+      {
+        "url": "/assets/versioned/img-51c41c3dea919f25-640.webp",
+        "width": 640,
+        "bytes": 32226
+      },
+      {
+        "url": "/assets/versioned/img-51c41c3dea919f25-960.webp",
+        "width": 960,
+        "bytes": 57300
+      },
+      {
+        "url": "/assets/versioned/img-51c41c3dea919f25-1182.webp",
+        "width": 1182,
+        "bytes": 82372
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/pressfabric-a4a0aa94d7ad188559cfe8cbe4570249.jpg": {
+    "width": 591,
+    "height": 392,
+    "originalBytes": 41578,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-dfec6c49655cc486-320.webp",
+        "width": 320,
+        "bytes": 12414
+      },
+      {
+        "url": "/assets/versioned/img-dfec6c49655cc486-591.webp",
+        "width": 591,
+        "bytes": 31534
+      }
+    ]
+  },
+  "/qfy-content/uploads/pf/pf-vertical.jpg": {
+    "width": 474,
+    "height": 266,
+    "originalBytes": 46147,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-52e207b4dcaf4d49-320.webp",
+        "width": 320,
+        "bytes": 16964
+      },
+      {
+        "url": "/assets/versioned/img-52e207b4dcaf4d49-474.webp",
+        "width": 474,
+        "bytes": 29404
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/pressfabric-g3.jpg": {
+    "width": 500,
+    "height": 350,
+    "originalBytes": 70104,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-edf89b41922e407c-320.webp",
+        "width": 320,
+        "bytes": 24428
+      },
+      {
+        "url": "/assets/versioned/img-edf89b41922e407c-500.webp",
+        "width": 500,
+        "bytes": 53830
+      }
+    ]
+  },
+  "/qfy-content/uploads/pf/pf-drum.jpg": {
+    "width": 1200,
+    "height": 800,
+    "originalBytes": 134901,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-016b0a85cb49939f-320.webp",
+        "width": 320,
+        "bytes": 12936
+      },
+      {
+        "url": "/assets/versioned/img-016b0a85cb49939f-640.webp",
+        "width": 640,
+        "bytes": 32306
+      },
+      {
+        "url": "/assets/versioned/img-016b0a85cb49939f-960.webp",
+        "width": 960,
+        "bytes": 49582
+      },
+      {
+        "url": "/assets/versioned/img-016b0a85cb49939f-1200.webp",
+        "width": 1200,
+        "bytes": 64500
+      }
+    ]
+  },
+  "/qfy-content/uploads/pf/pf-site1.jpg": {
+    "width": 1200,
+    "height": 900,
+    "originalBytes": 194872,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-1f1c6e5874bf33f9-320.webp",
+        "width": 320,
+        "bytes": 13616
+      },
+      {
+        "url": "/assets/versioned/img-1f1c6e5874bf33f9-640.webp",
+        "width": 640,
+        "bytes": 42148
+      },
+      {
+        "url": "/assets/versioned/img-1f1c6e5874bf33f9-960.webp",
+        "width": 960,
+        "bytes": 75432
+      },
+      {
+        "url": "/assets/versioned/img-1f1c6e5874bf33f9-1200.webp",
+        "width": 1200,
+        "bytes": 105440
+      }
+    ]
+  },
+  "/qfy-content/uploads/pf/pf-site2.jpg": {
+    "width": 1200,
+    "height": 900,
+    "originalBytes": 256224,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-51875f300441dad1-320.webp",
+        "width": 320,
+        "bytes": 17012
+      },
+      {
+        "url": "/assets/versioned/img-51875f300441dad1-640.webp",
+        "width": 640,
+        "bytes": 56238
+      },
+      {
+        "url": "/assets/versioned/img-51875f300441dad1-960.webp",
+        "width": 960,
+        "bytes": 119394
+      },
+      {
+        "url": "/assets/versioned/img-51875f300441dad1-1200.webp",
+        "width": 1200,
+        "bytes": 191244
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/pressfabric-18c03ae3d80b0f015c20e834573e9a52.jpg": {
+    "width": 375,
+    "height": 245,
+    "originalBytes": 70118,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-cd78f33d8b94b0e7-320.webp",
+        "width": 320,
+        "bytes": 6018
+      },
+      {
+        "url": "/assets/versioned/img-cd78f33d8b94b0e7-375.webp",
+        "width": 375,
+        "bytes": 7670
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/pressfabric-29db0c8745e1b8c6d8e536ddb216cccc.jpg": {
+    "width": 375,
+    "height": 245,
+    "originalBytes": 65417,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-279fcd34cea3b1fc-320.webp",
+        "width": 320,
+        "bytes": 3844
+      },
+      {
+        "url": "/assets/versioned/img-279fcd34cea3b1fc-375.webp",
+        "width": 375,
+        "bytes": 4716
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/pressfabric-66153bcbd4a8fbf457dd3486d2c713b9.jpg": {
+    "width": 375,
+    "height": 245,
+    "originalBytes": 56730,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-2bc6ff60669e7bd9-320.webp",
+        "width": 320,
+        "bytes": 4448
+      },
+      {
+        "url": "/assets/versioned/img-2bc6ff60669e7bd9-375.webp",
+        "width": 375,
+        "bytes": 5514
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/pressfabric-fdd3ca35bb35625310c5badb33eae602.jpg": {
+    "width": 375,
+    "height": 245,
+    "originalBytes": 61959,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-80b1ee9ae838e7b0-320.webp",
+        "width": 320,
+        "bytes": 3152
+      },
+      {
+        "url": "/assets/versioned/img-80b1ee9ae838e7b0-375.webp",
+        "width": 375,
+        "bytes": 3872
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/filterbag-f.jpg": {
+    "width": 800,
+    "height": 386,
+    "originalBytes": 28511,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-8f35fa698c6c6576-320.webp",
+        "width": 320,
+        "bytes": 2818
+      },
+      {
+        "url": "/assets/versioned/img-8f35fa698c6c6576-640.webp",
+        "width": 640,
+        "bytes": 7318
+      },
+      {
+        "url": "/assets/versioned/img-8f35fa698c6c6576-800.webp",
+        "width": 800,
+        "bytes": 9982
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/cartridge-ef0c498fdcbafdffb7218ce71b4da62a.jpg": {
+    "width": 1640,
+    "height": 732,
+    "originalBytes": 306311,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-64121a5cb8c597b3-320.webp",
+        "width": 320,
+        "bytes": 8092
+      },
+      {
+        "url": "/assets/versioned/img-64121a5cb8c597b3-640.webp",
+        "width": 640,
+        "bytes": 32368
+      },
+      {
+        "url": "/assets/versioned/img-64121a5cb8c597b3-960.webp",
+        "width": 960,
+        "bytes": 79238
+      },
+      {
+        "url": "/assets/versioned/img-64121a5cb8c597b3-1280.webp",
+        "width": 1280,
+        "bytes": 148822
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/cartridge-52b0fa883f3179d5b4802e1e3ea48dc7.jpg": {
+    "width": 293,
+    "height": 618,
+    "originalBytes": 59689,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-b0b001dc1b7ba65b-293.webp",
+        "width": 293,
+        "bytes": 39378
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/cartridge-786c3f8c1b7e40d945ff7560fa45cc6f.jpg": {
+    "width": 321,
+    "height": 749,
+    "originalBytes": 37565,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-a75090ff0646b418-320.webp",
+        "width": 320,
+        "bytes": 15648
+      },
+      {
+        "url": "/assets/versioned/img-a75090ff0646b418-321.webp",
+        "width": 321,
+        "bytes": 16550
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/cartridge-g4.jpg": {
+    "width": 375,
+    "height": 600,
+    "originalBytes": 64017,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-11db2fba44df0e45-320.webp",
+        "width": 320,
+        "bytes": 30616
+      },
+      {
+        "url": "/assets/versioned/img-11db2fba44df0e45-375.webp",
+        "width": 375,
+        "bytes": 41796
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/cartridge-dfba4c1f2a18a18351122b8f0edc31a1.jpg": {
+    "width": 680,
+    "height": 1471,
+    "originalBytes": 157300,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-6b9a68c9579a1ac0-320.webp",
+        "width": 320,
+        "bytes": 12788
+      },
+      {
+        "url": "/assets/versioned/img-6b9a68c9579a1ac0-640.webp",
+        "width": 640,
+        "bytes": 47904
+      },
+      {
+        "url": "/assets/versioned/img-6b9a68c9579a1ac0-680.webp",
+        "width": 680,
+        "bytes": 60232
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/cartridge-0e225dccecd7ce6eca62b7930d9d6964.jpg": {
+    "width": 602,
+    "height": 1301,
+    "originalBytes": 142832,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-313d10a419d27e34-320.webp",
+        "width": 320,
+        "bytes": 14432
+      },
+      {
+        "url": "/assets/versioned/img-313d10a419d27e34-602.webp",
+        "width": 602,
+        "bytes": 70394
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/cartridge-6cba53c0be68a084572efd4e5139a53b.jpg": {
+    "width": 793,
+    "height": 1402,
+    "originalBytes": 237094,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-1089b3b20f846ba1-320.webp",
+        "width": 320,
+        "bytes": 39132
+      },
+      {
+        "url": "/assets/versioned/img-1089b3b20f846ba1-640.webp",
+        "width": 640,
+        "bytes": 123054
+      },
+      {
+        "url": "/assets/versioned/img-1089b3b20f846ba1-793.webp",
+        "width": 793,
+        "bytes": 181540
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/cartridge-g1.jpg": {
+    "width": 206,
+    "height": 600,
+    "originalBytes": 16271,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-89b17faa6cda28e6-206.webp",
+        "width": 206,
+        "bytes": 7300
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/sq-sem-white.jpg": {
+    "width": 1200,
+    "height": 900,
+    "originalBytes": 250427,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-bf4d100891e1d2f2-320.webp",
+        "width": 320,
+        "bytes": 15818
+      },
+      {
+        "url": "/assets/versioned/img-bf4d100891e1d2f2-640.webp",
+        "width": 640,
+        "bytes": 66392
+      },
+      {
+        "url": "/assets/versioned/img-bf4d100891e1d2f2-960.webp",
+        "width": 960,
+        "bytes": 139246
+      },
+      {
+        "url": "/assets/versioned/img-bf4d100891e1d2f2-1200.webp",
+        "width": 1200,
+        "bytes": 206276
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/joint-loop.jpg": {
+    "width": 500,
+    "height": 350,
+    "originalBytes": 71220,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-404aac3d808da77c-320.webp",
+        "width": 320,
+        "bytes": 25150
+      },
+      {
+        "url": "/assets/versioned/img-404aac3d808da77c-500.webp",
+        "width": 500,
+        "bytes": 52290
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/joint-reinforced.jpg": {
+    "width": 500,
+    "height": 350,
+    "originalBytes": 54428,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-747b13803b813321-320.webp",
+        "width": 320,
+        "bytes": 17862
+      },
+      {
+        "url": "/assets/versioned/img-747b13803b813321-500.webp",
+        "width": 500,
+        "bytes": 39906
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/joint-clipper.jpg": {
+    "width": 500,
+    "height": 350,
+    "originalBytes": 89792,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-3f37dcc83eaaae1a-320.webp",
+        "width": 320,
+        "bytes": 36112
+      },
+      {
+        "url": "/assets/versioned/img-3f37dcc83eaaae1a-500.webp",
+        "width": 500,
+        "bytes": 74090
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/joint-endless.jpg": {
+    "width": 500,
+    "height": 350,
+    "originalBytes": 27803,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-2d9b43d32387cfe3-320.webp",
+        "width": 320,
+        "bytes": 5746
+      },
+      {
+        "url": "/assets/versioned/img-2d9b43d32387cfe3-500.webp",
+        "width": 500,
+        "bytes": 13608
+      }
+    ]
+  },
+  "/qfy-content/uploads/df/sq-screen.jpg": {
+    "width": 1200,
+    "height": 900,
+    "originalBytes": 278122,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-193a3583439b9821-320.webp",
+        "width": 320,
+        "bytes": 30968
+      },
+      {
+        "url": "/assets/versioned/img-193a3583439b9821-640.webp",
+        "width": 640,
+        "bytes": 86012
+      },
+      {
+        "url": "/assets/versioned/img-193a3583439b9821-960.webp",
+        "width": 960,
+        "bytes": 153788
+      },
+      {
+        "url": "/assets/versioned/img-193a3583439b9821-1200.webp",
+        "width": 1200,
+        "bytes": 210436
+      }
+    ]
+  },
+  "/qfy-content/uploads/live/teflon-g2.jpg": {
+    "width": 500,
+    "height": 350,
+    "originalBytes": 75083,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-2c9f7c9323a5cecd-320.webp",
+        "width": 320,
+        "bytes": 23224
+      },
+      {
+        "url": "/assets/versioned/img-2c9f7c9323a5cecd-500.webp",
+        "width": 500,
+        "bytes": 58550
+      }
+    ]
+  },
+  "/qfy-content/uploads/sp/sp-pps.jpg": {
+    "width": 466,
+    "height": 350,
+    "originalBytes": 76043,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-39fa33460a9dfcf1-320.webp",
+        "width": 320,
+        "bytes": 32252
+      },
+      {
+        "url": "/assets/versioned/img-39fa33460a9dfcf1-466.webp",
+        "width": 466,
+        "bytes": 63134
+      }
+    ]
+  },
+  "/qfy-content/uploads/vf/m623a.jpg": {
+    "width": 640,
+    "height": 480,
+    "originalBytes": 36723,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-cb6c379f37cdf4d8-320.webp",
+        "width": 320,
+        "bytes": 4686
+      },
+      {
+        "url": "/assets/versioned/img-cb6c379f37cdf4d8-640.webp",
+        "width": 640,
+        "bytes": 16006
+      }
+    ]
+  },
+  "/qfy-content/uploads/vf/m610.jpg": {
+    "width": 466,
+    "height": 350,
+    "originalBytes": 86696,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-60b9264a5408dea7-320.webp",
+        "width": 320,
+        "bytes": 32306
+      },
+      {
+        "url": "/assets/versioned/img-60b9264a5408dea7-466.webp",
+        "width": 466,
+        "bytes": 74846
+      }
+    ]
+  },
+  "/qfy-content/uploads/vf/vf-joint-clipper.jpg": {
+    "width": 500,
+    "height": 350,
+    "originalBytes": 39577,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-1888bbe6bbc30569-320.webp",
+        "width": 320,
+        "bytes": 9224
+      },
+      {
+        "url": "/assets/versioned/img-1888bbe6bbc30569-500.webp",
+        "width": 500,
+        "bytes": 20546
+      }
+    ]
+  },
+  "/qfy-content/uploads/vf/vf-joint-flap.jpg": {
+    "width": 500,
+    "height": 350,
+    "originalBytes": 42035,
+    "variants": [
+      {
+        "url": "/assets/versioned/img-449d16cbbbfe076a-320.webp",
+        "width": 320,
+        "bytes": 10926
+      },
+      {
+        "url": "/assets/versioned/img-449d16cbbbfe076a-500.webp",
+        "width": 500,
+        "bytes": 22334
+      }
+    ]
+  }
+}

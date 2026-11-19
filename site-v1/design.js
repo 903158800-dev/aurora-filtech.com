@@ -439,7 +439,56 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--gold-soft);borde
   .cta-band{padding:20px 18px}
   .cta-band h2{font-size:1.25rem}
 }
-`
+/* V1.1 responsive navigation and inquiry usability */
+:root{--nav-height:72px;--gold-text:#836627}
+html{scroll-padding-top:calc(var(--nav-height) + 16px)}
+.kicker{color:var(--gold-text);font-size:.875rem;letter-spacing:.14em}
+.nav{padding:14px 24px;gap:20px}
+.nav-logo{flex-shrink:0}.nav-menu{flex-wrap:nowrap;gap:2px}
+.nav-menu>a,.nav-menu .has-sub>a{padding:8px 11px;font-size:.875rem}
+.rfq-section{background:var(--surface);border-top:1px solid var(--line)}
+.rfq h2{margin-top:12px;font-size:1.8rem;line-height:1.2}
+.rfq .hint{font-size:1rem;margin:12px 0 24px;max-width:62ch}
+.rfq .row{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.rfq .field{min-width:0}.rfq label{font-size:.875rem;letter-spacing:.02em;text-transform:none}
+.rfq input,.rfq select,.rfq textarea{min-width:0;font-size:16px;min-height:48px;padding:12px 14px}
+.rfq textarea{resize:vertical;line-height:1.6}.rfq input::placeholder,.rfq textarea::placeholder{color:#657278;opacity:1}
+.rfq-details{margin:0 0 20px;border:1px solid var(--line);border-radius:10px;padding:0 16px}
+.rfq-details summary{cursor:pointer;min-height:48px;padding:12px 0;font-weight:600;color:var(--teal-deep)}
+.rfq-details summary span{font-weight:400;color:var(--ink-soft)}
+.rfq-details[open] summary{margin-bottom:12px}
+.rfq-honey{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0!important}
+.rfq-actions{gap:16px}.rfq .btn{min-height:48px;font:inherit;font-weight:700}
+.rfq .btn:disabled{opacity:.65;cursor:default}.rfq-direct{line-height:1.7;font-size:.875rem;overflow-wrap:anywhere}
+.rfq-privacy{font-size:.8125rem;color:var(--ink-soft);margin-top:16px}
+.cro-form-status{overflow-wrap:anywhere}.cro-status-actions a,.cro-status-actions button{min-height:44px;font-size:.875rem;display:inline-flex;align-items:center;justify-content:center}
+.cro-status-note{font-size:.8125rem}.rfq-verification{margin-bottom:12px}
+@media(max-width:860px){
+ .hero-flex{flex-direction:column;align-items:stretch;gap:22px}
+ .hero-main{width:100%;flex:auto}
+ .hero-jumps{width:100%;min-width:0;flex-direction:row;flex-wrap:wrap;justify-content:flex-start}
+ .hero-jumps .hj-label{width:100%;text-align:left}
+}
+@media(max-width:1100px){
+ .nav{padding:12px 20px}.nav-menu{display:none}
+ .nav-menu.open{display:flex;position:absolute;top:100%;left:0;right:0;max-height:calc(100vh - var(--nav-height) - 8px);max-height:calc(100dvh - var(--nav-height) - 8px);overflow-y:auto;overscroll-behavior:contain;background:var(--surface);flex-direction:column;align-items:stretch;padding:10px 20px 20px;border-bottom:1px solid var(--line)}
+ .nav-menu a{min-height:44px;display:flex;align-items:center}
+ .nav-menu .has-sub>.sub{display:block;position:static;box-shadow:none;border:0;min-width:0;padding:0 0 0 16px}
+ .nav-menu .has-sub>.sub a{padding:10px 12px;font-size:.9375rem}
+ .nav-burger{display:block;margin-left:auto;flex-shrink:0;min-height:44px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font:inherit;color:var(--ink);cursor:pointer}
+}
+@media(max-width:640px){
+ html{font-size:16px}body{font-size:16px;line-height:1.65}
+ .nav{padding:8px 16px}.nav-logo{font-size:1.125rem;gap:8px}
+ .wrap{padding-left:16px;padding-right:16px}.hero{padding-top:32px}
+ .kicker{letter-spacing:.09em;font-size:.8125rem}.kicker::before{width:20px;flex-shrink:0}
+ .rfq{padding:24px 18px}.rfq h2{font-size:1.5rem}
+ .rfq .row{grid-template-columns:minmax(0,1fr);gap:0}.rfq-details{padding:0 12px}
+ .rfq-actions{align-items:stretch;flex-direction:column}.rfq-actions>.btn{width:100%}
+ .rfq .hint{font-size:.9375rem}.cro-status-actions{gap:8px}
+ .footer-grid{grid-template-columns:1fr;gap:28px}.footer-note{overflow-wrap:anywhere}
+}
+`;
 
 const slugTitle = s => s.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
 const P = Object.keys(products);
@@ -469,7 +518,8 @@ const navProducts = `<a href="/forming-fabric/">Forming Fabric</a>
 <a href="/press-fabric/">Press Filter Fabric</a>
 <a href="/press-belt/">Press Filter Belt</a>
 <a href="/products/filter-bag/">Filter Bag</a>
-<a href="/products/filter-cartridge/">Filter Cartridge</a>`;
+<a href="/products/filter-cartridge/">Filter Cartridge</a>
+`;
 const navIndustries = Object.values(industries).map(i => `<a href="${i.url}">${i.name}</a>`).join("\n");
 
 function layout({ url, title, desc, type = "website", jsonld = "", body, activeNav = "", og = "", preload = "", noindex = false }) {
@@ -504,8 +554,8 @@ ${jsonld ? `<script type="application/ld+json">${jsonld}</script>` : ""}
 <header class="site-header">
   <div class="wrap nav">
     <a class="nav-logo" href="/"><svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#0F6E66"/><path d="M12 44c8-2 10-24 20-24s10 22 20 24" stroke="#C4A265" stroke-width="5" fill="none" stroke-linecap="round"/></svg>Aurora Filtech</a>
-    <button class="nav-burger" type="button" aria-expanded="false" aria-label="Toggle menu">☰ Menu</button>
-    <nav class="nav-menu" aria-label="Main navigation">
+    <button class="nav-burger" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Toggle menu">☰ Menu</button>
+    <nav id="main-navigation" class="nav-menu" aria-label="Main navigation">
       <a href="/"${activeNav === "home" ? ' aria-current="page"' : ""}>HOME</a>
       <div class="has-sub">
         <a href="/#solutions">PRODUCTS ▾</a>
@@ -590,218 +640,49 @@ function geoFactsHtml(p) {
 </dl>`;
 }
 
-const APP_JS = `(function(){
-  var burger = document.querySelector('.nav-burger');
-  var menu = document.querySelector('.nav-menu');
-  if (burger && menu) {
-    burger.addEventListener('click', function(){
-      var open = menu.classList.toggle('open');
-      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    document.addEventListener('keydown', function(e){
-      if (e.key === 'Escape' && menu.classList.contains('open')) {
-        menu.classList.remove('open');
-        burger.setAttribute('aria-expanded', 'false');
-        burger.focus();
-      }
-    });
-  }
-  var h1 = document.querySelector('h1');
-  var pageTopic = h1 ? h1.textContent.trim() : document.title.split('|')[0].trim();
-  document.querySelectorAll('.cro-btn-wa').forEach(function(el){
-    el.href = 'https://wa.me/8615206119266?text=' + encodeURIComponent('Hi Aurora Filtech, I am inquiring about: ' + pageTopic + ' (' + window.location.pathname + ')');
-  });
-  document.querySelectorAll('[data-prefill]').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var intent = btn.getAttribute('data-prefill') || 'Quote Request';
-      var prodSelect = document.getElementById('f-product');
-      if (prodSelect) {
-        for (var i = 0; i < prodSelect.options.length; i++) {
-          if (prodSelect.options[i].value && pageTopic.toLowerCase().indexOf(prodSelect.options[i].text.toLowerCase()) !== -1) {
-            prodSelect.selectedIndex = i;
-            break;
-          }
-        }
-      }
-      var reqBox = document.getElementById('f-request');
-      if (reqBox && !reqBox.value) {
-        reqBox.value = '[' + intent + ' — ' + pageTopic + '] ';
-      }
-      setTimeout(function(){
-        var typeSelect = document.getElementById('f-type');
-        var firstInput = (typeSelect && !typeSelect.value) ? typeSelect : document.getElementById('f-company');
-        if (firstInput) firstInput.focus();
-      }, 350);
-    });
-  });
-  var form = document.querySelector('.cro-rfq-form');
-  if (form) {
-    var btn = form.querySelector('button[type="submit"]');
-    var defaultBtnText = btn ? btn.textContent : 'Get 24h Engineering Quote →';
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      if (form.checkValidity && !form.checkValidity()) {
-        if (form.reportValidity) form.reportValidity();
-        return;
-      }
-      var fd = new FormData(form);
-      var data = {};
-      fd.forEach(function(v, k){ data[k] = typeof v === 'string' ? v.trim() : v; });
-      if (data._honey) return;
-      data.page_url = window.location.href;
-      data.page_topic = pageTopic;
-      if (data.email && !data._replyto) data._replyto = data.email;
-      if (btn) { btn.disabled = true; btn.textContent = 'Sending Request...'; }
-      var summaryLines = [
-        'Company: ' + (data.company || '-'),
-        'Email: ' + (data.email || '-'),
-        'Name: ' + (data.name || '-'),
-        data.customer_type ? ('Role: ' + data.customer_type) : '',
-        data.product ? ('Product: ' + data.product) : ('Page: ' + pageTopic),
-        data.machine ? ('Machine: ' + data.machine) : '',
-        data.size ? ('Dimensions: ' + data.size) : '',
-        data.material ? ('Slurry/Media: ' + data.material) : '',
-        data.temperature ? ('Temp: ' + data.temperature) : '',
-        data.ph ? ('pH: ' + data.ph) : '',
-        'Details: ' + (data.notes || data.request || '-')
-      ].filter(Boolean).join('\\n');
-      var waUrl = 'https://wa.me/8615206119266?text=' + encodeURIComponent('New RFQ from ' + (data.company || 'Website') + ':\\n' + summaryLines);
-      var mailUrl = 'mailto:johnson@aurora-filtech.com?subject=' + encodeURIComponent('RFQ: ' + pageTopic + ' — ' + (data.company || '')) + '&body=' + encodeURIComponent(summaryLines);
-      var statusBox = form.querySelector('.cro-form-status');
-      function renderStatus(delivered, reason) {
-        if (btn) {
-          btn.disabled = false;
-          btn.textContent = delivered ? '✓ Inquiry Delivered' : defaultBtnText;
-        }
-        if (delivered) {
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({
-            event: 'generate_lead',
-            form_id: 'aurora_rfq_form',
-            page_topic: pageTopic,
-            customer_company: data.company || ''
-          });
-          if (typeof window.gtag === 'function') {
-            window.gtag('event', 'generate_lead', { event_category: 'B2B_RFQ', event_label: pageTopic });
-          }
-        } else if (typeof console !== 'undefined' && console.warn) {
-          console.warn('[Aurora RFQ] Direct email relay did not confirm delivery:', reason);
-        }
-        if (!statusBox) return;
-        statusBox.className = 'cro-form-status ' + (delivered ? 'cro-form-status--ok' : 'cro-form-status--warn');
-        statusBox.style.display = 'block';
-        statusBox.innerHTML = '';
-        var strong = document.createElement('strong');
-        strong.textContent = delivered
-          ? '✓ Inquiry delivered! '
-          : '⚠️ Direct email relay could not confirm delivery. ';
-        statusBox.appendChild(strong);
-        statusBox.appendChild(document.createTextNode(delivered
-          ? 'Our engineers received your request and reply within 24 hours. Need faster response or to send drawings/photos?'
-          : 'Your form data is saved below — click Email, WhatsApp, or Copy Summary so nothing is lost:'));
-        var actions = document.createElement('div');
-        actions.className = 'cro-status-actions';
-        var aWa = document.createElement('a');
-        aWa.className = 'cro-st-wa';
-        aWa.href = waUrl;
-        aWa.target = '_blank';
-        aWa.rel = 'noopener';
-        aWa.textContent = '💬 Send Instant WhatsApp (+86 152 0611 9266)';
-        var aMail = document.createElement('a');
-        aMail.className = 'cro-st-mail';
-        aMail.href = mailUrl;
-        aMail.textContent = '✉️ Open Pre-filled Email (johnson@aurora-filtech.com)';
-        var bCopy = document.createElement('button');
-        bCopy.type = 'button';
-        bCopy.className = 'cro-st-copy';
-        bCopy.textContent = '📋 Copy Inquiry Summary';
-        bCopy.addEventListener('click', function(){
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(summaryLines).then(function(){ bCopy.textContent = '✓ Copied Summary!'; }).catch(function(){ window.prompt('Copy inquiry summary:', summaryLines); });
-          } else {
-            window.prompt('Copy inquiry summary:', summaryLines);
-          }
-        });
-        actions.appendChild(aWa);
-        actions.appendChild(aMail);
-        actions.appendChild(bCopy);
-        statusBox.appendChild(actions);
-        if (!delivered && reason) {
-          var note = document.createElement('div');
-          note.className = 'cro-status-note';
-          note.textContent = 'Relay detail: ' + reason;
-          statusBox.appendChild(note);
-        }
-      }
-      if (window.location.protocol === 'file:') {
-        renderStatus(false, 'Local file:// preview does not allow HTTP relay');
-        return;
-      }
-      var endpoint = form.getAttribute('data-endpoint') || form.getAttribute('action') || '/api/rfq';
-      var ac = typeof AbortController === 'function' ? new AbortController() : null;
-      var timer = ac ? setTimeout(function(){ ac.abort(); }, 10000) : null;
-      fetch(endpoint, {
-        method: 'POST',
-        signal: ac ? ac.signal : undefined,
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(data)
-      }).then(function(res){
-        if (timer) clearTimeout(timer);
-        return res.text().then(function(txt){
-          var json = null;
-          try { json = JSON.parse(txt); } catch (err) {}
-          var ok = res.ok && json && (json.success === true || json.success === 'true' || json.ok === true);
-          if (ok) {
-            renderStatus(true, '');
-          } else {
-            var msg = (json && json.message) ? String(json.message) : ((res.status === 404 || res.status === 405 || res.status === 501) ? 'Static server only — /api/rfq runs live on Cloudflare Pages' : ('HTTP ' + res.status));
-            renderStatus(false, msg);
-          }
-        });
-      }).catch(function(err){
-        if (timer) clearTimeout(timer);
-        var msg = (err && err.name === 'AbortError') ? 'Request timed out after 10s' : (err && err.message ? err.message : 'Network error');
-        renderStatus(false, msg);
-      });
-    });
-  }
-})();`;
+const APP_JS = require('fs').readFileSync(require('path').join(__dirname, 'client.js'), 'utf8');
 
 // RFQ 表单(全站统一,含客户类型与选型字段 —— 调研 1.2 模块4)
 const rfqSection = `
-<section id="rfq" class="sec" style="background:var(--surface);border-top:1px solid var(--line)">
-  <div class="wrap" style="max-width:860px">
+<section id="rfq" class="sec rfq-section">
+  <div class="wrap" style="max-width:940px">
     <div class="rfq">
       <span class="kicker">Request for Quotation</span>
-      <h2 style="margin-top:10px">Tell us about your machine — we reply within 24 hours</h2>
-      <p class="hint">Our engineers match weave, material, seam and edge to your duty. A photo of the old belt's data tag helps.</p>
+      <h2>Tell us about your machine</h2>
+      <p class="hint">Share your requirements and our engineers will help you select the right fabric. We normally reply within one business day. Fields marked * are required.</p>
       <form class="cro-rfq-form" action="/api/rfq" method="POST">
-        <input type="hidden" name="_subject" value="New B2B RFQ — Aurora Filtech">
-        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
-        <div class="row3">
-          <div class="field"><label for="f-type">You are a *</label>
-            <select id="f-type" name="customer_type" required><option value="">Select…</option><option>End user (mill / plant)</option><option>Distributor / trader</option><option>OEM / machine builder</option><option>Other</option></select></div>
-          <div class="field"><label for="f-company">Company *</label><input id="f-company" name="company" required placeholder="Company or mill name"></div>
-          <div class="field"><label for="f-email">Work Email *</label><input id="f-email" name="email" type="email" required placeholder="name@company.com"></div>
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="rfq-honey" aria-hidden="true">
+        <div class="row">
+          <div class="field"><label for="f-company">Company *</label><input id="f-company" name="company" required maxlength="160" autocomplete="organization" placeholder="Company or mill name"></div>
+          <div class="field"><label for="f-email">Work email *</label><input id="f-email" name="email" type="email" required maxlength="254" autocomplete="email" inputmode="email" placeholder="name@company.com"></div>
         </div>
-        <div class="row3">
-          <div class="field"><label for="f-product">Product Line</label>
-            <select id="f-product" name="product"><option value="">Select product line (optional)…</option>${Object.entries(prodLink).map(([s, n]) => `<option>${n}</option>`).join("")}<option>Other / custom specification</option></select></div>
-          <div class="field"><label for="f-machine">Machine / filter type</label><input id="f-machine" name="machine" placeholder="e.g. horizontal belt filter, MDF dryer…"></div>
-          <div class="field"><label for="f-size">Belt / cloth dimensions</label><input id="f-size" name="size" placeholder="Length × width (mm) or Ø"></div>
+        <div class="row">
+          <div class="field"><label for="f-type">You are a *</label><select id="f-type" name="customer_type" required><option value="">Select your role</option><option>End user (mill / plant)</option><option>Distributor / trader</option><option>OEM / machine builder</option><option>Other</option></select></div>
+          <div class="field"><label for="f-name">Name / WhatsApp / telephone</label><input id="f-name" name="name" maxlength="200" placeholder="Your name and contact number"></div>
         </div>
-        <div class="row3">
-          <div class="field"><label for="f-material">Material / slurry</label><input id="f-material" name="material" placeholder="What do you filter / dry?"></div>
-          <div class="field"><label for="f-temp">Temperature (°C)</label><input id="f-temp" name="temperature" placeholder="Operating °C"></div>
-          <div class="field"><label for="f-ph">pH / chemistry</label><input id="f-ph" name="ph" placeholder="Acid / alkaline, Cl⁻…"></div>
+        <div class="row">
+          <div class="field"><label for="f-product">Product line</label><select id="f-product" name="product"><option value="">Select a product (optional)</option>${Object.entries(prodLink).filter(([slug]) => Object.keys(products).includes(slug)).map(([,name]) => `<option>${name}</option>`).join("")}<option>Other / custom specification</option></select></div>
+          <div class="field"><label for="f-machine">Machine / filter type</label><input id="f-machine" name="machine" maxlength="200" placeholder="e.g. belt filter or MDF dryer"></div>
         </div>
-        <div class="field"><label for="f-name">Your Name &amp; WhatsApp / Tel</label><input id="f-name" name="name" placeholder="Name &amp; phone/WhatsApp for fast engineering follow-up"></div>
-        <div class="field"><label for="f-request">Technical Notes / Sample Request</label><textarea id="f-request" name="notes" rows="4" placeholder="Target air permeability (CFM), seam type, old belt model, or sample swatch request…"></textarea></div>
+        <details class="rfq-details">
+          <summary>Add operating specifications <span>(optional)</span></summary>
+          <div class="row">
+            <div class="field"><label for="f-size">Belt / cloth dimensions</label><input id="f-size" name="size" maxlength="160" placeholder="Length × width (mm)"></div>
+            <div class="field"><label for="f-material">Material / slurry</label><input id="f-material" name="material" maxlength="200" placeholder="What do you filter or dry?"></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="f-temp">Temperature (°C)</label><input id="f-temp" name="temperature" maxlength="80" placeholder="Operating temperature"></div>
+            <div class="field"><label for="f-ph">pH / chemistry</label><input id="f-ph" name="ph" maxlength="80" placeholder="Acid / alkaline / other"></div>
+          </div>
+        </details>
+        <div class="field"><label for="f-request">Technical notes / sample request</label><textarea id="f-request" name="notes" maxlength="6000" rows="4" placeholder="Old belt model, required seam, target air permeability, or sample request…"></textarea></div>
+        <div class="rfq-verification"></div>
         <div class="rfq-actions">
-          <button class="btn btn-primary" type="submit">Get 24h Engineering Quote →</button>
-          <span class="rfq-direct">Or message an engineer directly: <a href="https://wa.me/8615206119266" target="_blank" rel="noopener">💬 WhatsApp +86 152 0611 9266</a> · <a href="mailto:johnson@aurora-filtech.com">✉️ johnson@aurora-filtech.com</a></span>
+          <button class="btn btn-primary" type="submit">Send inquiry</button>
+          <span class="rfq-direct">Prefer to contact us directly?<br><a href="mailto:johnson@aurora-filtech.com">johnson@aurora-filtech.com</a> · <a href="https://wa.me/8615206119266" target="_blank" rel="noopener">WhatsApp</a></span>
         </div>
-        <div class="cro-form-status" aria-live="polite"></div>
+        <p class="rfq-privacy">We use your details only to respond to your inquiry. Unsent details stay in this browser tab until it is closed.</p>
+        <div class="cro-form-status" role="status" tabindex="-1" aria-live="polite" aria-atomic="true"></div>
       </form>
     </div>
   </div>

@@ -1,0 +1,7 @@
+# Copy to .dev.vars for local API tests; it is ignored by Git.
+RESEND_API_KEY=
+RFQ_FROM_EMAIL="Aurora Filtech RFQ <rfq@aurora-filtech.com>"
+RFQ_TO_EMAIL="johnson@aurora-filtech.com"
+# Optional bot protection. Configure both values together.
+TURNSTILE_SITE_KEY=
+TURNSTILE_SECRET_KEY=
