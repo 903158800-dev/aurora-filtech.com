@@ -10,6 +10,7 @@
 - 发信使用 QQ 邮箱 SMTP；Johnson 企业邮箱的现有 MX 和收信方式保持不变。
 - Cloudflare Preview 的五项非秘密变量已保存并回读确认：主机、端口、账号、发件地址、收件地址。
   `SMTP_PASSWORD` 尚未配置；生产环境未改动。
+  同样的非秘密变量已写入两份 Wrangler 配置，避免部署时丢失；授权码不写入配置文件。
 - 新版使用 SMTP，不再需要 Resend 账号、密钥或新发件域名。
 - 旧生产站 `https://aurora-filtech.pages.dev` 的询盘失败原因，已通过实际提交确认为
   `RESEND_API_KEY` 缺失、HTTP 503。新版代码尚不能替代旧部署中正在运行的接口。
@@ -38,7 +39,7 @@
    - `RFQ_TO_EMAIL`：`johnson@aurora-filtech.com`
 4. 程序要求 `RFQ_FROM_EMAIL` 与 `SMTP_USER` 相同。
    此版的发件地址应为 QQ 邮箱，不能把 Johnson 的企业邮箱填为发件人；它是收件人。
-5. 配置后重新部署 SMTP 分支。环境变量只存在于后台，不会通过 Git 文件自动设置。
+5. 配置 Secret 后重新部署 SMTP 分支。非秘密变量由 Wrangler 配置维护；Secret 仅存在于后台。
 6. 预览验收通过后，再为 Production 配置并按正常 Git 流程合并，勿强制覆盖旧版本。
 
 密码只填写在 Cloudflare Secret，或本机已被 Git 忽略的 `.dev.vars`；不写入源码或聊天。
@@ -84,7 +85,7 @@ npm run dev
 - `functions/api/rfq.js`、`site-v1/functions/api/rfq.js`：构建同步的部署入口。
 - `dist/v1`：只含静态部署产物，不含源码、测试和秘密。
 - 根目录与 `site-v1` 的 `wrangler.jsonc`：启用 Node.js 兼容，分别支持根目录 CLI 部署
-  和现有 Cloudflare Git 集成的 `site-v1` 构建根目录。
+  和现有 Cloudflare Git 集成的 `site-v1` 构建根目录。两份配置中的非秘密邮件变量应保持一致。
 - `site-v1/package.json` 和锁文件：确保现有 Git 构建根目录能安装邮件依赖。
 
 测试覆盖：配置缺失、输入/邮件头注入、固定收发地址、HTML 转义、证书校验配置、SMTP 拒绝、
