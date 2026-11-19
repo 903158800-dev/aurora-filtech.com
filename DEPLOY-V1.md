@@ -189,8 +189,10 @@ Git 推送到该生产分支也会自动发布；只保存验收文档时可使�
 - https://developers.cloudflare.com/workers/runtime-apis/nodejs/process/
 - https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/
 
-## 已知收尾项
+## 最终验收完成
 
-- `/package.json` 源站已为 404；旧缓存仍返回仅含依赖名和版本的信息，不含密码。
-  清除单个 URL 缓存的 API 权限不足，Cloudflare 缓存页面持续加载，暂未清除这份缓存。
-  其他已检查的构建脚本和锁文件路径已返回 404。
+- 用户已确认正式站测试邮件 `7a5fb34778f5` 收到，内容及回复地址正确。
+- Cloudflare 控制台恢复后，已对 `https://aurora-filtech.com/package.json` 执行单 URL 清除。
+  Edge 直接访问显示 Page not found；使用 no-cache 请求核对返回 HTTP 404。
+  刚清除后的一次普通脚本请求仍命中旧缓存，随后浏览器及 no-cache 检查均确认移除。
+- 其他已检查的构建脚本和锁文件路径已返回 404。没有剩余的本次验收项。

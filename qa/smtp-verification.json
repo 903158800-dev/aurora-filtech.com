@@ -56,9 +56,7 @@
     "realEmailSent": false
   },
   "inboxDeliveryVerified": true,
-  "remaining": [
-    "Non-blocking cleanup: purge old package.json dependency metadata cache when Cloudflare dashboard is available"
-  ],
+  "remaining": [],
   "senderConfiguration": "User-confirmed website sender Aaron; customer contact email is reply-to only",
   "customerTestEmail": "903158800@qq.com",
   "staticPackaging": {
@@ -75,9 +73,22 @@
       "/build.js",
       "/design.js",
       "/functions/api/rfq.js",
-      "/package.json?release=623bd05"
+      "/package.json?release=623bd05",
+      "/package.json"
     ],
-    "oldCachedPackageJson": "Origin 404 verified with release query; bare URL still serves old dependency metadata. Purge API lacks cache permission and dashboard remained loading. No credentials in cached file."
+    "oldCachedPackageJson": {
+      "purgeSubmitted": true,
+      "method": "Cloudflare dashboard custom purge for exact URL",
+      "url": "https://aurora-filtech.com/package.json",
+      "browserVerifiedPageNotFound": true,
+      "httpNoCacheStatus": 404,
+      "postPurgeInitialCachedRequestStatus": 200,
+      "note": "Initial script request retained an old cached response; fresh browser navigation and no-cache HTTP request both verified removal.",
+      "screenshots": [
+        "qa/screenshots/package-cache-purged.jpg",
+        "qa/screenshots/package-json-removed.jpg"
+      ]
+    }
   },
   "deployment": {
     "environment": "production",
