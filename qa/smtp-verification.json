@@ -36,7 +36,7 @@
   },
   "cloudflareRemoteProbe": {
     "verified": false,
-    "reason": "Remote preview creation timed out"
+    "reason": "RFQ preview deployed successfully; authenticated SMTP test awaits SMTP_PASSWORD Secret"
   },
   "smtpWireTest": {
     "transport": "real Nodemailer connected to loopback test server",
@@ -54,13 +54,49 @@
   "inboxDeliveryVerified": false,
   "remaining": [
     "Configure Aaron client security password as SMTP_PASSWORD Secret",
-    "Deploy and verify Cloudflare-to-SMTP connectivity and authentication",
-    "Submit a real test and confirm receipt in Johnson's inbox"
+    "Redeploy preview to load the new Secret, then submit a real inquiry from the browser",
+    "Confirm receipt in Johnson's inbox; SMTP acceptance alone does not prove inbox delivery"
   ],
   "senderConfiguration": "User-confirmed website sender Aaron; customer contact email is reply-to only",
   "customerTestEmail": "903158800@qq.com",
   "staticPackaging": {
     "dependencyDirectoriesExcluded": true,
     "existingTestDetectedAndVerifiedFix": true
+  },
+  "deployment": {
+    "environment": "preview",
+    "status": "success",
+    "id": "5c85a342-956e-4fbe-b49f-16282de7bf01",
+    "commit": "443ab7108cfc7d00140df313973b7211ef57ebd2",
+    "url": "https://5c85a342.aurora-filtech.pages.dev",
+    "alias": "https://v1-smtp-20261119.aurora-filtech.pages.dev",
+    "health": {
+      "provider": "smtp",
+      "configured": false
+    },
+    "productionChanged": false,
+    "buildCommand": "if [ -f package-lock.json ]; then npm ci --omit=dev; fi"
+  },
+  "remoteGit": {
+    "branchPushed": true,
+    "backupTagPushed": "v1-before-optimization-20261119"
+  },
+  "livePreviewLayout": {
+    "desktop": {
+      "width": 1440,
+      "height": 1000,
+      "horizontalOverflow": false
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "horizontalOverflow": false
+    },
+    "screenshots": [
+      "qa/screenshots/live-preview-desktop-rfq.jpg",
+      "qa/screenshots/live-preview-mobile-rfq.jpg",
+      "qa/screenshots/live-preview-mobile-submit.jpg"
+    ],
+    "realEmailSent": false
   }
 }

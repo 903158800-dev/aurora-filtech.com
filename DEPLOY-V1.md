@@ -18,7 +18,10 @@
   配置完整且部署成功后，仍需用真实测试询价核对 Johnson 收件箱。
 - 旧生产站 `https://aurora-filtech.pages.dev` 的询盘失败原因，已通过实际提交确认为
   `RESEND_API_KEY` 缺失、HTTP 503。这说明旧实现的发送服务没有配置好，不代表必须使用 Resend。
-- 新版保留 V1.1 的电脑端和手机端排版优化。生产部署未改动；远端部署仍待完成。
+- 新分支已成功推送 GitHub；原版备份标签也已上传。生产分支仍为 `main`。
+- 新版预览已部署成功：https://v1-smtp-20261119.aurora-filtech.pages.dev/
+  已在 Edge 中查看 1440×1000 电脑布局、390×844 手机布局及询价提交区域，无横向溢出。
+  当前询价接口返回 `provider:"smtp"`、`configured:false`，等待 Aaron 的安全密码。
 - 阿里邮箱 `smtp.qiye.aliyun.com:465` 已通过 Node.js 和 Cloudflare 本地运行器的
   TLS 证书校验及 SMTP 问候探测。探测没有执行 AUTH、MAIL FROM 或 DATA，不代表真实投递通过。
 - 修正打包时收集依赖目录中静态文件的问题，根目录构建和子目录发布均排除依赖及本地状态。
@@ -104,6 +107,20 @@ npx wrangler dev --config tests/smtp-probe.wrangler.jsonc --port 8714
 ```
 
 打开 `http://127.0.0.1:8714/`。此探测文件不在网站的静态输出和 Functions 路由中，勿作为生产服务部署。
+
+## Cloudflare Git 构建配置
+
+项目 `scheme1` 的构建根目录为 `site-v1`。必须安装其邮件依赖；原来的空构建命令
+会跳过依赖安装，导致 Functions 构建报错 `Could not resolve "nodemailer"`。
+已将项目构建命令设为：
+
+```sh
+if [ -f package-lock.json ]; then npm ci --omit=dev; fi
+```
+
+新分支会安装锁定的 Nodemailer 依赖；旧版没有锁文件时跳过，保留对旧分支的构建兼容性。
+此设置不会自行更换当前生产部署。预览部署成功记录：
+`https://5c85a342.aurora-filtech.pages.dev`，代码提交 `443ab71`。
 
 ## 分支预览
 
