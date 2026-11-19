@@ -1,4 +1,4 @@
-# Aurora Filtech V1.2 — 企业邮箱 SMTP 接入
+# Aurora Filtech V1.2 — QQ 邮箱 SMTP 发信、Johnson 企业邮箱收信
 
 本版分支：`v1-smtp-20261119`。它基于 V1.1 提交 `fc7db78`，上一版仍保留在
 `v1-optimization-20261119`。原生产分支 `main` 未覆盖；原始版本的备份标签为
@@ -6,12 +6,14 @@
 
 ## 当前状态
 
-- 用户已确认：使用现有企业邮箱 SMTP，收件人为 `johnson@aurora-filtech.com`。
-- DNS MX 记录和项目资料均指向阿里云企业邮箱。
+- 用户已确认：发件账号为 `903158800@qq.com`，收件人为 `johnson@aurora-filtech.com`。
+- 发信使用 QQ 邮箱 SMTP；Johnson 企业邮箱的现有 MX 和收信方式保持不变。
+- Cloudflare Preview 的五项非秘密变量已保存并回读确认：主机、端口、账号、发件地址、收件地址。
+  `SMTP_PASSWORD` 尚未配置；生产环境未改动。
 - 新版使用 SMTP，不再需要 Resend 账号、密钥或新发件域名。
 - 旧生产站 `https://aurora-filtech.pages.dev` 的询盘失败原因，已通过实际提交确认为
   `RESEND_API_KEY` 缺失、HTTP 503。新版代码尚不能替代旧部署中正在运行的接口。
-- 本机 Node.js 已完成 `smtp.qiye.aliyun.com:465` 的证书校验、TLS 握手和 SMTP 问候。
+- 本机 Node.js 已完成 `smtp.qq.com:465` 的证书校验、TLS 握手和 SMTP 问候。
   这次探测没有执行 AUTH 或发送邮件。
 - 已修复运行器连接兼容问题：默认预解析 IP 的连接路径返回 `ESOCKET / proxy request failed`；
   改为保留官方主机名建立 TLS socket 后，Cloudflare 本地运行器的握手／问候探测也通过。
@@ -20,22 +22,22 @@
 
 ## 邮箱配置
 
-阿里云当前官方通用配置是 `smtp.qiye.aliyun.com`、SSL/TLS 端口 **465**。
+本版使用 QQ 邮箱配置 `smtp.qq.com`、SSL/TLS 端口 **465**。
 本版只允许此类从连接开始就加密的 465 端口；不会回退到明文 SMTP，始终校验证书。
 不改动现有 MX、SPF、DKIM 或企业邮箱收信设置。
 
-1. 在企业邮箱管理中确认发件账号已允许 SMTP／三方客户端访问。
-2. 若已启用“三方客户端安全密码”，使用专用客户端密码，不能用普通网页登录密码替代。
+1. 登录 `903158800@qq.com` 的 QQ 邮箱，开启 SMTP／三方客户端服务。
+2. 使用 QQ 邮箱生成的 **SMTP 授权码**，不能填写 QQ 登录密码。
 3. 在 Cloudflare → Workers & Pages → **scheme1** → Settings → Variables and Secrets，
    为需要测试的 **Preview** 环境配置：
-   - `SMTP_HOST`：`smtp.qiye.aliyun.com`
+   - `SMTP_HOST`：`smtp.qq.com`
    - `SMTP_PORT`：`465`
-   - `SMTP_USER`：实际发件账号，例如 `johnson@aurora-filtech.com`
-   - `SMTP_PASSWORD`：**Secret**，填该账号的客户端授权码／安全密码
-   - `RFQ_FROM_EMAIL`：与 `SMTP_USER` 相同的完整邮箱地址，不带显示名称
+   - `SMTP_USER`：`903158800@qq.com`
+   - `SMTP_PASSWORD`：**Secret**，填该 QQ 邮箱的 SMTP 授权码
+   - `RFQ_FROM_EMAIL`：`903158800@qq.com`
    - `RFQ_TO_EMAIL`：`johnson@aurora-filtech.com`
-4. 也可以使用同域名的专用询价账号发件，此时同时修改 `SMTP_USER` 和 `RFQ_FROM_EMAIL`。
-   程序要求两者相同，防止被邮箱服务拒绝或错误冒用发件地址。
+4. 程序要求 `RFQ_FROM_EMAIL` 与 `SMTP_USER` 相同。
+   此版的发件地址应为 QQ 邮箱，不能把 Johnson 的企业邮箱填为发件人；它是收件人。
 5. 配置后重新部署 SMTP 分支。环境变量只存在于后台，不会通过 Git 文件自动设置。
 6. 预览验收通过后，再为 Production 配置并按正常 Git 流程合并，勿强制覆盖旧版本。
 
@@ -116,8 +118,8 @@ npm run deploy:preview
 
 ## 官方参考
 
-- https://help.aliyun.com/zh/document_detail/36576.html
-- https://help.aliyun.com/document_detail/36687.html
+- https://cloud.tencent.com/document/product/583/35399
+- https://intl.cloud.tencent.com/zh/document/product/1266/71700
 - https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/
 - https://developers.cloudflare.com/workers/runtime-apis/nodejs/tls/
 - https://nodemailer.com/smtp

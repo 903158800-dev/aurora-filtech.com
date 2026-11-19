@@ -1,11 +1,11 @@
 # Copy to .dev.vars for local API tests; it is ignored by Git.
-SMTP_HOST="smtp.qiye.aliyun.com"
+SMTP_HOST="smtp.qq.com"
 SMTP_PORT="465"
-SMTP_USER="johnson@aurora-filtech.com"
-# Use a third-party client security password; fill it only in .dev.vars or Cloudflare Secrets.
+SMTP_USER="903158800@qq.com"
+# Use the QQ Mail SMTP authorization code; fill it only in .dev.vars or Cloudflare Secrets.
 SMTP_PASSWORD=
-# Must match SMTP_USER. A dedicated same-domain account can be used instead.
-RFQ_FROM_EMAIL="johnson@aurora-filtech.com"
+# Must match SMTP_USER. The recipient remains Johnson.
+RFQ_FROM_EMAIL="903158800@qq.com"
 RFQ_TO_EMAIL="johnson@aurora-filtech.com"
 # Optional bot protection. Configure both values together.
 TURNSTILE_SITE_KEY=

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {EventEmitter} from 'node:events';
 import {onRequestGet,createRfqHandler,mailConfiguration,smtpOptions,sendSmtp,openSmtpSocket} from '../shared/rfq-function.js';
 
-const env={SMTP_USER:'johnson@aurora-filtech.com',SMTP_PASSWORD:'test-only-never-real'};
+const env={SMTP_USER:'903158800@qq.com',SMTP_PASSWORD:'test-only-never-real'};
 const valid={company:'Test company',email:'tester@example.com',notes:'Test inquiry',submission_id:'test-stable-id'};
 const request=(data=valid,headers={})=>new Request('https://example.com/api/rfq',{
   method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json',Origin:'https://example.com',...headers},body:JSON.stringify(data)});
@@ -56,21 +56,21 @@ test('SMTP transport requires TLS and certificate checks, and closes after accep
       return {messageId:'test-id',accepted:config.to,rejected:[],response:'250 OK queued'};
     },close:()=>closed++};
   });
-  assert.equal(actual.host,'smtp.qiye.aliyun.com');assert.equal(result.id,'test-id');assert.equal(closed,1);
+  assert.equal(actual.host,'smtp.qq.com');assert.equal(result.id,'test-id');assert.equal(closed,1);
 });
 
 test('Workers TLS adapter retains the hostname and only hands off a verified secure connection',async()=>{
   const socket=new EventEmitter();let destroyed=0;socket.destroy=()=>destroyed++;
   let calls=0;let connectionOptions;
-  openSmtpSocket({host:'smtp.qiye.aliyun.com'},(error,result)=>{
+  openSmtpSocket({host:'smtp.qq.com'},(error,result)=>{
     calls++;assert.equal(error,null);assert.equal(result.secured,true);assert.equal(result.connection,socket);
   },options=>{connectionOptions=options;return socket;});
-  assert.equal(connectionOptions.host,'smtp.qiye.aliyun.com');
-  assert.equal(connectionOptions.servername,'smtp.qiye.aliyun.com');assert.equal(connectionOptions.rejectUnauthorized,true);
+  assert.equal(connectionOptions.host,'smtp.qq.com');
+  assert.equal(connectionOptions.servername,'smtp.qq.com');assert.equal(connectionOptions.rejectUnauthorized,true);
   assert.equal(calls,0);socket.emit('secureConnect');assert.equal(calls,1);assert.equal(destroyed,0);
   const failureSocket=new EventEmitter();failureSocket.destroy=()=>destroyed++;
   const error=Object.assign(new Error('certificate validation failed'),{code:'CERT_HAS_EXPIRED'});
-  openSmtpSocket({host:'smtp.qiye.aliyun.com'},actual=>{calls++;assert.equal(actual,error);},()=>failureSocket);
+  openSmtpSocket({host:'smtp.qq.com'},actual=>{calls++;assert.equal(actual,error);},()=>failureSocket);
   failureSocket.emit('error',error);assert.equal(calls,2);assert.equal(destroyed,1);
 });
 
