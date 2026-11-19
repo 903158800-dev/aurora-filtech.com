@@ -12,7 +12,7 @@
     "RFQ_FROM_EMAIL": "aaron@aurora-filtech.com",
     "RFQ_TO_EMAIL": "johnson@aurora-filtech.com",
     "passwordConfigured": true,
-    "productionChanged": false,
+    "productionChanged": true,
     "readBackVerified": true
   },
   "automatedTests": {
@@ -57,33 +57,40 @@
   },
   "inboxDeliveryVerified": true,
   "remaining": [
-    "Verify native TLS adapter through Cloudflare Git automatic deployment",
-    "Publish the verified revision to production and smoke test"
+    "Confirm receipt of final production-domain inquiry 7a5fb34778f5 in Johnson mailbox"
   ],
   "senderConfiguration": "User-confirmed website sender Aaron; customer contact email is reply-to only",
   "customerTestEmail": "903158800@qq.com",
   "staticPackaging": {
     "dependencyDirectoriesExcluded": true,
-    "existingTestDetectedAndVerifiedFix": true
+    "existingTestDetectedAndVerifiedFix": true,
+    "gitStagingDirectory": ".pages-output",
+    "publicFiles": 562,
+    "sourceExclusionTestPassesForBothOutputs": true,
+    "reason": "Pages Git old uploader ignored .assetsignore and published package.json; stage an allowlisted public directory"
   },
   "deployment": {
-    "environment": "preview",
+    "environment": "production",
     "status": "success",
-    "id": "2803abef-1629-4480-aab8-66ad7468b535",
-    "commit": "b10c077be043f1679ab02c5c9f27880e44810889",
-    "url": "https://2803abef.aurora-filtech.pages.dev",
-    "alias": "https://v1-smtp-20261119.aurora-filtech.pages.dev",
+    "id": "b579832d-b190-4bfe-90e4-ec0afeb38839",
+    "commit": "7314479909159d9fa509454769de59bd5e020738",
+    "url": "https://aurora-filtech.com",
+    "snapshot": "https://b579832d.aurora-filtech.pages.dev",
     "health": {
       "provider": "smtp",
       "configured": true
     },
-    "productionChanged": false,
-    "buildCommand": "if [ -f package-lock.json ]; then npm ci --omit=dev; fi",
-    "method": "Wrangler 4.153.0 direct upload"
+    "productionChanged": true,
+    "productionBranch": "v1-smtp-20261119",
+    "method": "Cloudflare Git deployment",
+    "buildCommand": "if [ -f package-lock.json ]; then npm ci --omit=dev && npm run build --if-present; fi"
   },
   "remoteGit": {
     "branchPushed": true,
-    "backupTagPushed": "v1-before-optimization-20261119"
+    "backupTagPushed": "v1-before-optimization-20261119",
+    "originalMainCommit": "11b9dd6f727ff4fbb8bfaa2491b0a8c3ed92ca4c",
+    "originalMainPreserved": true,
+    "v2v3Unchanged": true
   },
   "livePreviewLayout": {
     "desktop": {
@@ -123,6 +130,27 @@
       "userConfirmedReceived": true,
       "completeChineseAndFormFields": true,
       "replyToConfirmed": "903158800@qq.com"
+    },
+    {
+      "company": "AURORA WEBSITE TEST 20261119-GIT",
+      "reference": "d0c0a0eeb329",
+      "deployment": "133b9a75-5b8f-4f3e-b50d-8ca54dd0f499",
+      "buildTool": "Wrangler 3.114.17",
+      "outcome": "accepted",
+      "userConfirmedReceived": null
+    },
+    {
+      "company": "AURORA WEBSITE TEST 20261119-PRODUCTION",
+      "reference": "7a5fb34778f5",
+      "deployment": "b579832d-b190-4bfe-90e4-ec0afeb38839",
+      "buildTool": "Wrangler 3.114.17",
+      "origin": "https://aurora-filtech.com",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "outcome": "accepted",
+      "userConfirmedReceived": null
     }
   ],
   "buildDiagnosis": {
@@ -130,6 +158,48 @@
     "workingBuild": "Wrangler 4.153.0 retains native node:tls imports",
     "gitCompatibilityFix": "Resolve native TLS via process.getBuiltinModule(node:tls), keeping full nodejs_compat",
     "oldBuilderComparisonVerified": true,
-    "rejectedCandidate": "Disabling nodejs_compat_v2 failed worker initialization in Git deployment 893fc6c5; restored full compatibility"
+    "rejectedCandidate": "Disabling nodejs_compat_v2 failed worker initialization in Git deployment 893fc6c5; restored full compatibility",
+    "gitSmtpVerified": true
+  },
+  "previewDeployment": {
+    "environment": "preview",
+    "status": "success",
+    "id": "2803abef-1629-4480-aab8-66ad7468b535",
+    "commit": "b10c077be043f1679ab02c5c9f27880e44810889",
+    "url": "https://2803abef.aurora-filtech.pages.dev",
+    "alias": "https://v1-smtp-20261119.aurora-filtech.pages.dev",
+    "health": {
+      "provider": "smtp",
+      "configured": true
+    },
+    "productionChanged": false,
+    "buildCommand": "if [ -f package-lock.json ]; then npm ci --omit=dev; fi",
+    "method": "Wrangler 4.153.0 direct upload"
+  },
+  "gitDeployment": {
+    "id": "133b9a75-5b8f-4f3e-b50d-8ca54dd0f499",
+    "commit": "7314479909159d9fa509454769de59bd5e020738",
+    "status": "success",
+    "smtpAccepted": true,
+    "reference": "d0c0a0eeb329",
+    "buildTool": "Wrangler 3.114.17"
+  },
+  "productionLayout": {
+    "desktop": {
+      "width": 1440,
+      "height": 1000,
+      "horizontalOverflow": false
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "horizontalOverflow": false
+    },
+    "visualInspection": true,
+    "screenshots": [
+      "qa/screenshots/production-mobile-rfq.jpg",
+      "qa/screenshots/production-mobile-success.jpg",
+      "qa/screenshots/production-desktop-success.jpg"
+    ]
   }
 }

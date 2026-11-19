@@ -1,6 +1,6 @@
 {
   "name": "scheme1",
-  "pages_build_output_dir": ".",
+  "pages_build_output_dir": ".pages-output",
   "compatibility_date": "2026-10-23",
   "compatibility_flags": [
     "nodejs_compat"

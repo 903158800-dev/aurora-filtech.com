@@ -6,7 +6,8 @@
     "build": "node scripts/build-v1.cjs",
     "test": "node --test tests/*.test.mjs",
     "dev": "wrangler pages dev dist/v1 --port 8712",
-    "deploy:preview": "wrangler pages deploy dist/v1 --project-name scheme1 --branch v1-smtp-20261119"
+    "deploy:preview": "wrangler pages deploy dist/v1 --project-name scheme1 --branch v1-smtp-preview",
+    "deploy:production": "wrangler pages deploy dist/v1 --project-name scheme1 --branch v1-smtp-20261119"
   },
   "engines": {
     "node": ">=22"

@@ -3,9 +3,12 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {execFileSync} from 'node:child_process';
 const root=fileURLToPath(new URL('../site-v1/',import.meta.url));
-const files=dir=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?files(path.join(dir,e.name)):[path.join(dir,e.name)]);
-const pages=files(root).filter(f=>f.endsWith('.html'));
+const files=(dir,sourceOnly=false)=>fs.readdirSync(dir,{withFileTypes:true})
+  .filter(e=>!sourceOnly || (!e.name.startsWith('.')&& !['node_modules','functions'].includes(e.name)))
+  .flatMap(e=>e.isDirectory()?files(path.join(dir,e.name),sourceOnly):[path.join(dir,e.name)]);
+const pages=files(root,true).filter(f=>f.endsWith('.html'));
 test('all generated pages reference existing assets and valid page targets',()=>{
   assert.equal(pages.length,26);
   const redirects=new Set(fs.readFileSync(path.join(root,'_redirects'),'utf8').split('\n').map(l=>l.split(' ')[0]));
@@ -31,10 +34,12 @@ test('responsive image variants exist and fit their original width',()=>{
   }
 });
 test('upload output contains no application source or secrets',()=>{
-  const output=path.resolve(root,'../dist/v1');
-  for(const file of files(output)){
+  execFileSync(process.execPath,[path.join(root,'package-pages.cjs')]);
+  const outputs=[path.resolve(root,'../dist/v1'),path.join(root,'.pages-output')];
+  for(const output of outputs)for(const file of files(output)){
     const relative=path.relative(output,file).split(path.sep).join('/');
     assert.ok(!/(^|\/)(functions|shared|node_modules|tests|\.git)(\/|$)/.test(relative),relative);
-    assert.ok(!/(^|\/)(build\.js|client\.js|design\.js|data-site\.js|data-products\.js|\.dev\.vars|package\.json|media-manifest\.json)$/.test(relative),relative);
+    assert.ok(!/(^|\/)(build\.js|package-pages\.cjs|client\.js|design\.js|data-site\.js|data-products\.js|\.dev\.vars.*|\.env.*|package(?:-lock)?\.json|wrangler\.jsonc|media-manifest\.json)$/.test(relative),relative);
   }
+  assert.equal(files(outputs[1]).filter(f=>f.endsWith('.html')).length,26);
 });

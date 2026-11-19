@@ -4,6 +4,7 @@ node_modules/
 Thumbs.db
 dist/
 .wrangler/
+.pages-output/
 .dev.vars*
 .env*
 !*.example

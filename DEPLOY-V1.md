@@ -18,8 +18,11 @@
   2026-11-19 已完成真实表单提交；用户确认 Johnson 收到邮件、中文和字段完整、回复地址正确。
 - 旧生产站 `https://aurora-filtech.pages.dev` 的询盘失败原因，已通过实际提交确认为
   `RESEND_API_KEY` 缺失、HTTP 503。这说明旧实现的发送服务没有配置好，不代表必须使用 Resend。
-- 新分支已成功推送 GitHub；原版备份标签也已上传。生产分支仍为 `main`。
-- 新版预览已部署成功：https://v1-smtp-20261119.aurora-filtech.pages.dev/
+- 新分支已成功推送 GitHub；原版备份标签也已上传。Cloudflare 生产分支已切换为
+  `v1-smtp-20261119`；Git 的 `main` 与原始备份标签仍指向 `11b9dd6`。
+- 新版正式站已部署成功：https://aurora-filtech.com/
+  生产部署 `b579832d-b190-4bfe-90e4-ec0afeb38839`，网站代码提交 `7314479`。
+  验证过的 Git 预览保留在 https://133b9a75.aurora-filtech.pages.dev/ （受 Access 保护）。
   已在 Edge 中查看 1440×1000 电脑布局、390×844 手机布局及询价提交区域，无横向溢出。
   Preview 与 Production 均已保存 `SMTP_PASSWORD` Secret；已部署预览接口返回 `provider:"smtp"`、`configured:true`。
 - 阿里邮箱 `smtp.qiye.aliyun.com:465` 已通过 Node.js 和 Cloudflare 本地运行器的
@@ -48,7 +51,8 @@
    值为 Aaron 的三方客户端安全密码，选择 Secret／Encrypt 后保存。
    不要填写模拟客户的 QQ 邮箱授权码。
 5. 部署 SMTP 分支并完成下方验收。非秘密变量由 Wrangler 配置维护；Secret 仅存在于后台。
-6. 预览验收通过后，再为 Production 配置并按正常 Git 流程合并，勿强制覆盖旧版本。
+6. 本次已在 Production 配置同一 Secret 并发布新分支，旧 `main` 保留作为版本存档。
+   后续功能应从新生产分支创建开发分支，经预览验证后再合回；勿强制覆盖旧版本。
 
 密码只填写在 Cloudflare Secret，或本机已被 Git 忽略的 `.dev.vars`；不写入源码或聊天。
 客户只需要填表和提交，不能通过表单指定 SMTP 主机、账号、发件人、收件人、抄送或密送。
@@ -92,7 +96,7 @@ npm run dev
 - `functions/api/rfq.js`、`site-v1/functions/api/rfq.js`：构建同步的部署入口。
 - `dist/v1`：只含静态部署产物，不含源码、测试和秘密。
 - 根目录与 `site-v1` 的 `wrangler.jsonc`：启用 Node.js 兼容，分别支持根目录 CLI 部署
-  和现有 Cloudflare Git 集成的 `site-v1` 构建根目录。两份配置中的非秘密邮件变量应保持一致。
+  和现有 Cloudflare Git 集成的 `site-v1` 构建根目录（输出为 `.pages-output`）。两份配置中的非秘密邮件变量应保持一致。
 - `site-v1/package.json` 和锁文件：确保现有 Git 构建根目录能安装邮件依赖。
 
 测试覆盖：配置缺失、输入/邮件头注入、固定收发地址、HTML 转义、证书校验配置、SMTP 拒绝、
@@ -115,10 +119,12 @@ npx wrangler dev --config tests/smtp-probe.wrangler.jsonc --port 8714
 已将项目构建命令设为：
 
 ```sh
-if [ -f package-lock.json ]; then npm ci --omit=dev; fi
+if [ -f package-lock.json ]; then npm ci --omit=dev && npm run build --if-present; fi
 ```
 
-新分支会安装锁定的 Nodemailer 依赖；旧版没有锁文件时跳过，保留对旧分支的构建兼容性。
+新分支安装锁定的 Nodemailer，并运行 `site-v1/package-pages.cjs`，只把公开资源
+复制到 `.pages-output`。Git 构建的旧上传器不会可靠应用 `.assetsignore`，因此必须使用
+独立发布目录，不能直接上传整个源码目录。旧版没有锁文件时跳过，保留旧分支构建兼容性。
 此设置不会自行更换当前生产部署。
 
 Pages Git 构建内部仍使用 Wrangler 3.114.17。实测该版本会把 `node:tls` 替换成旧 unenv
@@ -128,20 +134,24 @@ SMTP socket 通过 `process.getBuiltinModule("node:tls")` 显式取得运行时�
 避免旧构建器把该连接函数替换成占位实现。主机名及 TLS 证书校验保持不变。
 仅关闭 v2 兼容的候选配置在 Git 发布初始化时失败，已恢复，不作为发布方案。
 不能只在本机升级 Wrangler 后就假定 Git 构建也已升级。
+修正后的提交 `7314479` 已通过 Git 自动构建与真实 SMTP 表单提交，编号 `d0c0a0eeb329`。
 
 真实收件验证：`https://2803abef.aurora-filtech.pages.dev`（提交 `b10c077`，Wrangler 4 部署），
 主题 `[RFQ] Spiral Fabric — AURORA WEBSITE TEST 20261119-BUILD4`，编号 `e7f1bc3d5275`。
 用户已确认 Johnson 收到，内容完整，Reply-To 为 `903158800@qq.com`。
 第一次旧构建部署测试编号 `8d1cf079df69` 返回结果未知，用户确认收件箱及垃圾邮件均未收到。
 
-## 分支预览
+## 后续部署与回退
 
 ```sh
 npm run build
 npm run deploy:preview
 ```
 
-该命令固定部署到 **v1-smtp-20261119** 预览分支，生产分支仍是 `main`。
+`deploy:preview` 固定使用 **v1-smtp-preview**，与当前生产分支隔离。
+正式发布命令为 `npm run deploy:production`，目标分支为 **v1-smtp-20261119**。
+Git 推送到该生产分支也会自动发布；只保存验收文档时可使用 `[CI Skip]` 提交前缀。
+当前正式网站代码为 `7314479`；后续仅文档提交不会改变已验收的线上代码。
 现有 Pages 项目名为 `scheme1`，实际默认域名为 `aurora-filtech.pages.dev`。
 包含 Functions 的网站应使用 Git 集成或 Wrangler，不使用仅上传静态文件的拖拽方式。
 
@@ -149,6 +159,18 @@ npm run deploy:preview
 `TURNSTILE_SITE_KEY` 与 `TURNSTILE_SECRET_KEY`。两项必须成对配置。
 应用的请求体上限为 32KiB，单字段有长度限制，表单有蜜罐校验。
 这些应用检查不代替账户侧频率限制；当前没有自动变更线上防护规则。
+
+## 本次正式站验收
+
+- 在 Edge 中打开 `https://aurora-filtech.com/api/rfq`，返回 `configured:true`、`provider:"smtp"`。
+- 390×844 手机视口实际填表并点击提交，返回 `accepted`；1440×1000 电脑视口复核结果区域。
+- 两种尺寸均无横向溢出。截图位于 `qa/screenshots/production-*.jpg`。
+- 正式站测试主题：`[RFQ] Spiral Fabric — AURORA WEBSITE TEST 20261119-PRODUCTION`，
+  编号 `7a5fb34778f5`；SMTP 已接受，最终收件确认记录见 `qa/smtp-verification.json`。
+- 原版提交与标签均为 `11b9dd6`，V2/V3 代码没有改动。
+- 回退当前改版可在 Cloudflare Deployments 中回滚到历史生产部署
+  `c717bb4c-d6ad-400e-9efd-66733094e027`；如需继续部署旧分支，再将生产分支改回 `main`。
+  旧版使用尚未配置的 Resend，因此回退旧版会同时恢复其询价发送故障。
 
 ## 官方参考
 
@@ -161,3 +183,6 @@ npm run deploy:preview
 - https://developers.cloudflare.com/workers/runtime-apis/nodejs/tls/
 - https://nodemailer.com/smtp
 - https://nodemailer.com/message
+
+- https://developers.cloudflare.com/workers/runtime-apis/nodejs/process/
+- https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/
