@@ -15,15 +15,15 @@
 - 两份 Wrangler 配置及 Cloudflare Preview 的非秘密配置均已修正并回读确认。
 - 发件账号已配置为 Aaron；客户端安全密码由用户直接填写到 Cloudflare Secret。
   未配置密码时不会尝试登录邮箱或发送邮件。
-  配置完整且部署成功后，仍需用真实测试询价核对 Johnson 收件箱。
+  2026-11-19 已完成真实表单提交；用户确认 Johnson 收到邮件、中文和字段完整、回复地址正确。
 - 旧生产站 `https://aurora-filtech.pages.dev` 的询盘失败原因，已通过实际提交确认为
   `RESEND_API_KEY` 缺失、HTTP 503。这说明旧实现的发送服务没有配置好，不代表必须使用 Resend。
 - 新分支已成功推送 GitHub；原版备份标签也已上传。生产分支仍为 `main`。
 - 新版预览已部署成功：https://v1-smtp-20261119.aurora-filtech.pages.dev/
   已在 Edge 中查看 1440×1000 电脑布局、390×844 手机布局及询价提交区域，无横向溢出。
-  当前询价接口返回 `provider:"smtp"`、`configured:false`，等待 Aaron 的安全密码。
+  Preview 与 Production 均已保存 `SMTP_PASSWORD` Secret；已部署预览接口返回 `provider:"smtp"`、`configured:true`。
 - 阿里邮箱 `smtp.qiye.aliyun.com:465` 已通过 Node.js 和 Cloudflare 本地运行器的
-  TLS 证书校验及 SMTP 问候探测。探测没有执行 AUTH、MAIL FROM 或 DATA，不代表真实投递通过。
+  TLS 证书校验及 SMTP 问候探测。连接探测没有执行 AUTH、MAIL FROM 或 DATA；另行完成的真实询价已确认收件。
 - 修正打包时收集依赖目录中静态文件的问题，根目录构建和子目录发布均排除依赖及本地状态。
 
 ## 邮箱配置
@@ -119,8 +119,19 @@ if [ -f package-lock.json ]; then npm ci --omit=dev; fi
 ```
 
 新分支会安装锁定的 Nodemailer 依赖；旧版没有锁文件时跳过，保留对旧分支的构建兼容性。
-此设置不会自行更换当前生产部署。预览部署成功记录：
-`https://5c85a342.aurora-filtech.pages.dev`，代码提交 `443ab71`。
+此设置不会自行更换当前生产部署。
+
+Pages Git 构建内部仍使用 Wrangler 3.114.17。实测该版本会把 `node:tls` 替换成旧 unenv
+占位实现，`connect()` 只创建一个空 TLSSocket，导致 SMTP 无法完成。相同代码通过
+Wrangler 4.153.0 部署后真实发信成功。两份配置现保留 `nodejs_compat`，并显式添加
+`no_nodejs_compat_v2`，阻止旧构建器注入此占位实现；原生 Node API 和 TLS 证书校验仍启用。
+本机使用 3.114.17 对比构建，已确认修正产物保留三处原生 `node:tls` 导入。
+不要单独移除这一兼容设置，或只在本机升级 Wrangler 后就假定 Git 构建也已升级。
+
+真实收件验证：`https://2803abef.aurora-filtech.pages.dev`（提交 `b10c077`，Wrangler 4 部署），
+主题 `[RFQ] Spiral Fabric — AURORA WEBSITE TEST 20261119-BUILD4`，编号 `e7f1bc3d5275`。
+用户已确认 Johnson 收到，内容完整，Reply-To 为 `903158800@qq.com`。
+第一次旧构建部署测试编号 `8d1cf079df69` 返回结果未知，用户确认收件箱及垃圾邮件均未收到。
 
 ## 分支预览
 

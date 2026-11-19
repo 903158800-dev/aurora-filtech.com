@@ -11,7 +11,7 @@
     "SMTP_USER": "aaron@aurora-filtech.com",
     "RFQ_FROM_EMAIL": "aaron@aurora-filtech.com",
     "RFQ_TO_EMAIL": "johnson@aurora-filtech.com",
-    "passwordConfigured": false,
+    "passwordConfigured": true,
     "productionChanged": false,
     "readBackVerified": true
   },
@@ -35,8 +35,12 @@
     "fix": "Preserve the official hostname in a custom verified TLS socket rather than using Nodemailer's pre-resolved IP path"
   },
   "cloudflareRemoteProbe": {
-    "verified": false,
-    "reason": "RFQ preview deployed successfully; authenticated SMTP test awaits SMTP_PASSWORD Secret"
+    "verified": true,
+    "host": "smtp.qiye.aliyun.com",
+    "port": 465,
+    "tls": true,
+    "authenticated": false,
+    "messageSent": false
   },
   "smtpWireTest": {
     "transport": "real Nodemailer connected to loopback test server",
@@ -51,11 +55,10 @@
     "uncertainLockAndDraftRetainedAfterReload": true,
     "realEmailSent": false
   },
-  "inboxDeliveryVerified": false,
+  "inboxDeliveryVerified": true,
   "remaining": [
-    "Configure Aaron client security password as SMTP_PASSWORD Secret",
-    "Redeploy preview to load the new Secret, then submit a real inquiry from the browser",
-    "Confirm receipt in Johnson's inbox; SMTP acceptance alone does not prove inbox delivery"
+    "Verify corrected compatibility flags through Cloudflare Git automatic deployment",
+    "Publish the verified revision to production and smoke test"
   ],
   "senderConfiguration": "User-confirmed website sender Aaron; customer contact email is reply-to only",
   "customerTestEmail": "903158800@qq.com",
@@ -66,16 +69,17 @@
   "deployment": {
     "environment": "preview",
     "status": "success",
-    "id": "5c85a342-956e-4fbe-b49f-16282de7bf01",
-    "commit": "443ab7108cfc7d00140df313973b7211ef57ebd2",
-    "url": "https://5c85a342.aurora-filtech.pages.dev",
+    "id": "2803abef-1629-4480-aab8-66ad7468b535",
+    "commit": "b10c077be043f1679ab02c5c9f27880e44810889",
+    "url": "https://2803abef.aurora-filtech.pages.dev",
     "alias": "https://v1-smtp-20261119.aurora-filtech.pages.dev",
     "health": {
       "provider": "smtp",
-      "configured": false
+      "configured": true
     },
     "productionChanged": false,
-    "buildCommand": "if [ -f package-lock.json ]; then npm ci --omit=dev; fi"
+    "buildCommand": "if [ -f package-lock.json ]; then npm ci --omit=dev; fi",
+    "method": "Wrangler 4.153.0 direct upload"
   },
   "remoteGit": {
     "branchPushed": true,
@@ -95,8 +99,36 @@
     "screenshots": [
       "qa/screenshots/live-preview-desktop-rfq.jpg",
       "qa/screenshots/live-preview-mobile-rfq.jpg",
-      "qa/screenshots/live-preview-mobile-submit.jpg"
+      "qa/screenshots/live-preview-mobile-submit.jpg",
+      "qa/screenshots/live-smtp-submission-result.jpg",
+      "qa/screenshots/live-smtp-build4-result.jpg"
     ],
-    "realEmailSent": false
+    "realEmailSent": true
+  },
+  "realSubmissions": [
+    {
+      "company": "AURORA WEBSITE TEST 20261119-1947",
+      "reference": "8d1cf079df69",
+      "deployment": "70f3bb70-768c-4d47-b6a6-55933aa1009c",
+      "buildTool": "Wrangler 3.114.17",
+      "outcome": "unknown",
+      "userConfirmedReceived": false
+    },
+    {
+      "company": "AURORA WEBSITE TEST 20261119-BUILD4",
+      "reference": "e7f1bc3d5275",
+      "deployment": "2803abef-1629-4480-aab8-66ad7468b535",
+      "buildTool": "Wrangler 4.153.0",
+      "outcome": "accepted",
+      "userConfirmedReceived": true,
+      "completeChineseAndFormFields": true,
+      "replyToConfirmed": "903158800@qq.com"
+    }
+  ],
+  "buildDiagnosis": {
+    "oldBuild": "Wrangler 3.114.17 substitutes node:tls with unenv TLSSocket stub",
+    "workingBuild": "Wrangler 4.153.0 retains native node:tls imports",
+    "gitCompatibilityFix": "Keep nodejs_compat and add no_nodejs_compat_v2 to prevent legacy polyfills",
+    "oldBuilderComparisonVerified": true
   }
 }
