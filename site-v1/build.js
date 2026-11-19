@@ -782,6 +782,9 @@ live-std.json
 client.js
 media-manifest.json
 content-dates.json
+package.json
+package-lock.json
+wrangler.jsonc
 functions
 site-v1
 site-seo

@@ -57,6 +57,9 @@
   function persist() {
     try { sessionStorage.setItem(storageKey, JSON.stringify({data: collect(), submission: submission})); } catch (_) {}
   }
+  function uncertainSubmission() {
+    return submission && submission.outcome === 'uncertain' && submission.fingerprint === JSON.stringify(collect());
+  }
   try {
     var draft = JSON.parse(sessionStorage.getItem(storageKey) || 'null');
     if (draft && draft.data) {
@@ -69,7 +72,7 @@
     }
   } catch (_) {}
   form.addEventListener('input', function () {
-    if (!pending) { button.disabled = false; button.textContent = 'Send inquiry'; }
+    if (!pending) { button.disabled = Boolean(uncertainSubmission()); button.textContent = uncertainSubmission() ? 'Check submission status' : 'Send inquiry'; }
     persist();
   });
   form.addEventListener('change', persist);
@@ -113,6 +116,11 @@
     status.style.display = 'block'; status.focus({preventScroll:true});
     status.scrollIntoView({block:'nearest',behavior:'auto'});
   }
+  var uncertainMessage = 'The mail server reply was interrupted, so this inquiry may already have been sent. Please contact us by Email or WhatsApp before submitting again.';
+  if (uncertainSubmission()) {
+    button.disabled = true; button.textContent = 'Check submission status';
+    show(false, uncertainMessage, collect(), submission.reference);
+  }
   async function prepare() {
     if (location.protocol === 'file:') return {configured:false};
     if (!configPromise) configPromise = (async function () {
@@ -138,11 +146,13 @@
     var data = collect();
     var fingerprint = JSON.stringify(data);
     if (data._honey) return;
+    if (uncertainSubmission()) { show(false, uncertainMessage, data, submission.reference); return; }
     if (fingerprint === acceptedFingerprint) return;
     if (!submission || submission.fingerprint !== fingerprint) submission = {fingerprint:fingerprint,id:crypto.randomUUID()};
     data.submission_id = submission.id;
     persist(); pending = true; button.disabled = true; button.textContent = 'Sending…'; form.setAttribute('aria-busy','true');
     var accepted = false;
+    var blockRetry = false;
     try {
       var info = await prepare();
       if (!info.configured) {
@@ -154,21 +164,29 @@
         data['cf-turnstile-response'] = window.turnstile.getResponse(widgetId);
         if (!data['cf-turnstile-response']) { show(false,'Please complete the verification and send again.',data); return; }
       }
-      var response = await fetch('/api/rfq', {method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data),signal:AbortSignal.timeout(15000)});
+      // Save the unknown outcome before POST: closing/reloading the tab must not invite a duplicate.
+      submission.outcome = 'uncertain'; persist(); blockRetry = true;
+      var response = await fetch('/api/rfq', {method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data),signal:AbortSignal.timeout(30000)});
       var result = await response.json().catch(function () { return null; });
       if (response.ok && result && result.ok === true && result.id) {
-        accepted = true; acceptedFingerprint = fingerprint;
+        accepted = true; acceptedFingerprint = fingerprint; blockRetry = false;
+        delete submission.outcome;
         try { sessionStorage.removeItem(storageKey); } catch (_) {}
         show(true,'Your request has been accepted for sending. Our team normally replies within one business day.',data,result.reference);
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({event:'generate_lead',form_id:'aurora_rfq_form',page_topic:topic});
       } else {
-        show(false,result && result.message ? result.message : 'We could not confirm submission. Please retry or use Email or WhatsApp below.',data,result && result.reference);
+        if (result && result.ok === false && result.code && result.retryable !== false) {
+          blockRetry = false; delete submission.outcome;
+        }
+        if (result && result.reference) submission.reference = result.reference;
+        persist();
+        show(false,result && result.message ? result.message : uncertainMessage,data,result && result.reference);
       }
     } catch (_) {
-      show(false,'We could not confirm submission. Check your connection and retry; your inquiry is kept in this tab.',data);
+      show(false,blockRetry ? uncertainMessage : 'We could not reach the inquiry service. Please retry or use Email or WhatsApp below; your inquiry is kept in this tab.',data);
     } finally {
-      pending = false; button.disabled = accepted; button.textContent = accepted ? 'Inquiry submitted' : 'Send inquiry'; form.removeAttribute('aria-busy');
+      pending = false; button.disabled = accepted || blockRetry; button.textContent = accepted ? 'Inquiry submitted' : (blockRetry ? 'Check submission status' : 'Send inquiry'); form.removeAttribute('aria-busy');
       if (widgetId !== undefined && window.turnstile) window.turnstile.reset(widgetId);
     }
   });

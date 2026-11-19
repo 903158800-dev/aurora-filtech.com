@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-19",
+  "version": "1.2.0",
+  "branch": "v1-smtp-20261119",
+  "recipient": "johnson@aurora-filtech.com",
+  "provider": "smtp",
+  "automatedTests": {"passed": 13, "failed": 0},
+  "localNodeSmtpProbe": {"host": "smtp.qiye.aliyun.com", "port": 465, "certificateAndGreetingVerified": true, "authenticated": false, "messageSent": false},
+  "cloudflareLocalProbe": {"ok": true, "tls": true, "authenticated": false, "messageSent": false, "fix": "Preserve the official hostname in a custom verified TLS socket rather than using Nodemailer's pre-resolved IP path"},
+  "cloudflareRemoteProbe": {"verified": false, "reason": "Remote preview creation timed out"},
+  "smtpWireTest": {"transport": "real Nodemailer connected to loopback test server", "mimeAndEnvelopeVerified": true, "lostFinalAcknowledgementReportedUncertain": true, "automaticRetryCount": 0},
+  "browserMockChecks": {"acceptedSubmission": true, "acceptedButtonDisabled": true, "uncertainSubmissionLocked": true, "uncertainLockAndDraftRetainedAfterReload": true, "realEmailSent": false},
+  "inboxDeliveryVerified": false,
+  "remaining": ["Configure the actual sending account and SMTP_PASSWORD Secret", "Deploy and verify Cloudflare-to-SMTP connectivity and authentication", "Submit a real test and confirm receipt in Johnson's inbox"]
+}

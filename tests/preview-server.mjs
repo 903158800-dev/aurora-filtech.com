@@ -3,24 +3,24 @@ import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {onRequestGet,onRequestPost} from '../shared/rfq-function.js';
+import {onRequestGet,createRfqHandler} from '../shared/rfq-function.js';
 const root=path.resolve(fileURLToPath(new URL('../dist/v1/',import.meta.url)));
-const env={RESEND_API_KEY:'mock-only-no-real-email'};
+const env={SMTP_USER:'johnson@aurora-filtech.com',SMTP_PASSWORD:'mock-only-no-real-email'};
 let mode='accepted';let calls=0;const keys=new Map();
-globalThis.fetch=async(url,init)=>{
-  if(url!=='https://api.resend.com/emails')throw new Error('External requests are disabled in this harness');
+const onRequestPost=createRfqHandler(async(payload)=>{
   calls++;
-  if(mode==='rejected')return Response.json({name:'mock_rejection'},{status:403});
-  const key=init.headers['Idempotency-Key'];
+  if(mode==='rejected')throw Object.assign(new Error('Mock SMTP rejection'),{code:'SMTP_REJECTED',smtpStatus:535});
+  if(mode==='uncertain')throw Object.assign(new Error('Mock lost final reply'),{code:'SMTP_RESULT_UNKNOWN',uncertain:true});
+  const key=payload.messageId;
   if(!keys.has(key))keys.set(key,`MOCK-${keys.size+1}`);
-  return Response.json({id:keys.get(key)});
-};
+  return {id:key};
+});
 const types={'.html':'text/html; charset=utf-8','.css':'text/css','.js':'application/javascript','.webp':'image/webp','.jpg':'image/jpeg','.png':'image/png','.svg':'image/svg+xml','.mp4':'video/mp4'};
 http.createServer(async(req,res)=>{
   try{
     const url=new URL(req.url,'http://127.0.0.1:8713');
     if(url.pathname==='/__qa'){
-      const chosen=url.searchParams.get('mode');if(['accepted','rejected','unconfigured'].includes(chosen))mode=chosen;
+      const chosen=url.searchParams.get('mode');if(['accepted','rejected','uncertain','unconfigured'].includes(chosen))mode=chosen;
       res.setHeader('Content-Type','application/json');res.end(JSON.stringify({mode,providerCalls:calls,uniqueEmails:keys.size,mocked:true}));return;
     }
     if(url.pathname==='/api/rfq'){
