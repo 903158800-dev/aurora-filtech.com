@@ -123,10 +123,11 @@ if [ -f package-lock.json ]; then npm ci --omit=dev; fi
 
 Pages Git 构建内部仍使用 Wrangler 3.114.17。实测该版本会把 `node:tls` 替换成旧 unenv
 占位实现，`connect()` 只创建一个空 TLSSocket，导致 SMTP 无法完成。相同代码通过
-Wrangler 4.153.0 部署后真实发信成功。两份配置现保留 `nodejs_compat`，并显式添加
-`no_nodejs_compat_v2`，阻止旧构建器注入此占位实现；原生 Node API 和 TLS 证书校验仍启用。
-本机使用 3.114.17 对比构建，已确认修正产物保留三处原生 `node:tls` 导入。
-不要单独移除这一兼容设置，或只在本机升级 Wrangler 后就假定 Git 构建也已升级。
+Wrangler 4.153.0 部署后真实发信成功。最终保留完整 `nodejs_compat` 支持，
+SMTP socket 通过 `process.getBuiltinModule("node:tls")` 显式取得运行时原生连接函数，
+避免旧构建器把该连接函数替换成占位实现。主机名及 TLS 证书校验保持不变。
+仅关闭 v2 兼容的候选配置在 Git 发布初始化时失败，已恢复，不作为发布方案。
+不能只在本机升级 Wrangler 后就假定 Git 构建也已升级。
 
 真实收件验证：`https://2803abef.aurora-filtech.pages.dev`（提交 `b10c077`，Wrangler 4 部署），
 主题 `[RFQ] Spiral Fabric — AURORA WEBSITE TEST 20261119-BUILD4`，编号 `e7f1bc3d5275`。

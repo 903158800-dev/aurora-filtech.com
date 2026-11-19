@@ -57,7 +57,7 @@
   },
   "inboxDeliveryVerified": true,
   "remaining": [
-    "Verify corrected compatibility flags through Cloudflare Git automatic deployment",
+    "Verify native TLS adapter through Cloudflare Git automatic deployment",
     "Publish the verified revision to production and smoke test"
   ],
   "senderConfiguration": "User-confirmed website sender Aaron; customer contact email is reply-to only",
@@ -128,7 +128,8 @@
   "buildDiagnosis": {
     "oldBuild": "Wrangler 3.114.17 substitutes node:tls with unenv TLSSocket stub",
     "workingBuild": "Wrangler 4.153.0 retains native node:tls imports",
-    "gitCompatibilityFix": "Keep nodejs_compat and add no_nodejs_compat_v2 to prevent legacy polyfills",
-    "oldBuilderComparisonVerified": true
+    "gitCompatibilityFix": "Resolve native TLS via process.getBuiltinModule(node:tls), keeping full nodejs_compat",
+    "oldBuilderComparisonVerified": true,
+    "rejectedCandidate": "Disabling nodejs_compat_v2 failed worker initialization in Git deployment 893fc6c5; restored full compatibility"
   }
 }

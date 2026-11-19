@@ -3,10 +3,7 @@
   "pages_build_output_dir": ".",
   "compatibility_date": "2026-10-23",
   "compatibility_flags": [
-    "nodejs_compat",
-    // Pages Git builds still use Wrangler 3: prevent its obsolete TLS polyfill.
-    // Keep native Node APIs enabled in the 2026 Workers runtime.
-    "no_nodejs_compat_v2"
+    "nodejs_compat"
   ],
   "vars": {
     "SMTP_HOST": "smtp.qiye.aliyun.com",

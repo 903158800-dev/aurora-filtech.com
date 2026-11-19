@@ -1,6 +1,9 @@
 /** Cloudflare Pages /api/rfq. Secrets belong in Cloudflare, never in this file. */
 import nodemailer from 'nodemailer';
-import {connect as connectTls} from 'node:tls';
+import {getBuiltinModule} from 'node:process';
+// Pages Git uses Wrangler 3, whose TLS import polyfill cannot open connections.
+// Resolve the runtime's native TLS implementation without that build-time alias.
+const connectTls = (...args) => getBuiltinModule('node:tls').connect(...args);
 const DEFAULT_TO = 'johnson@aurora-filtech.com';
 const MAX_BODY_BYTES = 32768;
 const LIMITS = { company:160, email:254, name:200, customer_type:80, product:160,
