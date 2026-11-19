@@ -4,10 +4,10 @@
   "compatibility_date": "2026-10-23",
   "compatibility_flags": ["nodejs_compat"],
   "vars": {
-    "SMTP_HOST": "smtp.qq.com",
+    "SMTP_HOST": "smtp.qiye.aliyun.com",
     "SMTP_PORT": "465",
-    "SMTP_USER": "903158800@qq.com",
-    "RFQ_FROM_EMAIL": "903158800@qq.com",
+    "SMTP_USER": "",
+    "RFQ_FROM_EMAIL": "",
     "RFQ_TO_EMAIL": "johnson@aurora-filtech.com"
   }
 }

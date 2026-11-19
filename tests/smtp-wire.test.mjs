@@ -37,13 +37,13 @@ test('real Nodemailer SMTP dialogue: MIME, envelope and a lost final acknowledge
   const deliver=(payload,config,ref)=>sendSmtp(payload,config,ref,options=>nodemailer.createTransport({
     ...options,getSocket:undefined,host:'127.0.0.1',port:server.address().port,secure:false,ignoreTLS:true}));
   const handler=createRfqHandler(deliver);
-  const env={SMTP_USER:'903158800@qq.com',SMTP_PASSWORD:'local-test-only'};
+  const env={SMTP_USER:'johnson@aurora-filtech.com',SMTP_PASSWORD:'local-test-only'};
   const makeRequest=()=>new Request('https://example.com/api/rfq',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
-    body:JSON.stringify({company:'中文测试厂',email:'customer@example.com',product:'过滤网',notes:'Line one\n.\nLine three',submission_id:'wire-test'})});
+    body:JSON.stringify({company:'中文测试厂',email:'903158800@qq.com',product:'过滤网',notes:'Line one\n.\nLine three',submission_id:'wire-test'})});
   const accepted=await handler({request:makeRequest(),env});assert.equal(accepted.status,200);
   assert.equal((await accepted.json()).status,'accepted');assert.equal(messages.length,1);
-  assert.match(messages[0],/^From: Aurora Filtech RFQ <903158800@qq.com>/m);
-  assert.match(messages[0],/^Reply-To: customer@example.com/m);
+  assert.match(messages[0],/^From: Aurora Filtech RFQ <johnson@aurora-filtech.com>/m);
+  assert.match(messages[0],/^Reply-To: 903158800@qq.com/m);
   assert.match(messages[0],/^To: johnson@aurora-filtech.com/m);
   assert.match(messages[0],/^Subject: .*?=\?UTF-8\?[BQ]\?/im);
   assert.match(messages[0],/Content-Type: multipart\/alternative/);

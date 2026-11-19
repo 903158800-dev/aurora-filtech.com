@@ -785,6 +785,11 @@ content-dates.json
 package.json
 package-lock.json
 wrangler.jsonc
+node_modules
+.wrangler
+.git
+.dev.vars*
+.env*
 functions
 site-v1
 site-seo

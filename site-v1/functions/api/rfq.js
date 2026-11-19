@@ -42,7 +42,7 @@ async function parsePayload(request) {
 }
 
 export function mailConfiguration(env={}) {
-  const host=env.SMTP_HOST || 'smtp.qq.com';
+  const host=env.SMTP_HOST || 'smtp.qiye.aliyun.com';
   const port=Number(env.SMTP_PORT || 465);
   const user=env.SMTP_USER || '';
   const password=env.SMTP_PASSWORD || '';

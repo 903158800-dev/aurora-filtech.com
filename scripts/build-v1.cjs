@@ -8,7 +8,9 @@ const site = path.join(root, 'site-v1');
 const versioned = path.join(site, 'assets/versioned');
 const output = path.join(root, 'dist/v1');
 function files(dir) {
-  return fs.readdirSync(dir, {withFileTypes:true}).flatMap(e => e.isDirectory() ? files(path.join(dir,e.name)) : [path.join(dir,e.name)]);
+  return fs.readdirSync(dir, {withFileTypes:true})
+    .filter(e => !e.name.startsWith('.') && !['node_modules','functions'].includes(e.name))
+    .flatMap(e => e.isDirectory() ? files(path.join(dir,e.name)) : [path.join(dir,e.name)]);
 }
 async function main() {
   // First render establishes the exact set of images used by the pages.

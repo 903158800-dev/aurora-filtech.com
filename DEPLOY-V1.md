@@ -1,4 +1,4 @@
-# Aurora Filtech V1.2 — QQ 邮箱 SMTP 发信、Johnson 企业邮箱收信
+# Aurora Filtech V1.2 — 企业邮箱 SMTP 发送网站询价通知
 
 本版分支：`v1-smtp-20261119`。它基于 V1.1 提交 `fc7db78`，上一版仍保留在
 `v1-optimization-20261119`。原生产分支 `main` 未覆盖；原始版本的备份标签为
@@ -6,45 +6,45 @@
 
 ## 当前状态
 
-- 用户已确认：发件账号为 `903158800@qq.com`，收件人为 `johnson@aurora-filtech.com`。
-- 发信使用 QQ 邮箱 SMTP；Johnson 企业邮箱的现有 MX 和收信方式保持不变。
-- Cloudflare Preview 的五项非秘密变量已保存并回读确认：主机、端口、账号、发件地址、收件地址。
-  `SMTP_PASSWORD` 尚未配置；生产环境未改动。
-  同样的非秘密变量已写入两份 Wrangler 配置，避免部署时丢失；授权码不写入配置文件。
-- 新版使用 SMTP，不再需要 Resend 账号、密钥或新发件域名。
+- 客户填写公司名、联系邮箱、需求后，网站后台将全部已填信息发送到
+  `johnson@aurora-filtech.com`；客户邮箱仅用作邮件正文和 Reply-To 回复地址。
+- `903158800@qq.com` 是用户模拟客户时填写的联系邮箱，不是网站发信账号。
+  已移除之前误设的 QQ 发件账号，不需要客户提供 QQ SMTP 授权码。
+- 新版使用企业邮箱 SMTP，不依赖 Resend；SMTP 主机预设为阿里企业邮箱，端口 465。
+  可复用 Johnson 企业邮箱作为发件账号，也可使用已有的网站通知专用企业邮箱。
+  选定账号后，`SMTP_USER` 和 `RFQ_FROM_EMAIL` 应填同一地址。
+- 两份 Wrangler 配置及 Cloudflare Preview 的非秘密配置均已修正并回读确认。
+- 当前发件账号留空，密码未配置。不会尝试登录邮箱或发送邮件。
+  配置完整且部署成功后，仍需用真实测试询价核对 Johnson 收件箱。
 - 旧生产站 `https://aurora-filtech.pages.dev` 的询盘失败原因，已通过实际提交确认为
-  `RESEND_API_KEY` 缺失、HTTP 503。新版代码尚不能替代旧部署中正在运行的接口。
-- 本机 Node.js 已完成 `smtp.qq.com:465` 的证书校验、TLS 握手和 SMTP 问候。
-  这次探测没有执行 AUTH 或发送邮件。
-- 已修复运行器连接兼容问题：默认预解析 IP 的连接路径返回 `ESOCKET / proxy request failed`；
-  改为保留官方主机名建立 TLS socket 后，Cloudflare 本地运行器的握手／问候探测也通过。
-  远端预览上传仍超时，尚未完成真实 Cloudflare 云环境的鉴权和发信验收。
-- 尚未提供或配置邮箱客户端授权码，未进行真实邮箱登录、邮件发送或收件验收。
+  `RESEND_API_KEY` 缺失、HTTP 503。这说明旧实现的发送服务没有配置好，不代表必须使用 Resend。
+- 新版保留 V1.1 的电脑端和手机端排版优化。生产部署未改动；远端部署仍待完成。
+- 阿里邮箱 `smtp.qiye.aliyun.com:465` 已通过 Node.js 和 Cloudflare 本地运行器的
+  TLS 证书校验及 SMTP 问候探测。探测没有执行 AUTH、MAIL FROM 或 DATA，不代表真实投递通过。
+- 修正打包时收集依赖目录中静态文件的问题，根目录构建和子目录发布均排除依赖及本地状态。
 
 ## 邮箱配置
 
-本版使用 QQ 邮箱配置 `smtp.qq.com`、SSL/TLS 端口 **465**。
-本版只允许此类从连接开始就加密的 465 端口；不会回退到明文 SMTP，始终校验证书。
-不改动现有 MX、SPF、DKIM 或企业邮箱收信设置。
+阿里企业邮箱 SMTP 使用 `smtp.qiye.aliyun.com`、SSL/TLS 端口 **465**。
+此版始终校验 TLS 证书，不改动企业邮箱现有 MX 收信设置。
 
-1. 登录 `903158800@qq.com` 的 QQ 邮箱，开启 SMTP／三方客户端服务。
-2. 使用 QQ 邮箱生成的 **SMTP 授权码**，不能填写 QQ 登录密码。
-3. 在 Cloudflare → Workers & Pages → **scheme1** → Settings → Variables and Secrets，
-   为需要测试的 **Preview** 环境配置：
-   - `SMTP_HOST`：`smtp.qq.com`
+1. 选定一个网站后台使用的企业邮箱账号。可使用 `johnson@aurora-filtech.com`
+   向自己发送询价通知，邮件的 Reply-To 仍是客户填写的联系邮箱。
+2. 确认企业邮箱允许第三方客户端 SMTP 登录，建议生成独立的三方客户端安全密码。
+3. 在两份 Wrangler 配置中填写同一个非秘密发件账号，并保持两份配置一致：
+   - `SMTP_HOST`：`smtp.qiye.aliyun.com`
    - `SMTP_PORT`：`465`
-   - `SMTP_USER`：`903158800@qq.com`
-   - `SMTP_PASSWORD`：**Secret**，填该 QQ 邮箱的 SMTP 授权码
-   - `RFQ_FROM_EMAIL`：`903158800@qq.com`
+   - `SMTP_USER`：选定的网站后台企业邮箱账号
+   - `RFQ_FROM_EMAIL`：与 `SMTP_USER` 相同（留空时也会使用 `SMTP_USER`）
    - `RFQ_TO_EMAIL`：`johnson@aurora-filtech.com`
-4. 程序要求 `RFQ_FROM_EMAIL` 与 `SMTP_USER` 相同。
-   此版的发件地址应为 QQ 邮箱，不能把 Johnson 的企业邮箱填为发件人；它是收件人。
-5. 配置 Secret 后重新部署 SMTP 分支。非秘密变量由 Wrangler 配置维护；Secret 仅存在于后台。
+4. 在 Cloudflare → Workers & Pages → **scheme1** → Settings → Variables and Secrets，
+   为 **Preview** 环境配置 `SMTP_PASSWORD`，类型为 **Secret**，
+   值为选定企业邮箱账号的三方客户端安全密码。不要填写模拟客户的 QQ 邮箱授权码。
+5. 部署 SMTP 分支并完成下方验收。非秘密变量由 Wrangler 配置维护；Secret 仅存在于后台。
 6. 预览验收通过后，再为 Production 配置并按正常 Git 流程合并，勿强制覆盖旧版本。
 
 密码只填写在 Cloudflare Secret，或本机已被 Git 忽略的 `.dev.vars`；不写入源码或聊天。
-客户端永远不能选择 SMTP 主机、账号、发件人、收件人、抄送或密送。
-客户填写的邮箱仅成为邮件的 **Reply-To**，便于 Johnson 直接回复。
+客户只需要填表和提交，不能通过表单指定 SMTP 主机、账号、发件人、收件人、抄送或密送。
 
 ## 验收顺序
 
@@ -119,8 +119,8 @@ npm run deploy:preview
 
 ## 官方参考
 
-- https://cloud.tencent.com/document/product/583/35399
-- https://intl.cloud.tencent.com/zh/document/product/1266/71700
+- https://help.aliyun.com/zh/document_detail/36576.html
+- https://help.aliyun.com/zh/document_detail/36687.html
 - https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/
 - https://developers.cloudflare.com/workers/runtime-apis/nodejs/tls/
 - https://nodemailer.com/smtp
