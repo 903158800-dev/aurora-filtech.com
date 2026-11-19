@@ -11,10 +11,10 @@
 - `903158800@qq.com` 是用户模拟客户时填写的联系邮箱，不是网站发信账号。
   已移除之前误设的 QQ 发件账号，不需要客户提供 QQ SMTP 授权码。
 - 新版使用企业邮箱 SMTP，不依赖 Resend；SMTP 主机预设为阿里企业邮箱，端口 465。
-  可复用 Johnson 企业邮箱作为发件账号，也可使用已有的网站通知专用企业邮箱。
-  选定账号后，`SMTP_USER` 和 `RFQ_FROM_EMAIL` 应填同一地址。
+  用户已确认发件账号为 `aaron@aurora-filtech.com`，收件人为 Johnson。
 - 两份 Wrangler 配置及 Cloudflare Preview 的非秘密配置均已修正并回读确认。
-- 当前发件账号留空，密码未配置。不会尝试登录邮箱或发送邮件。
+- 发件账号已配置为 Aaron；客户端安全密码由用户直接填写到 Cloudflare Secret。
+  未配置密码时不会尝试登录邮箱或发送邮件。
   配置完整且部署成功后，仍需用真实测试询价核对 Johnson 收件箱。
 - 旧生产站 `https://aurora-filtech.pages.dev` 的询盘失败原因，已通过实际提交确认为
   `RESEND_API_KEY` 缺失、HTTP 503。这说明旧实现的发送服务没有配置好，不代表必须使用 Resend。
@@ -28,18 +28,22 @@
 阿里企业邮箱 SMTP 使用 `smtp.qiye.aliyun.com`、SSL/TLS 端口 **465**。
 此版始终校验 TLS 证书，不改动企业邮箱现有 MX 收信设置。
 
-1. 选定一个网站后台使用的企业邮箱账号。可使用 `johnson@aurora-filtech.com`
-   向自己发送询价通知，邮件的 Reply-To 仍是客户填写的联系邮箱。
-2. 确认企业邮箱允许第三方客户端 SMTP 登录，建议生成独立的三方客户端安全密码。
+1. 使用 `aaron@aurora-filtech.com` 登录 https://qiye.aliyun.com/。进入
+   设置 → 查看更多设置 → 账户与安全 → 账户安全 → 三方客户端登录安全管理。
+2. 开启三方客户端安全密码，点击生成新密码，完成手机验证码验证。
+   复制仅显示一次的 16 位安全密码，设备用途填 `Aurora 网站询价`。
+   开启后，原普通登录密码在第三方客户端中不再生效；Aaron 已有客户端也需各自的安全密码。
+   若管理员限制访问，应仅为 Aaron 账号开放第三方客户端和 SMTP 权限。
 3. 在两份 Wrangler 配置中填写同一个非秘密发件账号，并保持两份配置一致：
    - `SMTP_HOST`：`smtp.qiye.aliyun.com`
    - `SMTP_PORT`：`465`
-   - `SMTP_USER`：选定的网站后台企业邮箱账号
-   - `RFQ_FROM_EMAIL`：与 `SMTP_USER` 相同（留空时也会使用 `SMTP_USER`）
+   - `SMTP_USER`：`aaron@aurora-filtech.com`
+   - `RFQ_FROM_EMAIL`：`aaron@aurora-filtech.com`
    - `RFQ_TO_EMAIL`：`johnson@aurora-filtech.com`
 4. 在 Cloudflare → Workers & Pages → **scheme1** → Settings → Variables and Secrets，
    为 **Preview** 环境配置 `SMTP_PASSWORD`，类型为 **Secret**，
-   值为选定企业邮箱账号的三方客户端安全密码。不要填写模拟客户的 QQ 邮箱授权码。
+   值为 Aaron 的三方客户端安全密码，选择 Secret／Encrypt 后保存。
+   不要填写模拟客户的 QQ 邮箱授权码。
 5. 部署 SMTP 分支并完成下方验收。非秘密变量由 Wrangler 配置维护；Secret 仅存在于后台。
 6. 预览验收通过后，再为 Production 配置并按正常 Git 流程合并，勿强制覆盖旧版本。
 
@@ -118,6 +122,9 @@ npm run deploy:preview
 这些应用检查不代替账户侧频率限制；当前没有自动变更线上防护规则。
 
 ## 官方参考
+
+- https://help.aliyun.com/zh/document_detail/444269.html
+- https://developers.cloudflare.com/pages/functions/bindings/#secrets
 
 - https://help.aliyun.com/zh/document_detail/36576.html
 - https://help.aliyun.com/zh/document_detail/36687.html

@@ -2,12 +2,14 @@
   "name": "scheme1",
   "pages_build_output_dir": "dist/v1",
   "compatibility_date": "2026-10-23",
-  "compatibility_flags": ["nodejs_compat"],
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
   "vars": {
     "SMTP_HOST": "smtp.qiye.aliyun.com",
     "SMTP_PORT": "465",
-    "SMTP_USER": "",
-    "RFQ_FROM_EMAIL": "",
+    "SMTP_USER": "aaron@aurora-filtech.com",
+    "RFQ_FROM_EMAIL": "aaron@aurora-filtech.com",
     "RFQ_TO_EMAIL": "johnson@aurora-filtech.com"
   }
 }

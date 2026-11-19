@@ -5,7 +5,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {onRequestGet,createRfqHandler} from '../shared/rfq-function.js';
 const root=path.resolve(fileURLToPath(new URL('../dist/v1/',import.meta.url)));
-const env={SMTP_USER:'johnson@aurora-filtech.com',SMTP_PASSWORD:'mock-only-no-real-email'};
+const env={SMTP_USER:'aaron@aurora-filtech.com',SMTP_PASSWORD:'mock-only-no-real-email'};
 let mode='accepted';let calls=0;const keys=new Map();
 const onRequestPost=createRfqHandler(async(payload)=>{
   calls++;

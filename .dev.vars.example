@@ -1,13 +1,13 @@
 # Copy to .dev.vars for local API tests; it is ignored by Git.
 SMTP_HOST="smtp.qiye.aliyun.com"
 SMTP_PORT="465"
-# Website-owned enterprise sending account, e.g. johnson@aurora-filtech.com.
+# Website-owned enterprise sending account confirmed by the owner.
 # Never use the customer's contact email as the website's authenticated sender.
-SMTP_USER=
+SMTP_USER="aaron@aurora-filtech.com"
 # Use the sending account's client security password; fill it only in .dev.vars or Cloudflare Secrets.
 SMTP_PASSWORD=
 # Leave blank to use SMTP_USER, or set the same address. Recipient remains Johnson.
-RFQ_FROM_EMAIL=
+RFQ_FROM_EMAIL="aaron@aurora-filtech.com"
 RFQ_TO_EMAIL="johnson@aurora-filtech.com"
 # Optional bot protection. Configure both values together.
 TURNSTILE_SITE_KEY=

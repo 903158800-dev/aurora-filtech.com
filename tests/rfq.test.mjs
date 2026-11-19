@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {EventEmitter} from 'node:events';
 import {onRequestGet,createRfqHandler,mailConfiguration,smtpOptions,sendSmtp,openSmtpSocket} from '../shared/rfq-function.js';
 
-const env={SMTP_USER:'johnson@aurora-filtech.com',SMTP_PASSWORD:'test-only-never-real'};
+const env={SMTP_USER:'aaron@aurora-filtech.com',SMTP_PASSWORD:'test-only-never-real'};
 const valid={company:'Test company',email:'903158800@qq.com',notes:'Test inquiry',submission_id:'test-stable-id'};
 const request=(data=valid,headers={})=>new Request('https://example.com/api/rfq',{
   method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json',Origin:'https://example.com',...headers},body:JSON.stringify(data)});

@@ -3,13 +3,13 @@
   "version": "1.2.0",
   "branch": "v1-smtp-20261119",
   "recipient": "johnson@aurora-filtech.com",
-  "sender": null,
+  "sender": "aaron@aurora-filtech.com",
   "provider": "smtp",
   "cloudflarePreviewSettings": {
     "SMTP_HOST": "smtp.qiye.aliyun.com",
     "SMTP_PORT": "465",
-    "SMTP_USER": "",
-    "RFQ_FROM_EMAIL": "",
+    "SMTP_USER": "aaron@aurora-filtech.com",
+    "RFQ_FROM_EMAIL": "aaron@aurora-filtech.com",
     "RFQ_TO_EMAIL": "johnson@aurora-filtech.com",
     "passwordConfigured": false,
     "productionChanged": false,
@@ -53,11 +53,11 @@
   },
   "inboxDeliveryVerified": false,
   "remaining": [
-    "Select website-owned enterprise SMTP account and configure its SMTP_PASSWORD Secret",
+    "Configure Aaron client security password as SMTP_PASSWORD Secret",
     "Deploy and verify Cloudflare-to-SMTP connectivity and authentication",
     "Submit a real test and confirm receipt in Johnson's inbox"
   ],
-  "senderConfiguration": "Pending a website-owned enterprise mailbox; customer contact email is never the SMTP account",
+  "senderConfiguration": "User-confirmed website sender Aaron; customer contact email is reply-to only",
   "customerTestEmail": "903158800@qq.com",
   "staticPackaging": {
     "dependencyDirectoriesExcluded": true,
