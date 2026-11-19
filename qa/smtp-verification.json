@@ -57,7 +57,8 @@
   },
   "inboxDeliveryVerified": true,
   "remaining": [
-    "Confirm receipt of final production-domain inquiry 7a5fb34778f5 in Johnson mailbox"
+    "Confirm receipt of final production-domain inquiry 7a5fb34778f5 in Johnson mailbox",
+    "Non-blocking cleanup: purge old package.json dependency metadata cache when Cloudflare dashboard is available"
   ],
   "senderConfiguration": "User-confirmed website sender Aaron; customer contact email is reply-to only",
   "customerTestEmail": "903158800@qq.com",
@@ -67,15 +68,25 @@
     "gitStagingDirectory": ".pages-output",
     "publicFiles": 562,
     "sourceExclusionTestPassesForBothOutputs": true,
-    "reason": "Pages Git old uploader ignored .assetsignore and published package.json; stage an allowlisted public directory"
+    "reason": "Pages Git old uploader ignored .assetsignore and published package.json; stage an allowlisted public directory",
+    "identicalPublicAssetsToCliBuild": true,
+    "smtpHandlerSha256": "7b1382ab2ae706a20160373eed56a9f5d57b94ef435f2f34202fc7a8075c4ba3",
+    "productionVerified404": [
+      "/package-lock.json",
+      "/build.js",
+      "/design.js",
+      "/functions/api/rfq.js",
+      "/package.json?release=623bd05"
+    ],
+    "oldCachedPackageJson": "Origin 404 verified with release query; bare URL still serves old dependency metadata. Purge API lacks cache permission and dashboard remained loading. No credentials in cached file."
   },
   "deployment": {
     "environment": "production",
     "status": "success",
-    "id": "b579832d-b190-4bfe-90e4-ec0afeb38839",
-    "commit": "7314479909159d9fa509454769de59bd5e020738",
+    "id": "fbecc3fe-7e27-4010-aa0b-43bc8da0e956",
+    "commit": "623bd05eb1aa5b97fb68940bf22e5a9a056aa6ec",
     "url": "https://aurora-filtech.com",
-    "snapshot": "https://b579832d.aurora-filtech.pages.dev",
+    "snapshot": "https://fbecc3fe.aurora-filtech.pages.dev",
     "health": {
       "provider": "smtp",
       "configured": true
@@ -83,14 +94,16 @@
     "productionChanged": true,
     "productionBranch": "v1-smtp-20261119",
     "method": "Cloudflare Git deployment",
-    "buildCommand": "if [ -f package-lock.json ]; then npm ci --omit=dev && npm run build --if-present; fi"
+    "buildCommand": "if [ -f package-lock.json ]; then npm ci --omit=dev && npm run build --if-present; fi",
+    "outputDirectory": ".pages-output"
   },
   "remoteGit": {
     "branchPushed": true,
     "backupTagPushed": "v1-before-optimization-20261119",
     "originalMainCommit": "11b9dd6f727ff4fbb8bfaa2491b0a8c3ed92ca4c",
     "originalMainPreserved": true,
-    "v2v3Unchanged": true
+    "v2v3Unchanged": true,
+    "releaseTag": "v1.2.0-smtp-20261119"
   },
   "livePreviewLayout": {
     "desktop": {
@@ -201,5 +214,21 @@
       "qa/screenshots/production-mobile-success.jpg",
       "qa/screenshots/production-desktop-success.jpg"
     ]
+  },
+  "productionMailTestDeployment": {
+    "environment": "production",
+    "status": "success",
+    "id": "b579832d-b190-4bfe-90e4-ec0afeb38839",
+    "commit": "7314479909159d9fa509454769de59bd5e020738",
+    "url": "https://aurora-filtech.com",
+    "snapshot": "https://b579832d.aurora-filtech.pages.dev",
+    "health": {
+      "provider": "smtp",
+      "configured": true
+    },
+    "productionChanged": true,
+    "productionBranch": "v1-smtp-20261119",
+    "method": "Cloudflare Git deployment",
+    "buildCommand": "if [ -f package-lock.json ]; then npm ci --omit=dev && npm run build --if-present; fi"
   }
 }

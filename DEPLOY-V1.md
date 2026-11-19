@@ -21,7 +21,7 @@
 - 新分支已成功推送 GitHub；原版备份标签也已上传。Cloudflare 生产分支已切换为
   `v1-smtp-20261119`；Git 的 `main` 与原始备份标签仍指向 `11b9dd6`。
 - 新版正式站已部署成功：https://aurora-filtech.com/
-  生产部署 `b579832d-b190-4bfe-90e4-ec0afeb38839`，网站代码提交 `7314479`。
+  生产部署 `fbecc3fe-7e27-4010-aa0b-43bc8da0e956`，网站发布提交 `623bd05`。
   验证过的 Git 预览保留在 https://133b9a75.aurora-filtech.pages.dev/ （受 Access 保护）。
   已在 Edge 中查看 1440×1000 电脑布局、390×844 手机布局及询价提交区域，无横向溢出。
   Preview 与 Production 均已保存 `SMTP_PASSWORD` Secret；已部署预览接口返回 `provider:"smtp"`、`configured:true`。
@@ -151,7 +151,8 @@ npm run deploy:preview
 `deploy:preview` 固定使用 **v1-smtp-preview**，与当前生产分支隔离。
 正式发布命令为 `npm run deploy:production`，目标分支为 **v1-smtp-20261119**。
 Git 推送到该生产分支也会自动发布；只保存验收文档时可使用 `[CI Skip]` 提交前缀。
-当前正式网站代码为 `7314479`；后续仅文档提交不会改变已验收的线上代码。
+当前正式网站发布提交为 `623bd05`；其中邮件与页面代码和已验收的 `7314479` 相同。
+后续仅文档提交不会改变已验收的线上代码。
 现有 Pages 项目名为 `scheme1`，实际默认域名为 `aurora-filtech.pages.dev`。
 包含 Functions 的网站应使用 Git 集成或 Wrangler，不使用仅上传静态文件的拖拽方式。
 
@@ -186,3 +187,10 @@ Git 推送到该生产分支也会自动发布；只保存验收文档时可使�
 
 - https://developers.cloudflare.com/workers/runtime-apis/nodejs/process/
 - https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/
+
+## 已知收尾项
+
+- 正式站最后一封测试邮件编号 `7a5fb34778f5` 已被 SMTP 接受，待用户确认收件。
+- `/package.json` 源站已为 404；旧缓存仍返回仅含依赖名和版本的信息，不含密码。
+  清除单个 URL 缓存的 API 权限不足，Cloudflare 缓存页面持续加载，暂未清除这份缓存。
+  其他已检查的构建脚本和锁文件路径已返回 404。
