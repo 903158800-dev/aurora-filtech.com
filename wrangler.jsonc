@@ -10,6 +10,7 @@
     "SMTP_PORT": "465",
     "SMTP_USER": "aaron@aurora-filtech.com",
     "RFQ_FROM_EMAIL": "aaron@aurora-filtech.com",
-    "RFQ_TO_EMAIL": "johnson@aurora-filtech.com"
+    "RFQ_TO_EMAIL": "johnson@aurora-filtech.com",
+    "TURNSTILE_SITE_KEY": "0x4AAAAAAGLtnb3ySe9AixDS"
   }
 }

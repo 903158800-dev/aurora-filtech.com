@@ -156,10 +156,15 @@ Git 推送到该生产分支也会自动发布；只保存验收文档时可使�
 现有 Pages 项目名为 `scheme1`，实际默认域名为 `aurora-filtech.pages.dev`。
 包含 Functions 的网站应使用 Git 集成或 Wrangler，不使用仅上传静态文件的拖拽方式。
 
-开启真实发信前，应为生产域名 POST `/api/rfq` 设置边缘频率限制；也可同时配置
-`TURNSTILE_SITE_KEY` 与 `TURNSTILE_SECRET_KEY`。两项必须成对配置。
-应用的请求体上限为 32KiB，单字段有长度限制，表单有蜜罐校验。
-这些应用检查不代替账户侧频率限制；当前没有自动变更线上防护规则。
+正式站 `aurora-filtech.com`、`www.aurora-filtech.com` 与 `aurora-filtech.pages.dev`
+必须成对绑定 `TURNSTILE_SITE_KEY`（公开密钥）和 `TURNSTILE_SECRET_KEY`（私钥）。
+公开密钥写在两份 `wrangler.jsonc` 的 `vars` 中。私钥只存在于 Cloudflare Pages 的生产和预览 Secret 中。
+重建后用 `GET /api/rfq` 确认
+`configured:true` 且 `turnstileSiteKey` 有值。缺少配置时，正式域名会暂停在线发信。
+发信前须通过 Turnstile 服务端校验，凭证需匹配提交的域名及 `rfq` 用途。
+技术备注接受纯文本和普通链接，HTML 链接标签会被拒绝，客户可以修改后重新提交。
+应用的请求体上限为 32 KiB，单字段有长度限制，表单有蜜罐校验。
+直接邮箱和 WhatsApp 仍可作为备用联系入口。
 
 ## 本次正式站验收
 
