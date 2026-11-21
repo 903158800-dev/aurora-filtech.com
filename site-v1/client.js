@@ -45,7 +45,6 @@
   var submission = null;
   var configPromise;
   var widgetId;
-  var config;
   function collect() {
     var data = {};
     new FormData(form).forEach(function (value, name) { if (typeof value === 'string') data[name] = value.trim(); });
@@ -127,13 +126,25 @@
       var response = await fetch('/api/rfq', {headers:{Accept:'application/json'},signal:AbortSignal.timeout(8000)});
       var info = await response.json();
       if (info.service !== 'aurora-rfq') throw new Error('Unavailable');
-      config = info;
       if (info.turnstileSiteKey) {
-        await new Promise(function (resolve, reject) {
-          var script = document.createElement('script'); script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
-          script.onload = resolve; script.onerror = reject; document.head.append(script);
+        if (!window.turnstile) await new Promise(function (resolve, reject) {
+          var script = document.createElement('script');
+          script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+          var timeout = setTimeout(failed, 8000);
+          function failed() {
+            clearTimeout(timeout);
+            script.remove();
+            reject(new Error('Verification could not load'));
+          }
+          script.onload = function () { clearTimeout(timeout); resolve(); };
+          script.onerror = failed;
+          document.head.append(script);
         });
-        widgetId = window.turnstile.render(form.querySelector('.rfq-verification'), {sitekey:info.turnstileSiteKey,theme:'light'});
+        widgetId = window.turnstile.render(form.querySelector('.rfq-verification'), {
+          sitekey:info.turnstileSiteKey, action:'rfq', appearance:'interaction-only', theme:'light',
+          size:matchMedia('(max-width: 420px)').matches ? 'compact' : 'normal',
+          'response-field':false, 'refresh-expired':'auto'
+        });
       }
       return info;
     })().catch(function (error) { configPromise = null; throw error; });
@@ -162,7 +173,7 @@
       }
       if (info.turnstileSiteKey) {
         data['cf-turnstile-response'] = window.turnstile.getResponse(widgetId);
-        if (!data['cf-turnstile-response']) { show(false,'Please complete the verification and send again.',data); return; }
+        if (!data['cf-turnstile-response']) { show(false,'Please wait for verification, then select Send inquiry again.',data); return; }
       }
       // Save the unknown outcome before POST: closing/reloading the tab must not invite a duplicate.
       submission.outcome = 'uncertain'; persist(); blockRetry = true;
@@ -187,7 +198,7 @@
       show(false,blockRetry ? uncertainMessage : 'We could not reach the inquiry service. Please retry or use Email or WhatsApp below; your inquiry is kept in this tab.',data);
     } finally {
       pending = false; button.disabled = accepted || blockRetry; button.textContent = accepted ? 'Inquiry submitted' : (blockRetry ? 'Check submission status' : 'Send inquiry'); form.removeAttribute('aria-busy');
-      if (widgetId !== undefined && window.turnstile) window.turnstile.reset(widgetId);
+      if (data['cf-turnstile-response'] && widgetId !== undefined && window.turnstile) window.turnstile.reset(widgetId);
     }
   });
 })();

@@ -5,8 +5,8 @@ import {onRequestGet,createRfqHandler,mailConfiguration,smtpOptions,sendSmtp,ope
 
 const env={SMTP_USER:'aaron@aurora-filtech.com',SMTP_PASSWORD:'test-only-never-real'};
 const valid={company:'Test company',email:'903158800@qq.com',notes:'Test inquiry',submission_id:'test-stable-id'};
-const request=(data=valid,headers={})=>new Request('https://example.com/api/rfq',{
-  method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json',Origin:'https://example.com',...headers},body:JSON.stringify(data)});
+const request=(data=valid,headers={},origin='https://example.com')=>new Request(`${origin}/api/rfq`,{
+  method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json',Origin:origin,...headers},body:JSON.stringify(data)});
 
 test('SMTP configuration fails closed; public health never leaks credentials',async()=>{
   let calls=0;const handler=createRfqHandler(async()=>{calls++;return {id:'mock'};});
@@ -107,13 +107,46 @@ test('email HTML is escaped and mail headers cannot be injected',async()=>{
   assert.ok(!/[\r\n]/.test(payload.subject));assert.equal(payload.bcc,undefined);
 });
 
-test('rate limiter and Turnstile rejection happen before SMTP',async()=>{
+test('production requires valid Turnstile tokens for this hostname and inquiry action',async()=>{
   let calls=0;const handler=createRfqHandler(async()=>{calls++;return {id:'mock'};});
   assert.equal((await handler({request:request(),env:{...env,RFQ_RATE_LIMIT:{limit:async()=>({success:false})}}})).status,429);
+  const origin='https://aurora-filtech.com';
+  const withToken=()=>request({...valid,'cf-turnstile-response':'test-token'},{},origin);
+  const protectedEnv={...env,TURNSTILE_SITE_KEY:'public',TURNSTILE_SECRET_KEY:'test'};
+  assert.equal(onRequestGet({request:withToken(),env}).status,503);
+  assert.equal((await handler({request:withToken(),env})).status,503);
+  assert.equal((await handler({request:request(valid,{},origin),env:protectedEnv})).status,403);
+  const accepted={success:true, hostname:'aurora-filtech.com', action:'rfq'};
   const saved=globalThis.fetch;
-  globalThis.fetch=async url=>{assert.match(url,/siteverify/);return Response.json({success:false});};
   try{
-    assert.equal((await handler({request:request(),env:{...env,TURNSTILE_SITE_KEY:'public',TURNSTILE_SECRET_KEY:'test'}})).status,403);
-    assert.equal(calls,0);
+    for (const [result, status] of [
+      [{success:false,'error-codes':['timeout-or-duplicate']},403],
+      [{...accepted,hostname:'example.net'},403],
+      [{...accepted,action:'contact'},403],
+      [{success:false,'error-codes':['internal-error']},503],
+      [accepted,200]
+    ]) {
+      globalThis.fetch=async (url,options)=>{
+        assert.match(url,/siteverify/);
+        assert.deepEqual(JSON.parse(options.body),{secret:'test',response:'test-token'});
+        return Response.json(result);
+      };
+      assert.equal((await handler({request:withToken(),env:protectedEnv})).status,status);
+    }
+    assert.equal(calls,1);
   }finally{globalThis.fetch=saved;}
+});
+
+test('HTML promotion links are rejected without blocking plain URLs or personal emails',async()=>{
+  let calls=0;
+  const handler=createRfqHandler(async()=>{calls++;return {id:'mock'};});
+  for (const field of ['notes','request']) {
+    const sample={...valid,[field]:'Promotion <a href="https://example.net">open</a>'};
+    const response=await handler({request:request(sample),env});
+    assert.equal(response.status,422);
+    assert.equal((await response.json()).code,'INVALID_NOTES');
+  }
+  assert.equal(calls,0);
+  assert.equal((await handler({request:request({...valid,notes:'See drawing at https://example.net/drawing.pdf'}),env})).status,200);
+  assert.equal(calls,1);
 });

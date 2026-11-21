@@ -5,6 +5,8 @@ import {getBuiltinModule} from 'node:process';
 // Resolve the runtime's native TLS implementation without that build-time alias.
 const connectTls = (...args) => getBuiltinModule('node:tls').connect(...args);
 const DEFAULT_TO = 'johnson@aurora-filtech.com';
+const PRODUCTION_HOSTS = new Set(['aurora-filtech.com', 'www.aurora-filtech.com', 'aurora-filtech.pages.dev']);
+const TURNSTILE_ACTION = 'rfq';
 const MAX_BODY_BYTES = 32768;
 const LIMITS = { company:160, email:254, name:200, customer_type:80, product:160,
   machine:200, size:160, material:200, temperature:80, ph:80, notes:6000,
@@ -18,6 +20,31 @@ const esc = value => String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;
 const emailValid = value => typeof value === 'string' && value.length<=254 && /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$/.test(value);
 const line = value => (value || '').replace(/[\r\n\u0000-\u001f\u007f]+/g,' ').trim();
 const unavailable = 'Online inquiries are temporarily unavailable. Please use Email or WhatsApp below; your details remain in this form.';
+const challengeFailed = () => fail('CHALLENGE_FAILED','Please wait for verification, then send again. Refresh the page if this continues.',403);
+
+function turnstileConfiguration(env, hostname) {
+  const siteKey = env.TURNSTILE_SITE_KEY;
+  const secret = env.TURNSTILE_SECRET_KEY;
+  const enabled = Boolean(siteKey && secret);
+  return {siteKey, secret, enabled, ready: enabled || (!siteKey && !secret && !PRODUCTION_HOSTS.has(hostname))};
+}
+
+async function verifyTurnstile(token, secret, hostname) {
+  if (!token) return challengeFailed();
+  try {
+    const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method:'POST', signal:AbortSignal.timeout(5000), headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({secret, response:token})
+    });
+    const result = await response.json();
+    const unavailable = result['error-codes']?.some(code => ['internal-error', 'missing-input-secret', 'invalid-input-secret'].includes(code));
+    if (!response.ok || unavailable) throw new Error('Turnstile service unavailable');
+    if (!result.success || result.hostname !== hostname || result.action !== TURNSTILE_ACTION) return challengeFailed();
+    return null;
+  } catch {
+    return fail('CHALLENGE_UNAVAILABLE','Verification is temporarily unavailable. Please try again or contact us by email.',503);
+  }
+}
 
 async function parsePayload(request) {
   if (Number(request.headers.get('content-length')) > MAX_BODY_BYTES) throw {status:413,code:'PAYLOAD_TOO_LARGE'};
@@ -107,18 +134,20 @@ export async function sendSmtp(payload,config,reference,createTransport=nodemail
   } finally {transport.close();}
 }
 
-export function onRequestGet({env={}}) {
+export function onRequestGet({request,env={}}) {
   const config=mailConfiguration(env);
-  const challengeReady=Boolean(env.TURNSTILE_SECRET_KEY)===Boolean(env.TURNSTILE_SITE_KEY);
-  return json({ok:config.ready&&challengeReady,service:'aurora-rfq',provider:'smtp',
-    configured:config.ready&&challengeReady,turnstileSiteKey:env.TURNSTILE_SECRET_KEY ? (env.TURNSTILE_SITE_KEY||null) : null},config.ready&&challengeReady?200:503);
+  const challenge=turnstileConfiguration(env,request ? new URL(request.url).hostname : '');
+  const ready=config.ready && challenge.ready;
+  return json({ok:ready,service:'aurora-rfq',provider:'smtp',configured:ready,
+    turnstileSiteKey:ready && challenge.enabled ? challenge.siteKey : null},ready ? 200 : 503);
 }
 export function onRequestOptions(){return new Response(null,{status:204,headers:{Allow:'GET, POST, OPTIONS','Cache-Control':'no-store'}});}
 
 export function createRfqHandler(deliver=sendSmtp) {
 return async function handlePost({request,env={}}) {
+  const url=new URL(request.url);
   const origin=request.headers.get('origin');
-  if(origin && origin!==new URL(request.url).origin) return fail('INVALID_ORIGIN','Please submit the form from this website.',403);
+  if(origin && origin!==url.origin) return fail('INVALID_ORIGIN','Please submit the form from this website.',403);
   let raw;
   try {raw=await parsePayload(request);} catch(e){return fail(e.code||'INVALID_PAYLOAD','The inquiry is invalid or too long. Please check the form.',e.status||400);}
   const data={};
@@ -129,21 +158,19 @@ return async function handlePost({request,env={}}) {
   }
   if(data._honey) return fail('INVALID_SUBMISSION','Please reload the page and try again.',400);
   if(!line(data.company) || !emailValid(data.email)) return fail('INVALID_CONTACT','Please enter your company and a valid email address.');
+  const hasHtmlLink = [data.notes, data.request].some(value => /<a\s[^<>]*\bhref\s*=/i.test(value || ''));
+  if(hasHtmlLink) return fail('INVALID_NOTES','Please paste links in the technical notes as plain URLs, without HTML markup.',422);
   const config=mailConfiguration(env);
-  if(!config.ready || Boolean(env.TURNSTILE_SECRET_KEY)!==Boolean(env.TURNSTILE_SITE_KEY)) return fail('MAIL_NOT_CONFIGURED',unavailable,503);
-  // Optional platform limiter. Production should also apply an edge rate limit to /api/rfq.
+  const challenge=turnstileConfiguration(env,url.hostname);
+  if(!config.ready || !challenge.ready) return fail('MAIL_NOT_CONFIGURED',unavailable,503);
+  // An edge rule can also limit requests to /api/rfq on the custom domain.
   if(env.RFQ_RATE_LIMIT){
     const result=await env.RFQ_RATE_LIMIT.limit({key:request.headers.get('cf-connecting-ip')||'unknown'});
     if(!result.success)return json({ok:false,success:false,code:'RATE_LIMITED',message:'Too many inquiries. Please wait a minute and try again.'},429,{'Retry-After':'60'});
   }
-  if(env.TURNSTILE_SECRET_KEY){
-    try{
-      const response=await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify',{
-        method:'POST',signal:AbortSignal.timeout(5000),headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({secret:env.TURNSTILE_SECRET_KEY,response:data['cf-turnstile-response']||'',remoteip:request.headers.get('cf-connecting-ip')||undefined})});
-      const result=await response.json();
-      if(!response.ok || !result.success || result.hostname!==new URL(request.url).hostname) return fail('CHALLENGE_FAILED','Please complete the verification and try again.',403);
-    }catch{return fail('CHALLENGE_UNAVAILABLE','Verification is temporarily unavailable. Please try again or contact us by email.',503);}
+  if(challenge.enabled){
+    const rejection=await verifyTurnstile(data['cf-turnstile-response'],challenge.secret,url.hostname);
+    if(rejection) return rejection;
   }
   const product=line(data.product)||line(data.page_topic)||'General Inquiry';
   // Stable references help trace a submission; SMTP itself has no idempotency guarantee.
