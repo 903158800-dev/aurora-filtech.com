@@ -45,6 +45,7 @@
   var submission = null;
   var configPromise;
   var widgetId;
+  var verificationFailed = false;
   function collect() {
     var data = {};
     new FormData(form).forEach(function (value, name) { if (typeof value === 'string') data[name] = value.trim(); });
@@ -143,7 +144,9 @@
         widgetId = window.turnstile.render(form.querySelector('.rfq-verification'), {
           sitekey:info.turnstileSiteKey, action:'rfq', appearance:'interaction-only', theme:'light',
           size:matchMedia('(max-width: 420px)').matches ? 'compact' : 'normal',
-          'response-field':false, 'refresh-expired':'auto'
+          'response-field':false, 'refresh-expired':'auto',
+          callback:function () { verificationFailed = false; },
+          'error-callback':function () { verificationFailed = true; return true; }
         });
       }
       return info;
@@ -173,7 +176,16 @@
       }
       if (info.turnstileSiteKey) {
         data['cf-turnstile-response'] = window.turnstile.getResponse(widgetId);
-        if (!data['cf-turnstile-response']) { show(false,'Please wait for verification, then select Send inquiry again.',data); return; }
+        if (!data['cf-turnstile-response']) {
+          if (verificationFailed) {
+            verificationFailed = false;
+            window.turnstile.reset(widgetId);
+            show(false,'Verification could not finish. Please try again or use Email or WhatsApp below.',data);
+          } else {
+            show(false,'Please wait for verification, then select Send inquiry again.',data);
+          }
+          return;
+        }
       }
       // Save the unknown outcome before POST: closing/reloading the tab must not invite a duplicate.
       submission.outcome = 'uncertain'; persist(); blockRetry = true;
