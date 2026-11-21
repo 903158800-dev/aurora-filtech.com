@@ -21,7 +21,7 @@
 - 新分支已成功推送 GitHub；原版备份标签也已上传。Cloudflare 生产分支已切换为
   `v1-smtp-20261119`；Git 的 `main` 与原始备份标签仍指向 `11b9dd6`。
 - 新版正式站已部署成功：https://aurora-filtech.com/
-  生产部署 `fbecc3fe-7e27-4010-aa0b-43bc8da0e956`，网站发布提交 `623bd05`。
+  SMTP 首次正式发布提交 `623bd05`。当前防垃圾版见下方记录。
   验证过的 Git 预览保留在 https://133b9a75.aurora-filtech.pages.dev/ （受 Access 保护）。
   已在 Edge 中查看 1440×1000 电脑布局、390×844 手机布局及询价提交区域，无横向溢出。
   Preview 与 Production 均已保存 `SMTP_PASSWORD` Secret；已部署预览接口返回 `provider:"smtp"`、`configured:true`。
@@ -151,8 +151,7 @@ npm run deploy:preview
 `deploy:preview` 固定使用 **v1-smtp-preview**，与当前生产分支隔离。
 正式发布命令为 `npm run deploy:production`，目标分支为 **v1-smtp-20261119**。
 Git 推送到该生产分支也会自动发布；只保存验收文档时可使用 `[CI Skip]` 提交前缀。
-当前正式网站发布提交为 `623bd05`；其中邮件与页面代码和已验收的 `7314479` 相同。
-后续仅文档提交不会改变已验收的线上代码。
+验收文档提交可使用 `[CI Skip]`，生产部署沿用最近一次成功发布的代码。
 现有 Pages 项目名为 `scheme1`，实际默认域名为 `aurora-filtech.pages.dev`。
 包含 Functions 的网站应使用 Git 集成或 Wrangler，不使用仅上传静态文件的拖拽方式。
 
@@ -201,3 +200,14 @@ Git 推送到该生产分支也会自动发布；只保存验收文档时可使�
   Edge 直接访问显示 Page not found；使用 no-cache 请求核对返回 HTTP 404。
   刚清除后的一次普通脚本请求仍命中旧缓存，随后浏览器及 no-cache 检查均确认移除。
 - 其他已检查的构建脚本和锁文件路径已返回 404。没有剩余的本次验收项。
+
+## 2026-11-21 询价防垃圾更新
+
+- 正式版代码 `1539b7e`，发布标签 `v1.2.1-rfq-antispam-20261121`，生产部署
+  `1984dc5f-19f9-480d-8d2b-a81779c52065`。旧版标签继续可用。
+- 已确认主域名、`www` 和 `pages.dev` 入口均启用 Turnstile。缺少凭证和无效凭证
+  返回 `403 CHALLENGE_FAILED`。带 HTML 链接标签的备注返回 `422 INVALID_NOTES`。
+  这两类请求均在调用 SMTP 前被拒绝。
+- 14 项自动测试通过，覆盖正常凭证、过期或重复凭证、域名与用途不匹配、验证服务错误，
+  以及普通文本链接和个人邮箱。正式站浏览器加载了验证控件，受控测试环境未获有效凭证，
+  等待普通浏览器实际提交及 Johnson 收件验收。
